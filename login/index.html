@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+    <title>空店厂商管理后台</title>
+    <style>
+        body{
+          padding:0;
+          margin:0;
+        }
+        .vid-container{
+          position:relative;
+          height:100vh;
+          overflow:hidden;
+        }
+        .bgvid.back {
+          position: fixed; right: 0; bottom: 0;
+          min-width: 100%; min-height: 100%;
+          width: auto; height: auto; z-index: -100;
+        }
+        .inner {
+          position: absolute;
+        }
+        .inner-container{
+          width:400px;
+          height:568px;
+          position:absolute;
+          top:calc(50vh - 300px);
+          left:calc(50vw - 200px);
+          overflow:hidden;
+        }
+        .bgvid.inner{
+          top:calc(-50vh + 200px);
+          left:calc(-50vw + 200px);
+          filter: url("data:image/svg+xml;utf9,<svg%20version='1.1'%20xmlns='http://www.w3.org/2000/svg'><filter%20id='blur'><feGaussianBlur%20stdDeviation='10'%20/></filter></svg>#blur");
+          -webkit-filter:blur(10px);
+          -ms-filter: blur(10px);
+          -o-filter: blur(10px);
+          filter:blur(10px);
+        }
+        .box{
+          position:absolute;
+          height:100%;
+          width:100%;
+          font-family:Helvetica;
+          color:#fff;
+          background:rgba(0,0,0,0.13);
+          padding:30px 0px;
+        }
+        .box h1{
+          text-align:center;
+          margin:30px 0;
+          font-size:30px;
+        }
+        .box input, .box img, .box div{
+          display:block;
+          width:300px;
+          margin:20px auto;
+          padding:15px;
+          background:rgba(0,0,0,0.2);
+          color:#fff;
+          border:0;
+        }
+        .box input:focus,.box input:active,.box button:focus,.box button:active{
+          outline:none;
+        }
+        .box button{
+          background:#742ECC;
+          border:0;
+          color:#fff;
+          padding:10px;
+          font-size:20px;
+          width:330px;
+          margin:20px auto;
+          display:block;
+          cursor:pointer;
+        }
+        .box button:active{
+          background:#27ae60;
+        }
+        .box p{
+          font-size:14px;
+          text-align:center;
+        }
+        .box p span{
+          cursor:pointer;
+          color:#666;
+        }
+    </style>
+</head>
+<body>
+<div class="vid-container">
+  <video id="Video1" class="bgvid back" autoplay="false" muted="muted" preload="auto" loop>
+      <source src="./milky-way-river-1280hd.mp4.mp4" type="video/mp4">
+  </video>
+  <div class="inner-container">
+    <video id="Video2" class="bgvid inner" autoplay="false" muted="muted" preload="auto" loop>
+      <source src="./milky-way-river-1280hd.mp4.mp4" type="video/mp4">
+    </video>
+      <form id="login">
+        <div class="box">
+            <h1>空店后台管理系统</h1>
+            <input type="text" name='cellphone' placeholder='手机号'>
+            <input type="password" name='password' placeholder='密码'>
+            <input type="text" name='code' placeholder='验证码'>
+            <img id='codeImg' src="/Api/index.php/Login/createCode" />
+            <div id='message'></div>
+            <button>登录</button>
+        </div>
+      </form>
+  </div>
+</div>
+<script src='./jquery.js'></script>
+<script>
+	//提交登录信息
+	$('#login button').click(function(){
+		$.ajax({
+			url:'/Api/index.php/Login/index',
+			type:'post',
+			data:$('#login').serialize(),
+			success:function(back){
+				if(back.status==1) {
+					location.href = '/';
+				} else {
+					//输出提示信息
+					$('#message').html(back.info);
+					//更新验证码
+					$('#codeImg').trigger('click');
+				}
+			}
+		});
+		return false;
+	});
+	//更新验证码
+	$('#codeImg').click(function(){
+		$(this).attr('src','/Api/index.php/Login/createCode?a='+Math.random());
+	});
+</script>
+<script>
+    // Easy way to wait for all videos to load before start playing
+
+    var promises = [];
+    function makePromise(i, video) {
+      promises[i] = new $.Deferred();
+      // This event tells us video can be played all the way through, without stopping or buffering
+      video.oncanplaythrough = function() {
+        // Resolve the promise
+        promises[i].resolve();
+      }
+    }
+    // Pause all videos and create the promise array
+    $('video').each(function(index){
+      this.pause();
+      makePromise(index, this);
+    })
+
+    // Wait for all promises to resolve then start playing
+    $.when.apply(null, promises).done(function () {
+      $('video').each(function(){
+        this.play();
+      });
+    });
+
+</script>
+</body>
+</html>
+

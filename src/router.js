@@ -1,7 +1,7 @@
 import React from 'react';
-import { Router, Route, browserHistory, IndexRedirect } from 'react-router';
-import exampleOneContainer from './components/containers/example-1-container';
-import exampleTwoContainer from './components/containers/example-2-container';
+import { Router, Route, browserHistory, IndexRedirect, IndexRoute } from 'react-router';
+import UserListContainer from './components/containers/user-list-container';
+import HomeContainer from './components/containers/home-container';
 
 // Layouts
 import MainLayout from './components/layouts/main-layout';
@@ -13,10 +13,9 @@ export default (
     <Router history={browserHistory}>
         <Route path={routeBase} component={MainLayout} >
 
-            <IndexRedirect to={routeBase + 'example_1'} />
-            <Route path={routeBase + 'example_1'} component={exampleOneContainer} />
-            
-            <Route path={routeBase + 'example_2'} component={exampleTwoContainer} />
+            {/*<IndexRedirect to={routeBase + 'home'} />*/}
+            <IndexRoute component={HomeContainer}/>
+            <Route path={routeBase + 'user_list'} component={UserListContainer} />
             
         </Route>
     </Router>

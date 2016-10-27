@@ -31,9 +31,9 @@ const SidebarLayoutContainer = React.createClass({
                     <Menu mode={mode}
                       defaultSelectedKeys={[pathName]} defaultOpenKeys={['sub1']}>
                       <SubMenu key="sub1" title={<span><Icon type="home" /><span className={styles.navText}>一级菜单</span></span>}>
-                        <Menu.Item key={routeBase + 'example_1'}>
-                            <Link to={routeBase + 'example_1'}>
-                                二级菜单1
+                        <Menu.Item key={routeBase + 'user_list'}>
+                            <Link to={routeBase + 'user_list'}>
+                                用户列表
                             </Link>
                         </Menu.Item>
                         <Menu.Item key={routeBase + 'example_2'}>

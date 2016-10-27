@@ -7,7 +7,7 @@ const initialState = {
     editState : {}
 };
 
-const chuanShangReducer = function (state = initialState, action) {
+const chuanShangBoardMarketReducer = function (state = initialState, action) {
     
     switch (action.type) {
         
@@ -18,4 +18,4 @@ const chuanShangReducer = function (state = initialState, action) {
     return state;
 };
 
-export default chuanShangReducer;
+export default chuanShangBoardMarketReducer;

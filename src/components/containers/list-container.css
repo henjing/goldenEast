@@ -1,0 +1,50 @@
+.userListHeader {
+    height: 80px;
+    padding: 0 20px;
+    background: #F6F9FB;
+}
+.searchBar {
+	float: left;
+    height: 100%;
+    display: -webkit-box;
+    -webkit-box-align: center;
+}
+.number-info {
+	float: right;
+	height: 100%;
+	display: -webkit-box;
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+    -webkit-box-orient: vertical;
+}
+.number-info span {
+	font-size: 20px;
+	color: #000;
+}
+.data-picker-bar {
+	padding: 20px;
+}
+.data-picker-bar label {
+	margin-right: 10px;
+}
+
+.user-avatar-bar {
+	display: -webkit-box;
+	-webkit-box-align: center;
+}
+.user-avatar {
+	display: block;
+	width: 40px;
+	height: 40px;
+	background-color: #0074D9;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	border-radius: 50%;
+}
+.user-avatar-bar-text {
+	margin-left: 8px;
+}
+.user-avatar-bar-text .name{
+	font-size: 16px;
+}

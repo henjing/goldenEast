@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { loginUrl } from '../appConstants/urlConfig';
+import { loginPage } from '../appConstants/urlConfig';
 import { message } from 'antd';
 
 export default function (url, config, sucCallback, failCallback) {
@@ -17,7 +17,7 @@ export default function (url, config, sucCallback, failCallback) {
             return response;
         }).then(response => {
             if (response.status == -1) {
-                window.location.pathname = loginUrl;
+                window.location.pathname = loginPage;
             }
         }).catch(errHandler)
 }
@@ -37,7 +37,7 @@ export function commonGetAjax(url, config, sucCallback, failCallback) {
             return response;
         }).then(response => {
             if (response.status == -1) {
-                window.location.pathname = loginUrl;
+                window.location.pathname = loginPage;
             }
         }).catch(errHandler)
 }

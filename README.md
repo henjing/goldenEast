@@ -109,8 +109,5 @@ Please contribute to the project if you think this can be done better in anyway 
 
 
 待解决:
-10.发货操作有bug
-11. 物流信息显示在发货记录里面
-12. 物流信息要图文并茂
-13. 修改单号操作
-14. 新版工程目录,多加注释
+15. 开发东方小金,要用github开一个repo,然后接受两个同事的pull request
+16. 自动补全: 每次返回5条数据,姓名和手机号等 (手机号输入超过7位就开始自动补全)

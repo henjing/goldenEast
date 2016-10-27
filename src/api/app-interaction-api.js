@@ -1,10 +1,10 @@
-import { getAdminUrl, modifyPasswordUrl } from '../appConstants/urlConfig';
+import { loginUrl, modifyPasswordUrl } from '../appConstants/urlConfig';
 import commonAjax, { commonGetAjax} from '../helpers/commonAjax';
 import store from '../store';
 import { updateAdmin } from '../actions/app-interaction-actions';
 
 export function getAdmin(config, sucCallback, failCallback) {
-    return commonAjax(getAdminUrl, config, function (info) {
+    return commonAjax(loginUrl, config, function (info) {
         store.dispatch(updateAdmin(info));
         if (sucCallback) sucCallback(info);
     }, function (info) {

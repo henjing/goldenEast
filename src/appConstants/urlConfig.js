@@ -1,5 +1,5 @@
 // 注销
-export const logoutUrl = '/Api/index.php/Index/logout';
+// export const logoutUrl = '/Api/index.php/Index/logout';
 
 // 登录页
 export const loginUrl = '/api/index.php/Index/index';

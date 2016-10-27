@@ -1,7 +1,7 @@
-import { getUserInfoUrl, modifyPasswordUrl, getChuanShangTransactionListUrl } from '../appConstants/urlConfig';
+import { getUserInfoUrl, modifyPasswordUrl, getChuanShangBoardMarketListUrl, getChuanShangYBKListUrl, getShenWenSuoBoardMarketListUrl, getShenWenSuoMicroBoardListUrl, getJiShangYBKListUrl, getYueGuoJiMicroBoardListUrl } from '../appConstants/urlConfig';
 import commonAjax, { commonGetAjax} from '../helpers/commonAjax';
 import store from '../store';
-import { updateAdmin, updateChuanShang } from '../actions/app-interaction-actions';
+import { updateAdmin, updateChuanShangBoardMarket } from '../actions/app-interaction-actions';
 
 // 获取登录用户的信息
 export function getAdmin(config, sucCallback, failCallback) {
@@ -23,14 +23,15 @@ export function modifyPassword(config, sucCallback, failCallback) {
         if (failCallback) failCallback(info);
     });
 }
-// 拿到川商数据
-export function getChuanShangData(config, sucCallback, failCallback) {
-    return commonGetAjax(getChuanShangTransactionListUrl, config, function (info) {
-        store.dispatch(updateChuanShang(info));
+// 拿到川商大盘数据
+export function getChuanShangBoardMarketData(config, sucCallback, failCallback) {
+    return commonGetAjax(getChuanShangBoardMarketListUrl, config, function (info) {
+        store.dispatch(updateChuanShangBoardMarket(info));
         if (sucCallback) sucCallback(info);
     }, function (info) {
-        store.dispatch(updateChuanShang(info));
+        store.dispatch(updateChuanShangBoardMarket(info));
         if (failCallback) failCallback(info);
     });
 }
+
 

@@ -21,11 +21,19 @@ export function passwordModalToggle() {
         type : types.PASSWORD_MODAL_TOGGLE
     }
 }
-// 更新川商数据
-export function updateChuanShang(info) {
+// 更新川商大盘数据
+export function updateChuanShangBoardMarket(info) {
     
     return {
-        type : types.UPDATE_CHUANSHANG,
+        type : types.UPDATE_CHUANSHANG_BOARD_MARKET,
+        info
+    }
+}
+// 更新川商邮币卡数据
+export function updateChuanShangYBK(info) {
+    
+    return {
+        type : types.UPDATE_CHUANSHANG_YBK,
         info
     }
 }

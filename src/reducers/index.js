@@ -3,12 +3,12 @@ import { combineReducers } from 'redux';
 // Reducers
 import adminReducer from './admin-reducer';
 import appInteractionReducer from './app-interaction-reducer';
-import chuanShangReducer from './chuanShang-reducer';
+import chuanShangBoardMarketReducer from './chuanShang-board-market-reducer';
 
 const reducers = combineReducers({
     adminState : adminReducer,
     appInteractionState : appInteractionReducer,
-    chuanShangState : chuanShangReducer
+    chuanShangBoardMarketState : chuanShangBoardMarketReducer
 });
 
 export default reducers;

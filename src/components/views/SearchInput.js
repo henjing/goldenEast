@@ -3,11 +3,13 @@ import { AutoComplete, Button, Input } from 'antd';
 
 const SearchInput = React.createClass({
 
-    handleChange(value) {
-        this.props.onChange(value);
+    handleChange(e) {
+        // console.log('133333333');
+        this.props.onChange(e.target.value);
     },
 
     onClick() {
+        // console.log('2222222222');
         // console.log('test');
         this.props.search();
     },

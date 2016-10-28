@@ -22,6 +22,7 @@ var UserListContainer = React.createClass({
     
     submitSearch() {
         getShenWenSuoBoardMarketData(this.props.searchState);
+        // console.log('test', this.props.searchState);
     },
 
     onDateChange(dates, dateStrings) {

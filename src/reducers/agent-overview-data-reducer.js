@@ -7,12 +7,13 @@ const initialState = {
 	        redpack_date: '',
 	        refresh_date: '',
 	        shenw_coupon_date: '',
-	        this_month: [],
+	        this_month: [{}],
 	        this_month_fees_sum: 0,
 	        this_month_for_hege: 0,
 	        this_month_hege: false,
 	    },
 	    info : '',
+	    
         status : 1
 	}
 }

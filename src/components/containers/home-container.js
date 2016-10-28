@@ -20,7 +20,7 @@ var HomeContainer = React.createClass({
 		});
 	},
 	render(){
-		const data = this.props.agentData;
+		const data = this.props.agentData.data;
 
 		return (
 			<div>
@@ -59,7 +59,7 @@ var HomeContainer = React.createClass({
 			    		</div>
 			    	</Col>
 			    	<Col span={16} className={styles.brokerageTable}>
-			    		<BrokerageTable data={data.this_month} tatol={data.this_month_fees_sum} month={this.state.month}/>
+			    		<BrokerageTable data={data.this_month} total={data.this_month_fees_sum} month={this.state.month}/>
 			    	</Col>
 			    </Row>
 			</div>
@@ -68,8 +68,8 @@ var HomeContainer = React.createClass({
 });
 
 var BrokerageTable = React.createClass({
-	
 	render(){
+		console.log('list0000',this.props.data,this.props.total)
 		let listLoop = '';
 		try {
 			listLoop = this.props.data.map((cont,id)=>{

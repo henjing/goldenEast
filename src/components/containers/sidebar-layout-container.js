@@ -15,11 +15,33 @@ const SidebarLayoutContainer = React.createClass({
           store.dispatch(sidebarCollapse());
       },
 
+    //匹配的导航列表
+    matchSubMenu(pathName) {
+        const subMenuArray =  {
+            'sub1' : ['/home', '/user_list'],
+            'sub2' : ['/chuan_shang_board_market', '/shen_wen_suo_board_market']
+        };
+        let matchSubMenu = '';
+        for (let i in subMenuArray) {
+            // console.log('iiiiiii', i);
+            subMenuArray[i].forEach(function (ownPathName) {
+                // console.log('ownPathName', ownPathName);
+                if (ownPathName == pathName) {
+                    matchSubMenu = i;
+                    // console.log('hey!', i);
+                }
+            })
+        }
+        return matchSubMenu;
+    },
+
     render() {
         const collapse = this.props.collapse;
         const sidebarWrapperName = collapse ? 'sidebarWrapperCollapse' : 'sidebarWrapper';
         const mode = collapse ? 'vertical' : 'inline';
         const pathName = window.location.pathname;
+        const matchSubMenu = this.matchSubMenu(pathName);
+        console.log('matchSubMenu', matchSubMenu);
         return (
                 <div className={styles[sidebarWrapperName]} style={{transition: 'all 0.3s ease'}}>
                     <div className={styles.logo}>
@@ -29,7 +51,7 @@ const SidebarLayoutContainer = React.createClass({
                     </div>
 
                     <Menu mode={mode}
-                      defaultSelectedKeys={[pathName]} defaultOpenKeys={['sub1']}>
+                      defaultSelectedKeys={[pathName]} defaultOpenKeys={[matchSubMenu]}>
                       <SubMenu key="sub1" title={<span><Icon type="home" /><span className={styles.navText}>居间商</span></span>}>
                       	<Menu.Item key={routeBase + 'home'}>
                             <Link to={routeBase + 'home'}>
@@ -41,26 +63,21 @@ const SidebarLayoutContainer = React.createClass({
                                 用户列表
                             </Link>
                         </Menu.Item>
+                      </SubMenu>
+
+                      <SubMenu key="sub2" title={<span><Icon type="home" /><span className={styles.navText}>大盘交易列表</span></span>}>
+                      	<Menu.Item key={routeBase + 'shen_wen_suo_board_market'}>
+                            <Link to={routeBase + 'shen_wen_suo_board_market'}>
+                                深文所大盘
+                            </Link>
+                        </Menu.Item>
                         <Menu.Item key={routeBase + 'chuan_shang_board_market'}>
                             <Link to={routeBase + 'chuan_shang_board_market'}>
                                 川商大盘
                             </Link>
                         </Menu.Item>
-                        
                       </SubMenu>
-                      <SubMenu key="sub2" title={<span><Icon type="home" /><span className={styles.navText}>大盘交易列表</span></span>}>
-                      	<Menu.Item key={routeBase + 'sws'}>
-                            <Link to={routeBase + ''}>
-                                深文所大盘
-                            </Link>
-                        </Menu.Item>
-                        <Menu.Item key={routeBase + 'cs'}>
-                            <Link to={routeBase + ''}>
-                                川商大盘
-                            </Link>
-                        </Menu.Item>
-                        
-                      </SubMenu>
+
                       <SubMenu key="sub3" title={<span><Icon type="home" /><span className={styles.navText}>微盘交易列表</span></span>}>
                       	<Menu.Item key={routeBase + 'senwensuo_wp'}>
                             <Link to={routeBase + ''}>
@@ -78,6 +95,7 @@ const SidebarLayoutContainer = React.createClass({
                             </Link>
                         </Menu.Item>
                       </SubMenu>
+
                       <SubMenu key="sub4" title={<span><Icon type="home" /><span className={styles.navText}>邮币卡交易列表</span></span>}>
                       	<Menu.Item key={routeBase + 'chuanshang_post_card'}>
                             <Link to={routeBase + ''}>
@@ -90,6 +108,7 @@ const SidebarLayoutContainer = React.createClass({
                             </Link>
                         </Menu.Item>
                       </SubMenu>
+
                     </Menu>
 
                     <div className={styles.antAsideAction} onClick={this.onCollapseChange}>

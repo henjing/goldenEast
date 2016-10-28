@@ -15,11 +15,10 @@ const UserListTable = React.createClass({
 		      return (
 		      	<div className="user-avatar-bar">
 			      	<span className="user-avatar" style={{backgroundImage:'url()'}}>
-
+                        {text.slice(0, 1)}
 			      	</span>
 			      	<div className="user-avatar-bar-text">
 			      		<p className="name">{text}</p>
-			      		<span>微信昵称</span>
 			      	</div>
 			      	
 		      	</div>
@@ -56,11 +55,19 @@ const UserListTable = React.createClass({
 		
 		return columns;
 	},
+
+    onChange(page) {
+        this.props.onPageChange(page);
+    },
+
 	render(){
 		const columns = this.getColumns();
         const dataSource = this.props.dataSource.list;
         const pagination = {
-            defaultPageSize : 12
+            defaultPageSize : this.props.defaultPageSize,
+            onChange : this.onChange,
+            total : this.props.total,
+            current : parseInt(this.props.currentPage)
         };
 		return(
 			<Table pagination={pagination} columns={columns} dataSource={dataSource} bordered />

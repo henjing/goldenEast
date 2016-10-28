@@ -5,27 +5,27 @@ import UserListTable from '../views/chuan-shang-board-market-table';
 import { connect } from 'react-redux';
 import SearchInput from '../views/SearchInput';
 import store from '../../store';
-import { updateChuanShangBoardMarketSearch } from '../../actions/app-interaction-actions';
-import { getChuanShangBoardMarketData } from '../../api/app-interaction-api'; 
+import { updateShenWenSuoBoardMarketSearch } from '../../actions/app-interaction-actions';
+import { getShenWenSuoBoardMarketData } from '../../api/app-interaction-api'; 
 
 const RangePicker = DatePicker.RangePicker;
 
 var UserListContainer = React.createClass({
     
     componentDidMount() {
-        getChuanShangBoardMarketData({});
+        getShenWenSuoBoardMarketData({});
     },
 
     onChange(value) {
-        store.dispatch(updateChuanShangBoardMarketSearch({ 'search[find]' : value}));
+        store.dispatch(updateShenWenSuoBoardMarketSearch({ 'search[find]' : value}));
     },
     
     submitSearch() {
-        getChuanShangBoardMarketData(this.props.searchState);
+        getShenWenSuoBoardMarketData(this.props.searchState);
     },
 
     onDateChange(dates, dateStrings) {
-        store.dispatch(updateChuanShangBoardMarketSearch({
+        store.dispatch(updateShenWenSuoBoardMarketSearch({
             'search[d_begin]' : dateStrings[0],
             'search[d_end]' : dateStrings[1]
         }));
@@ -34,7 +34,7 @@ var UserListContainer = React.createClass({
     },
 
     onPageChange(page) {
-        store.dispatch(updateChuanShangBoardMarketSearch({
+        store.dispatch(updateShenWenSuoBoardMarketSearch({
             page : page
         }));
         // 启动搜索
@@ -70,8 +70,8 @@ var UserListContainer = React.createClass({
 
 const mapStateToProps = function (store) {
     return {
-        dataState : store.chuanShangBoardMarketState.dataState,
-        searchState : store.chuanShangBoardMarketState.searchState
+        dataState : store.shenWenSuoBoardMarketState.dataState,
+        searchState : store.shenWenSuoBoardMarketState.searchState
     }
 };
 

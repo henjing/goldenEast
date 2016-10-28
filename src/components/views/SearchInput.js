@@ -1,5 +1,5 @@
 import React from 'react';
-import { AutoComplete, Button } from 'antd';
+import { AutoComplete, Button, Input } from 'antd';
 
 const SearchInput = React.createClass({
 
@@ -8,15 +8,18 @@ const SearchInput = React.createClass({
     },
 
     onClick() {
+        // console.log('test');
         this.props.search();
     },
 
     render() {
         return (
             <div className="searchBar">
-                <AutoComplete
-                    style={{ width: 200 }}
+                <Input
+                    style={{ width: '200px' }}
                     onChange={this.handleChange}
+                    onPressEnter={this.onClick}
+                    placeholder="输入姓名,手机号"
                   />
                 <Button onClick={this.onClick} type="primary" style={{marginLeft:'20px'}}>搜索</Button>
             </div>

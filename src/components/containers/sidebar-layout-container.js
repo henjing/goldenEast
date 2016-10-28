@@ -41,6 +41,11 @@ const SidebarLayoutContainer = React.createClass({
                                 用户列表
                             </Link>
                         </Menu.Item>
+                        <Menu.Item key={routeBase + 'chuan_shang_board_market'}>
+                            <Link to={routeBase + 'chuan_shang_board_market'}>
+                                川商大盘
+                            </Link>
+                        </Menu.Item>
                         
                       </SubMenu>
                       <SubMenu key="sub2" title={<span><Icon type="home" /><span className={styles.navText}>大盘交易列表</span></span>}>

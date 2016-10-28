@@ -21,11 +21,19 @@ export function passwordModalToggle() {
         type : types.PASSWORD_MODAL_TOGGLE
     }
 }
-// 更新川商大盘数据
+// 更新川商大盘显示数据
 export function updateChuanShangBoardMarket(info) {
     
     return {
         type : types.UPDATE_CHUANSHANG_BOARD_MARKET,
+        info
+    }
+}
+// 更新川商大盘搜索状态
+export function updateChuanShangBoardMarketSearch(info) {
+    
+    return {
+        type : types.UPDATE_CHUANSHANG_BOARD_MARKET_SEARCH,
         info
     }
 }
@@ -34,6 +42,14 @@ export function updateChuanShangYBK(info) {
     
     return {
         type : types.UPDATE_CHUANSHANG_YBK,
+        info
+    }
+}
+// 更新代理商本月总数据
+export function updateAgentOverviewData(info) {
+    
+    return {
+        type : types.UPDATE_AGENT_OVERVIEW_DATA,
         info
     }
 }

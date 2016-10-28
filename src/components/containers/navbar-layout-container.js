@@ -12,7 +12,6 @@ const NavbarLayoutContainer = React.createClass({
     
     componentDidMount : function () {
         getAdmin({});
-        getAgentOverviewData({});
     },
 
     handleClick() {

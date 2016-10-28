@@ -1,5 +1,4 @@
 import * as types from '../actions/action-types';
-//import { mergeDeep} from '../helpers/helpers';
 
 const initialState = {
 	data : {
@@ -13,15 +12,15 @@ const initialState = {
     },
     info : '',
     status : 1
-}
+};
+
 
 const agentOverviewDataReducer = function (state = initialState, action){
-	switch(action.types){
+	switch(action.type){
 		case types.UPDATE_AGENT_OVERVIEW_DATA:
-			return Object.assign({}, state, {...action.info });
+			return Object.assign({}, state, { ...action.info });
 	}
-	
-	return state;
+    return state;
 }
 
 export default agentOverviewDataReducer;

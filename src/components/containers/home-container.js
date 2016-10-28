@@ -21,6 +21,7 @@ var HomeContainer = React.createClass({
 	},
 	render(){
 		const data = this.props.agentData;
+
 		return (
 			<div>
 				<Row className={styles.borderBottom}>

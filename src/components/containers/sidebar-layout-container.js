@@ -43,6 +43,48 @@ const SidebarLayoutContainer = React.createClass({
                         </Menu.Item>
                         
                       </SubMenu>
+                      <SubMenu key="sub2" title={<span><Icon type="home" /><span className={styles.navText}>大盘交易列表</span></span>}>
+                      	<Menu.Item key={routeBase + 'sws'}>
+                            <Link to={routeBase + ''}>
+                                深文所大盘
+                            </Link>
+                        </Menu.Item>
+                        <Menu.Item key={routeBase + 'cs'}>
+                            <Link to={routeBase + ''}>
+                                川商大盘
+                            </Link>
+                        </Menu.Item>
+                        
+                      </SubMenu>
+                      <SubMenu key="sub3" title={<span><Icon type="home" /><span className={styles.navText}>微盘交易列表</span></span>}>
+                      	<Menu.Item key={routeBase + 'senwensuo_wp'}>
+                            <Link to={routeBase + ''}>
+                                深文所微盘
+                            </Link>
+                        </Menu.Item>
+                        <Menu.Item key={routeBase + 'jishang_wp'}>
+                            <Link to={routeBase + ''}>
+                                吉商微盘
+                            </Link>
+                        </Menu.Item>
+                        <Menu.Item key={routeBase + 'yueguoji_wp'}>
+                            <Link to={routeBase + ''}>
+                                粤国际微盘
+                            </Link>
+                        </Menu.Item>
+                      </SubMenu>
+                      <SubMenu key="sub4" title={<span><Icon type="home" /><span className={styles.navText}>邮币卡交易列表</span></span>}>
+                      	<Menu.Item key={routeBase + 'chuanshang_post_card'}>
+                            <Link to={routeBase + ''}>
+                                川商邮币卡
+                            </Link>
+                        </Menu.Item>
+                        <Menu.Item key={routeBase + 'jishan_post_card'}>
+                            <Link to={routeBase + ''}>
+                                吉商邮币卡
+                            </Link>
+                        </Menu.Item>
+                      </SubMenu>
                     </Menu>
 
                     <div className={styles.antAsideAction} onClick={this.onCollapseChange}>

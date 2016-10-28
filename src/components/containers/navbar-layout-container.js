@@ -31,12 +31,17 @@ const NavbarLayoutContainer = React.createClass({
           </Menu>
         );
         const admin = this.props.adminState.data;
+        const url = 'url('+admin.wechat_avatar+')';
         return (
             <nav className="nav-wrap">
             	<ul className="nav">
-                    <li className="avatar">
-                        <img src={admin.wechat_avatar} alt="avatar"/>
-                        <span>{admin.wechat_nickname}</span>
+                    <li className="admin-avatar-wrap">
+                    	<span className="admin-avatar" style={{backgroundImage: url}}></span>
+						<div className="admin-name">
+							<p>{admin.wechat_nickname}</p>
+							<span></span>
+						</div>
+                        
                     </li>
 
                     <Dropdown overlay={menu}>

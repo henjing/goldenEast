@@ -1,17 +1,29 @@
 import React from 'react';
 import { Table,Button } from 'antd';
+import weiGuDong from '../../appConstants/assets/images/微股东.png';
+import normalCard from '../../appConstants/assets/images/普卡.png';
+import silverCard from '../../appConstants/assets/images/银卡.png';
+import goldenCard from '../../appConstants/assets/images/金卡.png';
+import superGoldenCard from '../../appConstants/assets/images/白金卡.png';
 
 // In the fifth row, other columns are merged into first column
 // by setting it's colSpan to be 0
 
 const UserListTable = React.createClass({
+
+    jinLevels() {
+        return ['注册用户(0%)', weiGuDong, normalCard, silverCard, goldenCard, superGoldenCard];
+    },
+
 	getColumns(){
+
+        const jinLevels = this.jinLevels();
 
 		const columns = [{
 		  title: '姓名',
 		  dataIndex: 'user_name',
           key : 'user_name',
-		  render(text, row, index) {
+		  render(text, record, index) {
 		      return (
 		      	<div className="user-avatar-bar">
 			      	<span className="user-avatar" style={{backgroundImage:'url()'}}>
@@ -27,7 +39,16 @@ const UserListTable = React.createClass({
 		}, {
 		  title: '级别',
 		  dataIndex: 'level',
-          key : 'level'
+          key : 'level',
+          render(text, record, index) {
+              // console.log('text', text, 'index', index);
+              if (text == '0') {
+                  return <span>{jinLevels[text]}</span>
+              }
+              return (
+                  <img src={jinLevels[text]} alt="jinLevel"/>
+              )
+          }
 		}, {
 		  title: '大盘账号',
 		  dataIndex: 'account',

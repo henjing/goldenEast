@@ -1,7 +1,7 @@
 import { getUserInfoUrl, modifyPasswordUrl, getChuanShangBoardMarketListUrl, getChuanShangYBKListUrl, getShenWenSuoBoardMarketListUrl, getAgentOverviewDataUrl, getShenWenSuoMicroBoardListUrl, getJiShangYBKListUrl, getYueGuoJiMicroBoardListUrl } from '../appConstants/urlConfig';
 import commonAjax, { commonGetAjax} from '../helpers/commonAjax';
 import store from '../store';
-import { updateAdmin, updateChuanShangBoardMarket, updateAgentOverviewData } from '../actions/app-interaction-actions';
+import { updateAdmin, updateChuanShangBoardMarket, updateAgentOverviewData, updateShenWenSuoBoardMarket } from '../actions/app-interaction-actions';
 
 // 获取登录用户的信息
 export function getAdmin(config, sucCallback, failCallback) {
@@ -35,11 +35,21 @@ export function getChuanShangBoardMarketData(config, sucCallback, failCallback) 
 }
 // 拿到代理商本月数据
 export function getAgentOverviewData(config, sucCallback, failCallback) {
-    return commonGetAjax(getAgentOverviewDataUrl, config, function (info) {
+    return commonGetAjax(getShenWenSuoBoardMarketListUrl, config, function (info) {
         store.dispatch(updateAgentOverviewData(info));
         if (sucCallback) sucCallback(info);
     }, function (info) {
         store.dispatch(updateAgentOverviewData(info));
+        if (failCallback) failCallback(info);
+    });
+}
+// 拿到深文所大盘数据
+export function getShenWenSuoBoardMarketData(config, sucCallback, failCallback) {
+    return commonGetAjax(getShenWenSuoBoardMarketListUrl, config, function (info) {
+        store.dispatch(updateShenWenSuoBoardMarket(info));
+        if (sucCallback) sucCallback(info);
+    }, function (info) {
+        store.dispatch(updateShenWenSuoBoardMarket(info));
         if (failCallback) failCallback(info);
     });
 }

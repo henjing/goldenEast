@@ -19,7 +19,7 @@ const SidebarLayoutContainer = React.createClass({
     matchSubMenu(pathName) {
         const subMenuArray =  {
             'sub1' : ['/home', '/user_list'],
-            'sub2' : ['/chuan_shang_board_market']
+            'sub2' : ['/chuan_shang_board_market', '/shen_wen_suo_board_market']
         };
         let matchSubMenu = '';
         for (let i in subMenuArray) {
@@ -66,8 +66,8 @@ const SidebarLayoutContainer = React.createClass({
                       </SubMenu>
 
                       <SubMenu key="sub2" title={<span><Icon type="home" /><span className={styles.navText}>大盘交易列表</span></span>}>
-                      	<Menu.Item key={routeBase + 'sws'}>
-                            <Link to={routeBase + ''}>
+                      	<Menu.Item key={routeBase + 'shen_wen_suo_board_market'}>
+                            <Link to={routeBase + 'shen_wen_suo_board_market'}>
                                 深文所大盘
                             </Link>
                         </Menu.Item>

@@ -37,6 +37,22 @@ export function updateChuanShangBoardMarketSearch(info) {
         info
     }
 }
+// 更新深文所大盘显示数据
+export function updateShenWenSuoBoardMarket(info) {
+    
+    return {
+        type : types.UPDATE_SHENWENSUO_BOARD_MARKET,
+        info
+    }
+}
+// 更新深文所大盘搜索状态
+export function updateShenWenSuoBoardMarketSearch(info) {
+    
+    return {
+        type : types.UPDATE_SHENWENSUO_BOARD_MARKET_SEARCH,
+        info
+    }
+}
 // 更新川商邮币卡数据
 export function updateChuanShangYBK(info) {
     

@@ -1,7 +1,7 @@
 import { getUserInfoUrl, modifyPasswordUrl, getChuanShangBoardMarketListUrl, getChuanShangYBKListUrl, getShenWenSuoBoardMarketListUrl, getAgentOverviewDataUrl, getShenWenSuoMicroBoardListUrl, getJiShangYBKListUrl, getYueGuoJiMicroBoardListUrl } from '../appConstants/urlConfig';
 import commonAjax, { commonGetAjax} from '../helpers/commonAjax';
 import store from '../store';
-import { updateAdmin, updateChuanShangBoardMarket, updateAgentOverviewData, updateShenWenSuoBoardMarket } from '../actions/app-interaction-actions';
+import { updateAdmin, updateChuanShangBoardMarket, updateAgentOverviewData, updateShenWenSuoBoardMarket, updateChuanShangPostCard, updateJiShangPostCard } from '../actions/app-interaction-actions';
 
 // 获取登录用户的信息
 export function getAdmin(config, sucCallback, failCallback) {
@@ -50,6 +50,26 @@ export function getShenWenSuoBoardMarketData(config, sucCallback, failCallback) 
         if (sucCallback) sucCallback(info);
     }, function (info) {
         store.dispatch(updateShenWenSuoBoardMarket(info));
+        if (failCallback) failCallback(info);
+    });
+}
+// 拿到川商邮币卡数据
+export function getChuanShangPostCardData(config, sucCallback, failCallback) {
+    return commonGetAjax(getChuanShangYBKListUrl, config, function (info) {
+        store.dispatch(updateChuanShangPostCard(info));
+        if (sucCallback) sucCallback(info);
+    }, function (info) {
+        store.dispatch(updateChuanShangPostCard(info));
+        if (failCallback) failCallback(info);
+    });
+}
+// 拿到吉商邮币卡数据
+export function getJiShangPostCardData(config, sucCallback, failCallback) {
+    return commonGetAjax(getJiShangYBKListUrl, config, function (info) {
+        store.dispatch(updateJiShangPostCard(info));
+        if (sucCallback) sucCallback(info);
+    }, function (info) {
+        store.dispatch(updateJiShangPostCard(info));
         if (failCallback) failCallback(info);
     });
 }

@@ -54,10 +54,34 @@ export function updateShenWenSuoBoardMarketSearch(info) {
     }
 }
 // 更新川商邮币卡数据
-export function updateChuanShangYBK(info) {
+export function updateChuanShangPostCard(info) {
     
     return {
-        type : types.UPDATE_CHUANSHANG_YBK,
+        type : types.UPDATE_CHUANSHANG_POST_CARD,
+        info
+    }
+}
+// 更新吉商邮币卡数据
+export function updateJiShangPostCard(info) {
+    
+    return {
+        type : types.UPDATE_JISHANG_POST_CARD,
+        info
+    }
+}
+// 更新川商邮币卡搜索数据
+export function updateChuanShangPostCardSearch(info) {
+    
+    return {
+        type : types.UPDATE_CHUANSHANG_POST_CARD_SEARCH,
+        info
+    }
+}
+// 更吉商邮币卡搜索数据
+export function updateJiShangPostCardSearch(info) {
+    
+    return {
+        type : types.UPDATE_JISHANG_POST_CARD_SEARCH,
         info
     }
 }

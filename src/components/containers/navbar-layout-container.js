@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getAdmin, getAgentOverviewData } from '../../api/app-interaction-api';
+import { getAdmin } from '../../api/app-interaction-api';
 import { Menu, Dropdown, Icon } from 'antd';
 import ModifyPassword from '../views/modifyPassword';
 import { passwordModalToggle } from '../../actions/app-interaction-actions';

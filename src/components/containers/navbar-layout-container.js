@@ -1,7 +1,6 @@
 import React from 'react';
-import styles from '../../app.less';
 import { connect } from 'react-redux';
-import { getAdmin, getChuanShangBoardMarketData, getAgentOverviewData } from '../../api/app-interaction-api';
+import { getAdmin, getAgentOverviewData } from '../../api/app-interaction-api';
 import { Menu, Dropdown, Icon } from 'antd';
 import ModifyPassword from '../views/modifyPassword';
 import { passwordModalToggle } from '../../actions/app-interaction-actions';
@@ -13,7 +12,6 @@ const NavbarLayoutContainer = React.createClass({
     
     componentDidMount : function () {
         getAdmin({});
-        getChuanShangBoardMarketData({});
         getAgentOverviewData({});
     },
 
@@ -41,13 +39,15 @@ const NavbarLayoutContainer = React.createClass({
                         <img src={admin.wechat_avatar} alt="avatar"/>
                         <span>{admin.wechat_nickname}</span>
                     </li>
-                    <li className="setup">
-                        <Dropdown overlay={menu}>
-                            <a>
-                                <span className="fa fa-cog" />
-                            </a>
-                        </Dropdown>
-                    </li>
+
+                    <Dropdown overlay={menu}>
+                        <li className="setup">
+                        <a>
+                            <span className="fa fa-cog" />
+                        </a>
+                        </li>
+                    </Dropdown>
+
                 </ul>
             </nav>
         )

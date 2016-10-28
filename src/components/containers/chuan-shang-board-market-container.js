@@ -11,6 +11,10 @@ import { getChuanShangBoardMarketData } from '../../api/app-interaction-api';
 const RangePicker = DatePicker.RangePicker;
 
 var UserListContainer = React.createClass({
+    
+    componentDidMount() {
+        getChuanShangBoardMarketData({});
+    },
 
     onChange(value) {
         store.dispatch(updateChuanShangBoardMarketSearch({ 'search[find]' : value}));
@@ -55,9 +59,9 @@ var UserListContainer = React.createClass({
 				</div>
 				<div className="data-picker-bar">
 					<label>交易时间:</label>
-					<RangePicker style={{ width: 200 }} onChange={this.onDateChange} />
+					<RangePicker style={{ width: '200px' }} onChange={this.onDateChange} />
 				</div>
-				<UserListTable dataSource={data} />
+				<UserListTable defaultPageSize={12} total={data.total} currentPage={data.this_page} dataSource={data} onPageChange={this.onPageChange} />
 			</div>
 		)
 	}

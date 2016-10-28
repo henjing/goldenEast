@@ -23,7 +23,9 @@ export default function (url, config, sucCallback, failCallback) {
 }
 
 export function commonGetAjax(url, config, sucCallback, failCallback) {
-    return axios.get(url, formData(config))
+       return axios.get(url, {
+           params : config
+       })
         .then(data => {
             const response = data.data;
             if (response.status == 1) {
@@ -47,7 +49,7 @@ function errHandler(err) {
 }
 
 function formData(config) {
-    // console.log('11111111111', config);
+    console.log('11111111111', config);
     let formData = new FormData();
     
     for (let i in config) {

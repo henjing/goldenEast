@@ -29,3 +29,6 @@ export const getJiShangYBKListUrl = '/api/index.php/Transaction/transaction_stam
 
 // 获取粤国际微盘交易列表
 export const getYueGuoJiMicroBoardListUrl = '/api/index.php/Transaction/transaction_micro_yuegj';
+
+// 代理商本月总数据请求
+export const getAgentOverviewDataUrl = '/api/index.php/overview/transaction';

@@ -1,7 +1,7 @@
-import { getUserInfoUrl, modifyPasswordUrl, getChuanShangBoardMarketListUrl, getChuanShangYBKListUrl, getShenWenSuoBoardMarketListUrl, getShenWenSuoMicroBoardListUrl, getJiShangYBKListUrl, getYueGuoJiMicroBoardListUrl } from '../appConstants/urlConfig';
+import { getUserInfoUrl, modifyPasswordUrl, getChuanShangBoardMarketListUrl, getChuanShangYBKListUrl, getShenWenSuoBoardMarketListUrl, getAgentOverviewDataUrl, getShenWenSuoMicroBoardListUrl, getJiShangYBKListUrl, getYueGuoJiMicroBoardListUrl } from '../appConstants/urlConfig';
 import commonAjax, { commonGetAjax} from '../helpers/commonAjax';
 import store from '../store';
-import { updateAdmin, updateChuanShangBoardMarket } from '../actions/app-interaction-actions';
+import { updateAdmin, updateChuanShangBoardMarket, updateAgentOverviewData } from '../actions/app-interaction-actions';
 
 // 获取登录用户的信息
 export function getAdmin(config, sucCallback, failCallback) {
@@ -33,5 +33,14 @@ export function getChuanShangBoardMarketData(config, sucCallback, failCallback) 
         if (failCallback) failCallback(info);
     });
 }
-
+// 拿到川商大盘数据
+export function getAgentOverviewData(config, sucCallback, failCallback) {
+    return commonGetAjax(getAgentOverviewDataUrl, config, function (info) {
+        store.dispatch(updateAgentOverviewData(info));
+        if (sucCallback) sucCallback(info);
+    }, function (info) {
+        store.dispatch(updateAgentOverviewData(info));
+        if (failCallback) failCallback(info);
+    });
+}
 

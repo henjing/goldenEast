@@ -11,7 +11,7 @@ const reducers = combineReducers({
     adminState : adminReducer,
     appInteractionState : appInteractionReducer,
     chuanShangBoardMarketState : chuanShangBoardMarketReducer,
-    agentOverviewDataState : agentOverviewDataReducer
+    agentOverviewDataState : agentOverviewDataReducer,
     shenWenSuoBoardMarketState : shenWenSuoBoardMarketReducer
 });
 

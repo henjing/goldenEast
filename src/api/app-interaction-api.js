@@ -35,7 +35,7 @@ export function getChuanShangBoardMarketData(config, sucCallback, failCallback) 
 }
 // 拿到代理商本月数据
 export function getAgentOverviewData(config, sucCallback, failCallback) {
-    return commonGetAjax(getShenWenSuoBoardMarketListUrl, config, function (info) {
+    return commonGetAjax(getAgentOverviewDataUrl, config, function (info) {
         store.dispatch(updateAgentOverviewData(info));
         if (sucCallback) sucCallback(info);
     }, function (info) {

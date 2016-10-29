@@ -19,7 +19,9 @@ const SidebarLayoutContainer = React.createClass({
     matchSubMenu(pathName) {
         const subMenuArray =  {
             'sub1' : ['/home', '/user_list'],
-            'sub2' : ['/chuan_shang_board_market', '/shen_wen_suo_board_market']
+            'sub2' : ['/chuan_shang_board_market', '/shen_wen_suo_board_market'],
+            'sub3' : ['/shenwensuo_wp', '/jishang_wp', '/yueguoji_wp'],
+            'sub4' : ['/chuan_shang_post_card', 'ji_shang_post_card'],
         };
         let matchSubMenu = '';
         for (let i in subMenuArray) {
@@ -41,7 +43,7 @@ const SidebarLayoutContainer = React.createClass({
         const mode = collapse ? 'vertical' : 'inline';
         const pathName = window.location.pathname;
         const matchSubMenu = this.matchSubMenu(pathName);
-        console.log('matchSubMenu', matchSubMenu);
+        //console.log('matchSubMenu', matchSubMenu);
         return (
                 <div className={styles[sidebarWrapperName]} style={{transition: 'all 0.3s ease'}}>
                     <div className={styles.logo}>
@@ -79,18 +81,18 @@ const SidebarLayoutContainer = React.createClass({
                       </SubMenu>
 
                       <SubMenu key="sub3" title={<span><Icon type="line-chart" /><span className={styles.navText}>微盘交易列表</span></span>}>
-                      	<Menu.Item key={routeBase + 'senwensuo_wp'}>
-                            <Link to={routeBase + ''}>
+                      	<Menu.Item key={routeBase + 'shenwensuo_wp'}>
+                            <Link to={routeBase + 'shenwensuo_wp'}>
                                 深文所微盘
                             </Link>
                         </Menu.Item>
-                        <Menu.Item key={routeBase + 'jishang_wp'}>
-                            <Link to={routeBase + ''}>
+                          {/*<Menu.Item key={routeBase + 'jishang_wp'}>
+                            <Link to={routeBase + 'jishang_wp'}>
                                 吉商微盘
                             </Link>
-                        </Menu.Item>
+                        </Menu.Item>*/}
                         <Menu.Item key={routeBase + 'yueguoji_wp'}>
-                            <Link to={routeBase + ''}>
+                            <Link to={routeBase + 'yueguoji_wp'}>
                                 粤国际微盘
                             </Link>
                         </Menu.Item>

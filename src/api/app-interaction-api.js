@@ -1,7 +1,7 @@
-import { getUserInfoUrl, modifyPasswordUrl, getChuanShangBoardMarketListUrl, getChuanShangYBKListUrl, getShenWenSuoBoardMarketListUrl, getAgentOverviewDataUrl, getShenWenSuoMicroBoardListUrl, getJiShangYBKListUrl, getYueGuoJiMicroBoardListUrl } from '../appConstants/urlConfig';
+import { getUserInfoUrl, modifyPasswordUrl, getChuanShangBoardMarketListUrl, getChuanShangYBKListUrl, getShenWenSuoBoardMarketListUrl, getAgentOverviewDataUrl, getShenWenSuoMicroBoardListUrl, getJiShangYBKListUrl, getYueGuoJiMicroBoardListUrl, getJiShangMicroBoardListUrl } from '../appConstants/urlConfig';
 import commonAjax, { commonGetAjax} from '../helpers/commonAjax';
 import store from '../store';
-import { updateAdmin, updateChuanShangBoardMarket, updateAgentOverviewData, updateShenWenSuoBoardMarket, updateChuanShangPostCard, updateJiShangPostCard } from '../actions/app-interaction-actions';
+import { updateAdmin, updateChuanShangBoardMarket, updateAgentOverviewData, updateShenWenSuoBoardMarket, updateChuanShangPostCard, updateJiShangPostCard, updateShenWenSuoMicroBoardData, updateJiShangMicroBoardData, updateYueGuoJiMicroBoardData } from '../actions/app-interaction-actions';
 
 // 获取登录用户的信息
 export function getAdmin(config, sucCallback, failCallback) {
@@ -70,6 +70,36 @@ export function getJiShangPostCardData(config, sucCallback, failCallback) {
         if (sucCallback) sucCallback(info);
     }, function (info) {
         store.dispatch(updateJiShangPostCard(info));
+        if (failCallback) failCallback(info);
+    });
+}
+// 拿到深文所微盘数据
+export function getShenWenSuoMicroBoardData(config, sucCallback, failCallback) {
+    return commonGetAjax(getShenWenSuoMicroBoardListUrl, config, function (info) {
+        store.dispatch(updateShenWenSuoMicroBoardData(info));
+        if (sucCallback) sucCallback(info);
+    }, function (info) {
+        store.dispatch(updateShenWenSuoMicroBoardData(info));
+        if (failCallback) failCallback(info);
+    });
+}
+// 拿到吉商微盘数据
+export function getJiShangMicroBoardData(config, sucCallback, failCallback) {
+    return commonGetAjax(getJiShangMicroBoardListUrl, config, function (info) {
+        store.dispatch(updateJiShangMicroBoardData(info));
+        if (sucCallback) sucCallback(info);
+    }, function (info) {
+        store.dispatch(updateJiShangMicroBoardData(info));
+        if (failCallback) failCallback(info);
+    });
+}
+// 拿到粤国际微盘数据
+export function getYueGuoJiMicroBoardData(config, sucCallback, failCallback) {
+    return commonGetAjax(getYueGuoJiMicroBoardListUrl, config, function (info) {
+        store.dispatch(updateYueGuoJiMicroBoardData(info));
+        if (sucCallback) sucCallback(info);
+    }, function (info) {
+        store.dispatch(updateYueGuoJiMicroBoardData(info));
         if (failCallback) failCallback(info);
     });
 }

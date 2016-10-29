@@ -93,3 +93,51 @@ export function updateAgentOverviewData(info) {
         info
     }
 }
+// 更新深文所微盘显示数据
+export function updateShenWenSuoMicroBoardData(info) {
+
+    return {
+        type : types.UPDATE_SHENWENSUO_MICRO_BOARD,
+        info
+    }
+}
+// 更新深文所大盘搜索状态
+export function updateShenWenSuoMicroBoardSearch(info) {
+
+    return {
+        type : types.UPDATE_SHENWENSUO_MICRO_BOARD_SEARCH,
+        info
+    }
+}
+// 更新吉商微盘数据
+export function updateJiShangMicroBoardData(info) {
+
+    return {
+        type : types.UPDATE_JISHANG_MICRO_BOARD,
+        info
+    }
+}
+// 更新吉商微盘搜索状态
+export function updateJiShangMicroBoardSearch(info) {
+
+    return {
+        type : types.UPDATE_JISHANG_MICRO_BOARD_SEARCH,
+        info
+    }
+}
+// 更新粤国际微盘数据
+export function updateYueGuoJiMicroBoardData(info) {
+
+    return {
+        type : types.UPDATE_YUEGUOJI_MICRO_BOARD,
+        info
+    }
+}
+// 更新吉商微盘搜索状态
+export function updateYueGuoJiMicroBoardSearch(info) {
+
+    return {
+        type : types.UPDATE_YUEGUOJI_MICRO_BOARD_SEARCH,
+        info
+    }
+}

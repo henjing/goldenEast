@@ -69,7 +69,7 @@ var HomeContainer = React.createClass({
 
 var BrokerageTable = React.createClass({
 	render(){
-		console.log('list0000',this.props.data,this.props.total)
+		//console.log('list0000',this.props.data,this.props.total)
 		let listLoop = '';
 		try {
 			listLoop = this.props.data.map((cont,id)=>{

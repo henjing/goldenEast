@@ -22,12 +22,12 @@ const NavbarLayoutContainer = React.createClass({
         const menu = (
           <Menu>
             <Menu.Item>
-              <a href={logoutUrl}>注销</a>
+              <a href={logoutUrl}>退出</a>
             </Menu.Item>
-              {<Menu.Item>
+              {/*{<Menu.Item>
                 <span onClick={this.handleClick}>修改密码</span>
                 <ModifyPassword />
-            </Menu.Item>}
+            </Menu.Item>}*/}
           </Menu>
         );
         const admin = this.props.adminState.data;

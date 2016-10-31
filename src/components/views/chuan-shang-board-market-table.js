@@ -50,7 +50,7 @@ const UserListTable = React.createClass({
               )
           }
 		}, {
-		  title: '大盘账号',
+		  title: '账号',
 		  dataIndex: 'account',
           key : 'account'
 		}, {
@@ -62,7 +62,7 @@ const UserListTable = React.createClass({
 		  dataIndex: 'profit_and_loss',
 		  key : 'profit_and_loss'
 		}, {
-		  title: '最近交易时间',
+		  title: '交易时间',
 		  dataIndex: 'transaction_date',
 		  key : 'transaction_date'
 		}, {

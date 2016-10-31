@@ -17,7 +17,7 @@ var ChuanShangPostCardContainer = React.createClass({
     },
 
     onChange(value) {
-        store.dispatch(updateChuanShangPostCardSearch({ 'search[find]' : value}));
+        store.dispatch(updateChuanShangPostCardSearch({ 'search[find]' : value,'page' : 1 }));
     },
     
     submitSearch() {
@@ -27,7 +27,8 @@ var ChuanShangPostCardContainer = React.createClass({
     onDateChange(dates, dateStrings) {
         store.dispatch(updateChuanShangPostCardSearch({
             'search[d_begin]' : dateStrings[0],
-            'search[d_end]' : dateStrings[1]
+            'search[d_end]' : dateStrings[1],
+            'page' : 1
         }));
         // 启动搜索
         this.submitSearch();

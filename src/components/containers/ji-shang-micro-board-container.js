@@ -17,7 +17,7 @@ var UserListContainer = React.createClass({
     },
 
     onChange(value) {
-        store.dispatch(updateJiShangMicroBoardSearch({ 'search[find]' : value}));
+        store.dispatch(updateJiShangMicroBoardSearch({ 'search[find]' : value,'page' : 1 }));
     },
 
     submitSearch() {
@@ -28,7 +28,8 @@ var UserListContainer = React.createClass({
     onDateChange(dates, dateStrings) {
         store.dispatch(updateJiShangMicroBoardSearch({
             'search[d_begin]' : dateStrings[0],
-            'search[d_end]' : dateStrings[1]
+            'search[d_end]' : dateStrings[1],
+            'page' : 1
         }));
         // 启动搜索
         this.submitSearch();

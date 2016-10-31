@@ -21,7 +21,7 @@ const SearchInput = React.createClass({
                     style={{ width: '200px' }}
                     onChange={this.handleChange}
                     onPressEnter={this.onClick}
-                    placeholder="输入姓名,手机号"
+                    placeholder="输入姓名或手机号"
                   />
                 <Button onClick={this.onClick} type="primary" style={{marginLeft:'20px'}}>搜索</Button>
             </div>

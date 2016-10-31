@@ -17,7 +17,7 @@ var JiShangPostCardContainer = React.createClass({
     },
 
     onChange(value) {
-        store.dispatch(updateJiShangPostCardSearch({ 'search[find]' : value}));
+        store.dispatch(updateJiShangPostCardSearch({ 'search[find]' : value ,'page' : 1 }));
     },
     
     submitSearch() {
@@ -27,7 +27,8 @@ var JiShangPostCardContainer = React.createClass({
     onDateChange(dates, dateStrings) {
         store.dispatch(updateJiShangPostCardSearch({
             'search[d_begin]' : dateStrings[0],
-            'search[d_end]' : dateStrings[1]
+            'search[d_end]' : dateStrings[1],
+            'page' : 1
         }));
         // 启动搜索
         this.submitSearch();

@@ -14,6 +14,7 @@ import ChuanShangBoardMarketContainer from './components/containers/chuan-shang-
 import ShenWenSuoBoardMarketContainer from './components/containers/shen-wen-suo-board-market-container';
 // 信息资产分配列表
 import InfoAssetsAllotDetails from './components/containers/info_asset_allot_details';
+import UnderInfoAssetAllotDetails from './components/containers/under_info_asset_allot_details';
 import GainInfoAssetAllotDetails from './components/containers/gain_info_asset_allot_details';
 
 
@@ -29,7 +30,7 @@ export default (
             <Route path={routeBase + 'chuan_shang_board_market'} component={ChuanShangBoardMarketContainer} />
             
             <Route path={routeBase + 'info_asset_allot_details'} component={InfoAssetsAllotDetails} />
-
+            <Route path={routeBase +'under_info_asset_allot_details'} component={UnderInfoAssetAllotDetails}/>
             <Route path={routeBase + 'gain_info_asset_allot_details'} component={GainInfoAssetAllotDetails} />
             
         </Route>

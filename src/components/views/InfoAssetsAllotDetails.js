@@ -1,7 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router';
 import { Table,Button } from 'antd';
-import { routeBase } from '../../appConstants/urlConfig';
 
 // In the fifth row, other columns are merged into first column
 // by setting it's colSpan to be 0
@@ -38,8 +36,7 @@ const data = [{
 
 const InfoAssetsAllotDetails = React.createClass({
     getColumns(){
-        const columns = [
-            {
+        const columns = [{
             title: '姓名',
             className:'box-align',
             dataIndex: 'name',
@@ -82,7 +79,7 @@ const InfoAssetsAllotDetails = React.createClass({
                 return (
                     <div>
                         <Button className="margin-r-15 btn-bg-ff9" type="primary" size="small"  icon="swap">信息资产分配</Button>
-                        <Link to={routeBase + 'under_info_asset_allot_details'}><Button type="primary" size="small"  icon="search">个人详情</Button></Link>
+                        <Button type="primary" size="small"  icon="search">个人详情</Button>
                     </div>
 
                 )

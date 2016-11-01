@@ -10,7 +10,7 @@ var InfoAssetsAllotContainer = React.createClass({
     render(){
         return (
             <div>
-                <div className="userListHeader">
+                <div className="userListHeader border-b">
                     <SearchBar />
                     <div className="number-info">
                         <span>54568</span>

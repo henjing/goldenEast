@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import './list-container.css';
 import UnderInfoAssetsList from '../views/UnderInfoAssetAllotDetails';
 
-var UnderInfoAssetsDetails = React.createClass({
+var UnderInfoAssetsAllotDetails = React.createClass({
     render(){
         return (
             <UnderInfoAssetsList />
@@ -18,4 +18,4 @@ const mapStateToProps = function (store) {
     }
 };
 
-export default connect(mapStateToProps)(UnderInfoAssetsDetails);
+export default connect(mapStateToProps)(UnderInfoAssetsAllotDetails);

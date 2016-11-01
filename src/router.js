@@ -12,6 +12,10 @@ import { routeBase } from './appConstants/urlConfig';
 import ChuanShangBoardMarketContainer from './components/containers/chuan-shang-board-market-container';
 // 深文所大盘
 import ShenWenSuoBoardMarketContainer from './components/containers/shen-wen-suo-board-market-container';
+// 信息资产分配列表
+import InfoAssetsAllotDetails from './components/containers/info_asset_allot_details';
+import GainInfoAssetAllotDetails from './components/containers/gain_info_asset_allot_details';
+
 
 export default (
     <Router history={browserHistory}>
@@ -24,7 +28,9 @@ export default (
 
             <Route path={routeBase + 'chuan_shang_board_market'} component={ChuanShangBoardMarketContainer} />
             
-            <Route path={routeBase + 'shen_wen_suo_board_market'} component={ShenWenSuoBoardMarketContainer} />
+            <Route path={routeBase + 'info_asset_allot_details'} component={InfoAssetsAllotDetails} />
+
+            <Route path={routeBase + 'gain_info_asset_allot_details'} component={GainInfoAssetAllotDetails} />
             
         </Route>
     </Router>

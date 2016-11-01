@@ -19,7 +19,8 @@ const SidebarLayoutContainer = React.createClass({
     matchSubMenu(pathName) {
         const subMenuArray =  {
             'sub1' : ['/home', '/user_list'],
-            'sub2' : ['/chuan_shang_board_market', '/shen_wen_suo_board_market']
+            'sub2' : ['/chuan_shang_board_market', '/shen_wen_suo_board_market'],
+            'sub4' : ['/info_asset_allot_details', '/gain_info_asset_allot_details']
         };
         let matchSubMenu = '';
         for (let i in subMenuArray) {
@@ -108,7 +109,18 @@ const SidebarLayoutContainer = React.createClass({
                             </Link>
                         </Menu.Item>
                       </SubMenu>
-
+                        <SubMenu key="sub5" title={<span><Icon type="home" /><span className={styles.navText}>信息资产分配列表</span></span>}>
+                            <Menu.Item key={routeBase + 'info_asset_allot_details'}>
+                                <Link to={routeBase + 'info_asset_allot_details'}>
+                                    信息资产分配详情
+                                </Link>
+                            </Menu.Item>
+                            <Menu.Item key={routeBase + 'gain_info_asset_allot_details'}>
+                                <Link to={routeBase + 'gain_info_asset_allot_details'}>
+                                    已获得信息资产分配详情
+                                </Link>
+                            </Menu.Item>
+                        </SubMenu>
                     </Menu>
 
                     <div className={styles.antAsideAction} onClick={this.onCollapseChange}>

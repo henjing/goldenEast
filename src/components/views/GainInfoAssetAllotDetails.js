@@ -1,7 +1,34 @@
-import React, { PropTypes } from 'react';
-import { Table,Pagination } from 'antd';
+import React from 'react';
+import { Table } from 'antd';
 
-const InfoAssetsList = (props) => {
+const GainInfoAssetAllotList = (props) => {
+    const data = [
+        {
+            key: '1',
+            name: '浪哥哥',
+            phone: 18889898989,
+            assets: 400.00,
+            time: '2016-10-25 17:10:10',
+            source:'合格奖励'
+        },
+        {
+            key: '2',
+            name: '浪哥哥',
+            phone: 18889898989,
+            assets: 400.00,
+            time: '2016-10-25 17:10:10',
+            source:'合格奖励'
+        },
+        {
+            key: '3',
+            name: '浪哥哥',
+            phone: 18889898989,
+            assets: 400.00,
+            time: '2016-10-25 17:10:10',
+            source:'合格奖励'
+        }
+    ];
+
     const columns = [{
         title: '用户姓名',
         className: 'column-txt',
@@ -34,10 +61,10 @@ const InfoAssetsList = (props) => {
             columns={columns}
             title={() => '名下小金信息资产分配详情'}
             bordered
-            pagination={{defaultCurrent:1 ,total:500,}}
+            dataSource={data}
             className={'column-txt'}
         />
     );
 };
 
-export default InfoAssetsList;
+export default GainInfoAssetAllotList;

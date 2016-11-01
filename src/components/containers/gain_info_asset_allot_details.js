@@ -1,18 +1,12 @@
 import React from 'react';
-import { Button, AutoComplete ,DatePicker } from 'antd';
 import { connect } from 'react-redux';
 import './list-container.css';
-import InfoAssetsList from '../views/InfoAssetsList';
+import GainInfoAssetAllotList from '../views/GainInfoAssetAllotDetails';
 
-
-var InfoAssetsAllotList = React.createClass({
-
+var GainInfoAssetAllotDetails = React.createClass({
     render(){
-
         return (
-            <div>
-                <InfoAssetsList />
-            </div>
+            <GainInfoAssetAllotList />
         )
     }
 });
@@ -24,4 +18,4 @@ const mapStateToProps = function (store) {
     }
 };
 
-export default connect(mapStateToProps)(InfoAssetsAllotList);
+export default connect(mapStateToProps)(GainInfoAssetAllotDetails);

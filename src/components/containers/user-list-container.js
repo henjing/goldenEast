@@ -3,6 +3,7 @@ import ReactDom from 'react-dom';
 import { Button, AutoComplete ,DatePicker } from 'antd';
 import './list-container.css';
 import UserListTable from '../views/user-list-view.js';
+import SearchInput from '../views/SearchInput.js';
 
 const RangePicker = DatePicker.RangePicker;
 
@@ -11,7 +12,7 @@ var UserListContainer = React.createClass({
 		return (
 			<div>
 				<div className="userListHeader">
-					<SearchBar />
+					<SearchInput />
 					<div className="number-info">
 						<span>54568</span>
 						<p>数据统计</p>
@@ -25,46 +26,6 @@ var UserListContainer = React.createClass({
 			</div>
 		)
 	}
-});
-
-function onChange(dates, dateStrings) {
-  console.log('From: ', dates[0], ', to: ', dates[1]);
-  console.log('From: ', dateStrings[0], ', to: ', dateStrings[1]);
-}
-
-function onSelect(value) {
-  console.log('onSelect', value);
-}
-
-var SearchBar = React.createClass({
-	getInitialState() {
-    return {
-      dataSource: [],
-    };
-  },
-  handleChange(value) {
-    this.setState({
-      dataSource: value.length<7 ? [] : [
-        value,
-        value + value,
-        value + value + value,
-      ],
-    });
-  },
-  render() {
-    const { dataSource } = this.state;
-    return (
-    	<div className="searchBar">
-			<AutoComplete
-		        dataSource={dataSource}
-		        style={{ width: 200 }}
-		        onSelect={onSelect}
-		        onChange={this.handleChange}
-		      />
-			<Button type="primary" style={{marginLeft:'20px'}}>搜索</Button>
-		</div>
-    );
-  },
 });
 
 module.exports = UserListContainer;

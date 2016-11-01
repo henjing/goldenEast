@@ -15,6 +15,15 @@ var UserListContainer = React.createClass({
     componentDidMount() {
         getChuanShangBoardMarketData({});
     },
+    componentWillUnmount(){
+    	//清理搜索条件
+    	store.dispatch(updateChuanShangBoardMarketSearch({
+    		'search[find]' : '',
+            'search[d_begin]' : '',
+            'search[d_end]' : '',
+            'page' : 1
+        }));
+    },
 
     onChange(value) {
         store.dispatch(updateChuanShangBoardMarketSearch({ 'search[find]' : value,'page' : 1 }));

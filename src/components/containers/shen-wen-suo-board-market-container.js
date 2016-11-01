@@ -15,6 +15,15 @@ var UserListContainer = React.createClass({
     componentDidMount() {
         getShenWenSuoBoardMarketData({});
     },
+    componentWillUnmount(){
+    	//清理搜索条件
+    	store.dispatch(updateShenWenSuoBoardMarketSearch({
+    		'search[find]' : '',
+            'search[d_begin]' : '',
+            'search[d_end]' : '',
+            'page' : 1
+        }));
+    },
 
     onChange(value) {
         store.dispatch(updateShenWenSuoBoardMarketSearch({ 'search[find]' : value,'page' : 1 }));

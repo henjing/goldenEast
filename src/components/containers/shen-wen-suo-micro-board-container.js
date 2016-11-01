@@ -15,6 +15,15 @@ var UserListContainer = React.createClass({
     componentDidMount() {
         getShenWenSuoMicroBoardData({});
     },
+    componentWillUnmount(){
+    	//清理搜索条件
+    	store.dispatch(updateShenWenSuoMicroBoardSearch({
+    		'search[find]' : '',
+            'search[d_begin]' : '',
+            'search[d_end]' : '',
+            'page' : 1
+        }));
+    },
 
     onChange(value) {
         store.dispatch(updateShenWenSuoMicroBoardSearch({ 'search[find]' : value,'page' : 1 }));

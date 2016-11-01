@@ -15,6 +15,15 @@ var JiShangPostCardContainer = React.createClass({
     componentDidMount() {
         getJiShangPostCardData({});
     },
+    componentWillUnmount(){
+    	//清理搜索条件
+    	store.dispatch(updateJiShangPostCardSearch({
+    		'search[find]' : '',
+            'search[d_begin]' : '',
+            'search[d_end]' : '',
+            'page' : 1
+        }));
+    },
 
     onChange(value) {
         store.dispatch(updateJiShangPostCardSearch({ 'search[find]' : value ,'page' : 1 }));

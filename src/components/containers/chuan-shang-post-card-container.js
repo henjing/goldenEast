@@ -15,6 +15,15 @@ var ChuanShangPostCardContainer = React.createClass({
     componentDidMount() {
         getChuanShangPostCardData({});
     },
+    componentWillUnmount(){
+    	//清理搜索条件
+    	store.dispatch(updateChuanShangPostCardSearch({
+    		'search[find]' : '',
+            'search[d_begin]' : '',
+            'search[d_end]' : '',
+            'page' : 1
+        }));
+    },
 
     onChange(value) {
         store.dispatch(updateChuanShangPostCardSearch({ 'search[find]' : value,'page' : 1 }));

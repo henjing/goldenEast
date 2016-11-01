@@ -1,8 +1,10 @@
 import React from 'react';
-import { Row, Col, Badge,Table,Button  } from 'antd';
+import { Row, Col, Badge,Table,Button,Tabs  } from 'antd';
 import styles from './home-container.less';
 import { getAgentOverviewData } from '../../api/app-interaction-api';
 import { connect } from 'react-redux';
+
+const TabPane = Tabs.TabPane;
 
 var HomeContainer = React.createClass({
 	getInitialState(){
@@ -12,11 +14,10 @@ var HomeContainer = React.createClass({
 	},
 	componentDidMount(){
 		getAgentOverviewData({});
-		//获取当前月份
-		let date = new Date();
-		const month = date.getMonth() + 1;
+	},
+	onChangeTabs(key){
 		this.setState({
-			month: month,
+			month: key,
 		});
 	},
 	render(){
@@ -44,24 +45,47 @@ var HomeContainer = React.createClass({
 			      	</div>
 			      </Col>
 			    </Row>
-			    <Row className={styles.brokerageInfo}>
-			    	<Col span={8} className={styles.standardInfo}>
-			    		<div className={styles.standardCont}>
-			    			<div className={styles.standardContTop}>
-			    				<p className="title">{this.state.month}月份手续费:</p>
-			    				<p className="text">￥{data.this_month_fees_sum}</p>
-			    				<Button type="primary">{data.this_month_hege ? '本月合格' : '本月未合格'}</Button>
-			    			</div>
-			    			<div className={styles.standardContBottom}>
-			    				<p>距离合格还差:</p>
-			      				<span>{data.this_month_for_hege}</span>
-			    			</div>
-			    		</div>
-			    	</Col>
-			    	<Col span={16} className={styles.brokerageTable}>
-			    		<BrokerageTable data={data.this_month} total={data.this_month_fees_sum} month={this.state.month}/>
-			    	</Col>
-			    </Row>
+			    <Tabs defaultActiveKey="2" type="card" onChange={this.onChangeTabs} style={{margin: '20px'}}>
+				    <TabPane tab="上月手续费" key="1">
+					    <Row>
+					    	<Col span={8} className={styles.standardInfo}>
+					    		<div className={styles.standardCont}>
+					    			<div className={styles.standardContTop}>
+					    				<p className="text">￥{data.last_month_fees_sum}</p>
+					    				<Button type="primary">{data.last_month_hege ? '上月合格' : '上月未合格'}</Button>
+					    			</div>
+					    			<div className={styles.standardContBottom}>
+					    				<p>距离合格还差:</p>
+					      				<span>{data.last_month_for_hege}</span>
+					    			</div>
+					    		</div>
+					    	</Col>
+					    	<Col span={16} className={styles.brokerageTable}>
+					    		<BrokerageTable data={data.last_month} total={data.last_month_fees_sum} month={this.state.month}/>
+					    	</Col>
+					    </Row>
+				    </TabPane>
+				    <TabPane tab="本月手续费" key="2">
+					    <Row className={styles.brokerageInfo}>
+					    	<Col span={8} className={styles.standardInfo}>
+					    		<div className={styles.standardCont}>
+					    			<div className={styles.standardContTop}>
+					    				<p className="text">￥{data.this_month_fees_sum}</p>
+					    				<Button type="primary">{data.this_month_hege ? '本月合格' : '本月未合格'}</Button>
+					    			</div>
+					    			<div className={styles.standardContBottom}>
+					    				<p>距离合格还差:</p>
+					      				<span>{data.this_month_for_hege}</span>
+					    			</div>
+					    		</div>
+					    	</Col>
+					    	<Col span={16} className={styles.brokerageTable}>
+					    		<BrokerageTable data={data.this_month} total={data.this_month_fees_sum} month={this.state.month}/>
+					    	</Col>
+					    </Row>
+				    </TabPane>
+				 </Tabs>
+			    
 			</div>
 		)
 	}
@@ -69,7 +93,6 @@ var HomeContainer = React.createClass({
 
 var BrokerageTable = React.createClass({
 	render(){
-		//console.log('list0000',this.props.data,this.props.total)
 		let listLoop = '';
 		try {
 			listLoop = this.props.data.map((cont,id)=>{
@@ -85,9 +108,9 @@ var BrokerageTable = React.createClass({
 		} catch(e){}
 		return (
 			<ul className={styles.brokerageDetailBar}>
-				<li>{this.props.month}月份手续费详情(元)</li>
+				<li>{this.props.month === '1' ? '上' : '本'}月份手续费详情(元)</li>
 				{listLoop}				
-				<li>合计:{this.props.total}</li>
+				<li>合计：{this.props.total}</li>
 			</ul>
 		)
 	}

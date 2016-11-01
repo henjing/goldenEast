@@ -5,6 +5,7 @@ const initialState = {
         redpack_date: '',
         refresh_date: '',
         shenw_coupon_date: '',
+        last_month: [{}],
         this_month: [{}],
         this_month_fees_sum: 0,
         this_month_for_hege: 0,

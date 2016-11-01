@@ -50,7 +50,7 @@ const UserListTable = React.createClass({
               )
           }
 		}, {
-		  title: '账号',
+		  title: '邮币卡账号',
 		  dataIndex: 'account',
           key : 'account'
 		}, {

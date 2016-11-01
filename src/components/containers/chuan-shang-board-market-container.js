@@ -15,9 +15,18 @@ var UserListContainer = React.createClass({
     componentDidMount() {
         getChuanShangBoardMarketData({});
     },
+    componentWillUnmount(){
+    	//清理搜索条件
+    	store.dispatch(updateChuanShangBoardMarketSearch({
+    		'search[find]' : '',
+            'search[d_begin]' : '',
+            'search[d_end]' : '',
+            'page' : 1
+        }));
+    },
 
     onChange(value) {
-        store.dispatch(updateChuanShangBoardMarketSearch({ 'search[find]' : value}));
+        store.dispatch(updateChuanShangBoardMarketSearch({ 'search[find]' : value,'page' : 1 }));
     },
     
     submitSearch() {
@@ -27,7 +36,8 @@ var UserListContainer = React.createClass({
     onDateChange(dates, dateStrings) {
         store.dispatch(updateChuanShangBoardMarketSearch({
             'search[d_begin]' : dateStrings[0],
-            'search[d_end]' : dateStrings[1]
+            'search[d_end]' : dateStrings[1],
+            'page' : 1
         }));
         // 启动搜索
         this.submitSearch();

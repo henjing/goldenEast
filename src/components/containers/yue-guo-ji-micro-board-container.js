@@ -5,19 +5,19 @@ import UserListTable from '../views/chuan-shang-board-market-table';
 import { connect } from 'react-redux';
 import SearchInput from '../views/SearchInput';
 import store from '../../store';
-import { updateShenWenSuoBoardMarketSearch } from '../../actions/app-interaction-actions';
-import { getShenWenSuoBoardMarketData } from '../../api/app-interaction-api'; 
+import { updateYueGuoJiMicroBoardSearch } from '../../actions/app-interaction-actions';
+import { getYueGuoJiMicroBoardData } from '../../api/app-interaction-api';
 
 const RangePicker = DatePicker.RangePicker;
 
 var UserListContainer = React.createClass({
-    
+
     componentDidMount() {
-        getShenWenSuoBoardMarketData({});
+        getYueGuoJiMicroBoardData({});
     },
     componentWillUnmount(){
     	//清理搜索条件
-    	store.dispatch(updateShenWenSuoBoardMarketSearch({
+    	store.dispatch(updateYueGuoJiMicroBoardSearch({
     		'search[find]' : '',
             'search[d_begin]' : '',
             'search[d_end]' : '',
@@ -26,16 +26,16 @@ var UserListContainer = React.createClass({
     },
 
     onChange(value) {
-        store.dispatch(updateShenWenSuoBoardMarketSearch({ 'search[find]' : value,'page' : 1 }));
+        store.dispatch(updateYueGuoJiMicroBoardSearch({ 'search[find]' : value,'page' : 1 }));
     },
-    
+
     submitSearch() {
-        getShenWenSuoBoardMarketData(this.props.searchState);
+        getYueGuoJiMicroBoardData(this.props.searchState);
         // console.log('test', this.props.searchState);
     },
 
     onDateChange(dates, dateStrings) {
-        store.dispatch(updateShenWenSuoBoardMarketSearch({
+        store.dispatch(updateYueGuoJiMicroBoardSearch({
             'search[d_begin]' : dateStrings[0],
             'search[d_end]' : dateStrings[1],
             'page' : 1
@@ -45,7 +45,7 @@ var UserListContainer = React.createClass({
     },
 
     onPageChange(page) {
-        store.dispatch(updateShenWenSuoBoardMarketSearch({
+        store.dispatch(updateYueGuoJiMicroBoardSearch({
             page : page
         }));
         // 启动搜索
@@ -81,8 +81,8 @@ var UserListContainer = React.createClass({
 
 const mapStateToProps = function (store) {
     return {
-        dataState : store.shenWenSuoBoardMarketState.dataState,
-        searchState : store.shenWenSuoBoardMarketState.searchState
+        dataState : store.yueGuoJiMicroBoardState.dataState,
+        searchState : store.yueGuoJiMicroBoardState.searchState
     }
 };
 

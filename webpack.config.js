@@ -71,7 +71,7 @@ module.exports = {
 		new webpack.HotModuleReplacementPlugin(),
 		new HtmlWebpackPlugin({
 			template: './src/template.html',
-            title : '空店后台管理系统'
+            title : '东方小金后台管理系统'
 		})
 	]
 };

@@ -41,8 +41,11 @@ body, .wrapper, .wrapperCollapse {
     position: relative;
     z-index: 2;
     float: right;
-    min-height: 100%;
+    padding-top: 64px;
+//  min-height: 100%;
+    height: 100vh;
     transition: all 0.3s ease;
+    overflow: auto;
 }
 
 .wrapper .main {
@@ -52,5 +55,4 @@ body, .wrapper, .wrapperCollapse {
 .wrapperCollapse .main {
   width: calc(~'100% - 64px');
 }
-
 

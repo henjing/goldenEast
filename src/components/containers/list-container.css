@@ -12,6 +12,7 @@
 .number-info {
 	float: right;
 	height: 100%;
+	padding: 0 20px;
 	display: -webkit-box;
     -webkit-box-align: center;
     -webkit-box-pack: center;

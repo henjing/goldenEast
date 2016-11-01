@@ -20,7 +20,13 @@ const SidebarLayoutContainer = React.createClass({
         const subMenuArray =  {
             'sub1' : ['/home', '/user_list'],
             'sub2' : ['/chuan_shang_board_market', '/shen_wen_suo_board_market'],
+<<<<<<< HEAD
             'sub4' : ['/info_asset_allot_details', '/gain_info_asset_allot_details']
+=======
+            'sub3' : ['/shenwensuo_wp', '/jishang_wp', '/yueguoji_wp'],
+            'sub4' : ['/chuan_shang_post_card', 'ji_shang_post_card'],
+            'sub5' : ['/info_asset_allot_details', '/gain_info_asset_allot_details']
+>>>>>>> dev
         };
         let matchSubMenu = '';
         for (let i in subMenuArray) {
@@ -42,7 +48,7 @@ const SidebarLayoutContainer = React.createClass({
         const mode = collapse ? 'vertical' : 'inline';
         const pathName = window.location.pathname;
         const matchSubMenu = this.matchSubMenu(pathName);
-        console.log('matchSubMenu', matchSubMenu);
+        //console.log('matchSubMenu', matchSubMenu);
         return (
                 <div className={styles[sidebarWrapperName]} style={{transition: 'all 0.3s ease'}}>
                     <div className={styles.logo}>
@@ -59,14 +65,14 @@ const SidebarLayoutContainer = React.createClass({
                                 用户数据总览
                             </Link>
                         </Menu.Item>
-                        <Menu.Item key={routeBase + 'user_list'}>
+                        {/*<Menu.Item key={routeBase + 'user_list'}>
                             <Link to={routeBase + 'user_list'}>
                                 用户列表
                             </Link>
-                        </Menu.Item>
+                        </Menu.Item>*/}
                       </SubMenu>
 
-                      <SubMenu key="sub2" title={<span><Icon type="home" /><span className={styles.navText}>大盘交易列表</span></span>}>
+                      <SubMenu key="sub2" title={<span><Icon type="bar-chart" /><span className={styles.navText}>大盘交易列表</span></span>}>
                       	<Menu.Item key={routeBase + 'shen_wen_suo_board_market'}>
                             <Link to={routeBase + 'shen_wen_suo_board_market'}>
                                 深文所大盘
@@ -79,32 +85,32 @@ const SidebarLayoutContainer = React.createClass({
                         </Menu.Item>
                       </SubMenu>
 
-                      <SubMenu key="sub3" title={<span><Icon type="home" /><span className={styles.navText}>微盘交易列表</span></span>}>
-                      	<Menu.Item key={routeBase + 'senwensuo_wp'}>
-                            <Link to={routeBase + ''}>
+                      <SubMenu key="sub3" title={<span><Icon type="line-chart" /><span className={styles.navText}>微盘交易列表</span></span>}>
+                      	<Menu.Item key={routeBase + 'shenwensuo_wp'}>
+                            <Link to={routeBase + 'shenwensuo_wp'}>
                                 深文所微盘
                             </Link>
                         </Menu.Item>
-                        <Menu.Item key={routeBase + 'jishang_wp'}>
-                            <Link to={routeBase + ''}>
+                          {/*<Menu.Item key={routeBase + 'jishang_wp'}>
+                            <Link to={routeBase + 'jishang_wp'}>
                                 吉商微盘
                             </Link>
-                        </Menu.Item>
+                        </Menu.Item>*/}
                         <Menu.Item key={routeBase + 'yueguoji_wp'}>
-                            <Link to={routeBase + ''}>
+                            <Link to={routeBase + 'yueguoji_wp'}>
                                 粤国际微盘
                             </Link>
                         </Menu.Item>
                       </SubMenu>
 
-                      <SubMenu key="sub4" title={<span><Icon type="home" /><span className={styles.navText}>邮币卡交易列表</span></span>}>
-                      	<Menu.Item key={routeBase + 'chuanshang_post_card'}>
-                            <Link to={routeBase + ''}>
+                      <SubMenu key="sub4" title={<span><Icon type="dot-chart" /><span className={styles.navText}>邮币卡交易列表</span></span>}>
+                      	<Menu.Item key={routeBase + 'chuan_shang_post_card'}>
+                            <Link to={routeBase + 'chuan_shang_post_card'}>
                                 川商邮币卡
                             </Link>
                         </Menu.Item>
-                        <Menu.Item key={routeBase + 'jishan_post_card'}>
-                            <Link to={routeBase + ''}>
+                        <Menu.Item key={routeBase + 'ji_shang_post_card'}>
+                            <Link to={routeBase + 'ji_shang_post_card'}>
                                 吉商邮币卡
                             </Link>
                         </Menu.Item>

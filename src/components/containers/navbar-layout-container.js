@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getAdmin, getAgentOverviewData } from '../../api/app-interaction-api';
+import { getAdmin } from '../../api/app-interaction-api';
 import { Menu, Dropdown, Icon } from 'antd';
 import ModifyPassword from '../views/modifyPassword';
 import { passwordModalToggle } from '../../actions/app-interaction-actions';
@@ -22,21 +22,26 @@ const NavbarLayoutContainer = React.createClass({
         const menu = (
           <Menu>
             <Menu.Item>
-              <a href={logoutUrl}>注销</a>
+              <a href={logoutUrl}>退出</a>
             </Menu.Item>
-              {<Menu.Item>
+              {/*{<Menu.Item>
                 <span onClick={this.handleClick}>修改密码</span>
                 <ModifyPassword />
-            </Menu.Item>}
+            </Menu.Item>}*/}
           </Menu>
         );
         const admin = this.props.adminState.data;
+        const url = 'url('+admin.wechat_avatar+')';
         return (
             <nav className="nav-wrap">
             	<ul className="nav">
-                    <li className="avatar">
-                        <img src={admin.wechat_avatar} alt="avatar"/>
-                        <span>{admin.wechat_nickname}</span>
+                    <li className="admin-avatar-wrap">
+                    	<span className="admin-avatar" style={{backgroundImage: url}}></span>
+						<div className="admin-name">
+							<p>{admin.wechat_nickname}</p>
+							<span></span>
+						</div>
+                        
                     </li>
 
                     <Dropdown overlay={menu}>

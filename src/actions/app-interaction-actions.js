@@ -54,10 +54,34 @@ export function updateShenWenSuoBoardMarketSearch(info) {
     }
 }
 // 更新川商邮币卡数据
-export function updateChuanShangYBK(info) {
+export function updateChuanShangPostCard(info) {
     
     return {
-        type : types.UPDATE_CHUANSHANG_YBK,
+        type : types.UPDATE_CHUANSHANG_POST_CARD,
+        info
+    }
+}
+// 更新吉商邮币卡数据
+export function updateJiShangPostCard(info) {
+    
+    return {
+        type : types.UPDATE_JISHANG_POST_CARD,
+        info
+    }
+}
+// 更新川商邮币卡搜索数据
+export function updateChuanShangPostCardSearch(info) {
+    
+    return {
+        type : types.UPDATE_CHUANSHANG_POST_CARD_SEARCH,
+        info
+    }
+}
+// 更吉商邮币卡搜索数据
+export function updateJiShangPostCardSearch(info) {
+    
+    return {
+        type : types.UPDATE_JISHANG_POST_CARD_SEARCH,
         info
     }
 }
@@ -66,6 +90,54 @@ export function updateAgentOverviewData(info) {
     
     return {
         type : types.UPDATE_AGENT_OVERVIEW_DATA,
+        info
+    }
+}
+// 更新深文所微盘显示数据
+export function updateShenWenSuoMicroBoardData(info) {
+
+    return {
+        type : types.UPDATE_SHENWENSUO_MICRO_BOARD,
+        info
+    }
+}
+// 更新深文所大盘搜索状态
+export function updateShenWenSuoMicroBoardSearch(info) {
+
+    return {
+        type : types.UPDATE_SHENWENSUO_MICRO_BOARD_SEARCH,
+        info
+    }
+}
+// 更新吉商微盘数据
+export function updateJiShangMicroBoardData(info) {
+
+    return {
+        type : types.UPDATE_JISHANG_MICRO_BOARD,
+        info
+    }
+}
+// 更新吉商微盘搜索状态
+export function updateJiShangMicroBoardSearch(info) {
+
+    return {
+        type : types.UPDATE_JISHANG_MICRO_BOARD_SEARCH,
+        info
+    }
+}
+// 更新粤国际微盘数据
+export function updateYueGuoJiMicroBoardData(info) {
+
+    return {
+        type : types.UPDATE_YUEGUOJI_MICRO_BOARD,
+        info
+    }
+}
+// 更新吉商微盘搜索状态
+export function updateYueGuoJiMicroBoardSearch(info) {
+
+    return {
+        type : types.UPDATE_YUEGUOJI_MICRO_BOARD_SEARCH,
         info
     }
 }

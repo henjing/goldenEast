@@ -21,7 +21,7 @@ const SidebarLayoutContainer = React.createClass({
             'sub1' : ['/home', '/user_list'],
             'sub2' : ['/chuan_shang_board_market', '/shen_wen_suo_board_market'],
             'sub3' : ['/shenwensuo_wp', '/jishang_wp', '/yueguoji_wp'],
-            'sub4' : ['/chuan_shang_post_card', 'ji_shang_post_card'],
+            'sub4' : ['/chuan_shang_post_card', '/ji_shang_post_card']
         };
         let matchSubMenu = '';
         for (let i in subMenuArray) {

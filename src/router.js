@@ -12,6 +12,7 @@ import { routeBase } from './appConstants/urlConfig';
 import ChuanShangBoardMarketContainer from './components/containers/chuan-shang-board-market-container';
 // 深文所大盘
 import ShenWenSuoBoardMarketContainer from './components/containers/shen-wen-suo-board-market-container';
+
 // 深文所微盘
 import ShenWenSuoMicroBoardContainer from './components/containers/shen-wen-suo-micro-board-container';
 // 吉商微盘
@@ -24,6 +25,9 @@ import ChuanShangPostCardContainer from './components/containers/chuan-shang-pos
 import JiShangPostCardContainer from './components/containers/ji-shang-post-card-container';
 
 
+
+
+
 export default (
     <Router history={browserHistory}>
         <Route path={routeBase} component={MainLayout} >
@@ -34,7 +38,7 @@ export default (
             {/*<Route path={routeBase + 'user_list'} component={UserListContainer} />*/}
 
             <Route path={routeBase + 'chuan_shang_board_market'} component={ChuanShangBoardMarketContainer} />
-            
+
             <Route path={routeBase + 'shen_wen_suo_board_market'} component={ShenWenSuoBoardMarketContainer} />
 
             <Route path={routeBase + 'shenwensuo_wp'} component={ShenWenSuoMicroBoardContainer} />
@@ -46,6 +50,7 @@ export default (
             <Route path={routeBase + 'chuan_shang_post_card'} component={ChuanShangPostCardContainer} />
             
             <Route path={routeBase + 'ji_shang_post_card'} component={JiShangPostCardContainer} />
+
             
         </Route>
     </Router>

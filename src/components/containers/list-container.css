@@ -53,3 +53,64 @@
 .user-avatar-bar-text .name{
 	font-size: 13px;
 }
+
+/*信息资产详情*/
+.box-align{
+	display:-webkit-box !important;
+	-webkit-box-align:center;
+	-webkit-box-pack: center;
+}
+/**********以盒子的形式显示*************/
+.k-box-center {
+	position: relative;
+	display: -webkit-box;
+	width: 100%;
+	height: 100%;
+	-webkit-box-flex: 1;
+	-webkit-box-sizing: border-box;
+	-webkit-box-orient: vertical;
+	-webkit-box-pack: center;
+	-webkit-box-align: center;
+}
+/*信息资产分配 */
+.column-txt {text-align: center !important;}
+.q-user-txt{
+	padding-bottom: 15px;
+	padding-top: 15px;
+}
+.q-user-txt>div{margin: auto}
+.q-info-avatar{
+	width: 80px;
+	height: 80px;
+	-webkit-border-radius: 200px;
+	overflow: hidden;
+}
+.q-info-avatar>span{
+	width: 100%;
+	height: 100%;
+	display: block;
+	overflow: hidden;
+	background-repeat: no-repeat;
+	-webkit-background-size: cover;
+	-webkit-border-radius: 200px;
+}
+.btn-bg-ff9{
+	border-color: #ff9326;
+	background-color: #ff9326;
+}
+.btn-bg-ff9:hover{
+	border-color: #fca54d;
+	background-color: #fca54d;
+}
+.border{border: 1px solid #e9e9e9;}
+.border-t{border-top: 1px solid #e9e9e9;}
+.border-b{border-bottom: 1px solid #e9e9e9;  }
+.border-r{border-right: 1px solid #e9e9e9;}
+.border-l{border-left: 1px solid #e9e9e9;  }
+.border-tb{
+	border-top: 1px solid #e9e9e9;
+	border-bottom: 1px solid #e9e9e9;;
+}
+.margin-b-20 {margin-bottom: 20px;}
+.margin-r-15 {margin-right: 15px;}
+.margin-l-40 {margin-left: 40px;}

@@ -1,7 +1,7 @@
-import { getUserInfoUrl, modifyPasswordUrl, getChuanShangBoardMarketListUrl, getChuanShangYBKListUrl, getShenWenSuoBoardMarketListUrl, getAgentOverviewDataUrl, getShenWenSuoMicroBoardListUrl, getJiShangYBKListUrl, getYueGuoJiMicroBoardListUrl, getJiShangMicroBoardListUrl } from '../appConstants/urlConfig';
+import { getUserInfoUrl, modifyPasswordUrl, getChuanShangBoardMarketListUrl, getChuanShangYBKListUrl, getShenWenSuoBoardMarketListUrl, getAgentOverviewDataUrl, getShenWenSuoMicroBoardListUrl, getJiShangYBKListUrl, getYueGuoJiMicroBoardListUrl, getJiShangMicroBoardListUrl, getPeopleWhoHaveInfoAssetUrl } from '../appConstants/urlConfig';
 import commonAjax, { commonGetAjax} from '../helpers/commonAjax';
 import store from '../store';
-import { updateAdmin, updateChuanShangBoardMarket, updateAgentOverviewData, updateShenWenSuoBoardMarket, updateChuanShangPostCard, updateJiShangPostCard, updateShenWenSuoMicroBoardData, updateJiShangMicroBoardData, updateYueGuoJiMicroBoardData } from '../actions/app-interaction-actions';
+import { updateAdmin, updateChuanShangBoardMarket, updateAgentOverviewData, updateShenWenSuoBoardMarket, updateChuanShangPostCard, updateJiShangPostCard, updateShenWenSuoMicroBoardData, updateJiShangMicroBoardData, updateYueGuoJiMicroBoardData, updatePeopleListWhoHaveInfoAssetData } from '../actions/app-interaction-actions';
 
 // 获取登录用户的信息
 export function getAdmin(config, sucCallback, failCallback) {
@@ -100,6 +100,16 @@ export function getYueGuoJiMicroBoardData(config, sucCallback, failCallback) {
         if (sucCallback) sucCallback(info);
     }, function (info) {
         store.dispatch(updateYueGuoJiMicroBoardData(info));
+        if (failCallback) failCallback(info);
+    });
+}
+// 获取获得信息资产的用户的列表
+export function getPeopleListWhoHaveInfoAssetData(config, sucCallback, failCallback) {
+    return commonGetAjax(getPeopleWhoHaveInfoAssetUrl, config, function (info) {
+        store.dispatch(updatePeopleListWhoHaveInfoAssetData(info));
+        if (sucCallback) sucCallback(info);
+    }, function (info) {
+        store.dispatch(updatePeopleListWhoHaveInfoAssetData(info));
         if (failCallback) failCallback(info);
     });
 }

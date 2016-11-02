@@ -23,7 +23,8 @@ import yueGuoJiMicroBoardContainer from './components/containers/yue-guo-ji-micr
 import ChuanShangPostCardContainer from './components/containers/chuan-shang-post-card-container';
 //吉商邮币卡
 import JiShangPostCardContainer from './components/containers/ji-shang-post-card-container';
-
+// 信息资产列表
+import InfoAssetAllotListContainer from './components/containers/info-asset-allot-list-container';
 
 
 
@@ -50,6 +51,8 @@ export default (
             <Route path={routeBase + 'chuan_shang_post_card'} component={ChuanShangPostCardContainer} />
             
             <Route path={routeBase + 'ji_shang_post_card'} component={JiShangPostCardContainer} />
+            
+            <Route path={routeBase + 'info_asset_allot_list'} component={InfoAssetAllotListContainer} />
 
             
         </Route>

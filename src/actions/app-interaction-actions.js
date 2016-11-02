@@ -141,3 +141,11 @@ export function updateYueGuoJiMicroBoardSearch(info) {
         info
     }
 }
+// 更新"获得信息资产的用户的列表"
+export function updatePeopleListWhoHaveInfoAssetData(info) {
+
+    return {
+        type : types.UPDATE_PEOPLE_LIST_WHO_HAVE_INFO_ASSET_DATA,
+        info
+    }
+}

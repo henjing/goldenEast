@@ -10,7 +10,7 @@ import { getChuanShangBoardMarketData } from '../../api/app-interaction-api';
 
 const RangePicker = DatePicker.RangePicker;
 
-var UserListContainer = React.createClass({
+var ChuanShangBoardMarketContainer = React.createClass({
     
     componentDidMount() {
         getChuanShangBoardMarketData({});
@@ -85,4 +85,4 @@ const mapStateToProps = function (store) {
     }
 };
 
-export default connect(mapStateToProps)(UserListContainer);
+export default connect(mapStateToProps)(ChuanShangBoardMarketContainer);

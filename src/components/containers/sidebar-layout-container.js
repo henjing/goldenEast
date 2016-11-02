@@ -60,11 +60,11 @@ const SidebarLayoutContainer = React.createClass({
                                 用户数据总览
                             </Link>
                         </Menu.Item>
-                        {/*<Menu.Item key={routeBase + 'user_list'}>
+                        <Menu.Item key={routeBase + 'user_list'}>
                             <Link to={routeBase + 'user_list'}>
                                 用户列表
                             </Link>
-                        </Menu.Item>*/}
+                        </Menu.Item>
                       </SubMenu>
 
                       <SubMenu key="sub2" title={<span><Icon type="bar-chart" /><span className={styles.navText}>大盘交易列表</span></span>}>

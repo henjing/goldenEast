@@ -11,6 +11,7 @@ import jiShangPostCardReducer from './jiShang-post-card-reducer';
 import shenWenSuoMicroBoardReducer from './shenWensuo-micro-board-reducer';
 import jiShangMicroBoardReducer from './jiShang-micro-board-reducer';
 import yueGuoJiMicroBoardReducer from './yueGuoJi-micro-board-reducer';
+import userListReducer from './user-list-reducer';
 
 const reducers = combineReducers({
     adminState : adminReducer,
@@ -23,6 +24,7 @@ const reducers = combineReducers({
     shenWenSuoMicroBoardState : shenWenSuoMicroBoardReducer,
     jiShangMicroBoardState : jiShangMicroBoardReducer,
     yueGuoJiMicroBoardState : yueGuoJiMicroBoardReducer,
+    userListState : userListReducer,
 });
 
 export default reducers;

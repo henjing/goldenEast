@@ -141,3 +141,26 @@ export function updateYueGuoJiMicroBoardSearch(info) {
         info
     }
 }
+
+//更新代理商旗下用户列表数据
+export function updateUserListData(info){
+	return {
+		type: types.UPDATE_USERLIST_DATA,
+		info
+	}
+}
+//更新代理商旗下用户列表搜索数据
+export function updateUserListDataSearch(info){
+	return {
+		type: types.UPDATE_USERLIST_DATA_SEARCH,
+		info
+	}
+}
+
+
+
+
+
+
+
+

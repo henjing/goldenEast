@@ -32,5 +32,10 @@ export const getYueGuoJiMicroBoardListUrl = '/api/index.php/Transaction/transact
 // 代理商本月总数据请求
 export const getAgentOverviewDataUrl = '/api/index.php/overview/transaction';
 
+<<<<<<< HEAD
 //获取旗下代理商用户列表
 export const getUserListDataUrl =  '/api/index.php/Customs/index';
+=======
+// 获取"获得信息资产的用户"的列表
+export const getPeopleWhoHaveInfoAssetUrl = '/api/index.php/Asset/asset_in';
+>>>>>>> 65a8eca21ce13eec04334dcfad271f645e2c8edc

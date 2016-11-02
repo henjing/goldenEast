@@ -26,10 +26,10 @@ module.exports = {
 		'./src/app.js'
 	],
 	output: {
-		path: path.join(__dirname, 'public'),
-//		path: path.join(__dirname, '../../Documents/小金/root/public'),
+		// path: path.join(__dirname, 'public'),
+		path: path.join(__dirname, '../../Documents/小金/root/public'),
 		// filename: '[chunkhash].js'
-		filename: 'bundle.js'
+		filename: 'bundle.[hash:8].js'
 	},
 	resolve: {
 		extensions: ['', '.js', '.jsx']

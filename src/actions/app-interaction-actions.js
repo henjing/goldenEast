@@ -141,7 +141,6 @@ export function updateYueGuoJiMicroBoardSearch(info) {
         info
     }
 }
-<<<<<<< HEAD
 
 //更新代理商旗下用户列表数据
 export function updateUserListData(info){
@@ -158,14 +157,6 @@ export function updateUserListDataSearch(info){
 	}
 }
 
-
-
-
-
-
-
-
-=======
 // 更新"获得信息资产的用户的列表"
 export function updatePeopleListWhoHaveInfoAssetData(info) {
 
@@ -174,4 +165,4 @@ export function updatePeopleListWhoHaveInfoAssetData(info) {
         info
     }
 }
->>>>>>> 65a8eca21ce13eec04334dcfad271f645e2c8edc
+

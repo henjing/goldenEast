@@ -24,10 +24,7 @@ import ChuanShangPostCardContainer from './components/containers/chuan-shang-pos
 //吉商邮币卡
 import JiShangPostCardContainer from './components/containers/ji-shang-post-card-container';
 
-// 信息资产分配列表
-import InfoAssetsAllotDetails from './components/containers/info_asset_allot_details';
-import UnderInfoAssetAllotDetails from './components/containers/under_info_asset_allot_details';
-import GainInfoAssetAllotDetails from './components/containers/gain_info_asset_allot_details';
+
 
 
 
@@ -41,12 +38,6 @@ export default (
             {/*<Route path={routeBase + 'user_list'} component={UserListContainer} />*/}
 
             <Route path={routeBase + 'chuan_shang_board_market'} component={ChuanShangBoardMarketContainer} />
-            
-
-            <Route path={routeBase + 'info_asset_allot_details'} component={InfoAssetsAllotDetails} />
-            <Route path={routeBase +'under_info_asset_allot_details'} component={UnderInfoAssetAllotDetails}/>
-            <Route path={routeBase + 'gain_info_asset_allot_details'} component={GainInfoAssetAllotDetails} />
-
 
             <Route path={routeBase + 'shen_wen_suo_board_market'} component={ShenWenSuoBoardMarketContainer} />
 
@@ -59,10 +50,6 @@ export default (
             <Route path={routeBase + 'chuan_shang_post_card'} component={ChuanShangPostCardContainer} />
             
             <Route path={routeBase + 'ji_shang_post_card'} component={JiShangPostCardContainer} />
-
-            <Route path={routeBase + 'info_asset_allot_details'} component={InfoAssetsAllotDetails} />
-            <Route path={routeBase +'under_info_asset_allot_details'} component={UnderInfoAssetAllotDetails}/>
-            <Route path={routeBase + 'gain_info_asset_allot_details'} component={GainInfoAssetAllotDetails} />
 
             
         </Route>

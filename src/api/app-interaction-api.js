@@ -1,9 +1,9 @@
-import { getUserInfoUrl, modifyPasswordUrl, getChuanShangBoardMarketListUrl, getChuanShangYBKListUrl, getShenWenSuoBoardMarketListUrl, getAgentOverviewDataUrl, getShenWenSuoMicroBoardListUrl, getJiShangYBKListUrl, getYueGuoJiMicroBoardListUrl, getJiShangMicroBoardListUrl, getUserListDataUrl, getPeopleWhoHaveInfoAssetUrl, getUserAuthorizationListUrl, getAllAuthorizationListUrl, setFollowerAuthorizationUrl } from '../appConstants/urlConfig';
+import { getUserInfoUrl, modifyPasswordUrl, getChuanShangBoardMarketListUrl, getChuanShangYBKListUrl, getShenWenSuoBoardMarketListUrl, getAgentOverviewDataUrl, getShenWenSuoMicroBoardListUrl, getJiShangYBKListUrl, getYueGuoJiMicroBoardListUrl, getJiShangMicroBoardListUrl, getUserListDataUrl, getPeopleWhoHaveInfoAssetUrl, getUserAuthorizationListUrl, getAllAuthorizationListUrl, setFollowerAuthorizationUrl, getPeopleWhoHaveInfoAssetAllotUrl } from '../appConstants/urlConfig';
 
 import commonAjax, { commonGetAjax} from '../helpers/commonAjax';
 import store from '../store';
 
-import { updateAdmin, updateChuanShangBoardMarket, updateAgentOverviewData, updateShenWenSuoBoardMarket, updateChuanShangPostCard, updateJiShangPostCard, updateShenWenSuoMicroBoardData, updateJiShangMicroBoardData, updateYueGuoJiMicroBoardData, updateUserListData, updatePeopleListWhoHaveInfoAssetData } from '../actions/app-interaction-actions';
+import { updateAdmin, updateChuanShangBoardMarket, updateAgentOverviewData, updateShenWenSuoBoardMarket, updateChuanShangPostCard, updateJiShangPostCard, updateShenWenSuoMicroBoardData, updateJiShangMicroBoardData, updateYueGuoJiMicroBoardData, updateUserListData, updatePeopleListWhoHaveInfoAssetData, updatePeopleListWhoHaveInfoAssetAllotData } from '../actions/app-interaction-actions';
 
 // 获取登录用户的信息
 export function getAdmin(config, sucCallback, failCallback) {
@@ -105,7 +105,7 @@ export function getYueGuoJiMicroBoardData(config, sucCallback, failCallback) {
         if (failCallback) failCallback(info);
     });
 }
-// 获取获得信息资产的用户的列表
+// 获取获得信息资产的用户的列表 (小金列表)
 export function getPeopleListWhoHaveInfoAssetData(config, sucCallback, failCallback) {
     return commonGetAjax(getPeopleWhoHaveInfoAssetUrl, config, function (info) {
         store.dispatch(updatePeopleListWhoHaveInfoAssetData(info));
@@ -115,7 +115,7 @@ export function getPeopleListWhoHaveInfoAssetData(config, sucCallback, failCallb
         if (failCallback) failCallback(info);
     });
 }
-// 已获得信息资产分配的用户的列表
+// 已获得信息资产分配的用户的列表 (小金获得信息资产的来源)
 export function getPeopleWhoHaveInfoAssetAllotData(config, sucCallback, failCallback) {
     return commonGetAjax(getPeopleWhoHaveInfoAssetAllotUrl, config, function (info) {
         store.dispatch(updatePeopleListWhoHaveInfoAssetAllotData(info));

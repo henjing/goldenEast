@@ -1,0 +1,96 @@
+.userInfo {  
+    border-bottom: 1px solid #ddd;
+    :global(.user-info-base) {
+        display: -webkit-box;
+        -webkit-box-align: center;
+        height: 135px;
+        :global(.avatar) {
+            margin: 0 20px 0 20px;
+            width: 60px;
+            height: 60px;
+            background: #0074D9;
+            border-radius: 50%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        :global(.info) {
+            -webkit-box-flex: 1;
+        }
+        :global(.info .name) {
+            font-size: 20px;    
+        }
+        :global(.info .phone) {
+            font-size: 16px;    
+        }
+        :global(.info .company) {
+            font-size: 14px;  
+        }
+        :global(.info .level) {
+            margin-top: 10px;
+        }
+    }
+    :global(.user-info-more) {
+        height: 135px;
+        font-size: 14px;
+        border-left: 1px solid #ddd;
+    }
+    :global(.user-info-more li) {
+        padding-left: 20px;
+        height: 45px;
+        line-height: 45px;
+        border-bottom: 1px solid #ddd;
+    }
+    :global(.user-info-more li):last-child {
+        border-bottom: none;
+    }  
+}
+.userAccount {
+    margin: 10px 0 20px 0;
+}
+.userAccountList {
+    padding: 10px;
+    :global(.user-account-item) {
+        :global(.footer){
+            height: 50px;
+            font-size: 16px;
+            display: -webkit-box;
+            -webkit-box-align: center;
+            -webkit-box-pack: center; 
+            :global(.text) {
+                margin-left: 10px;
+            }
+            :global(.success) {
+                font-size: 24px;
+                color: #34DD3F;
+            }
+            :global(.fail) {
+                font-size: 24px;
+                color: #FF4000;
+            }
+            :global(.ing) {
+                font-size: 24px;
+                color: #F1A615;
+            }
+        }
+        :global(.content) {
+            height: 40px;
+            display: -webkit-box;
+            border-bottom: 1px solid #ddd;
+            labal {
+               display: block;
+               width: 100px;
+               height: 100%;
+               padding-left: 24px;
+               line-height: 40px;
+               border-right: 1px solid #ddd;
+            }
+            p {
+                height: 100%;
+                padding-left: 24px;
+                line-height: 40px;
+                -webkit-box-flex: 1;
+            }
+        }
+    }
+}

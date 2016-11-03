@@ -66,7 +66,12 @@ const SidebarLayoutContainer = React.createClass({
                                 用户列表
                             </Link>
                         </Menu.Item>
-                          <Menu.Item key={routeBase + 'set_authorization'}>
+                        <Menu.Item key={routeBase + 'user_detail'}>
+                            <Link to={routeBase + 'user_detail'}>
+                                用户详情
+                            </Link>
+                         </Menu.Item>
+                         <Menu.Item key={routeBase + 'set_authorization'}>
                             <Link to={routeBase + 'set_authorization'}>
                                 设置权限
                             </Link>

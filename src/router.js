@@ -4,6 +4,7 @@ import { Router, Route, browserHistory, IndexRedirect, IndexRoute } from 'react-
 import HomeContainer from './components/containers/home-container';
 //用户列表
 import UserListContainer from './components/containers/user-list-container';
+import UserDetailContainer from './components/containers/user-detail-container';
 // Layouts
 import MainLayout from './components/layouts/main-layout';
 // Route base
@@ -45,9 +46,11 @@ export default (
             <IndexRedirect to={routeBase + 'home'} />
             {/*<IndexRoute component={HomeContainer}/>*/}
             <Route path={routeBase + 'home'} component={HomeContainer} />
+
             <Route path={routeBase + 'user_list'} component={UserListContainer} >
                 
             </Route>
+            <Route path={routeBase + 'user_detail'} component={UserDetailContainer} />
 
             <Route path={routeBase + 'chuan_shang_board_market'} component={ChuanShangBoardMarketContainer} />
 

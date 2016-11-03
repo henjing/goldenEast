@@ -1,8 +1,9 @@
 import React from 'react';
 import { Router, Route, browserHistory, IndexRedirect, IndexRoute } from 'react-router';
-//import UserListContainer from './components/containers/user-list-container';
+//首页，数据总览
 import HomeContainer from './components/containers/home-container';
-
+//用户列表
+import UserListContainer from './components/containers/user-list-container';
 // Layouts
 import MainLayout from './components/layouts/main-layout';
 // Route base
@@ -25,11 +26,15 @@ import ChuanShangPostCardContainer from './components/containers/chuan-shang-pos
 import JiShangPostCardContainer from './components/containers/ji-shang-post-card-container';
 // 信息资产列表
 import InfoAssetAllotListContainer from './components/containers/info-asset-allot-list-container';
+
 //已获信息资产分配列表
 import GainInfoAssetAllotListContainer from './components/containers/gain-info-asset-allot-list-container';
 //名下小金信息资产分配列表
+
 import UnderInfoAssetsAllotDetailsContainer from './components/containers/under-info-asset-allot-details-comtainer';
 
+// 设置权限页面
+import setAuthorizationView from './components/views/set-follower-authorization';
 
 
 
@@ -40,7 +45,7 @@ export default (
             <IndexRedirect to={routeBase + 'home'} />
             {/*<IndexRoute component={HomeContainer}/>*/}
             <Route path={routeBase + 'home'} component={HomeContainer} />
-            {/*<Route path={routeBase + 'user_list'} component={UserListContainer} />*/}
+            <Route path={routeBase + 'user_list'} component={UserListContainer} />
 
             <Route path={routeBase + 'chuan_shang_board_market'} component={ChuanShangBoardMarketContainer} />
 
@@ -62,7 +67,8 @@ export default (
 
             <Route path={routeBase + 'under_info_asset_allot_list'} component={UnderInfoAssetsAllotDetailsContainer} />
 
-            
+            <Route path={routeBase + 'set_authorization'} component={setAuthorizationView} />
+
         </Route>
     </Router>
 )

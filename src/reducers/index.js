@@ -11,6 +11,9 @@ import jiShangPostCardReducer from './jiShang-post-card-reducer';
 import shenWenSuoMicroBoardReducer from './shenWensuo-micro-board-reducer';
 import jiShangMicroBoardReducer from './jiShang-micro-board-reducer';
 import yueGuoJiMicroBoardReducer from './yueGuoJi-micro-board-reducer';
+
+import userListReducer from './user-list-reducer';
+
 import infoAssetAllotListReducer from './info-asset-allot-list-reducer';
 import gainInfoAssetAllotListReducer from './gain-info-asset-allot-list-reducer';
 import particularsBtnReducer from './particulars-btn-reducer';
@@ -26,6 +29,7 @@ const reducers = combineReducers({
     shenWenSuoMicroBoardState : shenWenSuoMicroBoardReducer,
     jiShangMicroBoardState : jiShangMicroBoardReducer,
     yueGuoJiMicroBoardState : yueGuoJiMicroBoardReducer,
+    userListState : userListReducer,
     infoAssetAllotListState : infoAssetAllotListReducer,
     gainInfoAssetAllotListState : gainInfoAssetAllotListReducer,
     particularsBtnState : particularsBtnReducer,

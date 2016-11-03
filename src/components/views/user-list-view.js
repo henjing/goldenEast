@@ -1,59 +1,33 @@
 import React from 'react';
 import { Table,Button } from 'antd';
+import weiGuDong from '../../appConstants/assets/images/微股东.png';
+import normalCard from '../../appConstants/assets/images/普卡.png';
+import silverCard from '../../appConstants/assets/images/银卡.png';
+import goldenCard from '../../appConstants/assets/images/金卡.png';
+import superGoldenCard from '../../appConstants/assets/images/白金卡.png';
 
 // In the fifth row, other columns are merged into first column
 // by setting it's colSpan to be 0
 
-const data = [{
-  key: '1',
-  name: 'John Brown',
-  level: 32,
-  phone: 18889898989,
-  inviter: 'enjing',
-  inviter_phone: 18889898989,
-  time: '2016-5-16 12:30:6',
-}, {
-  key: '2',
-  name: 'Jim Green',
-  level: 42,
-  phone: 18889898888,
-  inviter: 'enjing',
-  inviter_phone: 18889898989,
-  time: '2016-5-16 12:30:6',
-}, {
-  key: '3',
-  name: 'Joe Black',
-  level: 32,
-  phone: 18900010002,
-  inviter: 'enjing',
-  inviter_phone: 18889898989,
-  time: '2016-5-16 12:30:6',
-}];
-
 const UserListTable = React.createClass({
+	jinLevels() {
+    return ['注册用户(0%)', weiGuDong, normalCard, silverCard, goldenCard, superGoldenCard];
+  },
 	getColumns(){
-		const renderContent = function (value, row, index) {
-		  const obj = {
-		    children: value,
-		    props: {},
-		  };
-		  if (index === 4) {
-		    obj.props.colSpan = 0;
-		  }
-		  return obj;
-		};
+		const jinLevels = this.jinLevels();
 		const columns = [{
 		  title: '姓名',
-		  dataIndex: 'name',
+		  dataIndex: 'user_name',
 		  render(text, row, index) {
+		  		const firstName = text.slice(0,1);
 		      return (
 		      	<div className="user-avatar-bar">
 			      	<span className="user-avatar" style={{backgroundImage:'url()'}}>
-
+								{firstName}
 			      	</span>
 			      	<div className="user-avatar-bar-text">
 			      		<p className="name">{text}</p>
-			      		<span>微信昵称</span>
+			      		{/*<span>微信昵称</span>*/}
 			      	</div>
 			      	
 		      	</div>
@@ -62,23 +36,26 @@ const UserListTable = React.createClass({
 		}, {
 		  title: '级别',
 		  dataIndex: 'level',
-		  render: renderContent,
+		  render(text){
+		  	console.log(text)
+		  	if(text == '0'){
+		  			return <span>{jinLevels[text]}</span>
+		  		}else{
+		  			return <img src={jinLevels[text]}/>
+		  		}
+		  },
 		}, {
 		  title: '手机号',
-		  dataIndex: 'phone',
-		  render: renderContent,
+		  dataIndex: 'cellphone',
 		}, {
 		  title: '邀请人',
-		  dataIndex: 'inviter',
-		  render: renderContent,
+		  dataIndex: 'inv_user_name',
 		}, {
 		  title: '邀请人手机',
-		  dataIndex: 'inviter_phone',
-		  render: renderContent,
+		  dataIndex: 'inv_cellphone',
 		}, {
 		  title: '注册时间',
-		  dataIndex: 'time',
-		  render: renderContent,
+		  dataIndex: 'register_date',
 		}, {
 		  title: '操作',
 		  dataIndex: '',
@@ -91,10 +68,19 @@ const UserListTable = React.createClass({
 		
 		return columns;
 	},
+	onChange(page){
+		this.props.onPageChange(page)
+	},
 	render(){
 		const columns = this.getColumns();
+		const pagination = {
+        defaultPageSize : 12,
+        onChange : this.onChange,
+        total : this.props.total,
+        current : parseInt(this.props.currentPage)
+    };
 		return(
-			<Table columns={columns} dataSource={data} bordered />
+			<Table pagination={pagination} columns={columns} dataSource={this.props.data} bordered />
 		)
 	}
 });

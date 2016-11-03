@@ -1,7 +1,7 @@
-import { getUserInfoUrl, modifyPasswordUrl, getChuanShangBoardMarketListUrl, getChuanShangYBKListUrl, getShenWenSuoBoardMarketListUrl, getAgentOverviewDataUrl, getShenWenSuoMicroBoardListUrl, getJiShangYBKListUrl, getYueGuoJiMicroBoardListUrl, getJiShangMicroBoardListUrl, getPeopleWhoHaveInfoAssetUrl } from '../appConstants/urlConfig';
+import { getUserInfoUrl, modifyPasswordUrl, getChuanShangBoardMarketListUrl, getChuanShangYBKListUrl, getShenWenSuoBoardMarketListUrl, getAgentOverviewDataUrl, getShenWenSuoMicroBoardListUrl, getJiShangYBKListUrl, getYueGuoJiMicroBoardListUrl, getJiShangMicroBoardListUrl, getPeopleWhoHaveInfoAssetUrl, getPeopleWhoHaveInfoAssetAllotUrl } from '../appConstants/urlConfig';
 import commonAjax, { commonGetAjax} from '../helpers/commonAjax';
 import store from '../store';
-import { updateAdmin, updateChuanShangBoardMarket, updateAgentOverviewData, updateShenWenSuoBoardMarket, updateChuanShangPostCard, updateJiShangPostCard, updateShenWenSuoMicroBoardData, updateJiShangMicroBoardData, updateYueGuoJiMicroBoardData, updatePeopleListWhoHaveInfoAssetData } from '../actions/app-interaction-actions';
+import { updateAdmin, updateChuanShangBoardMarket, updateAgentOverviewData, updateShenWenSuoBoardMarket, updateChuanShangPostCard, updateJiShangPostCard, updateShenWenSuoMicroBoardData, updateJiShangMicroBoardData, updateYueGuoJiMicroBoardData, updatePeopleListWhoHaveInfoAssetData, updatePeopleListWhoHaveInfoAssetAllotData } from '../actions/app-interaction-actions';
 
 // 获取登录用户的信息
 export function getAdmin(config, sucCallback, failCallback) {
@@ -110,6 +110,16 @@ export function getPeopleListWhoHaveInfoAssetData(config, sucCallback, failCallb
         if (sucCallback) sucCallback(info);
     }, function (info) {
         store.dispatch(updatePeopleListWhoHaveInfoAssetData(info));
+        if (failCallback) failCallback(info);
+    });
+}
+// 已获得信息资产分配的用户的列表
+export function getPeopleWhoHaveInfoAssetAllotData(config, sucCallback, failCallback) {
+    return commonGetAjax(getPeopleWhoHaveInfoAssetAllotUrl, config, function (info) {
+        store.dispatch(updatePeopleListWhoHaveInfoAssetAllotData(info));
+        if (sucCallback) sucCallback(info);
+    }, function (info) {
+        store.dispatch(updatePeopleListWhoHaveInfoAssetAllotData(info));
         if (failCallback) failCallback(info);
     });
 }

@@ -37,4 +37,6 @@ export const getYueGuoJiMicroBoardListUrl = '/api/index.php/Transaction/transact
 export const getAgentOverviewDataUrl = '/api/index.php/overview/transaction';
 
 // 获取"获得信息资产的用户"的列表
-export const getPeopleWhoHaveInfoAssetUrl = '/api/index.php/Asset/asset_in';
+export const getPeopleWhoHaveInfoAssetUrl = ' /api/index.php/Asset/asset_detail';
+// 获取"已获得信息资产的用户"的列表
+export const getPeopleWhoHaveInfoAssetAllotUrl = '/api/index.php/Asset/asset_in';

@@ -29,7 +29,7 @@ const SidebarLayoutContainer = React.createClass({
             // console.log('iiiiiii', i);
             subMenuArray[i].forEach(function (ownPathName) {
                 // console.log('ownPathName', ownPathName);
-                if (ownPathName == pathName) {
+                if (ownPathName.slice(0, 10) == pathName.slice(0, 10)) {
                     matchSubMenu = i;
                     // console.log('hey!', i);
                 }
@@ -64,6 +64,11 @@ const SidebarLayoutContainer = React.createClass({
                         <Menu.Item key={routeBase + 'user_list'}>
                             <Link to={routeBase + 'user_list'}>
                                 用户列表
+                            </Link>
+                        </Menu.Item>
+                          <Menu.Item key={routeBase + 'set_authorization'}>
+                            <Link to={routeBase + 'set_authorization'}>
+                                设置权限
                             </Link>
                         </Menu.Item>
                       </SubMenu>

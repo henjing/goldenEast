@@ -1,5 +1,5 @@
 
-import { getUserInfoUrl, modifyPasswordUrl, getChuanShangBoardMarketListUrl, getChuanShangYBKListUrl, getShenWenSuoBoardMarketListUrl, getAgentOverviewDataUrl, getShenWenSuoMicroBoardListUrl, getJiShangYBKListUrl, getYueGuoJiMicroBoardListUrl, getJiShangMicroBoardListUrl, getUserListDataUrl, getPeopleWhoHaveInfoAssetUrl } from '../appConstants/urlConfig';
+import { getUserInfoUrl, modifyPasswordUrl, getChuanShangBoardMarketListUrl, getChuanShangYBKListUrl, getShenWenSuoBoardMarketListUrl, getAgentOverviewDataUrl, getShenWenSuoMicroBoardListUrl, getJiShangYBKListUrl, getYueGuoJiMicroBoardListUrl, getJiShangMicroBoardListUrl, getUserListDataUrl, getPeopleWhoHaveInfoAssetUrl, getUserAuthorizationListUrl, getAllAuthorizationListUrl, setFollowerAuthorizationUrl } from '../appConstants/urlConfig';
 
 import commonAjax, { commonGetAjax} from '../helpers/commonAjax';
 import store from '../store';
@@ -128,3 +128,38 @@ export function getUserListData(config, sucCallback, failCallback){
     });
 }
 
+// 获取当前登录用户的权限列表
+export function getUserAuthorization(config, sucCallback, failCallback){
+	return commonGetAjax(getUserAuthorizationListUrl, config, function (info) {
+        console.log('user authorization', info);
+        // store.dispatch(updateUserListData(info));
+        if (sucCallback) sucCallback(info);
+    }, function (info) {
+        // store.dispatch(updateUserListData(info));
+        if (failCallback) failCallback(info);
+    });
+}
+
+// 获取系统提供的所有权限列表
+export function getAllAuthorization(config, sucCallback, failCallback){
+	return commonGetAjax(getAllAuthorizationListUrl, config, function (info) {
+        console.log('all authorization', info);
+        // store.dispatch(updateUserListData(info));
+        if (sucCallback) sucCallback(info);
+    }, function (info) {
+        // store.dispatch(updateUserListData(info));
+        if (failCallback) failCallback(info);
+    });
+}
+
+// 设置登录用户旗下小金的权限
+export function setFollowerAuthorization(config, sucCallback, failCallback){
+	return commonGetAjax(setFollowerAuthorizationUrl, config, function (info) {
+        console.log('set follower authorization', info);
+        // store.dispatch(updateUserListData(info));
+        if (sucCallback) sucCallback(info);
+    }, function (info) {
+        // store.dispatch(updateUserListData(info));
+        if (failCallback) failCallback(info);
+    });
+}

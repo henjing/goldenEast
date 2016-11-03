@@ -45,7 +45,9 @@ export default (
             <IndexRedirect to={routeBase + 'home'} />
             {/*<IndexRoute component={HomeContainer}/>*/}
             <Route path={routeBase + 'home'} component={HomeContainer} />
-            <Route path={routeBase + 'user_list'} component={UserListContainer} />
+            <Route path={routeBase + 'user_list'} component={UserListContainer} >
+                
+            </Route>
 
             <Route path={routeBase + 'chuan_shang_board_market'} component={ChuanShangBoardMarketContainer} />
 

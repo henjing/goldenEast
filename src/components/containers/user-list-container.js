@@ -51,7 +51,7 @@ var UserListContainer = React.createClass({
     
 	render(){
 		const data = this.props.dataState.data;
-		return (
+		return this.props.children || (
 			<div>
 				<div className="userListHeader">
 					<SearchInput search={this.submitSearch} onChange={this.onChange}/>

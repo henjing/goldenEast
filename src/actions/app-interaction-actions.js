@@ -166,3 +166,19 @@ export function updatePeopleListWhoHaveInfoAssetData(info) {
     }
 }
 
+// 更新"已获得信息资产分配的用户的列表"
+export function updatePeopleListWhoHaveInfoAssetAllotData(info) {
+
+    return {
+        type : types.UPDATE_PEOPLE_LIST_WHO_HAVE_INFO_ASSET_ALLOT_DATA,
+        info
+    }
+}
+// 已获得信息资产分配的指定用户的信息
+export function updateParticularsBtnData(info) {
+
+    return {
+        type : types.UPDATE_PARTICULARS_BTN_DATA,
+        info
+    }
+}

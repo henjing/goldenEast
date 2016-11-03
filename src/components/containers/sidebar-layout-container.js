@@ -22,14 +22,14 @@ const SidebarLayoutContainer = React.createClass({
             'sub2' : ['/chuan_shang_board_market', '/shen_wen_suo_board_market'],
             'sub3' : ['/shenwensuo_wp', '/jishang_wp', '/yueguoji_wp'],
             'sub4' : ['/chuan_shang_post_card', '/ji_shang_post_card'],
-            'sub5' : ['/info_asset_allot_list']
+            'sub5' : ['/info_asset_allot_list', '/gain_info_asset_allot_list']
         };
         let matchSubMenu = '';
         for (let i in subMenuArray) {
             // console.log('iiiiiii', i);
             subMenuArray[i].forEach(function (ownPathName) {
                 // console.log('ownPathName', ownPathName);
-                if (ownPathName == pathName) {
+                if (ownPathName.slice(0, 10) == pathName.slice(0, 10)) {
                     matchSubMenu = i;
                     // console.log('hey!', i);
                 }
@@ -69,6 +69,9 @@ const SidebarLayoutContainer = React.createClass({
                         <Menu.Item key={routeBase + 'user_detail'}>
                             <Link to={routeBase + 'user_detail'}>
                                 用户详情
+                          <Menu.Item key={routeBase + 'set_authorization'}>
+                            <Link to={routeBase + 'set_authorization'}>
+                                设置权限
                             </Link>
                         </Menu.Item>
                       </SubMenu>
@@ -117,12 +120,17 @@ const SidebarLayoutContainer = React.createClass({
                         </Menu.Item>
                       </SubMenu>
 
-                      <SubMenu key="sub5" title={<span><Icon type="dot-chart" /><span className={styles.navText}>信息资产分配</span></span>}>
+                      <SubMenu key="sub5" title={<span><Icon type="solution" /><span className={styles.navText}>信息资产分配</span></span>}>
                         <Menu.Item key={routeBase + 'info_asset_allot_list'}>
                             <Link to={routeBase + 'info_asset_allot_list'}>
                                 信息资产分配详情
                             </Link>
                         </Menu.Item>
+                          <Menu.Item key={routeBase + 'gain_info_asset_allot_list'}>
+                              <Link to={routeBase + 'gain_info_asset_allot_list'}>
+                                  已获得信息资产分配详情
+                              </Link>
+                          </Menu.Item>
 
                       </SubMenu>
 

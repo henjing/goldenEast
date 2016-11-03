@@ -36,5 +36,17 @@ export const getAgentOverviewDataUrl = '/api/index.php/overview/transaction';
 export const getUserListDataUrl =  '/api/index.php/Customs/index';
 
 // 获取"获得信息资产的用户"的列表
-export const getPeopleWhoHaveInfoAssetUrl = '/api/index.php/Asset/asset_in';
+export const getPeopleWhoHaveInfoAssetUrl = ' /api/index.php/Asset/asset_detail';
+
+// 获取"已获得信息资产的用户"的列表
+export const getPeopleWhoHaveInfoAssetAllotUrl = '/api/index.php/Asset/asset_in';
+
+// 获得当前登录的用户的权限列表
+export const getUserAuthorizationListUrl = '/api/index.php/Authority/user_authorization_list';
+
+// 获得整个系统全部功能的访问权限列表
+export const getAllAuthorizationListUrl = '/api/index.php/Authority/authorization_list';
+
+// 设置某个用户的权限
+export const setFollowerAuthorizationUrl = '/api/index.php/Authority/set_authorization';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getAdmin } from '../../api/app-interaction-api';
+import { getAdmin, getUserAuthorization, getAllAuthorization } from '../../api/app-interaction-api';
 import { Menu, Dropdown, Icon } from 'antd';
 import ModifyPassword from '../views/modifyPassword';
 import { passwordModalToggle } from '../../actions/app-interaction-actions';
@@ -10,15 +10,17 @@ import './navbar-layout.css';
 
 const NavbarLayoutContainer = React.createClass({
     
-    componentDidMount : function () {
+    componentDidMount() {
         getAdmin({});
+        getUserAuthorization({});
+        getAllAuthorization({});
     },
 
     handleClick() {
         store.dispatch(passwordModalToggle());
     },
 
-    render : function () {
+    render() {
         const menu = (
           <Menu>
             <Menu.Item>

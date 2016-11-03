@@ -15,6 +15,8 @@ import yueGuoJiMicroBoardReducer from './yueGuoJi-micro-board-reducer';
 import userListReducer from './user-list-reducer';
 
 import infoAssetAllotListReducer from './info-asset-allot-list-reducer';
+import gainInfoAssetAllotListReducer from './gain-info-asset-allot-list-reducer';
+import particularsBtnReducer from './particulars-btn-reducer';
 
 const reducers = combineReducers({
     adminState : adminReducer,
@@ -29,6 +31,8 @@ const reducers = combineReducers({
     yueGuoJiMicroBoardState : yueGuoJiMicroBoardReducer,
     userListState : userListReducer,
     infoAssetAllotListState : infoAssetAllotListReducer,
+    gainInfoAssetAllotListState : gainInfoAssetAllotListReducer,
+    particularsBtnState : particularsBtnReducer,
 });
 
 export default reducers;

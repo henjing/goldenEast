@@ -29,7 +29,8 @@ module.exports = {
 		// path: path.join(__dirname, 'public'),
 		path: path.join(__dirname, '../../Documents/小金/root/public'),
 		// filename: '[chunkhash].js'
-		filename: 'bundle.[hash:8].js'
+		// filename: 'bundle.[hash:8].js'
+		filename: 'bundle.js'
 	},
 	resolve: {
 		extensions: ['', '.js', '.jsx']

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, AutoComplete ,DatePicker } from 'antd';
-import './list-container.css';
+import './user-list-container.css';
 import UserListTable from '../views/chuan-shang-post-card-table';
 import { connect } from 'react-redux';
 import SearchInput from '../views/SearchInput';

@@ -2,7 +2,7 @@ import React from 'react';
 import { Table } from 'antd';
 import { connect } from 'react-redux';
 import store from '../../store';
-import './list-container.css';
+import './user-list-container.css';
 import { updatePeopleListWhoHaveInfoAssetAllotData } from '../../actions/app-interaction-actions';
 import { getPeopleWhoHaveInfoAssetAllotData } from '../../api/app-interaction-api';
 

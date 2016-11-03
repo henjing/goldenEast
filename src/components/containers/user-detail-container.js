@@ -13,6 +13,8 @@ const UserDetailContainer = React.createClass({
     },
 	render(){
 		const level = this.jinLevels()[4];
+        const userId = this.props.params.userId;
+        console.log('userId', userId);
 		return (
 			<div>
 				<Row className={styles.userInfo}>

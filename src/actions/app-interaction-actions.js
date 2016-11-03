@@ -182,3 +182,18 @@ export function updateParticularsBtnData(info) {
         info
     }
 }
+
+//更新代理商旗下"已获授权小金"列表数据
+export function updateAuthorUserListData(info){
+	return {
+		type: types.UPDATE_AUTHOR_USER_LIST_DATA,
+		info
+	}
+}
+//更新代理商旗下"已获授权小金"搜索数据
+export function updateAuthorUserListDataSearch(info){
+	return {
+		type: types.UPDATE_AUTHOR_USER_LIST_SEARCH,
+		info
+	}
+}

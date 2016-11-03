@@ -5,21 +5,21 @@ import UserListTable from '../views/user-list-view.js';
 import SearchInput from '../views/SearchInput.js';
 import store from '../../store';
 import { connect } from 'react-redux';
-import { updateUserListDataSearch } from '../../actions/app-interaction-actions';
-import { getUserListData } from '../../api/app-interaction-api';
+import { updateAuthorUserListDataSearch } from '../../actions/app-interaction-actions';
+import { getAuthorUserListData } from '../../api/app-interaction-api';
 import { Link } from 'react-router';
 
 const RangePicker = DatePicker.RangePicker;
 
 var UserListContainer = React.createClass({
 	onChange(value){
-		store.dispatch(updateUserListDataSearch({
+		store.dispatch(updateAuthorUserListDataSearch({
     		'search[find]' : value,
             'page' : 1
         }));
 	},
 	onDateChange(dates, dateStrings){
-		store.dispatch(updateUserListDataSearch({
+		store.dispatch(updateAuthorUserListDataSearch({
             'search[d_begin]' : dateStrings[0],
             'search[d_end]' : dateStrings[1],
             'page' : 1
@@ -27,21 +27,21 @@ var UserListContainer = React.createClass({
         this.submitSearch();
 	},
 	submitSearch() {
-        getUserListData(this.props.searchState);
+        getAuthorUserListData(this.props.searchState);
     },
     onPageChange(page){
-    	store.dispatch(updateUserListDataSearch({
+    	store.dispatch(updateAuthorUserListDataSearch({
     		page:page
     	}));
     	
     	this.submitSearch();
     },
 	componentDidMount(){
-		getUserListData();
+		getAuthorUserListData();
 	},
 	componentWillUnmount(){
     	//清理搜索条件
-    	store.dispatch(updateUserListDataSearch({
+    	store.dispatch(updateAuthorUserListDataSearch({
     		'search[find]' : '',
             'search[d_begin]' : '',
             'search[d_end]' : '',
@@ -67,8 +67,8 @@ var UserListContainer = React.createClass({
 				<UserListTable data={data.list} total={data.total} currentPage={data.this_page} onPageChange={this.onPageChange}/>
 
                 <div>
-                    <Link to="/user_list/user_detail/anything"> aaa </Link>
-                    <Link to="/user_list/set_authorization/anything"> bbb </Link>
+                    <Link to="/author_user_list/user_detail/anything"> aaa </Link>
+                    <Link to="/author_user_list/set_authorization/anything"> bbb </Link>
                     {this.props.children}
                 </div>
 			</div>
@@ -78,8 +78,8 @@ var UserListContainer = React.createClass({
 
 const mapStateToProps = function (store) {
     return {
-        dataState : store.userListState.dataState,
-        searchState : store.userListState.searchState
+        dataState : store.authorUserListState.dataState,
+        searchState : store.authorUserListState.searchState
     }
 };
 

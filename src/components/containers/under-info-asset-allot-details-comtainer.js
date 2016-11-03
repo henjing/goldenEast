@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Table, Row, Col } from 'antd';
-import './list-container.css';
+import './user-list-container.css';
 
 var UnderInfoAssetsAllotDetailsContainer = React.createClass({
     getColumns(){

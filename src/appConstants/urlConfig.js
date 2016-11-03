@@ -50,3 +50,5 @@ export const getAllAuthorizationListUrl = '/api/index.php/Authority/authorizatio
 // 设置某个用户的权限
 export const setFollowerAuthorizationUrl = '/api/index.php/Authority/set_authorization';
 
+// 获取已授权用户列表
+export const getAuthorizedUserListUrl = '/api/index.php/Authority/authorization_user_list';

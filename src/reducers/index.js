@@ -13,6 +13,7 @@ import jiShangMicroBoardReducer from './jiShang-micro-board-reducer';
 import yueGuoJiMicroBoardReducer from './yueGuoJi-micro-board-reducer';
 
 import userListReducer from './user-list-reducer';
+import authorUserListReducer from './author-user-list-reducer';
 
 import infoAssetAllotListReducer from './info-asset-allot-list-reducer';
 import gainInfoAssetAllotListReducer from './gain-info-asset-allot-list-reducer';
@@ -33,6 +34,7 @@ const reducers = combineReducers({
     infoAssetAllotListState : infoAssetAllotListReducer,
     gainInfoAssetAllotListState : gainInfoAssetAllotListReducer,
     particularsBtnState : particularsBtnReducer,
+    authorUserListState : authorUserListReducer,
 });
 
 export default reducers;

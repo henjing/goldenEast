@@ -25,24 +25,29 @@ const SidebarLayoutContainer = React.createClass({
             'sub5' : ['/info_asset_allot_list', '/gain_info_asset_allot_list']
         };
         let matchSubMenu = '';
+        let defaultSelectedKey = '';
         for (let i in subMenuArray) {
             // console.log('iiiiiii', i);
             subMenuArray[i].forEach(function (ownPathName) {
-                // console.log('ownPathName', ownPathName);
-                if (ownPathName.slice(0, 10) == pathName.slice(0, 10)) {
+                // console.log('ownPathName', ownPathName.slice(0, 6));
+                if (ownPathName.slice(0, 5) == pathName.slice(0, 5)) {
                     matchSubMenu = i;
+                    defaultSelectedKey = ownPathName;
                     // console.log('hey!', i);
                 }
             })
         }
-        return matchSubMenu;
+        console.log('aaaaaaaaa', [matchSubMenu, defaultSelectedKey]);
+        return [matchSubMenu, defaultSelectedKey];
     },
 
     render() {
         const collapse = this.props.collapse;
         const sidebarWrapperName = collapse ? 'sidebarWrapperCollapse' : 'sidebarWrapper';
         const mode = collapse ? 'vertical' : 'inline';
-        const pathName = window.location.pathname;
+        // const pathName = window.location.pathname;
+        const pathName = window.location.hash.slice(1, 6);
+        // console.log('bbbbbbb', pathName);
         const matchSubMenu = this.matchSubMenu(pathName);
         //console.log('matchSubMenu', matchSubMenu);
         return (
@@ -54,7 +59,7 @@ const SidebarLayoutContainer = React.createClass({
                     </div>
 
                     <Menu mode={mode}
-                      defaultSelectedKeys={[pathName]} defaultOpenKeys={[matchSubMenu]}>
+                      defaultSelectedKeys={[matchSubMenu[1]]} defaultOpenKeys={[matchSubMenu[0]]}>
                       <SubMenu key="sub1" title={<span><Icon type="home" /><span className={styles.navText}>居间商</span></span>}>
                       	<Menu.Item key={routeBase + 'home'}>
                             <Link to={routeBase + 'home'}>

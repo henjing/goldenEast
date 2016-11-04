@@ -27,12 +27,6 @@ import JiShangPostCardContainer from './components/containers/ji-shang-post-card
 // 信息资产列表
 import InfoAssetAllotListContainer from './components/containers/info-asset-allot-list-container';
 
-//已获信息资产分配列表
-import GainInfoAssetAllotListContainer from './components/containers/gain-info-asset-allot-list-container';
-//名下小金信息资产分配列表
-
-import UnderInfoAssetsAllotDetailsContainer from './components/containers/under-info-asset-allot-details-comtainer';
-
 // 设置权限页面
 import setAuthorizationView from './components/views/set-follower-authorization';
 
@@ -62,11 +56,6 @@ export default (
             <Route path={routeBase + 'ji_shang_post_card'} component={JiShangPostCardContainer} />
             
             <Route path={routeBase + 'info_asset_allot_list'} component={InfoAssetAllotListContainer} />
-
-            <Route path={routeBase + 'gain_info_asset_allot_list'} component={GainInfoAssetAllotListContainer} />
-
-            <Route path={routeBase + 'under_info_asset_allot_list'} component={UnderInfoAssetsAllotDetailsContainer} />
-
             <Route path={routeBase + 'set_authorization'} component={setAuthorizationView} />
 
         </Route>

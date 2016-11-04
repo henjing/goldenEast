@@ -42,20 +42,17 @@ const UserDetailContainer = React.createClass({
 	render(){
 		const level = this.jinLevels();
         const data = this.state.userInfo;
+        var wx_name = data.wechat_nickname ? '('+data.wechat_nickname+')' : '';
         var levelmark = data.level == 0 ? '注册用户' : (
-        		<span style={{marginRight: '10px'}}><img src={level[data.level]}/></span>
+        		<span><img src={level[data.level]}/></span>
         	);
         var goodJjsMark = data.is_excellent == 1 ? (
-        		<span><img src={level[6]}/></span>
+        		<span style={{marginLeft: '10px'}}><img src={level[6]}/></span>
         ) : '';
         
         const accountList = this.state.accounts.map(function(data,index){
         	var accountStatus;
-    		if(data.account_status == 1){
-    			accountStatus = (<li className="footer">
-    				<Icon className="ing" type="clock-circle-o" />
-    				<div className="text">带审核</div></li>)
-    		}else if(data.account_status == 2){
+    		if(data.account_status == 2){
     			accountStatus = (<li className="footer">
     				<Icon className="success" type="check-circle-o" />
     				<div className="text">已审核通过</div></li>)
@@ -64,7 +61,9 @@ const UserDetailContainer = React.createClass({
     				<Icon className="fail" type="info-circle-o" />
     				<div className="text">审核未通过</div></li>)
     		}else{
-    			accountStatus = '';
+    			accountStatus = (<li className="footer">
+    				<Icon className="ing" type="clock-circle-o" />
+    				<div className="text">待审核</div></li>)
     		}
     		return (
 		    	<Col span={8} className={styles.userAccountList}>
@@ -98,7 +97,7 @@ const UserDetailContainer = React.createClass({
 						<div className="header">
 							<div className="avatar" style={{backgroundImage:'url('+data.wechat_avatar+')'}}></div>
 							<p className="name">{data.user_name}</p>
-							<p className="wx-name">({data.wechat_nickname})</p>
+							<p className="wx-name">{wx_name}</p>
 							<p className="level">{levelmark}{goodJjsMark}</p>
 						</div>
 						<ul>

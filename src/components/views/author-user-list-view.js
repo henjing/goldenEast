@@ -68,7 +68,7 @@ const UserListTable = React.createClass({
 		  render : function(text, record, index) {
 		  	return (
                 <div>
-                    <Link style={{color : 'white'}} to={`/author_user_list/author_user_detail/${record.user_sn}`}>
+                    <Link style={{color : 'white'}} to={`/user_list/user_detail/${record.user_sn}`}>
                         <Button type="primary" size="small" icon="search">个人详情</Button>
                     </Link>
                     &nbsp;&nbsp;

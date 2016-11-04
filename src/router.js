@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router, Route, browserHistory, IndexRedirect, IndexRoute, hashHistory } from 'react-router';
+import { Router, Route, browserHistory, IndexRedirect, IndexRoute, hashHistory, Redirect } from 'react-router';
 //首页，数据总览
 import HomeContainer from './components/containers/home-container';
 //用户列表
@@ -50,12 +50,11 @@ export default (
 
             <Route name="user_list" breadcrumbName="用户列表" path={routeBase + 'user_list'} component={UserListContainer} >
                 <Route breadcrumbName="个人详情" path="user_detail/:userId" component={UserDetailContainer} />
-                
-                <Route breadcrumbName="权限设置" path="set_authorization/:userId" component={setAuthorizationView} />
             </Route>
             
             <Route name="author_user_list" breadcrumbName="已授权用户列表" path={routeBase + 'author_user_list'} component={AuthorUserListContainer} >
-                <Route breadcrumbName="个人详情" path="author_user_detail/:userSn" component={UserDetailContainer} />
+                {/*<Route breadcrumbName="个人详情" path="user_detail/:userId" component={UserDetailContainer} />*/}
+                	<Redirect from="user_detail/:userId" to="user_detail/:userId" />
                 
                 <Route breadcrumbName="权限设置" path="set_authorization/:userSn" component={setAuthorizationView} />
             </Route>

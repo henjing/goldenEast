@@ -1,5 +1,6 @@
 import React from 'react';
 import { Table,Button } from 'antd';
+import { Link } from 'react-router';
 import weiGuDong from '../../appConstants/assets/images/微股东.png';
 import normalCard from '../../appConstants/assets/images/普卡.png';
 import silverCard from '../../appConstants/assets/images/银卡.png';
@@ -27,7 +28,6 @@ const UserListTable = React.createClass({
 			      	</span>
 			      	<div className="user-avatar-bar-text">
 			      		<p className="name">{text}</p>
-			      		{/*<span>微信昵称</span>*/}
 			      	</div>
 			      	
 		      	</div>
@@ -59,9 +59,11 @@ const UserListTable = React.createClass({
 		}, {
 		  title: '操作',
 		  dataIndex: '',
-		  render(){
+		  render(text, row, index){
 		  	return (
-		  		<Button type="primary" size="small" disabled icon="search">个人详情</Button>
+		  		<Link to={`/user_list/user_detail/${row.user_sn}`}>
+		  			<Button type="primary" size="small" icon="search">个人详情</Button>
+		  		</Link>
 		  	)
 		  },
 		}];

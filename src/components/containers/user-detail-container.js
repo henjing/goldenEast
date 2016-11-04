@@ -6,6 +6,7 @@ import normalCard from '../../appConstants/assets/images/普卡.png';
 import silverCard from '../../appConstants/assets/images/银卡.png';
 import goldenCard from '../../appConstants/assets/images/金卡.png';
 import superGoldenCard from '../../appConstants/assets/images/白金卡.png';
+import goodJujianshang from '../../appConstants/assets/images/good-jjs.png';
 import { getUserDetailData } from '../../api/app-interaction-api.js';
 
 const UserDetailContainer = React.createClass({
@@ -17,7 +18,7 @@ const UserDetailContainer = React.createClass({
 		}
 	},
 	jinLevels() {
-        return ['注册用户(0%)', weiGuDong, normalCard, silverCard, goldenCard, superGoldenCard];
+        return ['注册用户', weiGuDong, normalCard, silverCard, goldenCard, superGoldenCard, goodJujianshang];
     },
     componentWillMount(){
     	const user_sn = this.props.params.userId;
@@ -39,10 +40,17 @@ const UserDetailContainer = React.createClass({
     	});
     },
 	render(){
-		const level = this.jinLevels()[4];
+		const level = this.jinLevels();
         const data = this.state.userInfo;
+        var levelmark = data.level == 0 ? '注册用户' : (
+        		<span style={{marginRight: '10px'}}><img src={level[data.level]}/></span>
+        	);
+        var goodJjsMark = data.is_excellent == 1 ? (
+        		<span><img src={level[6]}/></span>
+        ) : '';
+        
         const accountList = this.state.accounts.map(function(data,index){
-        	var accountStatus = '';
+        	var accountStatus;
     		if(data.account_status == 1){
     			accountStatus = (<li className="footer">
     				<Icon className="ing" type="clock-circle-o" />
@@ -55,65 +63,56 @@ const UserDetailContainer = React.createClass({
     			accountStatus = (<li className="footer">
     				<Icon className="fail" type="info-circle-o" />
     				<div className="text">审核未通过</div></li>)
+    		}else{
+    			accountStatus = '';
     		}
     		return (
-    			<Col span={6} className={styles.userAccountList}>
-		    		<Card title={data.type_name} bodyStyle={{ padding: 0 }}>
-					    <ul className="user-account-item">
-			    			<li className="content">
-			    				<labal>账号</labal>
-			    				<p>{data.account}</p>
-			    			</li>
-			    			<li className="content">
-			    				<labal>身份证姓名</labal>
-			    				<p>{data.real_name}</p>
-			    			</li>
-			    			<li className="content">
-			    				<labal>身份证号</labal>
-			    				<p>{data.id_card_no}</p>
-			    			</li>
-			    			<li className="content">
-			    				<labal>银行卡号</labal>
-			    				<p>{data.bank_card_no}</p>
-			    			</li>
-			    			{accountStatus}
-			    		</ul>
-					  </Card>
-		    	</Col>
+		    	<Col span={8} className={styles.userAccountList}>
+					<ul className="user-account-item">
+						<li className="header">{data.type_name}</li>
+		    			<li className="content">
+		    				<labal>账号</labal>
+		    				<p>{data.account || (<span style={{color:'red'}}>用户未开户</span>)}</p>
+		    			</li>
+		    			<li className="content">
+		    				<labal>身份证姓名</labal>
+		    				<p>{data.real_name}</p>
+		    			</li>
+		    			<li className="content">
+		    				<labal>身份证号</labal>
+		    				<p>{data.id_card_no}</p>
+		    			</li>
+		    			<li className="content">
+		    				<labal>银行卡号</labal>
+		    				<p>{data.bank_card_no}</p>
+		    			</li>
+		    			{accountStatus}
+		    		</ul>
+				</Col>
     		)
     	});
 		return (
 			<div>
-				<Row className={styles.userInfo}>
-			      <Col span={8}>
-			      	<div className="user-info-base">
-			      		<div className="avatar" style={{backgroundImage:'url()'}}></div>
-			      		<div className="info">
-			      			<p className="name">{data.user_name}</p>
-			      			<p className="phone">15878193546</p>
-			      			<p className="company">所属居间商: 广西向前网络科技有限公司</p>
-			      			<p className="level"><img src={level}/></p>
-			      		</div>
-			      	</div>
-			      </Col>
-			      <Col span={8}>
-			      	<ul className="user-info-more">
-			      		<li>本月个人手续费总额:0.00</li>
-			      		<li>本月名下小金手续费总额:0.00</li>
-			      		<li>本月名下小金手续费总额(居间商范围内):0.00</li>
-			      	</ul>
-			      </Col>
-			      <Col span={8}>
-			      	<ul className="user-info-more">
-			      		<li>邀请人:马上山</li>
-			      		<li>注册时间:2016-4-25 12:30:00</li>
-			      		<li>名下小金:250</li>
-			      	</ul>
-			      </Col>
-			    </Row>
-			    <Row className={styles.userAccount}>
-			    	{accountList}
-			    </Row>
+				<div className={styles.userInfoBox}>
+					<div className={styles.userInfo}>
+						<div className="header">
+							<div className="avatar" style={{backgroundImage:'url('+data.wechat_avatar+')'}}></div>
+							<p className="name">{data.user_name}</p>
+							<p className="wx-name">({data.wechat_nickname})</p>
+							<p className="level">{levelmark}{goodJjsMark}</p>
+						</div>
+						<ul>
+							<li>手机号码：{data.cellphone}</li>
+							<li>所属居间商：{data.jujianshang_corp_name}</li>
+							<li>一度人脉数量：{data.children_sum}</li>
+							<li>邀请人：{data.inv_user_name}</li>
+							<li>注册时间：{data.register_date}</li>
+						</ul>
+					</div>
+					<Row className={styles.userAccount}>
+						{accountList}
+				    </Row>
+				</div>
 			</div>
 		)
 	},

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table,Button } from 'antd';
+import { Table, Button, Popconfirm } from 'antd';
 import weiGuDong from '../../appConstants/assets/images/微股东.png';
 import normalCard from '../../appConstants/assets/images/普卡.png';
 import silverCard from '../../appConstants/assets/images/银卡.png';
@@ -65,19 +65,24 @@ const UserListTable = React.createClass({
             key : 'register_date'
 		}, {
 		  title: '操作',
-		  render(text, record, index) {
+		  render : function(text, record, index) {
 		  	return (
                 <div>
                     <Link style={{color : 'white'}} to={`/author_user_list/author_user_detail/${record.user_sn}`}>
                         <Button type="primary" size="small" icon="search">个人详情</Button>
                     </Link>
-                    &nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;
                     <Link style={{color : 'white'}} to={`/author_user_list/set_authorization/${record.user_sn}`}>
-                        <Button type="primary" size="small" icon="search">权限设置</Button>
+                        <Button className="btn-warning" type="primary" size="small" icon="setting">权限设置</Button>
                     </Link>
+                    &nbsp;&nbsp;
+                    <Popconfirm title="确认要删除此用户的所有权限?" onConfirm={this.props.deleteUserAuthor(record.user_sn)}>
+                        <Button className="btn-danger" type="primary" size="small" icon="delete">删除所有权限</Button>
+                    </Popconfirm>
+
                 </div>
 		  	)
-		  },
+		  }.bind(this),
 		}];
 
 		return columns;

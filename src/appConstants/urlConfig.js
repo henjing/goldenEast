@@ -64,3 +64,7 @@ export const postSomeUserAuthorDetailUrl = '/api/index.php/Authority/user_author
 
 // 设置"居间商旗下某个用户"所具有的权限列表
 export const setSomeUserAuthorDetailUrl = '/api/index.php/Authority/set_authorization';
+
+// 移除"居间商旗下某个用户"的所有权限
+export const deleteSomeUserAuthorUrl = '/api/index.php/Authority/del_authorization';
+

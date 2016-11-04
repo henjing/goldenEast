@@ -4,6 +4,8 @@ const CheckboxGroup = Checkbox.Group;
 import { getSomeUserAuthorDetail, setSomeUserAuthorDetail } from '../../api/app-interaction-api';
 import { connect } from 'react-redux';
 import _ from 'lodash';
+import { hashHistory } from 'react-router';
+// window.hashHistory = hashHistory;
 
 const setFollowerAuthorization = React.createClass({
 
@@ -64,10 +66,10 @@ const setFollowerAuthorization = React.createClass({
         console.log('bbb', this.filterGateIdToSubmit());
         setSomeUserAuthorDetail({
             sn : this.state.sn,
-            'gates[]' : this.filterGateIdToSubmit()
+            'gates' : this.filterGateIdToSubmit()
         }, function (info) {
             message.success('修改成功');
-            this.context.router.goBack();
+            // this.context.router.goBack();
         }.bind(this), function (info) {
             message.error('修改失败 ' + info.info )
         }.bind(this))
@@ -106,6 +108,8 @@ const setFollowerAuthorization = React.createClass({
                 </div>
                 <div style={{marginTop : '20px', textAlign : 'center'}}>
                     <Button onClick={this.handleSubmit} type="primary">确认授权</Button>
+                    &nbsp;&nbsp;&nbsp;
+                    <Button onClick={hashHistory.goBack} type="default">返回</Button>
                 </div>
             </div>
         )

@@ -1,12 +1,12 @@
 import React from 'react';
-import { Button, AutoComplete ,DatePicker } from 'antd';
+import { Button, AutoComplete, DatePicker, message } from 'antd';
 import './user-list-container.css';
 import UserListTable from '../views/author-user-list-view.js';
 import SearchInput from '../views/SearchInput.js';
 import store from '../../store';
 import { connect } from 'react-redux';
 import { updateAuthorUserListDataSearch } from '../../actions/app-interaction-actions';
-import { getAuthorUserListData } from '../../api/app-interaction-api';
+import { getAuthorUserListData, deleteSomeUserAuthor } from '../../api/app-interaction-api';
 import { Link } from 'react-router';
 
 const RangePicker = DatePicker.RangePicker;
@@ -48,6 +48,16 @@ var UserListContainer = React.createClass({
             'page' : 1
         }));
     },
+
+    deleteUserAuthor(user_sn) {
+        return function () {
+            deleteSomeUserAuthor({ sn : user_sn }, function (info) {
+                message.info('删除成功');
+            }.bind(this), function (info) {
+                message.info('删除失败 ' + info.info);
+            }.bind(this))
+        }.bind(this);
+    },
     
 	render(){
 		const data = this.props.dataState.data;
@@ -64,11 +74,9 @@ var UserListContainer = React.createClass({
 					<label>注册时间:</label>
 					<RangePicker style={{ width: 200 }} onChange={this.onDateChange} />
 				</div>
-				<UserListTable data={data.list} total={data.total} currentPage={data.this_page} onPageChange={this.onPageChange}/>
+				<UserListTable deleteUserAuthor={this.deleteUserAuthor} data={data.list} total={data.total} currentPage={data.this_page} onPageChange={this.onPageChange}/>
 
                 <div>
-                    <Link style={{color : 'white'}} to="/author_user_list/author_user_detail/anything"> aaa </Link>
-                    <Link to="/author_user_list/set_authorization/anything"> bbb </Link>
                     {this.props.children}
                 </div>
 			</div>

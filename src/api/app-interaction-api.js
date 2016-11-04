@@ -1,6 +1,6 @@
-import { getUserInfoUrl, modifyPasswordUrl, getChuanShangBoardMarketListUrl, getChuanShangYBKListUrl, getShenWenSuoBoardMarketListUrl, getAgentOverviewDataUrl, getShenWenSuoMicroBoardListUrl, getJiShangYBKListUrl, getYueGuoJiMicroBoardListUrl, getJiShangMicroBoardListUrl, getUserListDataUrl, getPeopleWhoHaveInfoAssetUrl, getUserAuthorizationListUrl, getAllAuthorizationListUrl, setFollowerAuthorizationUrl, getPeopleWhoHaveInfoAssetAllotUrl, getAuthorizedUserListUrl, getSomeUserDetailUrl, postSomeUserAuthorDetailUrl, setSomeUserAuthorDetailUrl } from '../appConstants/urlConfig';
+import { getUserInfoUrl, modifyPasswordUrl, getChuanShangBoardMarketListUrl, getChuanShangYBKListUrl, getShenWenSuoBoardMarketListUrl, getAgentOverviewDataUrl, getShenWenSuoMicroBoardListUrl, getJiShangYBKListUrl, getYueGuoJiMicroBoardListUrl, getJiShangMicroBoardListUrl, getUserListDataUrl, getPeopleWhoHaveInfoAssetUrl, getUserAuthorizationListUrl, getAllAuthorizationListUrl, setFollowerAuthorizationUrl, getPeopleWhoHaveInfoAssetAllotUrl, getAuthorizedUserListUrl, getSomeUserDetailUrl, postSomeUserAuthorDetailUrl, setSomeUserAuthorDetailUrl, deleteSomeUserAuthorUrl } from '../appConstants/urlConfig';
 
-import commonAjax, { commonGetAjax} from '../helpers/commonAjax';
+import commonAjax, { commonGetAjax, commonAjaxWithBrackets} from '../helpers/commonAjax';
 import store from '../store';
 
 import { updateAdmin, updateChuanShangBoardMarket, updateAgentOverviewData, updateShenWenSuoBoardMarket, updateChuanShangPostCard, updateJiShangPostCard, updateShenWenSuoMicroBoardData, updateJiShangMicroBoardData, updateYueGuoJiMicroBoardData, updateUserListData, updatePeopleListWhoHaveInfoAssetData, updatePeopleListWhoHaveInfoAssetAllotData, updateAuthorUserListData } from '../actions/app-interaction-actions';
@@ -208,7 +208,16 @@ export function getSomeUserAuthorDetail(config, sucCallback, failCallback){
 
 // 设置"居间商旗下某个用户"所具有的权限列表
 export function setSomeUserAuthorDetail(config, sucCallback, failCallback){
-	return commonAjax(setSomeUserAuthorDetailUrl, config, function (info) {
+	return commonAjaxWithBrackets(setSomeUserAuthorDetailUrl, config, function (info) {
+        if (sucCallback) sucCallback(info);
+    }, function (info) {
+        if (failCallback) failCallback(info);
+    });
+}
+
+// 删除"居间商旗下某个用户"所有权限
+export function deleteSomeUserAuthor(config, sucCallback, failCallback){
+	return commonAjax(deleteSomeUserAuthorUrl, config, function (info) {
         if (sucCallback) sucCallback(info);
     }, function (info) {
         if (failCallback) failCallback(info);

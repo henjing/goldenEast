@@ -64,10 +64,10 @@ const setFollowerAuthorization = React.createClass({
         console.log('bbb', this.filterGateIdToSubmit());
         setSomeUserAuthorDetail({
             sn : this.state.sn,
-            'gates[]' : this.filterGateIdToSubmit()
+            'gates' : this.filterGateIdToSubmit()
         }, function (info) {
             message.success('修改成功');
-            this.context.router.goBack();
+            // this.context.router.goBack();
         }.bind(this), function (info) {
             message.error('修改失败 ' + info.info )
         }.bind(this))

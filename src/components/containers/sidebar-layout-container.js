@@ -73,7 +73,7 @@ const SidebarLayoutContainer = React.createClass({
                         </Menu.Item>
                         <Menu.Item key={routeBase + 'author_user_list'}>
                             <Link to={routeBase + 'author_user_list'}>
-                                已用户列表
+                                已授权用户
                             </Link>
                         </Menu.Item>
                       </SubMenu>

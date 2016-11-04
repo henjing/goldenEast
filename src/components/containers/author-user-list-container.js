@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, AutoComplete ,DatePicker } from 'antd';
 import './user-list-container.css';
-import UserListTable from '../views/user-list-view.js';
+import UserListTable from '../views/author-user-list-view.js';
 import SearchInput from '../views/SearchInput.js';
 import store from '../../store';
 import { connect } from 'react-redux';
@@ -57,7 +57,7 @@ var UserListContainer = React.createClass({
 					<SearchInput search={this.submitSearch} onChange={this.onChange}/>
 					<div className="number-info">
 						<span>{data.total}</span>
-						<p>总注册量</p>
+						<p>总数量</p>
 					</div>
 				</div>
 				<div className="data-picker-bar">
@@ -67,7 +67,7 @@ var UserListContainer = React.createClass({
 				<UserListTable data={data.list} total={data.total} currentPage={data.this_page} onPageChange={this.onPageChange}/>
 
                 <div>
-                    <Link to="/author_user_list/user_detail/anything"> aaa </Link>
+                    <Link style={{color : 'white'}} to="/author_user_list/author_user_detail/anything"> aaa </Link>
                     <Link to="/author_user_list/set_authorization/anything"> bbb </Link>
                     {this.props.children}
                 </div>

@@ -52,3 +52,12 @@ export const setFollowerAuthorizationUrl = '/api/index.php/Authority/set_authori
 
 // 获取已授权用户列表
 export const getAuthorizedUserListUrl = '/api/index.php/Authority/authorization_user_list';
+
+// 居间商旗下某个用户的详细信息
+export const getSomeUserDetailUrl = '/api/index.php/Customs/UserInfo';
+
+// 居间商旗下某个用户所具有的权限列表
+export const postSomeUserAuthorDetailUrl = '/api/index.php/Authority/user_authorization_list';
+
+// 设置"居间商旗下某个用户"所具有的权限列表
+export const setSomeUserAuthorDetailUrl = '/api/index.php/Authority/set_authorization';

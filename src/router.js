@@ -55,9 +55,9 @@ export default (
             </Route>
             
             <Route name="author_user_list" breadcrumbName="已授权用户列表" path={routeBase + 'author_user_list'} component={AuthorUserListContainer} >
-                <Route breadcrumbName="个人详情" path="author_user_detail/:userId" component={UserDetailContainer} />
+                <Route breadcrumbName="个人详情" path="author_user_detail/:userSn" component={UserDetailContainer} />
                 
-                <Route breadcrumbName="权限设置" path="set_authorization/:userId" component={setAuthorizationView} />
+                <Route breadcrumbName="权限设置" path="set_authorization/:userSn" component={setAuthorizationView} />
             </Route>
 
             <Route breadcrumbName="川商大盘" path={routeBase + 'chuan_shang_board_market'} component={ChuanShangBoardMarketContainer} />

@@ -11,15 +11,15 @@ const InfoAssetAllotList = React.createClass({
         },  {
             title: '手机号码',
             className: 'column-txt',
-            dataIndex: 'level',
+            dataIndex: 'phone',
         }, {
             title: '获得信息资产',
             className: 'column-txt',
-            dataIndex: 'phone',
+            dataIndex: 'info',
         },{
             title: '最新时间',
             className: 'column-txt',
-            dataIndex: 'qjs',
+            dataIndex: 'time',
         }, {
             title: '获得详情',
             className: 'column-txt',
@@ -28,7 +28,7 @@ const InfoAssetAllotList = React.createClass({
         return columns;
     },
     render(){
-        const data= this.props.dataSource;
+        const data = this.props.dataSource;
         const columns = this.getColumns();
         return(
           <div>

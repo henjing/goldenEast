@@ -1,7 +1,19 @@
 import * as types from '../actions/action-types';
 
 const initialState = {
-    dataState:[]
+    dataState : {
+        data : {
+            list : [],
+        },
+        info : '',
+        status : 1
+    },
+    searchState : {
+        page : 1,
+        'search[d_begin]' : '',
+        'search[d_end]' : '',
+        'search[find]' : ''
+    }
 };
 
 const infoAssetAllotListReducer = function (state = initialState, action) {

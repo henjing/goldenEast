@@ -10,10 +10,6 @@ import { updatePeopleListWhoHaveInfoAssetData } from '../../actions/app-interact
 import { getPeopleListWhoHaveInfoAssetData } from '../../api/app-interaction-api';
 
 const InfoAssetAllotListContainer = React.createClass({
-    componentDidMount() {
-        /* getPeopleListWhoHaveInfoAssetData({});*/
-
-    },
     componentWillUnmount(){
         //清理搜索条件
         store.dispatch(updatePeopleListWhoHaveInfoAssetData({
@@ -64,12 +60,13 @@ const InfoAssetAllotListContainer = React.createClass({
                         search={this.submitSearch}
                     />
                 </div>
-                {userList}
+                <div>{userList}</div>
             </div>
         )
     }
 });
 
+//搜索用户和名下小金列表
 const UserList = React.createClass({
     getColumnsUser(){
         const columnsUser =  [{
@@ -116,7 +113,6 @@ const UserList = React.createClass({
     },
     render(){
         const data = this.props.dataState;
-        console.log('sdsd',data)
         const columnsUser = this.getColumnsUser();
         return(
             <div>

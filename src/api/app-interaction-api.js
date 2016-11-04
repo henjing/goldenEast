@@ -1,4 +1,4 @@
-import { getUserInfoUrl, modifyPasswordUrl, getChuanShangBoardMarketListUrl, getChuanShangYBKListUrl, getShenWenSuoBoardMarketListUrl, getAgentOverviewDataUrl, getShenWenSuoMicroBoardListUrl, getJiShangYBKListUrl, getYueGuoJiMicroBoardListUrl, getJiShangMicroBoardListUrl, getUserListDataUrl, getPeopleWhoHaveInfoAssetUrl, getUserAuthorizationListUrl, getAllAuthorizationListUrl, setFollowerAuthorizationUrl, getPeopleWhoHaveInfoAssetAllotUrl, getAuthorizedUserListUrl } from '../appConstants/urlConfig';
+import { getUserInfoUrl, modifyPasswordUrl, getChuanShangBoardMarketListUrl, getChuanShangYBKListUrl, getShenWenSuoBoardMarketListUrl, getAgentOverviewDataUrl, getShenWenSuoMicroBoardListUrl, getJiShangYBKListUrl, getYueGuoJiMicroBoardListUrl, getJiShangMicroBoardListUrl, getUserListDataUrl, getPeopleWhoHaveInfoAssetUrl, getUserAuthorizationListUrl, getAllAuthorizationListUrl, setFollowerAuthorizationUrl, getPeopleWhoHaveInfoAssetAllotUrl, getAuthorizedUserListUrl, getUserDetailUrl } from '../appConstants/urlConfig';
 
 import commonAjax, { commonGetAjax} from '../helpers/commonAjax';
 import store from '../store';
@@ -180,6 +180,15 @@ export function getAuthorUserListData(config, sucCallback, failCallback){
         if (sucCallback) sucCallback(info);
     }, function (info) {
         store.dispatch(updateAuthorUserListData(info));
+        if (failCallback) failCallback(info);
+    });
+}
+
+//获得某个用户的详情
+export function getUserDetailData(config, sucCallback, failCallback) {
+    return commonGetAjax(getUserDetailUrl, config, function (info) {
+        if (sucCallback) sucCallback(info);
+    }, function (info) {
         if (failCallback) failCallback(info);
     });
 }

@@ -65,12 +65,6 @@ var UserListContainer = React.createClass({
 					<RangePicker style={{ width: 200 }} onChange={this.onDateChange} />
 				</div>
 				<UserListTable data={data.list} total={data.total} currentPage={data.this_page} onPageChange={this.onPageChange}/>
-
-                <div>
-                    <Link to="/user_list/user_detail/anything"> aaa </Link>
-                    <Link to="/user_list/set_authorization/anything"> bbb </Link>
-                    {this.props.children}
-                </div>
 			</div>
 		)
 	}

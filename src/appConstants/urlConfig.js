@@ -68,3 +68,5 @@ export const setSomeUserAuthorDetailUrl = '/api/index.php/Authority/set_authoriz
 // 移除"居间商旗下某个用户"的所有权限
 export const deleteSomeUserAuthorUrl = '/api/index.php/Authority/del_authorization';
 
+//当月注册量和激活量
+export const registerActiveUrl = '/api/index.php/register_active';

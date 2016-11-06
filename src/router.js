@@ -40,6 +40,9 @@ import setAuthorizationView from './components/views/set-follower-authorization'
 // 居间商已授权用户(包括小金和客服)
 import AuthorUserListContainer from './components/containers/author-user-list-container';
 
+//当月注册量与激活量
+import RegisterActiveContainer from './components/containers/register-active-container';
+
 export default (
     <Router history={hashHistory}>
         <Route path={routeBase} component={MainLayout} >
@@ -51,6 +54,7 @@ export default (
             <Route name="user_list" breadcrumbName="用户列表" path={routeBase + 'user_list'} component={UserListContainer} >
                 <Route breadcrumbName="个人详情" path="user_detail/:userId" component={UserDetailContainer} />
             </Route>
+            <Route breadcrumbName="当月注册量与激活量" path={routeBase + 'register_active'} component={RegisterActiveContainer} />
             
             <Route name="author_user_list" breadcrumbName="已授权用户列表" path={routeBase + 'author_user_list'} component={AuthorUserListContainer} >
                 {/*<Route breadcrumbName="个人详情" path="user_detail/:userId" component={UserDetailContainer} />*/}

@@ -18,7 +18,7 @@ const SidebarLayoutContainer = React.createClass({
     //匹配的导航列表
     matchSubMenu(pathName) {
         const subMenuArray =  {
-            'sub1' : ['/home', '/user_list', '/author_user_list'],
+            'sub1' : ['/home', '/user_list', '/author_user_list','register_active'],
             'sub2' : ['/chuan_shang_board_market', '/shen_wen_suo_board_market'],
             'sub3' : ['/shenwensuo_wp', '/jishang_wp', '/yueguoji_wp'],
             'sub4' : ['/chuan_shang_post_card', '/ji_shang_post_card'],
@@ -74,6 +74,11 @@ const SidebarLayoutContainer = React.createClass({
                         <Menu.Item key={routeBase + 'author_user_list'}>
                             <Link to={routeBase + 'author_user_list'}>
                                 已授权用户
+                            </Link>
+                        </Menu.Item>
+                        <Menu.Item key={routeBase + 'register_active'}>
+                            <Link to={routeBase + 'register_active'}>
+                                当月注册量与激活量
                             </Link>
                         </Menu.Item>
                       </SubMenu>

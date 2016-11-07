@@ -12,6 +12,11 @@ import { Link } from 'react-router';
 const RangePicker = DatePicker.RangePicker;
 
 var UserListContainer = React.createClass({
+	getInitialState(){
+		return {
+			whenSearchHide: false
+		}
+	},
 	onChange(value){
 		store.dispatch(updateUserListDataSearch({
     		'search[find]' : value,
@@ -28,6 +33,11 @@ var UserListContainer = React.createClass({
 	},
 	submitSearch() {
         getUserListData(this.props.searchState);
+        //当搜索的时候隐藏右上角的总注册量
+        this.setState({ whenSearchHide: true })
+        if(!this.props.searchState['search[find]'] && !this.props.searchState['search[d_begin]'] ){
+        	this.setState({ whenSearchHide: false })
+        }
     },
     onPageChange(page){
     	store.dispatch(updateUserListDataSearch({
@@ -55,10 +65,10 @@ var UserListContainer = React.createClass({
 			<div>
 				<div className="userListHeader">
 					<SearchInput search={this.submitSearch} onChange={this.onChange}/>
-					<div className="number-info">
+					{!this.state.whenSearchHide ? (<div className="number-info">
 						<span>{data.total}</span>
 						<p>总注册量</p>
-					</div>
+					</div>) : ''}
 				</div>
 				<div className="data-picker-bar">
 					<label>注册时间:</label>

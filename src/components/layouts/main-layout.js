@@ -17,7 +17,7 @@ const MainLayout  = React.createClass({
                 <div className={styles.main}>
                     <NavbarLayoutContainer />
 
-                    <div style={{height : '30px', lineHeight : '30px', borderBottom : '1px solid #ddd', paddingLeft : '20px'}}>
+                    <div style={{height : '30px', lineHeight : '30px', paddingLeft : '20px',background: '#f4f4f5'}}>
                         <Breadcrumb {...this.props} />
                     </div>
 

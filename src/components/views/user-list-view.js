@@ -13,7 +13,7 @@ import superGoldenCard from '../../appConstants/assets/images/白金卡.png';
 const UserListTable = React.createClass({
 	jinLevels() {
         return ['注册用户(0%)', weiGuDong, normalCard, silverCard, goldenCard, superGoldenCard];
-  },
+  	},
 	getColumns(){
 		const jinLevels = this.jinLevels();
 		const columns = [{
@@ -39,10 +39,10 @@ const UserListTable = React.createClass({
 		  render(text){
 		  	console.log(text)
 		  	if(text == '0'){
-		  			return <span>{jinLevels[text]}</span>
-		  		}else{
-		  			return <img src={jinLevels[text]}/>
-		  		}
+	  			return <span>{jinLevels[text]}</span>
+	  		}else{
+	  			return <img src={jinLevels[text]}/>
+	  		}
 		  },
 		}, {
 		  title: '手机号',

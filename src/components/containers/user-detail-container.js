@@ -47,7 +47,7 @@ const UserDetailContainer = React.createClass({
         		<span><img src={level[data.level]}/></span>
         	);
         var goodJjsMark = data.is_excellent == 1 ? (
-        		<span style={{marginLeft: '10px'}}><img src={level[6]}/></span>
+        		<span style={{marginLeft: '10px'}}><img src={level[6]} style={{vertivalAlign: 'middle'}}/></span>
         ) : '';
         
         const accountList = this.state.accounts.map(function(data,index){

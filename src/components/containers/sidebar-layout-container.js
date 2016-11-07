@@ -18,7 +18,7 @@ const SidebarLayoutContainer = React.createClass({
     //匹配的导航列表
     matchSubMenu(pathName) {
         const subMenuArray =  {
-            'sub1' : ['/home', '/user_list', '/author_user_list','register_active'],
+            'sub1' : ['/home', '/user_list', '/author_user_list','register_active','under_user'],
             'sub2' : ['/chuan_shang_board_market', '/shen_wen_suo_board_market'],
             'sub3' : ['/shenwensuo_wp', '/jishang_wp', '/yueguoji_wp'],
             'sub4' : ['/chuan_shang_post_card', '/ji_shang_post_card'],
@@ -81,6 +81,11 @@ const SidebarLayoutContainer = React.createClass({
                                 当月注册量与激活量
                             </Link>
                         </Menu.Item>
+                        <Menu.Item key={routeBase + 'under_user'}>
+                        <Link to={routeBase + 'under_user'}>
+                            名下用户信息查询
+                        </Link>
+                    </Menu.Item>
                       </SubMenu>
 
                       <SubMenu key="sub2" title={<span><Icon type="bar-chart" /><span className={styles.navText}>大盘交易列表</span></span>}>

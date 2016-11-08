@@ -22,7 +22,8 @@ const SidebarLayoutContainer = React.createClass({
             'sub2' : ['/chuan_shang_board_market', '/shen_wen_suo_board_market'],
             'sub3' : ['/shenwensuo_wp', '/jishang_wp', '/yueguoji_wp'],
             'sub4' : ['/chuan_shang_post_card', '/ji_shang_post_card'],
-            'sub5' : ['/info_asset_allot_list', '/gain_info_asset_allot_list']
+            'sub5' : ['/info_asset_allot_list', '/gain_info_asset_allot_list'],
+            'sub6' : ['under_user','under_user_tree'],
         };
         let matchSubMenu = '';
         let defaultSelectedKey = '';
@@ -61,31 +62,26 @@ const SidebarLayoutContainer = React.createClass({
                     <Menu mode={mode}
                       defaultSelectedKeys={[matchSubMenu[1]]} defaultOpenKeys={[matchSubMenu[0]]}>
                       <SubMenu key="sub1" title={<span><Icon type="home" /><span className={styles.navText}>居间商</span></span>}>
-                      	<Menu.Item key={routeBase + 'home'}>
-                            <Link to={routeBase + 'home'}>
-                                用户数据总览
-                            </Link>
-                        </Menu.Item>
-                        <Menu.Item key={routeBase + 'user_list'}>
-                            <Link to={routeBase + 'user_list'}>
-                                用户列表
-                            </Link>
-                        </Menu.Item>
-                        <Menu.Item key={routeBase + 'author_user_list'}>
-                            <Link to={routeBase + 'author_user_list'}>
-                                已授权用户
-                            </Link>
-                        </Menu.Item>
-                        <Menu.Item key={routeBase + 'register_active'}>
-                            <Link to={routeBase + 'register_active'}>
-                                当月注册量与激活量
-                            </Link>
-                        </Menu.Item>
-                        <Menu.Item key={routeBase + 'under_user'}>
-                        <Link to={routeBase + 'under_user'}>
-                            名下用户信息查询
-                        </Link>
-                    </Menu.Item>
+	                  	<Menu.Item key={routeBase + 'home'}>
+	                        <Link to={routeBase + 'home'}>
+	                            用户数据总览
+	                        </Link>
+	                    </Menu.Item>
+	                    <Menu.Item key={routeBase + 'user_list'}>
+	                        <Link to={routeBase + 'user_list'}>
+	                            用户列表
+	                        </Link>
+	                    </Menu.Item>
+	                    <Menu.Item key={routeBase + 'author_user_list'}>
+	                        <Link to={routeBase + 'author_user_list'}>
+	                            已授权用户
+	                        </Link>
+	                    </Menu.Item>
+	                    <Menu.Item key={routeBase + 'register_active'}>
+	                        <Link to={routeBase + 'register_active'}>
+	                            当月注册量与激活量
+	                        </Link>
+	                    </Menu.Item>
                       </SubMenu>
 
                       <SubMenu key="sub2" title={<span><Icon type="bar-chart" /><span className={styles.navText}>大盘交易列表</span></span>}>
@@ -145,6 +141,18 @@ const SidebarLayoutContainer = React.createClass({
                           </Menu.Item>
 
                       </SubMenu>
+                      <SubMenu key="sub6" title={<span><Icon type="team" /><span className={styles.navText}>人脉查询</span></span>}>
+		                  <Menu.Item key={routeBase + 'under_user_tree'}>
+		                      <Link to={routeBase + 'under_user_tree'}>
+		                          名下用户信息
+		                      </Link>
+		                  </Menu.Item>
+	                      <Menu.Item key={routeBase + 'under_user'}>
+		                      <Link to={routeBase + 'under_user'}>
+		                          一度人脉列表
+		                      </Link>
+		                  </Menu.Item>
+	                   </SubMenu>
 
                     </Menu>
 

@@ -70,3 +70,9 @@ export const deleteSomeUserAuthorUrl = '/api/index.php/Authority/del_authorizati
 
 //当月注册量和激活量
 export const registerActiveUrl = '/api/index.php/register_active';
+
+//获取名下用户数据树结构
+export const underUsertreeUrl = '/api/index.php/Customs/get_1children_list_tree';
+
+//获取一度人脉数据
+export const underUserUrl = '/api/index.php/Customs/get_1children_list_table';

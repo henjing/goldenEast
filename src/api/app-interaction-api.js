@@ -1,4 +1,4 @@
-import { getUserInfoUrl, modifyPasswordUrl, getChuanShangBoardMarketListUrl, getChuanShangYBKListUrl, getShenWenSuoBoardMarketListUrl, getAgentOverviewDataUrl, getShenWenSuoMicroBoardListUrl, getJiShangYBKListUrl, getYueGuoJiMicroBoardListUrl, getJiShangMicroBoardListUrl, getUserListDataUrl, getPeopleWhoHaveInfoAssetUrl, getUserAuthorizationListUrl, getAllAuthorizationListUrl, setFollowerAuthorizationUrl, getPeopleWhoHaveInfoAssetAllotUrl, getAuthorizedUserListUrl, getSomeUserDetailUrl, postSomeUserAuthorDetailUrl, setSomeUserAuthorDetailUrl, getUserDetailUrl, deleteSomeUserAuthorUrl, registerActiveUrl } from '../appConstants/urlConfig';
+import { getUserInfoUrl, modifyPasswordUrl, getChuanShangBoardMarketListUrl, getChuanShangYBKListUrl, getShenWenSuoBoardMarketListUrl, getAgentOverviewDataUrl, getShenWenSuoMicroBoardListUrl, getJiShangYBKListUrl, getYueGuoJiMicroBoardListUrl, getJiShangMicroBoardListUrl, getUserListDataUrl, getPeopleWhoHaveInfoAssetUrl, getUserAuthorizationListUrl, getAllAuthorizationListUrl, setFollowerAuthorizationUrl, getPeopleWhoHaveInfoAssetAllotUrl, getAuthorizedUserListUrl, getSomeUserDetailUrl, postSomeUserAuthorDetailUrl, setSomeUserAuthorDetailUrl, getUserDetailUrl, deleteSomeUserAuthorUrl, registerActiveUrl, underUsertreeUrl, underUserUrl } from '../appConstants/urlConfig';
 
 import commonAjax, { commonGetAjax, commonAjaxWithBrackets} from '../helpers/commonAjax';
 import store from '../store';
@@ -235,6 +235,24 @@ export function deleteSomeUserAuthor(config, sucCallback, failCallback){
 //获得当月注册量和激活量数据
 export function getRegisterActiveData(config, sucCallback, failCallback) {
     return commonGetAjax(registerActiveUrl, config, function (info) {
+        if (sucCallback) sucCallback(info);
+    }, function (info) {
+        if (failCallback) failCallback(info);
+    })
+}
+
+//获得名下用户数据树结构
+export function getUnderUserTreeData(config, sucCallback, failCallback) {
+    return commonGetAjax(underUsertreeUrl, config, function (info) {
+        if (sucCallback) sucCallback(info);
+    }, function (info) {
+        if (failCallback) failCallback(info);
+    })
+}
+
+//获得一度人脉数据
+export function getUnderUserData(config, sucCallback, failCallback) {
+    return commonGetAjax(underUserUrl, config, function (info) {
         if (sucCallback) sucCallback(info);
     }, function (info) {
         if (failCallback) failCallback(info);

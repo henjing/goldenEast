@@ -26,7 +26,6 @@ const SearchUserInput = React.createClass({
     },
 
     render() {
-        const { result } = this.state;
         return (
             <div className="searchBar">
                 <AutoComplete
@@ -34,10 +33,9 @@ const SearchUserInput = React.createClass({
                     onChange={this.handleChange}
                     placeholder="输入姓名或手机号 "
                     onPressEnter={this.onClick}
-
                 >
                 </AutoComplete>
-                <Button onClick={this.onClick} type="primary" style={{marginLeft:'20px'}}>搜索</Button>
+                <Button onClick={this.onClick} type="primary"  style={{marginLeft:'20px'}}>搜索</Button>
             </div>
         )
     }

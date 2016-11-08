@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router';
 import { Table } from 'antd';
 
 const InfoAssetAllotList = React.createClass({
@@ -28,7 +27,8 @@ const InfoAssetAllotList = React.createClass({
         return columns;
     },
     render(){
-        const data = this.props.dataSource;
+        const data = this.props.data;
+        console.log('data3', data)
         const columns = this.getColumns();
         return(
           <div>

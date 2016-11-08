@@ -50,25 +50,26 @@ var UserListContainer = React.createClass({
     },
 	render(){
 		const data = this.props.dataState.data;
-        console.log('data2', data);
         let userList;
-        if (data.list.length > 0){
+        console.log(data.list.length);
+        if (data.list.length < 5 && data.list.length > 0 ){
             userList =  <UserListTable deleteUserAuthor={this.deleteUserAuthor} data={data.list} total={data.total} currentPage={data.this_page} onPageChange={this.onPageChange}/>;
+        } else if (data.list.length <= 0 ){
+            userList = ' ';
         }else {
-            userList = '';
+            userList = <h3 className="q-user-txt">同名人数过多，请输入详细信息搜索</h3>;
         };
 		return this.props.children || (
 			<div>
 				<div className="userListHeader border-b">
-					<SearchUserInput search={this.submitSearch} onChange={this.onChange} data={data.list}/>
+					<SearchUserInput search={this.submitSearch} onChange={this.onChange} />
 					<div className="number-info">
 						<span>{data.total}</span>
 						<p>总数量</p>
 					</div>
 				</div>
-                {userList}
-                <div>
-                    {this.props.children}
+                <div className="column-txt">
+                   {userList}
                 </div>
 			</div>
 		)

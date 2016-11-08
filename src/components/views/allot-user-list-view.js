@@ -69,7 +69,7 @@ const UserListTable = React.createClass({
 		  	return (
                 <div>
                     <Link style={{color : 'white'}} to={`/author_user_list/set_authorization/${record.user_sn}`}>
-                        <Button className="btn-warning" type="primary" size="small" icon="setting">权限设置</Button>
+                        <Button  type="primary" size="small" icon="setting">分配权限</Button>
                     </Link>
                 </div>
 		  	)

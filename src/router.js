@@ -73,7 +73,7 @@ export default (
             
             <Route breadcrumbName="吉商邮币卡" path={routeBase + 'ji_shang_post_card'} component={JiShangPostCardContainer} />
 
-            <Route path={routeBase + 'info_asset_allot_list'} component={InfoAssetAllotListContainer} />
+
             <Route path={routeBase + 'set_authorization'} component={setAuthorizationView} />
 
             <Route breadcrumbName="信息资产" path={routeBase + 'info_asset_allot_list'} component={InfoAssetAllotListContainer} />

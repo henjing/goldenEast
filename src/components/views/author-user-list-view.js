@@ -68,16 +68,12 @@ const UserListTable = React.createClass({
 		  render : function(text, record, index) {
 		  	return (
                 <div>
-                    <Link style={{color : 'white'}} to={`/author_user_list/author_user_detail/${record.user_sn}`}>
-                        <Button type="primary" size="small" icon="search">个人详情</Button>
-                    </Link>
-                    &nbsp;&nbsp;
                     <Link style={{color : 'white'}} to={`/author_user_list/set_authorization/${record.user_sn}`}>
-                        <Button className="btn-warning" type="primary" size="small" icon="setting">权限设置</Button>
+                        <Button  type="primary" size="small" icon="setting">分配权限</Button>
                     </Link>
                     &nbsp;&nbsp;
                     <Popconfirm title="确认要删除此用户的所有权限?" onConfirm={this.props.deleteUserAuthor(record.user_sn)}>
-                        <Button className="btn-danger" type="primary" size="small" icon="delete">删除所有权限</Button>
+                        <Button className="btn-orange" type="primary" size="small">取消权限</Button>
                     </Popconfirm>
 
                 </div>

@@ -1,55 +1,58 @@
 import React from 'react';
-import ReactDom from 'react-dom';
-import { Button,Table, AutoComplete ,DatePicker } from 'antd';
+import { Table, AutoComplete ,DatePicker } from 'antd';
 import store from '../../store';
 import { connect } from 'react-redux';
 import SearchUserInput from '../views/SearchUserInput';
 import './user-list-container.css';
 import InfoAssetAllotList from '../views/InfoAssetAllotList';
-import { updatePeopleListWhoHaveInfoAssetData } from '../../actions/app-interaction-actions';
+import { updatePeopleListWhoHaveInfoAssetDataSearch } from '../../actions/app-interaction-actions';
 import { getPeopleListWhoHaveInfoAssetData } from '../../api/app-interaction-api';
 
 const InfoAssetAllotListContainer = React.createClass({
-    componentWillUnmount(){
-        //清理搜索条件
-        store.dispatch(updatePeopleListWhoHaveInfoAssetData({
-            'search[find]' : '',
+  	onChange(value){
+		store.dispatch(updatePeopleListWhoHaveInfoAssetDataSearch({
+    		'search[find]' : value,
+            'page' : 1
+        }));
+	},
+/*	onDateChange(dates, dateStrings){
+		store.dispatch(updateAuthorUserListDataSearch({
+            'search[d_begin]' : dateStrings[0],
+            'search[d_end]' : dateStrings[1],
+            'page' : 1
+        }));
+        this.submitSearch();
+	},*/
+	submitSearch() {
+        getPeopleListWhoHaveInfoAssetData(this.props.searchState);
+    },
+    onPageChange(page){
+    	store.dispatch(updatePeopleListWhoHaveInfoAssetDataSearch({
+    		page:page
+    	}));
+
+    	this.submitSearch();
+    },
+	componentDidMount(){
+		getPeopleListWhoHaveInfoAssetData();
+	},
+	componentWillUnmount(){
+    	//清理搜索条件
+    	store.dispatch(updatePeopleListWhoHaveInfoAssetDataSearch({
+    		'search[find]' : '',
             'search[d_begin]' : '',
             'search[d_end]' : '',
             'page' : 1
         }));
     },
-
-    onChange(value) {
-        store.dispatch(updatePeopleListWhoHaveInfoAssetData({ 'search[find]' : value,'page' : 1 }));
-    },
-
-    submitSearch() {
-        getPeopleListWhoHaveInfoAssetData(this.props.searchState);
-    },
-
-    onDateChange(dates, dateStrings) {
-        store.dispatch(updatePeopleListWhoHaveInfoAssetData({
-            'search[d_begin]' : dateStrings[0],
-            'search[d_end]' : dateStrings[1],
-            'page' : 1
-        }));
-        // 启动搜索
-        this.submitSearch();
-    },
-
-    onPageChange(page) {
-        store.dispatch(updatePeopleListWhoHaveInfoAssetData({
-            page : page
-        }));
-        // 启动搜索
-        this.submitSearch();
-    },
     render(){
         let userList;
         const data = this.props.dataState;
-        if (data.length>=1){
-            userList =  <UserList dataState={data} />;
+        if (true){
+            try{
+                userList =  <UserList  data={data.list} />;
+            }catch(err){
+            }
         }else {
             userList = '';
         }
@@ -58,6 +61,7 @@ const InfoAssetAllotListContainer = React.createClass({
                 <div className="userListHeader border-b">
                     <SearchUserInput
                         search={this.submitSearch}
+                        onChange={this.onChange}
                     />
                 </div>
                 <div>{userList}</div>
@@ -72,12 +76,12 @@ const UserList = React.createClass({
         const columnsUser =  [{
             title: '用户姓名',
             className: 'column-txt',
-            dataIndex: 'name',
+            dataIndex: 'user_name',
             render(text, row, index) {
-                const firstName = 'vvv';
+                const firstName = text.slice(0,1);
                 return (
                     <div className="box-align">
-			      	<span className="user-avatar" style={{backgroundImage:'url()'}}>
+			      	<span className="user-avatar" style={{backgroundImage:'url(echat_avatar)'}}>
 								{firstName}
 			      	</span>
                         <div className="user-avatar-bar-text">
@@ -94,11 +98,11 @@ const UserList = React.createClass({
         }, {
             title: '手机号码',
             className: 'column-txt',
-            dataIndex: 'phone',
+            dataIndex: 'cellphone',
         },{
             title: '邀请人',
             className: 'column-txt',
-            dataIndex: 'yqr',
+            dataIndex: 'wechat_nickname',
         }, {
             title: '所属居间商',
             className: 'column-txt',
@@ -106,25 +110,26 @@ const UserList = React.createClass({
         },{
             title: '注册时间',
             className: 'column-txt',
-            dataIndex: 'time',
+            dataIndex: 'register_date',
         }];
 
         return columnsUser;
     },
     render(){
-        const data = this.props.dataState;
+        const data = this.props.data;
+        console.log('渲染2', data)
         const columnsUser = this.getColumnsUser();
         return(
             <div>
                 <Table
                     columns={columnsUser}
-                    title={() => data[0].name+'基本详情'}
+                    title={() => '基本详情'}
                     bordered
                     dataSource={data}
                     pagination={false}
                     className={'column-txt margin-b-20'}
                 />
-                <InfoAssetAllotList  dataSource={data}  onPageChange={this.onPageChange} />
+                <InfoAssetAllotList  data={data} />
             </div>
         )
     }
@@ -132,7 +137,7 @@ const UserList = React.createClass({
 
 const mapStateToProps = function (store) {
     return {
-        dataState : store.infoAssetAllotListState.dataState,
+        dataState  : store.infoAssetAllotListState.data,
         searchState : store.infoAssetAllotListState.searchState
     }
 };

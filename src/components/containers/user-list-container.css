@@ -73,6 +73,14 @@
 	-webkit-box-align: center;
 }
 /*信息资产分配 */
+.btn-orange{
+    background-color: #ff652d;
+    border-color: #ff652d;
+}
+.btn-orange:hover{
+    background-color: #fe7949;
+    border-color: #fe7949;
+}
 .column-txt {text-align: center !important;}
 .q-user-txt{
 	padding-bottom: 15px;

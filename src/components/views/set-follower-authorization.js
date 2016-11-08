@@ -45,10 +45,12 @@ const setFollowerAuthorization = React.createClass({
     },
 
     onChange(checkedList) {
+         let userSn = this.props.params.userSn;
         this.setState({
             checkedList,
             indeterminate : !!checkedList.length && (checkedList.length < this.state.titleArray.length),
-            checkAll : checkedList.length === this.state.titleArray.length
+            checkAll : checkedList.length === this.state.titleArray.length,
+            sn: userSn
         });
         // console.log('.....', checkedList);
     },
@@ -57,7 +59,7 @@ const setFollowerAuthorization = React.createClass({
         this.setState({
             checkedList : e.target.checked ? this.state.titleArray : [],
             indeterminate : false,
-            checkAll : e.target.checked
+            checkAll : e.target.checked,
         })
     },
 
@@ -107,7 +109,7 @@ const setFollowerAuthorization = React.createClass({
                                            indeterminate={this.state.indeterminate}>
                                            交易列表：
                                        </Checkbox>
-                                       <CheckboxGroup options={titleArray} value={this.state.checkedList} onChange={this.onChange} />
+                                       <CheckboxGroup options={titleArray}  value={this.state.checkedList} onChange={this.onChange} />
                                    </Col>
                                    <Col span={24} className='q-user-txt border-b'>
 

@@ -35,11 +35,8 @@ export const getAgentOverviewDataUrl = '/api/index.php/overview/transaction';
 //获取旗下代理商用户列表
 export const getUserListDataUrl =  '/api/index.php/Customs/index';
 
-// 获取"获得信息资产的用户"的列表
+// 获取"获得信息资产的用户"的列表 (小金列表)
 export const getPeopleWhoHaveInfoAssetUrl = ' /api/index.php/Asset/asset_detail';
-
-// 获取"已获得信息资产的用户"的列表
-export const getPeopleWhoHaveInfoAssetAllotUrl = '/api/index.php/Asset/asset_in';
 
 // 获得当前登录的用户的权限列表
 export const getUserAuthorizationListUrl = '/api/index.php/Authority/user_authorization_list';
@@ -49,4 +46,25 @@ export const getAllAuthorizationListUrl = '/api/index.php/Authority/authorizatio
 
 // 设置某个用户的权限
 export const setFollowerAuthorizationUrl = '/api/index.php/Authority/set_authorization';
+
+// 获取未授权用户列表
+export const getNoAuthorizedUserListUrl = '/api/index.php/Authority/unauthorize_user_list';
+
+// 获取已授权用户列表
+export const getAuthorizedUserListUrl = '/api/index.php/Authority/authorization_user_list';
+
+//获取用户详情
+export const getUserDetailUrl = '/api/index.php/Customs/UserInfo';
+
+// 居间商旗下某个用户的详细信息
+export const getSomeUserDetailUrl = '/api/index.php/Customs/UserInfo';
+
+// 居间商旗下某个用户所具有的权限列表
+export const postSomeUserAuthorDetailUrl = '/api/index.php/Authority/user_authorization_list';
+
+// 设置"居间商旗下某个用户"所具有的权限列表
+export const setSomeUserAuthorDetailUrl = '/api/index.php/Authority/set_authorization';
+
+// 移除"居间商旗下某个用户"的所有权限
+export const deleteSomeUserAuthorUrl = '/api/index.php/Authority/del_authorization';
 

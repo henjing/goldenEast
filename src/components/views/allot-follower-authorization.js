@@ -93,27 +93,29 @@ const setFollowerAuthorization = React.createClass({
         const { idArray, titleArray } = this.state;
         // console.log(idArray, titleArray);
         return (
-            <div>
-                <div>
-                 <div className="box-align  q-user-txt border-t">权限匹配细则</div>
-                <Row className='border-tb box-align'>
-                           <Col span={2} className='box-align'>居间商</Col>
-                           <Col span={22}>
-                               <Row className='border-l' >
-                                   <Col span={24} className='user-avatar-bar q-user-txt border-b' style={{paddingLeft : '15px'}}>
-                                       <Checkbox
-                                           onChange={this.onCheckAllChange}
-                                           checked={this.state.checkAll}
-                                           indeterminate={this.state.indeterminate}>
-                                           交易列表：
-                                       </Checkbox>
+            <div style={{paddingTop : '20px'}}>
+                <div style={{borderBottom : '1px solid #e9e9e9', paddingLeft : '20px'}}>
+                    <Checkbox
+                        onChange={this.onCheckAllChange}
+                        checked={this.state.checkAll}
+                        indeterminate={this.state.indeterminate}>
+                        全选
+                    </Checkbox>
+                </div>
+                <br/>
+                <div style={{paddingLeft : '20px'}}>
+                       <Row>
+                           <Col span={6}>居间商</Col>
+                           <Col span={18}>
+                               <Row>
+                                   <Col span={24}>
                                        <CheckboxGroup options={titleArray} value={this.state.checkedList} onChange={this.onChange} />
                                    </Col>
-                                   <Col span={24} className='q-user-txt border-b'>
-
+                                   <Col span={24}>
+                                       <CheckboxGroup options={titleArray} value={this.state.checkedList} onChange={this.onChange} />
                                    </Col>
-                                   <Col span={24} className='q-user-txt'>
-
+                                   <Col span={24}>
+                                       <CheckboxGroup options={titleArray} value={this.state.checkedList} onChange={this.onChange} />
                                    </Col>
                                </Row>
                            </Col>

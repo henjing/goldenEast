@@ -1,0 +1,114 @@
+.userInfoBox {
+    display: -webkit-box;
+    padding: 20px 0;
+}
+
+.userInfo {
+    margin-left: 20px;
+    width: 280px;
+    padding-bottom: 100px;
+    border: 1px solid #ddd;
+    :global(.header) {
+        display: -webkit-box;
+        -webkit-box-align: center;
+        -webkit-box-pack: center;
+        -webkit-box-orient: vertical;
+        height: 200px;
+        border-bottom: 1px solid #ddd;
+        :global(.avatar) {
+            margin: 0 20px 0 20px;
+            width: 60px;
+            height: 60px;
+            background: #f5f6f7;
+            border-radius: 50%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        :global(.name) {
+            padding-top: 10px;
+            color: #000;
+            font-size: 16px;  
+        }
+         :global(.wx-name) {
+            padding-top: 5px;
+            font-size: 12px;
+        }
+        :global(.level) {
+            margin-top: 10px;
+        }
+    }
+    ul li{
+        display: -webkit-box;
+        -webkit-box-align: center;
+        padding: 0 10px;
+        height: 50px;
+        color: #333;
+        font-size: 13px;
+        border-bottom: 1px solid #ddd;
+    }
+    
+}
+.userAccount {
+    padding: 0 10px;
+    -webkit-box-flex: 1;
+}
+.userAccountList {
+    padding: 0 10px 20px 10px;
+    :global(.user-account-item) {
+        border: 1px solid #ddd;
+        border-radius: 3px;
+        :global(.header),
+        :global(.footer) {
+            height: 50px;
+            font-size: 14px;
+            display: -webkit-box;
+            -webkit-box-align: center;
+            -webkit-box-pack: center;
+            border-bottom: 1px solid #ddd;
+            color: #333;
+        }
+        :global(.footer){
+            border-bottom: none;
+            color: #777;
+            :global(.text) {
+                margin-left: 10px;
+            }
+            :global(.success) {
+                font-size: 24px;
+                color: #34DD3F;
+            }
+            :global(.fail) {
+                font-size: 24px;
+                color: #FF4000;
+            }
+            :global(.ing) {
+                font-size: 24px;
+                color: #F1A615;
+            }
+        }
+        :global(.content) {
+            height: 40px;
+            display: -webkit-box;
+            border-bottom: 1px solid #ddd;
+            labal {
+               display: block;
+               width: 100px;
+               height: 100%;
+               padding-left: 15px;
+               line-height: 40px;
+               border-right: 1px solid #ddd;
+            }
+            p {
+                display: -webkit-box;
+                -webkit-box-align: center;
+                height: 100%;
+                padding-left: 15px;
+                line-height: 14px;
+                -webkit-box-flex: 1;
+                word-break: break-all;
+            }
+        }
+    }
+}
+

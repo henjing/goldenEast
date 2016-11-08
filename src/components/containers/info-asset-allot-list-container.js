@@ -4,7 +4,7 @@ import { Button,Table, AutoComplete ,DatePicker } from 'antd';
 import store from '../../store';
 import { connect } from 'react-redux';
 import SearchUserInput from '../views/SearchUserInput';
-import './list-container.css';
+import './user-list-container.css';
 import InfoAssetAllotList from '../views/InfoAssetAllotList';
 import { updatePeopleListWhoHaveInfoAssetData } from '../../actions/app-interaction-actions';
 import { getPeopleListWhoHaveInfoAssetData } from '../../api/app-interaction-api';

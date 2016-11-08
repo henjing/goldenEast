@@ -166,19 +166,32 @@ export function updatePeopleListWhoHaveInfoAssetData(info) {
     }
 }
 
-// 更新"已获得信息资产分配的用户的列表"
-export function updatePeopleListWhoHaveInfoAssetAllotData(info) {
-
-    return {
-        type : types.UPDATE_PEOPLE_LIST_WHO_HAVE_INFO_ASSET_ALLOT_DATA,
-        info
-    }
+//更新代理商旗下"已获授权小金"列表数据
+export function updateAuthorUserListData(info){
+	return {
+		type: types.UPDATE_AUTHOR_USER_LIST_DATA,
+		info
+	}
 }
-// 已获得信息资产分配的指定用户的信息
-export function updateParticularsBtnData(info) {
+//更新代理商旗下"未获授权小金"列表数据
+export function updateNoAuthorUserListData(info){
+	return {
+		type: types.UPDATE_NO_AUTHOR_USER_LIST_DATA,
+		info
+	}
+}
 
-    return {
-        type : types.UPDATE_PARTICULARS_BTN_DATA,
-        info
-    }
+//更新代理商旗下"未获授权小金"搜索数据
+export function updateNoAuthorUserListDataSearch(info){
+	return {
+		type: types.UPDATE_NO_AUTHOR_USER_LIST_SEARCH,
+		info
+	}
+}
+//更新代理商旗下"已获授权小金"搜索数据
+export function updateAuthorUserListDataSearch(info){
+	return {
+		type: types.UPDATE_AUTHOR_USER_LIST_SEARCH,
+		info
+	}
 }

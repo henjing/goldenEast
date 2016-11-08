@@ -19,30 +19,36 @@ const SidebarLayoutContainer = React.createClass({
     matchSubMenu(pathName) {
         const subMenuArray =  {
             'sub1' : ['/home', '/user_list'],
-            'sub2' : ['/chuan_shang_board_market', '/shen_wen_suo_board_market'],
-            'sub3' : ['/shenwensuo_wp', '/jishang_wp', '/yueguoji_wp'],
-            'sub4' : ['/chuan_shang_post_card', '/ji_shang_post_card'],
-            'sub5' : ['/info_asset_allot_list']
+            'sub2' : [ '/author_user_list', '/allot_user_list'],
+            'sub3' : ['/chuan_shang_board_market', '/shen_wen_suo_board_market'],
+            'sub4' : ['/shenwensuo_wp', '/jishang_wp', '/yueguoji_wp'],
+            'sub5' : ['/chuan_shang_post_card', '/ji_shang_post_card'],
+            'sub6' : ['/info_asset_allot_list']
         };
         let matchSubMenu = '';
+        let defaultSelectedKey = '';
         for (let i in subMenuArray) {
             // console.log('iiiiiii', i);
             subMenuArray[i].forEach(function (ownPathName) {
-                // console.log('ownPathName', ownPathName);
-                if (ownPathName.slice(0, 10) == pathName.slice(0, 10)) {
+                // console.log('ownPathName', ownPathName.slice(0, 6));
+                if (ownPathName.slice(0, 5) == pathName.slice(0, 5)) {
                     matchSubMenu = i;
+                    defaultSelectedKey = ownPathName;
                     // console.log('hey!', i);
                 }
             })
         }
-        return matchSubMenu;
+        console.log('aaaaaaaaa', [matchSubMenu, defaultSelectedKey]);
+        return [matchSubMenu, defaultSelectedKey];
     },
 
     render() {
         const collapse = this.props.collapse;
         const sidebarWrapperName = collapse ? 'sidebarWrapperCollapse' : 'sidebarWrapper';
         const mode = collapse ? 'vertical' : 'inline';
-        const pathName = window.location.pathname;
+        // const pathName = window.location.pathname;
+        const pathName = window.location.hash.slice(1, 6);
+        // console.log('bbbbbbb', pathName);
         const matchSubMenu = this.matchSubMenu(pathName);
         //console.log('matchSubMenu', matchSubMenu);
         return (
@@ -54,7 +60,7 @@ const SidebarLayoutContainer = React.createClass({
                     </div>
 
                     <Menu mode={mode}
-                      defaultSelectedKeys={[pathName]} defaultOpenKeys={[matchSubMenu]}>
+                      defaultSelectedKeys={[matchSubMenu[1]]} defaultOpenKeys={[matchSubMenu[0]]}>
                       <SubMenu key="sub1" title={<span><Icon type="home" /><span className={styles.navText}>居间商</span></span>}>
                       	<Menu.Item key={routeBase + 'home'}>
                             <Link to={routeBase + 'home'}>
@@ -66,14 +72,22 @@ const SidebarLayoutContainer = React.createClass({
                                 用户列表
                             </Link>
                         </Menu.Item>
-                          <Menu.Item key={routeBase + 'set_authorization'}>
-                            <Link to={routeBase + 'set_authorization'}>
-                                设置权限
+                      </SubMenu>
+
+ <SubMenu key="sub2" title={<span><Icon type="share-alt" /><span className={styles.navText}>权限分配列表</span></span>}>
+                        <Menu.Item key={routeBase + 'allot_user_list'}>
+                            <Link to={routeBase + 'allot_user_list'}>
+                                分配用户权限
+                            </Link>
+                        </Menu.Item>
+                        <Menu.Item key={routeBase + 'author_user_list'}>
+                            <Link to={routeBase + 'author_user_list'}>
+                                已授权用户
                             </Link>
                         </Menu.Item>
                       </SubMenu>
 
-                      <SubMenu key="sub2" title={<span><Icon type="bar-chart" /><span className={styles.navText}>大盘交易列表</span></span>}>
+                      <SubMenu key="sub3" title={<span><Icon type="bar-chart" /><span className={styles.navText}>大盘交易列表</span></span>}>
                       	<Menu.Item key={routeBase + 'shen_wen_suo_board_market'}>
                             <Link to={routeBase + 'shen_wen_suo_board_market'}>
                                 深文所大盘
@@ -86,7 +100,7 @@ const SidebarLayoutContainer = React.createClass({
                         </Menu.Item>
                       </SubMenu>
 
-                      <SubMenu key="sub3" title={<span><Icon type="line-chart" /><span className={styles.navText}>微盘交易列表</span></span>}>
+                      <SubMenu key="sub4" title={<span><Icon type="line-chart" /><span className={styles.navText}>微盘交易列表</span></span>}>
                       	<Menu.Item key={routeBase + 'shenwensuo_wp'}>
                             <Link to={routeBase + 'shenwensuo_wp'}>
                                 深文所微盘
@@ -104,7 +118,7 @@ const SidebarLayoutContainer = React.createClass({
                         </Menu.Item>
                       </SubMenu>
 
-                      <SubMenu key="sub4" title={<span><Icon type="dot-chart" /><span className={styles.navText}>邮币卡交易列表</span></span>}>
+                      <SubMenu key="sub5" title={<span><Icon type="dot-chart" /><span className={styles.navText}>邮币卡交易列表</span></span>}>
                       	<Menu.Item key={routeBase + 'chuan_shang_post_card'}>
                             <Link to={routeBase + 'chuan_shang_post_card'}>
                                 川商邮币卡
@@ -117,7 +131,7 @@ const SidebarLayoutContainer = React.createClass({
                         </Menu.Item>
                       </SubMenu>
 
-                      <SubMenu key="sub5" title={<span><Icon type="solution" /><span className={styles.navText}>信息资产分配</span></span>}>
+                      <SubMenu key="sub6" title={<span><Icon type="solution" /><span className={styles.navText}>信息资产分配</span></span>}>
                         <Menu.Item key={routeBase + 'info_asset_allot_list'}>
                             <Link to={routeBase + 'info_asset_allot_list'}>
                                 信息资产分配详情

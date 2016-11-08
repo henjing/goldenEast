@@ -62,16 +62,19 @@ const UnderUserTreeView = React.createClass({
           	key: '0',
           	level: 1,
           	phone: 15878193546,
+          	img: 'http://wx.qlogo.cn/mmopen/Q3auHgzwzM5pziaib7lz8r4a1OV5Ip1owCQoRZdea57fWXuLAtM646pgrpp16tXm5XkR0blFc7esy1iaReicq6yEvtlw9HQ56tUz1icvTRMQ2pRU/0'
          },{ 
           	name: '诸神', 
           	key: '1',
           	level: 2,
           	phone: 15878193546,
+          	img: 'http://wx.qlogo.cn/mmopen/Q3auHgzwzM5pziaib7lz8r4a1OV5Ip1owCQoRZdea57fWXuLAtM646pgrpp16tXm5XkR0blFc7esy1iaReicq6yEvtlw9HQ56tUz1icvTRMQ2pRU/0'
          },{ 
           	name: '绝地反击', 
           	key: '2',
           	level: 3,
           	phone: 135487813546,
+          	img: 'http://wx.qlogo.cn/mmopen/Q3auHgzwzM5pziaib7lz8r4a1OV5Ip1owCQoRZdea57fWXuLAtM646pgrpp16tXm5XkR0blFc7esy1iaReicq6yEvtlw9HQ56tUz1icvTRMQ2pRU/0'
          },
           
         ],
@@ -96,9 +99,10 @@ const UnderUserTreeView = React.createClass({
     	const titleNode = function(data){
     		return (
     		<div className={styles.titleNode}>
-    			<span>{data.name}</span>
-    			<span>{data.level}</span>
-    			<span>{data.phone}</span>
+    			<span className="avatar" style={{backgroundImage: 'url('+ data.img +')'}}></span>
+    			<span className="text">{data.name}</span>
+    			<span className="text">{data.level}</span>
+    			<span className="text">{data.phone}</span>
     			<Button size="small" type="primary" style={{marginLeft: '10px'}}>个人详情</Button>
     		</div>
     	)
@@ -110,7 +114,7 @@ const UnderUserTreeView = React.createClass({
     });
     const treeNodes = loop(this.state.treeData);
     return (
-      <Tree onSelect={this.onSelect} loadData={this.onLoadData} className={styles.aaa}>
+      <Tree onSelect={this.onSelect} loadData={this.onLoadData} className={styles.underTree}>
         {treeNodes}
       </Tree>
     );

@@ -125,10 +125,10 @@ const UnderUserTreeContainer = React.createClass({
 				</div>
 				<Table columns={columns} dataSource={data} bordered title={tableTitle} pagination={false}/>
 				<div className={styles.underTitle}>名下用户</div>
-				<div className={styles.noDataDefault}>
+				{/*<div className={styles.noDataDefault}>
 					<Icon type="frown-o" style={{fontSize: '16px',marginRight: '5px'}} />
 					<span>暂无名下用户!</span>
-				</div>
+				</div>*/}
 				<UnderUserTreeView data={dataTree}/>
 			</div>
 		)

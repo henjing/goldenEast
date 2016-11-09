@@ -36,10 +36,7 @@ export const getAgentOverviewDataUrl = '/api/index.php/overview/transaction';
 export const getUserListDataUrl =  '/api/index.php/Customs/index';
 
 // 获取"获得信息资产的用户"的列表 (小金列表)
-export const getPeopleWhoHaveInfoAssetUrl = ' /api/index.php/Asset/asset_detail';
-
-// 获取"已获得信息资产的用户"的列表 (小金获得信息资产的来源)
-export const getPeopleWhoHaveInfoAssetAllotUrl = '/api/index.php/Asset/asset_in';
+export const getPeopleWhoHaveInfoAssetUrl = ' /api/index.php/Asset/asset_in';
 
 // 获得当前登录的用户的权限列表
 export const getUserAuthorizationListUrl = '/api/index.php/Authority/user_authorization_list';
@@ -49,6 +46,9 @@ export const getAllAuthorizationListUrl = '/api/index.php/Authority/authorizatio
 
 // 设置某个用户的权限
 export const setFollowerAuthorizationUrl = '/api/index.php/Authority/set_authorization';
+
+// 获取未授权用户列表
+export const getNoAuthorizedUserListUrl = '/api/index.php/Authority/unauthorize_user_list';
 
 // 获取已授权用户列表
 export const getAuthorizedUserListUrl = '/api/index.php/Authority/authorization_user_list';
@@ -70,3 +70,7 @@ export const deleteSomeUserAuthorUrl = '/api/index.php/Authority/del_authorizati
 
 //当月注册量和激活量
 export const registerActiveUrl = '/api/index.php/register_active';
+
+// 获取某用户的所有一度人脉用户
+export const getUserFirstClassConnectedUrl = '/api/index.php/Customs/get_1children_list';
+

@@ -1,9 +1,11 @@
-import { getUserInfoUrl, modifyPasswordUrl, getChuanShangBoardMarketListUrl, getChuanShangYBKListUrl, getShenWenSuoBoardMarketListUrl, getAgentOverviewDataUrl, getShenWenSuoMicroBoardListUrl, getJiShangYBKListUrl, getYueGuoJiMicroBoardListUrl, getJiShangMicroBoardListUrl, getUserListDataUrl, getPeopleWhoHaveInfoAssetUrl, getUserAuthorizationListUrl, getAllAuthorizationListUrl, setFollowerAuthorizationUrl, getPeopleWhoHaveInfoAssetAllotUrl, getAuthorizedUserListUrl, getSomeUserDetailUrl, postSomeUserAuthorDetailUrl, setSomeUserAuthorDetailUrl, getUserDetailUrl, deleteSomeUserAuthorUrl, registerActiveUrl } from '../appConstants/urlConfig';
+
+import { getUserInfoUrl, modifyPasswordUrl, getChuanShangBoardMarketListUrl, getChuanShangYBKListUrl, getShenWenSuoBoardMarketListUrl, getAgentOverviewDataUrl, getShenWenSuoMicroBoardListUrl, getJiShangYBKListUrl, getYueGuoJiMicroBoardListUrl, getJiShangMicroBoardListUrl, getUserListDataUrl, getPeopleWhoHaveInfoAssetUrl, getUserAuthorizationListUrl, getAllAuthorizationListUrl, setFollowerAuthorizationUrl, getPeopleWhoHaveInfoAssetAllotUrl, getAuthorizedUserListUrl, getSomeUserDetailUrl, postSomeUserAuthorDetailUrl, setSomeUserAuthorDetailUrl, getUserDetailUrl, deleteSomeUserAuthorUrl,getNoAuthorizedUserListUrl, getUserFirstClassConnectedUrl, registerActiveUrl } from '../appConstants/urlConfig';
+
 
 import commonAjax, { commonGetAjax, commonAjaxWithBrackets} from '../helpers/commonAjax';
 import store from '../store';
 
-import { updateAdmin, updateChuanShangBoardMarket, updateAgentOverviewData, updateShenWenSuoBoardMarket, updateChuanShangPostCard, updateJiShangPostCard, updateShenWenSuoMicroBoardData, updateJiShangMicroBoardData, updateYueGuoJiMicroBoardData, updateUserListData, updatePeopleListWhoHaveInfoAssetData, updatePeopleListWhoHaveInfoAssetAllotData, updateAuthorUserListData } from '../actions/app-interaction-actions';
+import { updateAdmin, updateChuanShangBoardMarket, updateAgentOverviewData, updateShenWenSuoBoardMarket, updateChuanShangPostCard, updateJiShangPostCard, updateShenWenSuoMicroBoardData, updateJiShangMicroBoardData, updateYueGuoJiMicroBoardData, updateUserListData, updatePeopleListWhoHaveInfoAssetData, updatePeopleListWhoHaveInfoAssetAllotData, updateAuthorUserListData , updateNoAuthorUserListData} from '../actions/app-interaction-actions';
 
 // 获取登录用户的信息
 export function getAdmin(config, sucCallback, failCallback) {
@@ -115,17 +117,6 @@ export function getPeopleListWhoHaveInfoAssetData(config, sucCallback, failCallb
         if (failCallback) failCallback(info);
     });
 }
-// 已获得信息资产分配的用户的列表 (小金获得信息资产的来源)
-export function getPeopleWhoHaveInfoAssetAllotData(config, sucCallback, failCallback) {
-    return commonGetAjax(getPeopleWhoHaveInfoAssetAllotUrl, config, function (info) {
-        store.dispatch(updatePeopleListWhoHaveInfoAssetAllotData(info));
-        if (sucCallback) sucCallback(info);
-    }, function (info) {
-        store.dispatch(updatePeopleListWhoHaveInfoAssetAllotData(info));
-        if (failCallback) failCallback(info);
-    });
-}
-
 //拿到居间商旗下用户列表数据
 export function getUserListData(config, sucCallback, failCallback){
 	return commonGetAjax(getUserListDataUrl, config, function (info) {
@@ -173,6 +164,17 @@ export function setFollowerAuthorization(config, sucCallback, failCallback){
         if (sucCallback) sucCallback(info);
     }, function (info) {
         // store.dispatch(updateUserListData(info));
+        if (failCallback) failCallback(info);
+    });
+}
+
+//拿到居间商旗下未授权用户列表数据
+export function getNoAuthorUserListData(config, sucCallback, failCallback){
+	return commonGetAjax(getNoAuthorizedUserListUrl, config, function (info) {
+        store.dispatch(updateNoAuthorUserListData(info));
+        if (sucCallback) sucCallback(info);
+    }, function (info) {
+        store.dispatch(updateNoAuthorUserListData(info));
         if (failCallback) failCallback(info);
     });
 }
@@ -239,4 +241,13 @@ export function getRegisterActiveData(config, sucCallback, failCallback) {
     }, function (info) {
         if (failCallback) failCallback(info);
     })
+}
+// 获取某用户的所有一度人脉用户
+export function getUserFirstClassConnected(config, sucCallback, failCallback){
+	return commonGetAjax(getUserFirstClassConnectedUrl, config, function (info) {
+//      console.log('09909090', info);
+        if (sucCallback) sucCallback(info);
+    }, function (info) {
+        if (failCallback) failCallback(info);
+    });
 }

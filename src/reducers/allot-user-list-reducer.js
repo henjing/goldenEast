@@ -2,7 +2,7 @@ import * as types from '../actions/action-types';
 import { mergeDeep} from '../helpers/helpers';
 
 const initialState = {
-dataState : {
+    dataState : {
         data : {
             list : [],
             this_page : 1,
@@ -21,14 +21,14 @@ dataState : {
     editState : {}
 };
 
-const infoAssetAllotListReducer = function (state = initialState, action) {
+const userListReducer = function (state = initialState, action) {
     
     switch (action.type) {
         
-        case types.UPDATE_PEOPLE_LIST_WHO_HAVE_INFO_ASSET_DATA :
-            return Object.assign({}, state, {...action.info});
+        case types.UPDATE_NO_AUTHOR_USER_LIST_DATA :
+            return Object.assign({}, state, { dataState : {...action.info }});
 
-          case types.UPDATE_PEOPLE_LIST_WHO_HAVE_INFO_ASSET_SEARCH:
+        case types.UPDATE_NO_AUTHOR_USER_LIST_SEARCH:
             var template = { searchState : state.searchState};
             var merged = mergeDeep(template, { searchState : {...action.info}});
             return Object.assign({}, state, merged);
@@ -37,4 +37,4 @@ const infoAssetAllotListReducer = function (state = initialState, action) {
     return state;
 };
 
-export default infoAssetAllotListReducer;
+export default userListReducer;

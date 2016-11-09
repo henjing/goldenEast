@@ -1,63 +1,45 @@
 import React from 'react';
-import { Link } from 'react-router';
 import { Table } from 'antd';
-import ParticularsBtn from '../views/particulars-btn';
 
 const InfoAssetAllotList = React.createClass({
     getColumns(){
-        const columns = [
-            {
-                title: '姓名',
-                className:'box-align',
-                dataIndex: 'name',
-                render(text, row, index) {
-                    return (
-                        <div className="user-avatar-bar">
-                        <span className="user-avatar" style={{backgroundImage:'url()'}}>
-
-                        </span>
-                            <div className="user-avatar-bar-text">
-                                <p className="name">{text}</p>
-                                <span>微信昵称</span>
-                            </div>
-
-                        </div>
-                    );
-                },
-            }, {
-                title: '级别',
-                className: 'column-txt',
-                dataIndex: 'level',
-            }, {
-                title: '手机号码',
-                className: 'column-txt',
-                dataIndex: 'phone',
-            }, {
-                title: '邀请人',
-                className: 'column-txt',
-                dataIndex: 'inviter',
-            }, {
-                title: '邀请人手机',
-                className: 'column-txt',
-                dataIndex: 'inviter_phone',
-            }, {
-                title: '操作',
-                className: 'column-txt',
-                dataIndex: '',
-                width: 400,
-                render(text, record, index){
-                    return (
-                        <ParticularsBtn data={text} />
-                    )
-                },
-            }];
+        const columns = [{
+            title: '用户姓名',
+            className: 'column-txt',
+            dataIndex: 'name',
+        },  {
+            title: '手机号码',
+            className: 'column-txt',
+            dataIndex: 'phone',
+        }, {
+            title: '获得信息资产',
+            className: 'column-txt',
+            dataIndex: 'info',
+        },{
+            title: '最新时间',
+            className: 'column-txt',
+            dataIndex: 'time',
+        }, {
+            title: '获得详情',
+            className: 'column-txt',
+            dataIndex: 'source',
+        }];
         return columns;
     },
     render(){
-        const data= this.props.dataSource;
+        const data = this.props.data;
+        console.log('data3', data)
         const columns = this.getColumns();
         return(
-            <Table columns={columns} dataSource={data}  bordered />
+          <div>
+              <Table
+                  columns={columns}
+                  title={() => '信息资产分配详情'}
+                  bordered
+                  dataSource={data}
+                  className={'column-txt'}
+              />
+          </div>
         )
     }
 });

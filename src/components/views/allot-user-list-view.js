@@ -53,12 +53,26 @@ const UserListTable = React.createClass({
           key : 'cellphone'
 		}, {
 		  title: '邀请人',
-		  dataIndex: 'inv_user_name',
-          key : 'inv_user_name',
+            render: function(text, record, index){
+             const  inv_user_name = record.inviting.user_name;
+               return (
+                <div>
+                    {inv_user_name}
+                </div>
+		  	)
+           },
+            key:'inviting_people',
 		}, {
 		  title: '邀请人手机',
-		  dataIndex: 'inv_cellphone',
-          key : 'inv_cellphone'
+            render: function(text, record, index){
+             const  inv_cellphone = record.inviting.cellphone;
+               return (
+                <div>
+                    {inv_cellphone}
+                </div>
+		  	)
+            },
+           ket:'user_id',
 		}, {
 		  title: '注册时间',
 		  dataIndex: 'register_date',
@@ -71,11 +85,6 @@ const UserListTable = React.createClass({
                     <Link style={{color : 'white'}} to={`/author_user_list/set_authorization/${record.user_sn}`}>
                         <Button  type="primary" size="small" icon="setting">分配权限</Button>
                     </Link>
-                    &nbsp;&nbsp;
-                    <Popconfirm title="确认要删除此用户的所有权限?" onConfirm={this.props.deleteUserAuthor(record.user_sn)}>
-                        <Button className="btn-orange" type="primary" size="small">取消权限</Button>
-                    </Popconfirm>
-
                 </div>
 		  	)
 		  }.bind(this),
@@ -95,7 +104,7 @@ const UserListTable = React.createClass({
         current : parseInt(this.props.currentPage)
     };
 		return(
-			<Table pagination={pagination} columns={columns} dataSource={this.props.data} bordered />
+		 <Table pagination={pagination} columns={columns} dataSource={this.props.data} bordered />
 		)
 	}
 });

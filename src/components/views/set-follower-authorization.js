@@ -1,5 +1,5 @@
 import React from 'react';
-import { Checkbox, Button, message } from 'antd';
+import { Checkbox, Button, message, Row, Col } from 'antd';
 const CheckboxGroup = Checkbox.Group;
 import { getSomeUserAuthorDetail, setSomeUserAuthorDetail } from '../../api/app-interaction-api';
 import { connect } from 'react-redux';
@@ -45,10 +45,12 @@ const setFollowerAuthorization = React.createClass({
     },
 
     onChange(checkedList) {
+         let userSn = this.props.params.userSn;
         this.setState({
             checkedList,
             indeterminate : !!checkedList.length && (checkedList.length < this.state.titleArray.length),
-            checkAll : checkedList.length === this.state.titleArray.length
+            checkAll : checkedList.length === this.state.titleArray.length,
+            sn: userSn
         });
         // console.log('.....', checkedList);
     },
@@ -57,7 +59,7 @@ const setFollowerAuthorization = React.createClass({
         this.setState({
             checkedList : e.target.checked ? this.state.titleArray : [],
             indeterminate : false,
-            checkAll : e.target.checked
+            checkAll : e.target.checked,
         })
     },
 
@@ -93,18 +95,31 @@ const setFollowerAuthorization = React.createClass({
         const { idArray, titleArray } = this.state;
         // console.log(idArray, titleArray);
         return (
-            <div style={{paddingTop : '20px'}}>
-                <div style={{borderBottom : '1px solid #e9e9e9', paddingLeft : '20px'}}>
-                    <Checkbox
-                        onChange={this.onCheckAllChange}
-                        checked={this.state.checkAll}
-                        indeterminate={this.state.indeterminate}>
-                        全选
-                    </Checkbox>
-                </div>
-                <br/>
-                <div style={{paddingLeft : '20px'}}>
-                    <CheckboxGroup options={titleArray} value={this.state.checkedList} onChange={this.onChange} />
+            <div>
+                <div>
+                 <div className="box-align  q-user-txt border-t">权限匹配细则</div>
+                <Row className='border-tb box-align'>
+                           <Col span={2} className='box-align'>居间商</Col>
+                           <Col span={22}>
+                               <Row className='border-l' >
+                                   <Col span={24} className='user-avatar-bar q-padding-tb-15 border-b' style={{paddingLeft : '15px'}}>
+                                       <Checkbox
+                                           onChange={this.onCheckAllChange}
+                                           checked={this.state.checkAll}
+                                           indeterminate={this.state.indeterminate}>
+                                           交易列表：
+                                       </Checkbox>
+                                       <CheckboxGroup options={titleArray}  value={this.state.checkedList} onChange={this.onChange} />
+                                   </Col>
+                                   <Col span={24} className='q-padding-tb-15border-b'>
+
+                                   </Col>
+                                   <Col span={24} className='q-padding-tb-15'>
+
+                                   </Col>
+                               </Row>
+                           </Col>
+                    </Row>
                 </div>
                 <div style={{marginTop : '20px', textAlign : 'center'}}>
                     <Button onClick={this.handleSubmit} type="primary">确认授权</Button>

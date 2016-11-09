@@ -51,7 +51,6 @@ var UserListContainer = React.createClass({
 	render(){
 		const data = this.props.dataState.data;
         let userList;
-        console.log(data.list.length);
         if (data.list.length < 5 && data.list.length > 0 ){
             userList =  <UserListTable deleteUserAuthor={this.deleteUserAuthor} data={data.list} total={data.total} currentPage={data.this_page} onPageChange={this.onPageChange}/>;
         } else if (data.list.length <= 0 ){

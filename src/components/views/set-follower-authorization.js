@@ -102,7 +102,7 @@ const setFollowerAuthorization = React.createClass({
                            <Col span={2} className='box-align'>居间商</Col>
                            <Col span={22}>
                                <Row className='border-l' >
-                                   <Col span={24} className='user-avatar-bar q-user-txt border-b' style={{paddingLeft : '15px'}}>
+                                   <Col span={24} className='user-avatar-bar q-padding-tb-15 border-b' style={{paddingLeft : '15px'}}>
                                        <Checkbox
                                            onChange={this.onCheckAllChange}
                                            checked={this.state.checkAll}
@@ -111,10 +111,10 @@ const setFollowerAuthorization = React.createClass({
                                        </Checkbox>
                                        <CheckboxGroup options={titleArray}  value={this.state.checkedList} onChange={this.onChange} />
                                    </Col>
-                                   <Col span={24} className='q-user-txt border-b'>
+                                   <Col span={24} className='q-padding-tb-15border-b'>
 
                                    </Col>
-                                   <Col span={24} className='q-user-txt'>
+                                   <Col span={24} className='q-padding-tb-15'>
 
                                    </Col>
                                </Row>

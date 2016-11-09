@@ -48,14 +48,14 @@ const InfoAssetAllotListContainer = React.createClass({
     render(){
         let userList;
         const data = this.props.dataState;
-        if (true){
-            try{
-                userList =  <UserList  data={data.list} />;
-            }catch(err){
+         try{
+             if (data.list.length = 1){
+                 userList =  <UserList  data={data.list} />;
+             }else {
+                 userList = <h3 className="q-user-txt column-txt">同名人数过多，请输入手机号码搜索</h3>;
             }
-        }else {
-            userList = '';
-        }
+            }catch(err){
+            };
         return (
             <div>
                 <div className="userListHeader border-b">
@@ -117,7 +117,7 @@ const UserList = React.createClass({
     },
     render(){
         const data = this.props.data;
-        console.log('渲染2', data)
+     console.log('data2', data[2])
         const columnsUser = this.getColumnsUser();
         return(
             <div>

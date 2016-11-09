@@ -69,7 +69,7 @@ export const setSomeUserAuthorDetailUrl = '/api/index.php/Authority/set_authoriz
 export const deleteSomeUserAuthorUrl = '/api/index.php/Authority/del_authorization';
 
 //当月注册量和激活量
-export const registerActiveUrl = '/api/index.php/register_active';
+export const registerActiveUrl = '/api/index.php/Overview/subordinate_jujianshang';
 
 // 获取某用户的所有一度人脉用户
 export const getUserFirstClassConnectedUrl = '/api/index.php/Customs/get_1children_list';

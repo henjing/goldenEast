@@ -53,12 +53,26 @@ const UserListTable = React.createClass({
           key : 'cellphone'
 		}, {
 		  title: '邀请人',
-		  dataIndex: 'inv_user_name',
-          key : 'inv_user_name',
+            render: function(text, record, index){
+             const  inv_user_name = record.inviting.user_name;
+               return (
+                <div>
+                    {inv_user_name}
+                </div>
+		  	)
+           },
+            key:'inviting_people',
 		}, {
 		  title: '邀请人手机',
-		  dataIndex: 'inv_cellphone',
-          key : 'inv_cellphone'
+            render: function(text, record, index){
+             const  inv_cellphone = record.inviting.cellphone;
+               return (
+                <div>
+                    {inv_cellphone}
+                </div>
+		  	)
+            },
+           ket:'user_id',
 		}, {
 		  title: '注册时间',
 		  dataIndex: 'register_date',

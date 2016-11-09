@@ -17,6 +17,7 @@ const RegisterActiveContainer = React.createClass({
 				"page": 1,
 				"search[find]": ''
 			},
+			loading: false,
 		}
 	},
 	submitSearch(){
@@ -41,10 +42,14 @@ const RegisterActiveContainer = React.createClass({
 		
 	},
 	getData(){
+		this.setState({
+			loading: true
+		});
 		var _this = this;
 		getRegisterActiveData(this.state.searchData,function(info){
 			_this.setState({
 				data: info.data,
+				loading: false,
 			});
 		},function(info){
 			console.log('info')
@@ -83,7 +88,7 @@ const RegisterActiveContainer = React.createClass({
 					</div>
 				</div>
 				
-				<RegisterActiveTable defaultPageSize={12} total={total} currentPage={this_page} dataSource={list} onPageChange={this.onPageChange} />
+				<RegisterActiveTable defaultPageSize={12} total={total} currentPage={this_page} dataSource={list} onPageChange={this.onPageChange} loading={this.state.loading}/>
 			</div>
 		)
 	},

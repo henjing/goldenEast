@@ -57,7 +57,7 @@ const RegisterActiveTable = React.createClass({
             current : parseInt(this.props.currentPage)
         };
 		return(
-			<Table pagination={pagination} columns={columns} dataSource={dataSource} bordered />
+			<Table loading={this.props.loading} pagination={pagination} columns={columns} dataSource={dataSource} bordered />
 		)
 	}
 });

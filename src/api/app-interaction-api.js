@@ -1,11 +1,8 @@
-
-import { getUserInfoUrl, modifyPasswordUrl, getChuanShangBoardMarketListUrl, getChuanShangYBKListUrl, getShenWenSuoBoardMarketListUrl, getAgentOverviewDataUrl, getShenWenSuoMicroBoardListUrl, getJiShangYBKListUrl, getYueGuoJiMicroBoardListUrl, getJiShangMicroBoardListUrl, getUserListDataUrl, getPeopleWhoHaveInfoAssetUrl, getUserAuthorizationListUrl, getAllAuthorizationListUrl, setFollowerAuthorizationUrl, getPeopleWhoHaveInfoAssetAllotUrl, getAuthorizedUserListUrl, getSomeUserDetailUrl, postSomeUserAuthorDetailUrl, setSomeUserAuthorDetailUrl, getUserDetailUrl, deleteSomeUserAuthorUrl,getNoAuthorizedUserListUrl, getUserFirstClassConnectedUrl, registerActiveUrl } from '../appConstants/urlConfig';
-
-
+import { getUserInfoUrl, modifyPasswordUrl, getChuanShangBoardMarketListUrl, getChuanShangYBKListUrl, getShenWenSuoBoardMarketListUrl, getAgentOverviewDataUrl, getShenWenSuoMicroBoardListUrl, getJiShangYBKListUrl, getYueGuoJiMicroBoardListUrl, getJiShangMicroBoardListUrl, getUserListDataUrl, getPeopleWhoHaveInfoAssetUrl, getUserAuthorizationListUrl, getAllAuthorizationListUrl, setFollowerAuthorizationUrl, getPeopleWhoHaveInfoAssetAllotUrl, getAuthorizedUserListUrl, getSomeUserDetailUrl, postSomeUserAuthorDetailUrl, setSomeUserAuthorDetailUrl, getUserDetailUrl, deleteSomeUserAuthorUrl,getNoAuthorizedUserListUrl, getUserFirstClassConnectedUrl, registerActiveUrl,  getGainPeopleWhoHaveInfoAssetUrl} from '../appConstants/urlConfig';
 import commonAjax, { commonGetAjax, commonAjaxWithBrackets} from '../helpers/commonAjax';
 import store from '../store';
 
-import { updateAdmin, updateChuanShangBoardMarket, updateAgentOverviewData, updateShenWenSuoBoardMarket, updateChuanShangPostCard, updateJiShangPostCard, updateShenWenSuoMicroBoardData, updateJiShangMicroBoardData, updateYueGuoJiMicroBoardData, updateUserListData, updatePeopleListWhoHaveInfoAssetData, updatePeopleListWhoHaveInfoAssetAllotData, updateAuthorUserListData , updateNoAuthorUserListData} from '../actions/app-interaction-actions';
+import { updateAdmin, updateChuanShangBoardMarket, updateAgentOverviewData, updateShenWenSuoBoardMarket, updateChuanShangPostCard, updateJiShangPostCard, updateShenWenSuoMicroBoardData, updateJiShangMicroBoardData, updateYueGuoJiMicroBoardData, updateUserListData, updatePeopleListWhoHaveInfoAssetData, updatePeopleListWhoHaveInfoAssetAllotData, updateAuthorUserListData , updateNoAuthorUserListData, updateGainPeopleListWhoHaveInfoAssetData} from '../actions/app-interaction-actions';
 
 // 获取登录用户的信息
 export function getAdmin(config, sucCallback, failCallback) {
@@ -107,7 +104,7 @@ export function getYueGuoJiMicroBoardData(config, sucCallback, failCallback) {
         if (failCallback) failCallback(info);
     });
 }
-// 获取获得信息资产的用户的列表 (小金列表)
+// 获取信息资产分配的列表 (小金列表)
 export function getPeopleListWhoHaveInfoAssetData(config, sucCallback, failCallback) {
     return commonGetAjax(getPeopleWhoHaveInfoAssetUrl, config, function (info) {
         store.dispatch(updatePeopleListWhoHaveInfoAssetData(info));
@@ -117,6 +114,17 @@ export function getPeopleListWhoHaveInfoAssetData(config, sucCallback, failCallb
         if (failCallback) failCallback(info);
     });
 }
+// 已获取信息资产的用户的列表 (小金列表)
+export function getGainPeopleListWhoHaveInfoAssetData(config, sucCallback, failCallback) {
+    return commonGetAjax(getGainPeopleWhoHaveInfoAssetUrl, config, function (info) {
+        store.dispatch(updateGainPeopleListWhoHaveInfoAssetData(info));
+        if (sucCallback) sucCallback(info);
+    }, function (info) {
+        store.dispatch(updateGainPeopleListWhoHaveInfoAssetData(info));
+        if (failCallback) failCallback(info);
+    });
+}
+
 //拿到居间商旗下用户列表数据
 export function getUserListData(config, sucCallback, failCallback){
 	return commonGetAjax(getUserListDataUrl, config, function (info) {

@@ -56,10 +56,12 @@ const setFollowerAuthorization = React.createClass({
     },
 
     onCheckAllChange(e) {
+        let userSn = this.props.params.userSn;
         this.setState({
             checkedList : e.target.checked ? this.state.titleArray : [],
             indeterminate : false,
             checkAll : e.target.checked,
+           sn: userSn
         })
     },
 

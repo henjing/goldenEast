@@ -17,6 +17,7 @@ import authorUserListReducer from './author-user-list-reducer';
 import allotUserListReducer from './allot-user-list-reducer';
 
 import infoAssetAllotListReducer from './info-asset-allot-list-reducer';
+import gainInfoAssetAllotListReducer from './gain-info-asset-allot-list-reducer';
 
 
 const reducers = combineReducers({
@@ -32,6 +33,7 @@ const reducers = combineReducers({
     yueGuoJiMicroBoardState : yueGuoJiMicroBoardReducer,
     userListState : userListReducer,
     infoAssetAllotListState : infoAssetAllotListReducer,
+    gainInfoAssetAllotListState : gainInfoAssetAllotListReducer,
     authorUserListState : authorUserListReducer,
     allotUserListState : allotUserListReducer,
 });

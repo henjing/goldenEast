@@ -9,8 +9,6 @@ import { updateNoAuthorUserListDataSearch } from '../../actions/app-interaction-
 import { getNoAuthorUserListData, deleteSomeUserAuthor } from '../../api/app-interaction-api';
 import { Link } from 'react-router';
 
-const RangePicker = DatePicker.RangePicker;
-
 var UserListContainer = React.createClass({
 	onChange(value){
 		store.dispatch(updateNoAuthorUserListDataSearch({
@@ -29,16 +27,6 @@ var UserListContainer = React.createClass({
 	submitSearch() {
         getNoAuthorUserListData(this.props.searchState);
     },
-    onPageChange(page){
-    	store.dispatch(updateNoAuthorUserListDataSearch({
-    		page:page
-    	}));
-    	
-    	this.submitSearch();
-    },
-	componentDidMount(){
-	/*	getNoAuthorUserListData();*/
-	},
 	componentWillUnmount(){
     	//清理搜索条件
     	store.dispatch(updateNoAuthorUserListDataSearch({
@@ -49,14 +37,20 @@ var UserListContainer = React.createClass({
         }));
     },
 	render(){
+        function UserData() {
+             if (data.list.length < 5 && data.list.length > 0 ){
+                 userList =  <UserListTable  data={data.list} />;
+             } else {
+                 userList = <h3 className="q-user-txt">同名人数过多，请输入详细信息搜索</h3>;
+             };
+        };
 		const data = this.props.dataState.data;
+        console.log("data",data)
         let userList;
-        if (data.list.length < 5 && data.list.length > 0 ){
-            userList =  <UserListTable deleteUserAuthor={this.deleteUserAuthor} data={data.list} total={data.total} currentPage={data.this_page} onPageChange={this.onPageChange}/>;
-        } else if (data.list.length <= 0 ){
-            userList = ' ';
+        if (data.length == 0){
+            userList = <h3 className="q-user-txt">请输入详细信息搜索</h3>;
         }else {
-            userList = <h3 className="q-user-txt">同名人数过多，请输入详细信息搜索</h3>;
+            UserData()
         };
 		return this.props.children || (
 			<div>

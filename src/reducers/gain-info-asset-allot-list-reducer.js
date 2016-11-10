@@ -22,14 +22,14 @@ const initialState = {
     editState : {}
 };
 
-const infoAssetAllotListReducer = function (state = initialState, action) {
+const gainInfoAssetAllotListReducer = function (state = initialState, action) {
     
     switch (action.type) {
         
-        case types.UPDATE_PEOPLE_LIST_WHO_HAVE_INFO_ASSET_DATA :
+        case types.UPDATE_GAIN_PEOPLE_LIST_WHO_HAVE_INFO_ASSET_DATA :
             return Object.assign({}, state, {...action.info});
 
-          case types.UPDATE_PEOPLE_LIST_WHO_HAVE_INFO_ASSET_SEARCH:
+          case types.UPDATE_GAIN_PEOPLE_LIST_WHO_HAVE_INFO_ASSET_SEARCH:
             var template = { searchState : state.searchState};
             var merged = mergeDeep(template, { searchState : {...action.info}});
             return Object.assign({}, state, merged);
@@ -38,4 +38,4 @@ const infoAssetAllotListReducer = function (state = initialState, action) {
     return state;
 };
 
-export default infoAssetAllotListReducer;
+export default gainInfoAssetAllotListReducer;

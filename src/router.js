@@ -27,6 +27,8 @@ import ChuanShangPostCardContainer from './components/containers/chuan-shang-pos
 import JiShangPostCardContainer from './components/containers/ji-shang-post-card-container';
 // 信息资产列表
 import InfoAssetAllotListContainer from './components/containers/info-asset-allot-list-container';
+// 已获信息资产列表
+import GainInfoAssetAllotListContainer from './components/containers/gain_info-asset-allot-list-container';
 
 // 设置权限页面
 import setAuthorizationView from './components/views/set-follower-authorization';
@@ -76,7 +78,8 @@ export default (
 
             <Route path={routeBase + 'set_authorization'} component={setAuthorizationView} />
 
-            <Route breadcrumbName="信息资产" path={routeBase + 'info_asset_allot_list'} component={InfoAssetAllotListContainer} />
+            <Route breadcrumbName="信息资产列表" path={routeBase + 'info_asset_allot_list'} component={InfoAssetAllotListContainer} />
+            <Route breadcrumbName="已获得信息资产列表" path={routeBase + 'gain_info_asset_allot_list'} component={GainInfoAssetAllotListContainer} />
 
         </Route>
     </Router>

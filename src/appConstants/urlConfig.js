@@ -35,8 +35,11 @@ export const getAgentOverviewDataUrl = '/api/index.php/overview/transaction';
 //获取旗下代理商用户列表
 export const getUserListDataUrl =  '/api/index.php/Customs/index';
 
+// 获取"信息资产分配列表 (小金列表)
+export const getPeopleWhoHaveInfoAssetUrl = ' /api/index.php/Asset/asset_out_detail';
+
 // 获取"获得信息资产的用户"的列表 (小金列表)
-export const getPeopleWhoHaveInfoAssetUrl = ' /api/index.php/Asset/asset_in';
+export const getGainPeopleWhoHaveInfoAssetUrl = ' /api/index.php/Asset/asset_in_detail';
 
 // 获得当前登录的用户的权限列表
 export const getUserAuthorizationListUrl = '/api/index.php/Authority/user_authorization_list';

@@ -157,17 +157,32 @@ export function updateUserListDataSearch(info){
 	}
 }
 
-// 更新"获得信息资产的用户的列表"
+// 更新"信息资产分配的列表"
 export function updatePeopleListWhoHaveInfoAssetData(info) {
     return {
         type : types.UPDATE_PEOPLE_LIST_WHO_HAVE_INFO_ASSET_DATA,
         info
     }
 }
-// 更新"获得信息资产的用户的列表"搜索数据
+// 更新"信息资产分配列表"搜索数据
 export function updatePeopleListWhoHaveInfoAssetDataSearch(info) {
     return {
         type : types.UPDATE_PEOPLE_LIST_WHO_HAVE_INFO_ASSET_SEARCH,
+        info
+    }
+}
+
+// 更新"已获得信息资产的列表"
+export function updateGainPeopleListWhoHaveInfoAssetData(info) {
+    return {
+        type : types.UPDATE_GAIN_PEOPLE_LIST_WHO_HAVE_INFO_ASSET_DATA,
+        info
+    }
+}
+// 更新"已获得信息资产的列表"搜索数据
+export function updateGainPeopleListWhoHaveInfoAssetDataSearch(info) {
+    return {
+        type : types.UPDATE_GAIN_PEOPLE_LIST_WHO_HAVE_INFO_ASSET_SEARCH,
         info
     }
 }

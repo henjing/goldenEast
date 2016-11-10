@@ -23,7 +23,7 @@ const SidebarLayoutContainer = React.createClass({
             'sub3' : ['/chuan_shang_board_market', '/shen_wen_suo_board_market'],
             'sub4' : ['/shenwensuo_wp', '/jishang_wp', '/yueguoji_wp'],
             'sub5' : ['/chuan_shang_post_card', '/ji_shang_post_card'],
-            'sub6' : ['/info_asset_allot_list']
+            'sub6' : ['/info_asset_allot_list', '/gain_info_asset_allot_list']
         };
         let matchSubMenu = '';
         let defaultSelectedKey = '';
@@ -132,13 +132,18 @@ const SidebarLayoutContainer = React.createClass({
                       </SubMenu>
 
                       <SubMenu key="sub6" title={<span><Icon type="solution" /><span className={styles.navText}>信息资产分配</span></span>}>
-                        <Menu.Item key={routeBase + 'info_asset_allot_list'}>
-                            <Link to={routeBase + 'info_asset_allot_list'}>
-                                信息资产分配详情
+                          <Menu.Item key={routeBase + 'info_asset_allot_list'}>
+                              <Link to={routeBase + 'info_asset_allot_list'}>
+                                  信息资产分配详情
+                              </Link>
+                          </Menu.Item>
+                           <Menu.Item key={routeBase + 'gain_info_asset_allot_list'}>
+                            <Link to={routeBase + 'gain_info_asset_allot_list'}>
+                                已获得信息资产详情
                             </Link>
                         </Menu.Item>
-                      </SubMenu>
 
+                      </SubMenu>
                     </Menu>
 
                     <div className={styles.antAsideAction} onClick={this.onCollapseChange}>

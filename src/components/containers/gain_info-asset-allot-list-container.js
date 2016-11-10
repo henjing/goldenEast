@@ -4,18 +4,18 @@ import store from '../../store';
 import { connect } from 'react-redux';
 import SearchUserInput from '../views/SearchUserInput';
 import './user-list-container.css';
-import InfoAssetAllotList from '../views/InfoAssetAllotList';
-import { updatePeopleListWhoHaveInfoAssetDataSearch } from '../../actions/app-interaction-actions';
-import { getPeopleListWhoHaveInfoAssetData } from '../../api/app-interaction-api';
+import GainInfoAssetAllotList from '../views/GainInfoAssetAllotList';
+import { updateGainPeopleListWhoHaveInfoAssetDataSearch } from '../../actions/app-interaction-actions';
+import { getGainPeopleListWhoHaveInfoAssetData } from '../../api/app-interaction-api';
 import weiGuDong from '../../appConstants/assets/images/微股东.png';
 import normalCard from '../../appConstants/assets/images/普卡.png';
 import silverCard from '../../appConstants/assets/images/银卡.png';
 import goldenCard from '../../appConstants/assets/images/金卡.png';
 import superGoldenCard from '../../appConstants/assets/images/白金卡.png';
 
-const InfoAssetAllotListContainer = React.createClass({
-onChange(value){
-		store.dispatch(updatePeopleListWhoHaveInfoAssetDataSearch({
+const GainInfoAssetAllotListContainer = React.createClass({
+  	onChange(value){
+		store.dispatch(updateGainPeopleListWhoHaveInfoAssetDataSearch({
     		'search[find]' : value,
             'page' : 1
         }));
@@ -29,18 +29,17 @@ onChange(value){
         this.submitSearch();
 	},*/
 	submitSearch() {
-        getPeopleListWhoHaveInfoAssetData(this.props.searchState);
+        getGainPeopleListWhoHaveInfoAssetData(this.props.searchState);
     },
     onPageChange(page){
-    	store.dispatch(updatePeopleListWhoHaveInfoAssetDataSearch({
+    	store.dispatch(updateGainPeopleListWhoHaveInfoAssetDataSearch({
     		page:page
     	}));
-
     	this.submitSearch();
     },
 	componentWillUnmount(){
     	//清理搜索条件
-    	store.dispatch(updatePeopleListWhoHaveInfoAssetDataSearch({
+    	store.dispatch(updateGainPeopleListWhoHaveInfoAssetDataSearch({
     		'search[find]' : '',
             'search[d_begin]' : '',
             'search[d_end]' : '',
@@ -50,15 +49,12 @@ onChange(value){
     render(){
         let userList;
         const data = this.props.dataState;
-        console.log('数据', data)
          try{
              if (typeof(data)=="undefined"){
                   userList = ' ';
-             }else  if(data.list.length >2 ){
-                 userList = <h3 className="q-user-txt column-txt">同名人数过多，请输入手机号码搜索</h3>;
-            }else {
-                 userList = <UserList  data={data} />;
-             }
+             }else {
+                  userList = <UserList  data={data}  onPageChange={this.onPageChange} />;
+            }
             }catch(err){
             };
         return (
@@ -77,8 +73,8 @@ onChange(value){
 
 //搜索用户和名下小金列表
 const UserList = React.createClass({
-     jinLevels() {
-         return ['注册用户(0%)', weiGuDong, normalCard, silverCard, goldenCard, superGoldenCard];
+    jinLevels() {
+        return ['注册用户(0%)', weiGuDong, normalCard, silverCard, goldenCard, superGoldenCard];
     },
     getColumnsUser(){
         const jinLevels = this.jinLevels();
@@ -88,7 +84,6 @@ const UserList = React.createClass({
             dataIndex: 'user_name',
             render(text, row, index) {
                 const firstName = text.slice(0,1);
-                const avatar = row.wechat_avatar;
                 return (
                     <div className="box-align">
 			      	<span className="user-avatar" style={{backgroundImage:"url('')"}}>
@@ -105,15 +100,14 @@ const UserList = React.createClass({
             title: '级别',
             className: 'column-txt',
             dataIndex: 'level',
-             render(text){
-                 console.log(text)
-                 if(text == '0'){
-                     return <span>{jinLevels[text]}</span>
-                 }else{
-                     return <img src={jinLevels[text]}/>
-                 }
-             },
-
+            render(text){
+                console.log(text)
+                if(text == '0'){
+                    return <span>{jinLevels[text]}</span>
+                }else{
+                    return <img src={jinLevels[text]}/>
+                }
+            },
         }, {
             title: '手机号码',
             className: 'column-txt',
@@ -144,11 +138,11 @@ const UserList = React.createClass({
                     columns={columnsUser}
                     title={() => dataList[0].user_name +'的基本详情'}
                     bordered
-                     dataSource={dataList}
+                    dataSource={dataList}
                     pagination={false}
                     className={'column-txt margin-b-20'}
                 />
-                <InfoAssetAllotList  data={data.list} />
+                <GainInfoAssetAllotList  onPageChange={this.props.onPageChange} data={data.list} total={data.total} currentPage={data.this_page} />
             </div>
         )
     }
@@ -156,9 +150,9 @@ const UserList = React.createClass({
 
 const mapStateToProps = function (store) {
     return {
-        dataState  : store.infoAssetAllotListState.data,
-        searchState : store.infoAssetAllotListState.searchState
+        dataState  : store.gainInfoAssetAllotListState.data,
+        searchState : store.gainInfoAssetAllotListState.searchState
     }
 };
 
-export default connect(mapStateToProps) (InfoAssetAllotListContainer);
+export default connect(mapStateToProps) (GainInfoAssetAllotListContainer);

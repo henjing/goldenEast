@@ -1,7 +1,7 @@
 import React from 'react';
 import { Table } from 'antd';
 
-const InfoAssetAllotList = React.createClass({
+const GainInfoAssetAllotList = React.createClass({
     getColumns(){
         const columns = [{
             title: '用户姓名',
@@ -20,21 +20,33 @@ const InfoAssetAllotList = React.createClass({
             className: 'column-txt',
             dataIndex: 'last_receive_time',
         }, {
-            title: '关系',
+            title: '获得详情',
             className: 'column-txt',
             dataIndex: 'source',
         }];
         return columns;
     },
+    onChange(page){
+		this.props.onPageChange(page)
+	},
     render(){
+        const data = this.props.data;
+        console.log('data3', data)
         const columns = this.getColumns();
+        const pagination = {
+        defaultPageSize : 12,
+        onChange : this.onChange,
+        total : this.props.total,
+        current : parseInt(this.props.currentPage)
+    };
         return(
           <div>
               <Table
                   columns={columns}
-                  title={() => '信息资产分配详情'}
+                  pagination={pagination}
+                  title={() => '已获信息资产详情'}
                   bordered
-                  dataSource={this.props.data}
+                  dataSource={data}
                   className={'column-txt'}
               />
           </div>
@@ -42,6 +54,6 @@ const InfoAssetAllotList = React.createClass({
     }
 });
 
-export default InfoAssetAllotList;
+export default GainInfoAssetAllotList;
 
 

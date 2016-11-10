@@ -20,16 +20,15 @@ const UserListTable = React.createClass({
 		  title: '姓名',
 		  dataIndex: 'user_name',
 		  render(text, row, index) {
-		  		const firstName = text.slice(0,1);
+		  	  var firstName = !row.wechat_avatar ? text.slice(0,1) : '';
 		      return (
 		      	<div className="user-avatar-bar">
-			      	<span className="user-avatar" style={{backgroundImage:'url()'}}>
-								{firstName}
+			      	<span className="user-avatar" style={{backgroundImage:'url('+ row.wechat_avatar +')'}}>
+						{firstName}
 			      	</span>
 			      	<div className="user-avatar-bar-text">
 			      		<p className="name">{text}</p>
 			      	</div>
-			      	
 		      	</div>
 		      );
 		  },

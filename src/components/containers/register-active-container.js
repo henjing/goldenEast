@@ -23,6 +23,7 @@ const RegisterActiveContainer = React.createClass({
 	},
 	onChange(e){
 		this.setState({
+			page: 1,
 			search:  e.target.value
 		});
 	},

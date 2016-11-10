@@ -72,16 +72,6 @@ const SidebarLayoutContainer = React.createClass({
 	                            用户列表
 	                        </Link>
 	                    </Menu.Item>
-	                    <Menu.Item key={routeBase + 'author_user_list'}>
-	                        <Link to={routeBase + 'author_user_list'}>
-	                            已授权用户
-	                        </Link>
-	                    </Menu.Item>
-	                    <Menu.Item key={routeBase + 'register_active'}>
-	                        <Link to={routeBase + 'register_active'}>
-	                            当月注册量与激活量
-	                        </Link>
-	                    </Menu.Item>
                       </SubMenu>
 
                       <SubMenu key="sub2" title={<span><Icon type="bar-chart" /><span className={styles.navText}>大盘交易列表</span></span>}>

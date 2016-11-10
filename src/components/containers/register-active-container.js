@@ -12,10 +12,12 @@ const RegisterActiveContainer = React.createClass({
 				this_page: '',
 				total: '',
 			},
-			searchData: {
-				"page": 1,
-				"search[find]": ''
-			},
+//			searchData: {
+//				"page": 1,
+//				"search[find]": ''
+//			},
+			page: 1,
+			search: '',
 			loading: false,
 		}
 	},
@@ -25,16 +27,18 @@ const RegisterActiveContainer = React.createClass({
 	},
 	onChange(e){
 		this.setState({
-			searchData: {
-				'search[find]':  e.target.value
-			}
+			search:  e.target.value
+//			searchData: {
+//				'search[find]':  e.target.value
+//			}
 		});
 	},
 	onPageChange(page){
 		this.setState({
-			searchData: {
-				"page": page,
-			},
+			page: page,
+//			searchData: {
+//				"page": page,
+//			},
 		},function(){
 			this.getData();
 		});
@@ -45,7 +49,7 @@ const RegisterActiveContainer = React.createClass({
 			loading: true
 		});
 		var _this = this;
-		getRegisterActiveData(this.state.searchData,function(info){
+		getRegisterActiveData({page:this.state.page,'search[find]':this.state.search},function(info){
 			_this.setState({
 				data: info.data,
 				loading: false,

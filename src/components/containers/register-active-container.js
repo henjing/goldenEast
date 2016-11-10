@@ -12,10 +12,6 @@ const RegisterActiveContainer = React.createClass({
 				this_page: '',
 				total: '',
 			},
-//			searchData: {
-//				"page": 1,
-//				"search[find]": ''
-//			},
 			page: 1,
 			search: '',
 			loading: false,
@@ -28,17 +24,11 @@ const RegisterActiveContainer = React.createClass({
 	onChange(e){
 		this.setState({
 			search:  e.target.value
-//			searchData: {
-//				'search[find]':  e.target.value
-//			}
 		});
 	},
 	onPageChange(page){
 		this.setState({
 			page: page,
-//			searchData: {
-//				"page": page,
-//			},
 		},function(){
 			this.getData();
 		});

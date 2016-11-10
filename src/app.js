@@ -10,7 +10,7 @@ import store from './store';
 import router from './router';
 import './bootstrap.css';
 
-import './test.js';
+//import './test.js';
 
 // Provider is a top-level component that wrapps our entire application, including
 // the Router. We pass it a reference to the store so we can use react-redux's

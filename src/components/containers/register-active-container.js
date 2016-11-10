@@ -1,8 +1,7 @@
 import React from 'react';
-import { Button, Input } from 'antd';
+import { Button, Input, message } from 'antd';
 import RegisterActiveTable from '../views/register-active-table';
 import { getRegisterActiveData } from '../../api/app-interaction-api';
-import '../../test.js';
 
 const RegisterActiveContainer = React.createClass({
 	getInitialState(){
@@ -52,7 +51,10 @@ const RegisterActiveContainer = React.createClass({
 				loading: false,
 			});
 		},function(info){
-			console.log('info')
+			message.error(info.info,5);
+			_this.setState({
+				loading: false,
+			});
 		});
 		
 	},

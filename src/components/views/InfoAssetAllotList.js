@@ -14,15 +14,11 @@ const InfoAssetAllotList = React.createClass({
         }, {
             title: '获得信息资产',
             className: 'column-txt',
-            dataIndex: 'amount_sum',
+            dataIndex: 'amount',
         },{
             title: '最新时间',
             className: 'column-txt',
-            dataIndex: 'last_receive_time',
-        }, {
-            title: '关系',
-            className: 'column-txt',
-            dataIndex: 'source',
+            dataIndex: 'handle_date',
         }];
         return columns;
     },

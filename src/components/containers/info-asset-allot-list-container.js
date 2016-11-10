@@ -125,7 +125,7 @@ const UserList = React.createClass({
         }, {
             title: '所属居间商',
             className: 'column-txt',
-            dataIndex: 'wechat_nickname',
+            dataIndex: 'jujianshang_corp_name',
         },{
             title: '注册时间',
             className: 'column-txt',
@@ -136,13 +136,21 @@ const UserList = React.createClass({
     },
     render(){
         const data = this.props.data;
-        const dataList = [data.user]
+        let dataList ;
+        let UserName;
+        if(data.user == null){
+            UserName="";
+            dataList = [];
+        }else {
+            dataList = [data.user]
+            UserName = dataList[0].user_name;
+        }
         const columnsUser = this.getColumnsUser();
         return(
             <div>
                 <Table
                     columns={columnsUser}
-                    title={() => dataList[0].user_name +'的基本详情'}
+                    title={() => UserName +'的基本详情'}
                     bordered
                      dataSource={dataList}
                     pagination={false}

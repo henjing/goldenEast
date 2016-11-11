@@ -51,9 +51,13 @@ const RegisterActiveContainer = React.createClass({
 			var resault = {
 				data : {
 					list:[],
-					sum: {},
+					sum: {
+						activated_total: 0,
+						fees_total: 0,
+						registered_total: 0,
+					},
 					this_page: '',
-					total: '',			
+					total: '',
 				}
 			}
             var merged = mergeDeep(template, resault);

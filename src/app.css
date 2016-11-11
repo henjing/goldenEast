@@ -59,10 +59,10 @@
 }
 
 /*覆盖框架侧边菜单样式*/
-.ant-menu-inline {
-    max-height: calc(100vh - 106px);
-    /*margin-bottom: 42px;*/
-    overflow-y: auto;
+
+.ant-menu-root.ant-menu-inline {
+	max-height: calc(100vh - 106px);
+	 	overflow-y: auto;
     overflow-x: hidden;
 }
 
@@ -76,12 +76,10 @@
     display: none;
     width: 1px;
     height: 10px;
-    /*background: rgba(43,174,233,.4);*/
-     background: #fff;
+    background: #fff;
 }
 .ant-menu-inline::-webkit-scrollbar-thumb {
     width: 1px;
     border-radius: 4px;
-    /*background: #fff;*/
     background: rgba(101,101,101,.4);
 }

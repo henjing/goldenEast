@@ -2,6 +2,7 @@ import React from 'react';
 import { Button, Input, message } from 'antd';
 import RegisterActiveTable from '../views/register-active-table';
 import { getRegisterActiveData } from '../../api/app-interaction-api';
+import { mergeDeep} from '../../helpers/helpers';
 
 const RegisterActiveContainer = React.createClass({
 	getInitialState(){
@@ -12,29 +13,23 @@ const RegisterActiveContainer = React.createClass({
 				this_page: '',
 				total: '',
 			},
-			searchData: {
-				"page": 1,
-				"search[find]": ''
-			},
+			page: 1,
+			search: '',
 			loading: false,
 		}
 	},
 	submitSearch(){
-		this.getData();
-		console.log(this.state.searchData)
+		this.getData();	
 	},
 	onChange(e){
 		this.setState({
-			searchData: {
-				'search[find]':  e.target.value
-			}
+			page: 1,
+			search:  e.target.value
 		});
 	},
 	onPageChange(page){
 		this.setState({
-			searchData: {
-				"page": page,
-			},
+			page: page,
 		},function(){
 			this.getData();
 		});
@@ -45,14 +40,29 @@ const RegisterActiveContainer = React.createClass({
 			loading: true
 		});
 		var _this = this;
-		getRegisterActiveData(this.state.searchData,function(info){
+		getRegisterActiveData({page:this.state.page,'search[find]':this.state.search},function(info){
 			_this.setState({
 				data: info.data,
 				loading: false,
 			});
 		},function(info){
 			message.error(info.info,5);
+			var template = { data : _this.state.data};
+			var resault = {
+				data : {
+					list:[],
+					sum: {
+						activated_total: 0,
+						fees_total: 0,
+						registered_total: 0,
+					},
+					this_page: '',
+					total: '',
+				}
+			}
+            var merged = mergeDeep(template, resault);
 			_this.setState({
+				data: merged.data,
 				loading: false,
 			});
 		});
@@ -62,7 +72,6 @@ const RegisterActiveContainer = React.createClass({
 		this.getData();
 	},
 	render(){
-		console.log(this.state.data)
 		const { list, sum, this_page, total } = this.state.data;
 		return (
 			<div>

@@ -61,7 +61,7 @@ var UserListContainer = React.createClass({
 					<SearchInput onChange={this.onChange} search={this.submitSearch} />
 					<div className="number-info">
 						<span>{data.total_fees_sum}</span>
-						<p>总手续费</p>
+						<p>总手续费(16/万)</p>
 					</div>
                     &nbsp;
                     <div className="number-info">

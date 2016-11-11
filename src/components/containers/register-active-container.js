@@ -2,6 +2,7 @@ import React from 'react';
 import { Button, Input, message } from 'antd';
 import RegisterActiveTable from '../views/register-active-table';
 import { getRegisterActiveData } from '../../api/app-interaction-api';
+import { mergeDeep} from '../../helpers/helpers';
 
 const RegisterActiveContainer = React.createClass({
 	getInitialState(){
@@ -18,8 +19,7 @@ const RegisterActiveContainer = React.createClass({
 		}
 	},
 	submitSearch(){
-		this.getData();
-		console.log(this.state.searchData)
+		this.getData();	
 	},
 	onChange(e){
 		this.setState({
@@ -47,7 +47,18 @@ const RegisterActiveContainer = React.createClass({
 			});
 		},function(info){
 			message.error(info.info,5);
+			var template = { data : _this.state.data};
+			var resault = {
+				data : {
+					list:[],
+					sum: {},
+					this_page: '',
+					total: '',			
+				}
+			}
+            var merged = mergeDeep(template, resault);
 			_this.setState({
+				data: merged.data,
 				loading: false,
 			});
 		});
@@ -57,7 +68,6 @@ const RegisterActiveContainer = React.createClass({
 		this.getData();
 	},
 	render(){
-		console.log(this.state.data)
 		const { list, sum, this_page, total } = this.state.data;
 		return (
 			<div>

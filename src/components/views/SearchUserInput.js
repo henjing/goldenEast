@@ -7,8 +7,8 @@ const SearchUserInput = React.createClass({
             result: [],
         };
     },
-    handleChange(value) {
-        this.props.onChange(value);
+    handleChange(e) {
+        this.props.onChange(e.target.value);
         /* let result;
         const phone = ['1', '2', '3'];
         if (!value || value.length < 2 || value.indexOf(' ') >= 0) {
@@ -28,13 +28,13 @@ const SearchUserInput = React.createClass({
     render() {
         return (
             <div className="searchBar">
-                <AutoComplete
+                <Input
                     style={{ width: 200 }}
                     onChange={this.handleChange}
+                     onPressEnter={this.onClick}
                     placeholder="输入姓名或手机号 "
-                    onPressEnter={this.onClick}
                 >
-                </AutoComplete>
+                </Input>
                 <Button onClick={this.onClick} type="primary"  style={{marginLeft:'20px'}}>搜索</Button>
             </div>
         )

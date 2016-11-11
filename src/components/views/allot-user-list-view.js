@@ -97,6 +97,8 @@ const UserListTable = React.createClass({
 	},
 	render(){
 		const columns = this.getColumns();
+        const  data = this.props.data;
+        console.log('data8', data)
 		const pagination = {
         defaultPageSize : 12,
         onChange : this.onChange,

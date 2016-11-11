@@ -10,7 +10,7 @@ const initialState = {
     info : '',
     status : 0,
     systemAuthor : {
-        data : []
+        data : {}
     }
 };
 

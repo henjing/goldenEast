@@ -60,7 +60,7 @@ const SidebarLayoutContainer = React.createClass({
                     </div>
 
                     <Menu mode={mode}
-                      defaultSelectedKeys={[matchSubMenu[1]]} defaultOpenKeys={[matchSubMenu[0]]}>
+                      defaultSelectedKeys={[matchSubMenu[1]]} defaultOpenKeys={[matchSubMenu[0]]} >
                       <SubMenu key="sub1" title={<span><Icon type="home" /><span className={styles.navText}>居间商</span></span>}>
 	                  	<Menu.Item key={routeBase + 'home'}>
 	                        <Link to={routeBase + 'home'}>

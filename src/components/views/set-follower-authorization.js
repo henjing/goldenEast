@@ -29,8 +29,8 @@ const setFollowerAuthorization = React.createClass({
     },
 
     returnIdAndName() {
-        const idArray = this.props.systemAuthor.data.map(option => option.gate_id);
-        const titleArray = this.props.systemAuthor.data.map(option => option.title);
+        const idArray = this.props.systemAuthor.data.type_1.map(option => option.gate_id);
+        const titleArray = this.props.systemAuthor.data.type_1.map(option => option.title);
         this.setState({ idArray, titleArray });
     },
 

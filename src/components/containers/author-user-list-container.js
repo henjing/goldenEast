@@ -65,10 +65,6 @@ var UserListContainer = React.createClass({
 			<div>
 				<div className="userListHeader">
 					<SearchUserInput search={this.submitSearch} onChange={this.onChange}/>
-					<div className="number-info">
-						<span>{data.total}</span>
-						<p>总数量</p>
-					</div>
 				</div>
 			{/*	<div className="data-picker-bar">
 					<label>注册时间:</label>

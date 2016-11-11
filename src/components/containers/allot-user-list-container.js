@@ -37,15 +37,18 @@ var UserListContainer = React.createClass({
         }));
     },
 	render(){
+        const data = this.props.dataState.data;
+        console.log("data",data)
         function UserData() {
              if (data.list.length < 5 && data.list.length > 0 ){
                  userList =  <UserListTable  data={data.list} />;
-             } else {
+             }else if (data.list.length <= 0 ){
+                   userList = ' ';
+             }
+             else {
                  userList = <h3 className="q-user-txt">同名人数过多，请输入详细信息搜索</h3>;
              };
         };
-		const data = this.props.dataState.data;
-        console.log("data",data)
         let userList;
         if (data.length == 0){
             userList = <h3 className="q-user-txt">请输入详细信息搜索</h3>;
@@ -56,10 +59,6 @@ var UserListContainer = React.createClass({
 			<div>
 				<div className="userListHeader border-b">
 					<SearchUserInput search={this.submitSearch} onChange={this.onChange} />
-					<div className="number-info">
-						<span>{data.total}</span>
-						<p>总数量</p>
-					</div>
 				</div>
                 <div className="column-txt">
                    {userList}

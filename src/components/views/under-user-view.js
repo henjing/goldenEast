@@ -82,7 +82,7 @@ export const UnderUserTable = React.createClass({
 	        defaultPageSize : 12,
 	        onChange : this.onChange,
 	        total : this.props.total,
-	        current : parseInt(this.props.page)
+	        current : parseInt(this.props.currentPage)
 	    };
 		return (
 			<Table columns={columns} dataSource={data} bordered pagination={pagination} size="middle"/>

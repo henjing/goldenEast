@@ -4,7 +4,7 @@ import { getUserInfoUrl, modifyPasswordUrl, getChuanShangBoardMarketListUrl, get
 import commonAjax, { commonGetAjax, commonAjaxWithBrackets} from '../helpers/commonAjax';
 import store from '../store';
 
-import { updateAdmin, updateChuanShangBoardMarket, updateAgentOverviewData, updateShenWenSuoBoardMarket, updateChuanShangPostCard, updateJiShangPostCard, updateShenWenSuoMicroBoardData, updateJiShangMicroBoardData, updateYueGuoJiMicroBoardData, updateUserListData, updatePeopleListWhoHaveInfoAssetData, updatePeopleListWhoHaveInfoAssetAllotData, updateAuthorUserListData , updateNoAuthorUserListData, updateGainPeopleListWhoHaveInfoAssetData} from '../actions/app-interaction-actions';
+import { updateAdmin, updateChuanShangBoardMarket, updateAgentOverviewData, updateShenWenSuoBoardMarket, updateChuanShangPostCard, updateJiShangPostCard, updateShenWenSuoMicroBoardData, updateJiShangMicroBoardData, updateYueGuoJiMicroBoardData, updateUserListData, updatePeopleListWhoHaveInfoAssetData, updatePeopleListWhoHaveInfoAssetAllotData, updateAuthorUserListData , updateNoAuthorUserListData, updateGainPeopleListWhoHaveInfoAssetData, updateUnderUserData} from '../actions/app-interaction-actions';
 
 // 获取登录用户的信息
 export function getAdmin(config, sucCallback, failCallback) {
@@ -265,8 +265,10 @@ export function getUnderUserTreeData(config, sucCallback, failCallback) {
 //获得一度人脉数据
 export function getUnderUserData(config, sucCallback, failCallback) {
     return commonGetAjax(underUserUrl, config, function (info) {
+    	store.dispatch(updateUnderUserData(info));
         if (sucCallback) sucCallback(info);
     }, function (info) {
+    	store.dispatch(updateUnderUserData(info));
         if (failCallback) failCallback(info);
     })
 }

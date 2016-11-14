@@ -18,6 +18,7 @@ import allotUserListReducer from './allot-user-list-reducer';
 
 import infoAssetAllotListReducer from './info-asset-allot-list-reducer';
 import gainInfoAssetAllotListReducer from './gain-info-asset-allot-list-reducer';
+import underUserReducer from './under-user-reducer';
 
 
 const reducers = combineReducers({
@@ -36,6 +37,7 @@ const reducers = combineReducers({
     gainInfoAssetAllotListState : gainInfoAssetAllotListReducer,
     authorUserListState : authorUserListReducer,
     allotUserListState : allotUserListReducer,
+    underUserState : underUserReducer,
 });
 
 export default reducers;

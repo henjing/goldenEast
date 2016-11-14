@@ -216,3 +216,19 @@ export function updateAuthorUserListDataSearch(info){
 		info
 	}
 }
+
+//更新用户一度人脉数据
+export function updateUnderUserData(info){
+	return {
+		type: types.UPDATE_UNDER_USER_DATA,
+		info
+	}
+}
+
+//更新用户一度人脉搜索数据
+export function updateUnderUserSearch(info){
+	return {
+		type: types.UPDATE_UNDER_USER_SEARCH,
+		info
+	}
+}

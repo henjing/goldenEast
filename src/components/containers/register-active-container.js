@@ -1,73 +1,78 @@
 import React from 'react';
-import { Button, Input } from 'antd';
+import { Button, Input, message } from 'antd';
 import RegisterActiveTable from '../views/register-active-table';
 import { getRegisterActiveData } from '../../api/app-interaction-api';
-import '../../test.js';
+import { mergeDeep} from '../../helpers/helpers';
 
 const RegisterActiveContainer = React.createClass({
 	getInitialState(){
 		return {
 			data:{
-				list:[]
+				list:[],
+				sum: {},
+				this_page: '',
+				total: '',
 			},
-			page: '',
-			searchData: '',
+			page: 1,
+			search: '',
+			loading: false,
 		}
 	},
 	submitSearch(){
-		this.getData();
-		console.log(this.state.searchData)
+		this.getData();	
 	},
 	onChange(e){
 		this.setState({
-			searchData: e.terget.value
+			page: 1,
+			search:  e.target.value
 		});
 	},
 	onPageChange(page){
 		this.setState({
-			page: page
+			page: page,
+		},function(){
+			this.getData();
 		});
-		this.getData();
+		
 	},
 	getData(){
-		const data = {
-			"total": 40,
-			"current_total_rigister": 1234,
-			"current_total_active": 660,
-			"last_total_rigister": 23340,
-			"last_total_active": 5640,
-			"list": [{
-				"jujian_number": 100000000,
-				"jujian_name": '广西向前网络科技有限公司',
-				"current_register": 900,
-				"current_active": 530,
-				"last_register": 2340,
-				"last_active": 450,
-			},{
-				"jujian_number": 100000000,
-				"jujian_name": '广西向前网络科技有限公司',
-				"current_register": 900,
-				"current_active": 530,
-				"last_register": 2340,
-				"last_active": 450,
-			}]
-		}
 		this.setState({
-			data: data
+			loading: true
 		});
+		var _this = this;
+		getRegisterActiveData({page:this.state.page,'search[find]':this.state.search},function(info){
+			_this.setState({
+				data: info.data,
+				loading: false,
+			});
+		},function(info){
+			message.error(info.info,5);
+			var template = { data : _this.state.data};
+			var resault = {
+				data : {
+					list:[],
+					sum: {
+						activated_total: 0,
+						fees_total: 0,
+						registered_total: 0,
+					},
+					this_page: '',
+					total: '',
+				}
+			}
+            var merged = mergeDeep(template, resault);
+			_this.setState({
+				data: merged.data,
+				loading: false,
+			});
+		});
+		
 	},
 	componentDidMount(){
 		this.getData();
-//		getRegisterActiveData({},function(info){
-//			alert('2')
-//			console.log('dfafa')
-//		},function(info){
-//			console.log('info')
-//		});
 	},
 	render(){
-		console.log(this.state.data)
-		const data=this.state.data;
+		const { list, sum, this_page, total } = this.state.data;
 		return (
 			<div>
 				<div className="userListHeader">
@@ -76,29 +81,25 @@ const RegisterActiveContainer = React.createClass({
 	                    style={{ width: '200px' }}
 	                    onChange={this.onChange}
 	                    onPressEnter={this.submitSearch}
-	                    placeholder="输入公司名称或居间号"
+	                    placeholder="输入公司名称"
 	                  />
 	                <Button onClick={this.submitSearch} type="primary" style={{marginLeft:'20px'}}>搜索</Button>
 	            </div>
 					<div className="number-info">
-						<span>{data.current_total_rigister}</span>
-						<p>当月总注册量</p>
-					</div>
-                    <div className="number-info">
-						<span>{data.current_total_active}</span>
+						<span>{sum.activated_total}</span>
 						<p>当月总激活量</p>
 					</div>
 					<div className="number-info">
-						<span>{data.last_total_rigister}</span>
-						<p>上月总注册量</p>
+						<span>{sum.registered_total}</span>
+						<p>当月总注册量</p>
 					</div>
-                    <div className="number-info">
-						<span>{data.last_total_active}</span>
-						<p>上月总激活量</p>
+					<div className="number-info">
+						<span>{sum.fees_total}</span>
+						<p>当月总手续费</p>
 					</div>
 				</div>
 				
-				<RegisterActiveTable defaultPageSize={12} total={data.total} currentPage={this.state.page} dataSource={data.list} onPageChange={this.onPageChange} />
+				<RegisterActiveTable defaultPageSize={12} total={total} currentPage={this_page} dataSource={list} onPageChange={this.onPageChange} loading={this.state.loading}/>
 			</div>
 		)
 	},

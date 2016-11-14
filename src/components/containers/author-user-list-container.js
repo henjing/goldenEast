@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, AutoComplete, DatePicker, message } from 'antd';
 import './user-list-container.css';
 import UserListTable from '../views/author-user-list-view.js';
-import SearchInput from '../views/SearchInput.js';
+import SearchUserInput from '../views/SearchUserInput.js';
 import store from '../../store';
 import { connect } from 'react-redux';
 import { updateAuthorUserListDataSearch } from '../../actions/app-interaction-actions';
@@ -18,14 +18,14 @@ var UserListContainer = React.createClass({
             'page' : 1
         }));
 	},
-	onDateChange(dates, dateStrings){
+/*	onDateChange(dates, dateStrings){
 		store.dispatch(updateAuthorUserListDataSearch({
             'search[d_begin]' : dateStrings[0],
             'search[d_end]' : dateStrings[1],
             'page' : 1
         }));
         this.submitSearch();
-	},
+	},*/
 	submitSearch() {
         getAuthorUserListData(this.props.searchState);
     },
@@ -64,16 +64,12 @@ var UserListContainer = React.createClass({
 		return this.props.children || (
 			<div>
 				<div className="userListHeader">
-					<SearchInput search={this.submitSearch} onChange={this.onChange}/>
-					<div className="number-info">
-						<span>{data.total}</span>
-						<p>总数量</p>
-					</div>
+					<SearchUserInput search={this.submitSearch} onChange={this.onChange}/>
 				</div>
-				<div className="data-picker-bar">
+			{/*	<div className="data-picker-bar">
 					<label>注册时间:</label>
 					<RangePicker style={{ width: 200 }} onChange={this.onDateChange} />
-				</div>
+				</div>*/}
 				<UserListTable deleteUserAuthor={this.deleteUserAuthor} data={data.list} total={data.total} currentPage={data.this_page} onPageChange={this.onPageChange}/>
 
                 <div>

@@ -18,12 +18,13 @@ const SidebarLayoutContainer = React.createClass({
     //匹配的导航列表
     matchSubMenu(pathName) {
         const subMenuArray =  {
-            'sub1' : ['/home', '/user_list', '/author_user_list','register_active','under_user'],
-            'sub2' : ['/chuan_shang_board_market', '/shen_wen_suo_board_market'],
-            'sub3' : ['/shenwensuo_wp', '/jishang_wp', '/yueguoji_wp'],
-            'sub4' : ['/chuan_shang_post_card', '/ji_shang_post_card'],
-            'sub5' : ['/info_asset_allot_list', '/gain_info_asset_allot_list'],
-            'sub6' : ['under_user','under_user_tree'],
+            'sub1' : ['/home', '/user_list','register_active'],
+            'sub2' : [ '/author_user_list', '/allot_user_list'],
+            'sub3' : ['/chuan_shang_board_market', '/shen_wen_suo_board_market'],
+            'sub4' : ['/shenwensuo_wp', '/jishang_wp', '/yueguoji_wp'],
+            'sub5' : ['/chuan_shang_post_card', '/ji_shang_post_card'],
+            'sub6' : ['/info_asset_allot_list', '/gain_info_asset_allot_list'],
+            'sub7' : ['under_user','under_user_tree'],
         };
         let matchSubMenu = '';
         let defaultSelectedKey = '';
@@ -62,19 +63,38 @@ const SidebarLayoutContainer = React.createClass({
                     <Menu mode={mode}
                       defaultSelectedKeys={[matchSubMenu[1]]} defaultOpenKeys={[matchSubMenu[0]]} >
                       <SubMenu key="sub1" title={<span><Icon type="home" /><span className={styles.navText}>居间商</span></span>}>
-	                  	<Menu.Item key={routeBase + 'home'}>
-	                        <Link to={routeBase + 'home'}>
-	                            用户数据总览
-	                        </Link>
-	                    </Menu.Item>
-	                    <Menu.Item key={routeBase + 'user_list'}>
-	                        <Link to={routeBase + 'user_list'}>
-	                            用户列表
-	                        </Link>
-	                    </Menu.Item>
+                      	<Menu.Item key={routeBase + 'home'}>
+                            <Link to={routeBase + 'home'}>
+                                用户数据总览
+                            </Link>
+                        </Menu.Item>
+                        <Menu.Item key={routeBase + 'user_list'}>
+                            <Link to={routeBase + 'user_list'}>
+                                用户列表
+                            </Link>
+                        </Menu.Item>
+                        <Menu.Item key={routeBase + 'register_active'}>
+                            <Link to={routeBase + 'register_active'}>
+                                旗下代理商数据
+                            </Link>
+                        </Menu.Item>
                       </SubMenu>
 
-                      <SubMenu key="sub2" title={<span><Icon type="bar-chart" /><span className={styles.navText}>大盘交易列表</span></span>}>
+ <SubMenu key="sub2" title={<span><Icon type="share-alt" /><span className={styles.navText}>权限分配列表</span></span>}>
+                        <Menu.Item key={routeBase + 'allot_user_list'}>
+                            <Link to={routeBase + 'allot_user_list'}>
+                                分配用户权限
+                            </Link>
+                        </Menu.Item>
+                        <Menu.Item key={routeBase + 'author_user_list'}>
+                            <Link to={routeBase + 'author_user_list'}>
+                                已授权用户
+                            </Link>
+                        </Menu.Item>
+
+                      </SubMenu>
+
+                      <SubMenu key="sub3" title={<span><Icon type="bar-chart" /><span className={styles.navText}>大盘交易列表</span></span>}>
                       	<Menu.Item key={routeBase + 'shen_wen_suo_board_market'}>
                             <Link to={routeBase + 'shen_wen_suo_board_market'}>
                                 深文所大盘
@@ -87,7 +107,7 @@ const SidebarLayoutContainer = React.createClass({
                         </Menu.Item>
                       </SubMenu>
 
-                      <SubMenu key="sub3" title={<span><Icon type="line-chart" /><span className={styles.navText}>微盘交易列表</span></span>}>
+                      <SubMenu key="sub4" title={<span><Icon type="line-chart" /><span className={styles.navText}>微盘交易列表</span></span>}>
                       	<Menu.Item key={routeBase + 'shenwensuo_wp'}>
                             <Link to={routeBase + 'shenwensuo_wp'}>
                                 深文所微盘
@@ -105,7 +125,7 @@ const SidebarLayoutContainer = React.createClass({
                         </Menu.Item>
                       </SubMenu>
 
-                      <SubMenu key="sub4" title={<span><Icon type="dot-chart" /><span className={styles.navText}>邮币卡交易列表</span></span>}>
+                      <SubMenu key="sub5" title={<span><Icon type="dot-chart" /><span className={styles.navText}>邮币卡交易列表</span></span>}>
                       	<Menu.Item key={routeBase + 'chuan_shang_post_card'}>
                             <Link to={routeBase + 'chuan_shang_post_card'}>
                                 川商邮币卡
@@ -118,20 +138,20 @@ const SidebarLayoutContainer = React.createClass({
                         </Menu.Item>
                       </SubMenu>
 
-                      <SubMenu key="sub5" title={<span><Icon type="solution" /><span className={styles.navText}>信息资产分配</span></span>}>
-                        <Menu.Item key={routeBase + 'info_asset_allot_list'}>
-                            <Link to={routeBase + 'info_asset_allot_list'}>
-                                信息资产分配详情
-                            </Link>
-                        </Menu.Item>
-                          <Menu.Item key={routeBase + 'gain_info_asset_allot_list'}>
-                              <Link to={routeBase + 'gain_info_asset_allot_list'}>
-                                  已获得信息资产分配详情
+                      <SubMenu key="sub6" title={<span><Icon type="solution" /><span className={styles.navText}>信息资产分配</span></span>}>
+                          <Menu.Item key={routeBase + 'info_asset_allot_list'}>
+                              <Link to={routeBase + 'info_asset_allot_list'}>
+                                  信息资产分配详情
                               </Link>
                           </Menu.Item>
+                           <Menu.Item key={routeBase + 'gain_info_asset_allot_list'}>
+                            <Link to={routeBase + 'gain_info_asset_allot_list'}>
+                                已获得信息资产详情
+                            </Link>
+                        </Menu.Item>
 
                       </SubMenu>
-                      <SubMenu key="sub6" title={<span><Icon type="team" /><span className={styles.navText}>人脉查询</span></span>}>
+                      <SubMenu key="sub7" title={<span><Icon type="team" /><span className={styles.navText}>人脉查询</span></span>}>
 		                  <Menu.Item key={routeBase + 'under_user_tree'}>
 		                      <Link to={routeBase + 'under_user_tree'}>
 		                          名下用户信息

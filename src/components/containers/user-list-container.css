@@ -37,7 +37,7 @@
 	display: block;
 	width: 40px;
 	height: 40px;
-	background-color: #459fee;
+	background-color: #becfe0;
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -114,3 +114,16 @@
 .margin-b-20 {margin-bottom: 20px;}
 .margin-r-15 {margin-right: 15px;}
 .margin-l-40 {margin-left: 40px;}
+/*权限分配*/
+.btn-orange{
+    background-color: #ff652d;
+    border-color: #ff652d;
+}
+.btn-orange:hover{
+    background-color: #fe7949;
+    border-color: #fe7949;
+}
+.q-padding-tb-15{
+	padding-bottom: 15px;
+	padding-top: 15px;
+}

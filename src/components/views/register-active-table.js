@@ -7,29 +7,37 @@ import { Table } from 'antd';
 const RegisterActiveTable = React.createClass({
 	getColumns(){
 		const columns = [{
-		  title: '居间号',
-		  dataIndex: 'jujian_number',
-          key : 'jujian_number',
-		}, {
 		  title: '居间商名称',
-		  dataIndex: 'jujian_name',
-          key : 'jujian_name',
+		  dataIndex: 'jujianshang_corp_name',
+          key : 'jujianshang_corp_name',
+		}, {
+		  title: '级别',
+		  dataIndex: 'level_name',
+          key : 'level_name'
+		}, {
+		  title: '当月手续费',
+		  dataIndex: 'this_month_fees_total',
+          key : 'this_month_fees_total'
+		}, {
+		  title: '上月手续费',
+		  dataIndex: 'last_month_fees_total',
+          key : 'last_month_fees_total'
 		}, {
 		  title: '当月注册量',
-		  dataIndex: 'current_register',
-          key : 'current_register'
-		}, {
-		  title: '当月激活量',
-		  dataIndex: 'current_active',
-          key : 'current_active'
+		  dataIndex: 'this_month_registered_total',
+          key : 'this_month_registered_total'
 		}, {
 		  title: '上月注册量',
-		  dataIndex: 'last_register',
-		  key : 'last_register'
+		  dataIndex: 'last_month_registered_total',
+          key : 'last_month_registered_total'
 		}, {
+		  title: '当月激活量',
+		  dataIndex: 'this_month_activated_total',
+          key : 'this_month_activated_total'
+		},{
 		  title: '上月激活量',
-		  dataIndex: 'last_active',
-		  key : 'last_active'
+		  dataIndex: 'last_month_activated_total',
+		  key : 'last_month_activated_total'
 		}];
 		
 		return columns;
@@ -49,7 +57,7 @@ const RegisterActiveTable = React.createClass({
             current : parseInt(this.props.currentPage)
         };
 		return(
-			<Table pagination={pagination} columns={columns} dataSource={dataSource} bordered />
+			<Table loading={this.props.loading} pagination={pagination} columns={columns} dataSource={dataSource} bordered />
 		)
 	}
 });

@@ -27,18 +27,16 @@ import ChuanShangPostCardContainer from './components/containers/chuan-shang-pos
 import JiShangPostCardContainer from './components/containers/ji-shang-post-card-container';
 // 信息资产列表
 import InfoAssetAllotListContainer from './components/containers/info-asset-allot-list-container';
-
-//已获信息资产分配列表
-import GainInfoAssetAllotListContainer from './components/containers/gain-info-asset-allot-list-container';
-
-//名下小金信息资产分配列表
-import UnderInfoAssetsAllotDetailsContainer from './components/containers/under-info-asset-allot-details-comtainer';
+// 已获信息资产列表
+import GainInfoAssetAllotListContainer from './components/containers/gain_info-asset-allot-list-container';
 
 // 设置权限页面
 import setAuthorizationView from './components/views/set-follower-authorization';
 
 // 居间商已授权用户(包括小金和客服)
 import AuthorUserListContainer from './components/containers/author-user-list-container';
+// 居间商已授权用户(包括小金和客服)
+import AllotUserListContainer from './components/containers/allot-user-list-container';
 
 //当月注册量与激活量
 import RegisterActiveContainer from './components/containers/register-active-container';
@@ -58,14 +56,17 @@ export default (
             <Route name="user_list" breadcrumbName="用户列表" path={routeBase + 'user_list'} component={UserListContainer} >
                 <Route breadcrumbName="个人详情" path="user_detail/:userId" component={UserDetailContainer} />
             </Route>
-            <Route breadcrumbName="当月注册量与激活量" path={routeBase + 'register_active'} component={RegisterActiveContainer} />
+
             <Route breadcrumbName="名下用户信息" path={routeBase + 'under_user_tree'} component={UnderUserTreeContainer} />
             <Route breadcrumbName="一度人脉列表" path={routeBase + 'under_user'} component={UnderUserContainer} />
+            <Route breadcrumbName="旗下代理商数据" path={routeBase + 'register_active'} component={RegisterActiveContainer} />
+           
+            <Route name="allot_user_list" breadcrumbName="分配用户权限" path={routeBase + 'allot_user_list'} component={AllotUserListContainer} >
+                <Route breadcrumbName="权限设置" path="set_authorization/:userSn" component={setAuthorizationView} />
+            </Route>
             
             <Route name="author_user_list" breadcrumbName="已授权用户列表" path={routeBase + 'author_user_list'} component={AuthorUserListContainer} >
-                {/*<Route breadcrumbName="个人详情" path="user_detail/:userId" component={UserDetailContainer} />*/}
-                	<Redirect from="user_detail/:userId" to="user_detail/:userId" />
-                
+                <Route breadcrumbName="个人详情" path="author_user_detail/:userSn" component={UserDetailContainer} />               
                 <Route breadcrumbName="权限设置" path="set_authorization/:userSn" component={setAuthorizationView} />
             </Route>
 
@@ -82,12 +83,12 @@ export default (
             <Route breadcrumbName="川商邮币卡" path={routeBase + 'chuan_shang_post_card'} component={ChuanShangPostCardContainer} />
             
             <Route breadcrumbName="吉商邮币卡" path={routeBase + 'ji_shang_post_card'} component={JiShangPostCardContainer} />
-            
-            <Route breadcrumbName="信息资产" path={routeBase + 'info_asset_allot_list'} component={InfoAssetAllotListContainer} />
 
-            <Route breadcrumbName="信息资产" path={routeBase + 'gain_info_asset_allot_list'} component={GainInfoAssetAllotListContainer} />
 
-            <Route breadcrumbName="信息资产" path={routeBase + 'under_info_asset_allot_list'} component={UnderInfoAssetsAllotDetailsContainer} />
+            <Route path={routeBase + 'set_authorization'} component={setAuthorizationView} />
+
+            <Route breadcrumbName="信息资产列表" path={routeBase + 'info_asset_allot_list'} component={InfoAssetAllotListContainer} />
+            <Route breadcrumbName="已获得信息资产列表" path={routeBase + 'gain_info_asset_allot_list'} component={GainInfoAssetAllotListContainer} />
 
         </Route>
     </Router>

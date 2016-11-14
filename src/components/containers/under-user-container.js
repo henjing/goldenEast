@@ -112,7 +112,6 @@ const UnderUserContainer = React.createClass({
 					<a>马步王子</a>>
 					<span>马步王子</span>
 				</div>)}
-				{!this.state.userTable ? '' : (<UserTable data={data}/>)}
 				<UnderUserTable data={data} 
 					currentPage={this.state.data.page} 
 					total={this.state.data.total} 

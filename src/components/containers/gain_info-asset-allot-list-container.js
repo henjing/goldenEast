@@ -117,6 +117,10 @@ const UserList = React.createClass({
             className: 'column-txt',
             dataIndex: 'inv_user_name',
         }, {
+            title: '邀请人手机',
+            className: 'column-txt',
+            dataIndex: 'inv_cellphone',
+        }, {
             title: '所属居间商',
             className: 'column-txt',
             dataIndex: 'jujianshang_corp_name',

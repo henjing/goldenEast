@@ -45,7 +45,8 @@ const UnderUserContainer = React.createClass({
 			store.dispatch(updateUnderUserSearch({ 
 				'sn' : user_sn,
 				'page' : 1,
-				'sh' : ''
+				'sh' : '',
+				'search[find]' : '',
 			}));
 			this.submitSearch()
 		}.bind(this)

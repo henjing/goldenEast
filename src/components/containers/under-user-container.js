@@ -1,7 +1,6 @@
 import React from 'react';
 import { Table, Icon, Button, AutoComplete, Input  } from 'antd';
 import { connect } from 'react-redux';
-import SearchInput from '../views/SearchInput';
 import styles from './under-user-tree.less';
 import { getUnderUserData } from '../../api/app-interaction-api';
 import { UnderUserTable , UserTable } from '../views/under-user-view';

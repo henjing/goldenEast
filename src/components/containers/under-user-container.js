@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table, Icon, Button } from 'antd';
+import { Table, Icon, Button, AutoComplete  } from 'antd';
 import { connect } from 'react-redux';
 import SearchInput from '../views/SearchInput';
 import styles from './under-user-tree.less';
@@ -22,12 +22,12 @@ const UnderUserContainer = React.createClass({
         }));
     },
 	onChange(value){
-		 store.dispatch(updateUnderUserSearch({ 
+		store.dispatch(updateUnderUserSearch({ 
 		 	'search[find]' : value,
 		 	'page' : 1 ,
 		 	'sh' : 1,
 		 	'sn' : '',
-		 }));
+		}));
 	},
 	
 	submitSearch(){
@@ -50,18 +50,34 @@ const UnderUserContainer = React.createClass({
 			this.submitSearch()
 		}.bind(this)
 	},
-	
+	onNavClick(user_sn){
+		return function(){
+			store.dispatch(updateUnderUserSearch({
+				'sn': user_sn,
+				'page' : 1,
+				'sh' : ''
+			}));
+			this.submitSearch()
+		}.bind(this)
+	},
+
 	render(){
 		const {data} = this.props.dataState;
+		var routes=[];
+		for(let i=0;i<data.route.length;i++){
+			if(i == data.route.length-1){
+				routes.push((<span>{data.route[i].user_name}</span>));
+			}else{
+				routes.push((<span><a onClick={this.onNavClick(data.route[i].user_sn)}>{data.route[i].user_name}</a>></span>));
+			}
+		}
 		return (
 			<div>
 				<div className="userListHeader">
 					<SearchInput search={this.submitSearch} onChange={this.onChange}/>
 				</div>
 				<div className={styles.underUserNav}>
-					<a>马步王子</a>>
-					<a>马步王子</a>>
-					<span>马步王子</span>
+					{routes}
 				</div>
 				<UnderUserTable data={data.list} 
 					currentPage={data.this_page} 

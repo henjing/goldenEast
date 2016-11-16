@@ -6,7 +6,7 @@ const initialState = {
         data : {
             list: [],
 			user: {},
-			route: {},
+			route: [],
 			total: 0,
 			page: 1,
         },

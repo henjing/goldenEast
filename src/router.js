@@ -52,6 +52,10 @@ export default (
             <Route name="user_list" breadcrumbName="用户列表" path={routeBase + 'user_list'} component={UserListContainer} >
                 <Route breadcrumbName="个人详情" path="user_detail/:userId" component={UserDetailContainer} />
             </Route>
+
+            <Route name="hongbao_list" breadcrumbName="红包列表" path={routeBase + 'hongbao_list'} component={UserListContainer} >
+            </Route>
+
             <Route breadcrumbName="旗下代理商数据" path={routeBase + 'register_active'} component={RegisterActiveContainer} />
            
             <Route name="allot_user_list" breadcrumbName="分配用户权限" path={routeBase + 'allot_user_list'} component={AllotUserListContainer} >
@@ -61,23 +65,40 @@ export default (
                 <Route breadcrumbName="个人详情" path="author_user_detail/:userSn" component={UserDetailContainer} />               
                 <Route breadcrumbName="权限设置" path="set_authorization/:userSn" component={setAuthorizationView} />
             </Route>
+{/*交易列表*/}
+            <Route breadcrumbName="川商大盘交易列表" path={routeBase + 'chuan_shang_board_market'} component={ChuanShangBoardMarketContainer} />
 
-            <Route breadcrumbName="川商大盘" path={routeBase + 'chuan_shang_board_market'} component={ChuanShangBoardMarketContainer} />
+            <Route breadcrumbName="深文所大盘交易列表" path={routeBase + 'shen_wen_suo_board_market'} component={ShenWenSuoBoardMarketContainer} />
 
-            <Route breadcrumbName="深文所大盘" path={routeBase + 'shen_wen_suo_board_market'} component={ShenWenSuoBoardMarketContainer} />
+            <Route breadcrumbName="深文所微盘交易列表" path={routeBase + 'shenwensuo_wp'} component={ShenWenSuoMicroBoardContainer} />
 
-            <Route breadcrumbName="深文所微盘" path={routeBase + 'shenwensuo_wp'} component={ShenWenSuoMicroBoardContainer} />
+            <Route breadcrumbName="吉商微盘交易列表" path={routeBase + 'jishang_wp'} component={jiShangMicroBoardContainer} />
 
-            <Route breadcrumbName="吉商微盘" path={routeBase + 'jishang_wp'} component={jiShangMicroBoardContainer} />
-
-            <Route breadcrumbName="粤国际微盘" path={routeBase + 'yueguoji_wp'} component={yueGuoJiMicroBoardContainer} />
+            <Route breadcrumbName="粤国际微盘交易列表" path={routeBase + 'yueguoji_wp'} component={yueGuoJiMicroBoardContainer} />
             
-            <Route breadcrumbName="川商邮币卡" path={routeBase + 'chuan_shang_post_card'} component={ChuanShangPostCardContainer} />
+            <Route breadcrumbName="川商邮币卡交易列表" path={routeBase + 'chuan_shang_post_card'} component={ChuanShangPostCardContainer} />
             
-            <Route breadcrumbName="吉商邮币卡" path={routeBase + 'ji_shang_post_card'} component={JiShangPostCardContainer} />
+            <Route breadcrumbName="吉商邮币卡交易列表" path={routeBase + 'ji_shang_post_card'} component={JiShangPostCardContainer} />
+
+            {/*佣金列表*/}
+            <Route breadcrumbName="川商大盘佣金列表" path={routeBase + 'chuan_shang_board_market_brokerage'} component={ChuanShangBoardMarketContainer} />
+
+            <Route breadcrumbName="深文所大盘佣金列表" path={routeBase + 'shen_wen_suo_board_market_brokerage'} component={ShenWenSuoBoardMarketContainer} />
+
+            <Route breadcrumbName="深文所微盘佣金列表" path={routeBase + 'shenwensuo_wp_brokerage'} component={ShenWenSuoMicroBoardContainer} />
+
+            <Route breadcrumbName="吉商微盘佣金列表" path={routeBase + 'jishang_wp_brokerage'} component={jiShangMicroBoardContainer} />
+
+            <Route breadcrumbName="粤国际微盘佣金列表" path={routeBase + 'yueguoji_wp_brokerage'} component={yueGuoJiMicroBoardContainer} />
+
+            <Route breadcrumbName="川商邮币卡佣金列表" path={routeBase + 'chuan_shang_post_card_brokerage'} component={ChuanShangPostCardContainer} />
+
+            <Route breadcrumbName="吉商邮币卡佣金列表" path={routeBase + 'ji_shang_post_card_brokerage'} component={JiShangPostCardContainer} />
 
 
             <Route path={routeBase + 'set_authorization'} component={setAuthorizationView} />
+
+            <Route breadcrumbName="大盘、邮币卡开户进度" path={routeBase + 'board_market_post_card_dredge_schedule'} component={GainInfoAssetAllotListContainer} />
 
             <Route breadcrumbName="信息资产列表" path={routeBase + 'info_asset_allot_list'} component={InfoAssetAllotListContainer} />
             <Route breadcrumbName="已获得信息资产列表" path={routeBase + 'gain_info_asset_allot_list'} component={GainInfoAssetAllotListContainer} />

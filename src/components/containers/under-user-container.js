@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table, Icon, Button, AutoComplete  } from 'antd';
+import { Table, Icon, Button, AutoComplete, Input  } from 'antd';
 import { connect } from 'react-redux';
 import SearchInput from '../views/SearchInput';
 import styles from './under-user-tree.less';
@@ -9,6 +9,11 @@ import { updateUnderUserSearch } from '../../actions/app-interaction-actions';
 import store from '../../store';
 
 const UnderUserContainer = React.createClass({
+	getInitialState(){
+		return {
+			inputValue: '',
+		}
+	},
 	componentDidMount(){
 		getUnderUserData({});
 	},
@@ -21,9 +26,10 @@ const UnderUserContainer = React.createClass({
             'page' : 1
         }));
     },
-	onChange(value){
+	onChange(e){
+		this.setState({ inputValue: e.target.value });
 		store.dispatch(updateUnderUserSearch({ 
-		 	'search[find]' : value,
+		 	'search[find]' : e.target.value,
 		 	'page' : 1 ,
 		 	'sh' : 1,
 		 	'sn' : '',
@@ -48,7 +54,8 @@ const UnderUserContainer = React.createClass({
 				'sh' : '',
 				'search[find]' : '',
 			}));
-			this.submitSearch()
+			this.submitSearch();
+			this.setState({ inputValue: '' });
 		}.bind(this)
 	},
 	onNavClick(user_sn){
@@ -58,24 +65,35 @@ const UnderUserContainer = React.createClass({
 				'page' : 1,
 				'sh' : ''
 			}));
-			this.submitSearch()
+			this.submitSearch();
+			this.setState({ inputValue: '' });
 		}.bind(this)
 	},
 
 	render(){
 		const {data} = this.props.dataState;
 		var routes=[];
-		for(let i=0;i<data.route.length;i++){
+		try{for(let i=0;i<data.route.length;i++){
 			if(i == data.route.length-1){
 				routes.push((<span>{data.route[i].user_name}</span>));
 			}else{
 				routes.push((<span><a onClick={this.onNavClick(data.route[i].user_sn)}>{data.route[i].user_name}</a>></span>));
 			}
-		}
+		}}catch(e){};
+
 		return (
 			<div>
 				<div className="userListHeader">
-					<SearchInput search={this.submitSearch} onChange={this.onChange}/>
+					<div className="searchBar">
+		                <Input
+		                    style={{ width: '200px' }}
+		                    onChange={this.onChange}
+		                    onPressEnter={this.submitSearch}
+		                    placeholder="输入姓名或手机号"
+		                    value={this.state.inputValue}
+		                  />
+		                <Button onClick={this.submitSearch} type="primary" style={{marginLeft:'20px'}}>搜索</Button>
+		            </div>
 				</div>
 				<div className={styles.underUserNav}>
 					{routes}

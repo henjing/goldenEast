@@ -23,9 +23,7 @@ const SidebarLayoutContainer = React.createClass({
             'sub3_1' : ['/chuan_shang_board_market', '/shen_wen_suo_board_market'],
             'sub3_2' : ['/shenwensuo_wp', '/jishang_wp', '/yueguoji_wp'],
             'sub3_3' : ['/chuan_shang_post_card', '/ji_shang_post_card'],
-            'sub4_1' : ['/chuan_shang_board_market_brokerage', '/shen_wen_suo_board_market_brokerage'],
-            'sub4_2' : ['/shenwensuo_wp_brokerage', '/jishang_wp_brokerage', '/yueguoji_wp_brokerage'],
-            'sub4_3' : ['/chuan_shang_post_card_brokerage', '/ji_shang_post_card_brokerage'],
+            'sub4' : ['/board_market_brokerage', '/wp_brokerage','/post_card_brokerage','/post_card_brokerage'],
             'sub5' : ['/board_market_post_card_dredge_schedule'],
             'sub6' : ['/info_asset_allot_list', '/gain_info_asset_allot_list']
         };
@@ -149,56 +147,32 @@ const SidebarLayoutContainer = React.createClass({
                         </SubMenu>
 
                         <SubMenu key="sub4" title={<span><Icon type="pay-circle" /><span className={styles.navText}>佣金列表</span></span>}>
-                            <SubMenu key="sub4_1" title={<span><Icon type="bar-chart" /><span className={styles.navText}>大盘佣金列表</span></span>}>
-                                <Menu.Item key={routeBase + 'shen_wen_suo_board_market_brokerage'}>
-                                    <Link to={routeBase + 'shen_wen_suo_board_market_brokerage'}>
-                                        深文所大盘
-                                    </Link>
-                                </Menu.Item>
-                                <Menu.Item key={routeBase + 'chuan_shang_board_market_brokerage'}>
-                                    <Link to={routeBase + 'chuan_shang_board_market_brokerage'}>
-                                        川商大盘
-                                    </Link>
-                                </Menu.Item>
-                            </SubMenu>
+                            <Menu.Item key={routeBase + 'board_market_brokerage'}>
+                                <Link to={routeBase + 'board_market_brokerage'}>
+                                    大盘佣金列表
+                                </Link>
+                            </Menu.Item>
 
-                            <SubMenu key="sub4_2" title={<span><Icon type="line-chart" /><span className={styles.navText}>微盘佣金列表</span></span>}>
-                                <Menu.Item key={routeBase + 'shenwensuo_wp_brokerage'}>
-                                    <Link to={routeBase + 'shenwensuo_wp_brokerage'}>
-                                        深文所微盘
-                                    </Link>
-                                </Menu.Item>
-                                {/*<Menu.Item key={routeBase + 'jishang_wp'}>
-                                 <Link to={routeBase + 'jishang_wp'}>
-                                 吉商微盘
-                                 </Link>
-                                 </Menu.Item>*/}
-                                <Menu.Item key={routeBase + 'yueguoji_wp_brokerage'}>
-                                    <Link to={routeBase + 'yueguoji_wp_brokerage'}>
-                                        粤国际微盘
-                                    </Link>
-                                </Menu.Item>
-                            </SubMenu>
+                            <Menu.Item key={routeBase + 'wp_brokerage'}>
+                                <Link to={routeBase + 'wp_brokerage'}>
+                                    微盘佣金列表
+                                </Link>
+                            </Menu.Item>
 
-                            <SubMenu key="sub4_3" title={<span><Icon type="dot-chart" /><span className={styles.navText}>邮币卡佣金列表</span></span>}>
-                                <Menu.Item key={routeBase + 'chuan_shang_post_card_brokerage'}>
-                                    <Link to={routeBase + 'chuan_shang_post_card_brokerage'}>
-                                        川商邮币卡
-                                    </Link>
-                                </Menu.Item>
-                                <Menu.Item key={routeBase + 'ji_shang_post_card_brokerage'}>
-                                    <Link to={routeBase + 'ji_shang_post_card_brokerage'}>
-                                        吉商邮币卡
-                                    </Link>
-                                </Menu.Item>
-                            </SubMenu>
+                            <Menu.Item key={routeBase + 'post_card_brokerage'}>
+                                <Link to={routeBase + 'post_card_brokerage'}>
+                                    邮币卡佣金列表
+                                </Link>
+                            </Menu.Item>
                         </SubMenu>
 
-                        <Menu.Item key={routeBase + 'board_market_post_card_dredge_schedule'}>
-                            <Link to={routeBase + 'board_market_post_card_dredge_schedule'}>
-                                 大盘、邮币卡开户进度
-                            </Link>
-                        </Menu.Item>
+                        <SubMenu key="sub5" title={<span><Icon type="pie-chart" /><span className={styles.navText}>大盘、邮币卡开户进度</span></span>}>
+                            <Menu.Item key={routeBase + 'board_market_post_card_dredge_schedule'}>
+                                <Link to={routeBase + 'board_market_post_card_dredge_schedule'}>
+                                    大盘、邮币卡开户进度
+                                </Link>
+                            </Menu.Item>
+                        </SubMenu>
 
                         <SubMenu key="sub6" title={<span><Icon type="solution" /><span className={styles.navText}>信息资产分配</span></span>}>
                             <Menu.Item key={routeBase + 'info_asset_allot_list'}>
@@ -212,8 +186,12 @@ const SidebarLayoutContainer = React.createClass({
                                 </Link>
                             </Menu.Item>
                         </SubMenu>
+                         <Menu.Item key={routeBase + 'download_center_list'}>
+                                <Link to={routeBase + 'download_center_list'}>
+                                    下载中心
+                                </Link>
+                            </Menu.Item>
                     </Menu>
-
                     <div className={styles.antAsideAction} onClick={this.onCollapseChange}>
                         {collapse ? <Icon type="right" /> : <Icon type="left" />}
                     </div>

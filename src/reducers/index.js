@@ -13,11 +13,21 @@ import jiShangMicroBoardReducer from './jiShang-micro-board-reducer';
 import yueGuoJiMicroBoardReducer from './yueGuoJi-micro-board-reducer';
 
 import userListReducer from './user-list-reducer';
+import hongBaoListReducer from './hongBao-list-reducer';
 import authorUserListReducer from './author-user-list-reducer';
 import allotUserListReducer from './allot-user-list-reducer';
 
 import infoAssetAllotListReducer from './info-asset-allot-list-reducer';
 import gainInfoAssetAllotListReducer from './gain-info-asset-allot-list-reducer';
+
+import boardMarketBrokerageReducer from './board-market-brokerage-reducer';
+import microBoardBrokerageReducer from './micro-board-brokerage-reducer';
+import postCardBrokerageReducer from './post-card-brokerage-reducer';
+import boardMarketBrokerageUserDetailReducer from './board-market-brokerage-user-detail-reducer';
+import microBoardBrokerageUserDetailReducer from './micro-board-brokerage-user-reducer-reducer';
+import postCardBrokerageUserDetailReducer from './post-card-brokerage-user-reducer-reducer';
+import downloadListReducer from './download-list-reducer';
+
 
 
 const reducers = combineReducers({
@@ -32,10 +42,18 @@ const reducers = combineReducers({
     jiShangMicroBoardState : jiShangMicroBoardReducer,
     yueGuoJiMicroBoardState : yueGuoJiMicroBoardReducer,
     userListState : userListReducer,
+    hongBaoListState : hongBaoListReducer,
     infoAssetAllotListState : infoAssetAllotListReducer,
     gainInfoAssetAllotListState : gainInfoAssetAllotListReducer,
     authorUserListState : authorUserListReducer,
     allotUserListState : allotUserListReducer,
+    microBoardBrokerageState : microBoardBrokerageReducer,
+    boardMarketBrokerageState : boardMarketBrokerageReducer,
+    postCardBrokerageState : postCardBrokerageReducer,
+    boardMarketBrokerageUserDetailState : boardMarketBrokerageUserDetailReducer,
+    microBoardBrokerageUserDetailState : microBoardBrokerageUserDetailReducer,
+    postCardBrokerageUserDetailState : postCardBrokerageUserDetailReducer,
+    downloadListDetailStater:downloadListReducer
 });
 
 export default reducers;

@@ -30,7 +30,7 @@ module.exports = {
 		// path: path.join(__dirname, '../../Documents/小金/root/public'),
 		// filename: '[chunkhash].js'
 		// filename: 'bundle.[hash:8].js'
-		filename: 'bundle.js'
+		filename: 'bundle2.js'
 	},
 	resolve: {
 		extensions: ['', '.js', '.jsx']
@@ -56,7 +56,7 @@ module.exports = {
 		}),
 		new webpack.optimize.OccurenceOrderPlugin(),
 		// new ExtractTextPlugin('[contenthash].css', {
-		new ExtractTextPlugin('bundle.css', {
+		new ExtractTextPlugin('bundle2.css', {
 			allChunks: true
 		}),
 		new HtmlWebpackPlugin({

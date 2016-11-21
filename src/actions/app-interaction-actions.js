@@ -346,3 +346,19 @@ export function updateDownloadDataSearch(info){
 		info
 	}
 }
+
+//更新深文所入金送券列表数据
+export function updateShenWenSuoVoucherListData(info){
+	return {
+		type: types.UPDATE_SHENWENSUO_VOUCHER_LIST_DATA,
+		info
+	}
+}
+
+//更新深文所入金送券搜索数据
+export function updateShenWenSuoVoucherListDataListDataSearch(info){
+	return {
+		type: types.UPDATE__SHENWENSUO_VOUCHER_DATA_SEARCH,
+		info
+	}
+}

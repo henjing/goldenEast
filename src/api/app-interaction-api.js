@@ -1,8 +1,8 @@
-import { getUserInfoUrl, modifyPasswordUrl, getChuanShangBoardMarketListUrl, getChuanShangYBKListUrl, getShenWenSuoBoardMarketListUrl, getAgentOverviewDataUrl, getShenWenSuoMicroBoardListUrl, getJiShangYBKListUrl, getYueGuoJiMicroBoardListUrl, getJiShangMicroBoardListUrl, getUserListDataUrl,  getHongBaoListDataUrl, getPeopleWhoHaveInfoAssetUrl, getUserAuthorizationListUrl, getAllAuthorizationListUrl, setFollowerAuthorizationUrl, getPeopleWhoHaveInfoAssetAllotUrl, getAuthorizedUserListUrl, getSomeUserDetailUrl, postSomeUserAuthorDetailUrl, setSomeUserAuthorDetailUrl, getUserDetailUrl, deleteSomeUserAuthorUrl,getNoAuthorizedUserListUrl, getUserFirstClassConnectedUrl, registerActiveUrl,  getGainPeopleWhoHaveInfoAssetUrl, getMicroBoardBrokerageListUrl, getBoardMarketBrokerageListUrl, getYBKBrokerageListUrl, getBoardMarketUserDetailUrl, getMicroBoardUserDetailUrl, getPostCardUserDetailUrl, getDownloadDataUrl} from '../appConstants/urlConfig';
+import { getUserInfoUrl, modifyPasswordUrl, getChuanShangBoardMarketListUrl, getChuanShangYBKListUrl, getShenWenSuoBoardMarketListUrl, getAgentOverviewDataUrl, getShenWenSuoMicroBoardListUrl, getJiShangYBKListUrl, getYueGuoJiMicroBoardListUrl, getJiShangMicroBoardListUrl, getUserListDataUrl,  getHongBaoListDataUrl, getPeopleWhoHaveInfoAssetUrl, getUserAuthorizationListUrl, getAllAuthorizationListUrl, setFollowerAuthorizationUrl, getPeopleWhoHaveInfoAssetAllotUrl, getAuthorizedUserListUrl, getSomeUserDetailUrl, postSomeUserAuthorDetailUrl, setSomeUserAuthorDetailUrl, getUserDetailUrl, deleteSomeUserAuthorUrl,getNoAuthorizedUserListUrl, getUserFirstClassConnectedUrl, registerActiveUrl,  getGainPeopleWhoHaveInfoAssetUrl, getMicroBoardBrokerageListUrl, getBoardMarketBrokerageListUrl, getYBKBrokerageListUrl, getBoardMarketUserDetailUrl, getMicroBoardUserDetailUrl, getPostCardUserDetailUrl, getDownloadDataUrl, getShenWenSuoVoucherListDataUrl} from '../appConstants/urlConfig';
 import commonAjax, { commonGetAjax, commonAjaxWithBrackets} from '../helpers/commonAjax';
 import store from '../store';
 
-import { updateAdmin, updateChuanShangBoardMarket, updateAgentOverviewData, updateShenWenSuoBoardMarket, updateChuanShangPostCard, updateJiShangPostCard, updateShenWenSuoMicroBoardData, updateJiShangMicroBoardData, updateYueGuoJiMicroBoardData, updateUserListData, updateHongBaoListData, updatePeopleListWhoHaveInfoAssetData, updatePeopleListWhoHaveInfoAssetAllotData, updateAuthorUserListData , updateNoAuthorUserListData, updateGainPeopleListWhoHaveInfoAssetData, updateMicroBoardBrokerageData, updateBoardMarketBrokerageData, updatePostCardBrokerageData, updateBoardMarketBrokerageUserDetailData, updateMicroBoardBrokerageUserDetailData, updatePostCardBrokerageUserDetailData, updateDownloadData} from '../actions/app-interaction-actions';
+import { updateAdmin, updateChuanShangBoardMarket, updateAgentOverviewData, updateShenWenSuoBoardMarket, updateChuanShangPostCard, updateJiShangPostCard, updateShenWenSuoMicroBoardData, updateJiShangMicroBoardData, updateYueGuoJiMicroBoardData, updateUserListData, updateHongBaoListData, updatePeopleListWhoHaveInfoAssetData, updatePeopleListWhoHaveInfoAssetAllotData, updateAuthorUserListData , updateNoAuthorUserListData, updateGainPeopleListWhoHaveInfoAssetData, updateMicroBoardBrokerageData, updateBoardMarketBrokerageData, updatePostCardBrokerageData, updateBoardMarketBrokerageUserDetailData, updateMicroBoardBrokerageUserDetailData, updatePostCardBrokerageUserDetailData, updateDownloadData, updateShenWenSuoVoucherListData} from '../actions/app-interaction-actions';
 
 // 获取登录用户的信息
 export function getAdmin(config, sucCallback, failCallback) {
@@ -339,6 +339,16 @@ export function getDownloadData(config, sucCallback, failCallback){
         if (sucCallback) sucCallback(info);
     }, function (info) {
         store.dispatch(updateDownloadData(info));
+        if (failCallback) failCallback(info);
+    });
+}
+//拿到深文所入金送券数据
+export function getShenWenSuoVoucherListData(config, sucCallback, failCallback){
+	return commonGetAjax(getShenWenSuoVoucherListDataUrl, config, function (info) {
+        store.dispatch(updateShenWenSuoVoucherListData(info));
+        if (sucCallback) sucCallback(info);
+    }, function (info) {
+        store.dispatch(updateShenWenSuoVoucherListData(info));
         if (failCallback) failCallback(info);
     });
 }

@@ -63,6 +63,8 @@ import RegisterActiveContainer from './components/containers/register-active-con
 //下载中心
 import DownloadContainer from './components/containers/download-list-container';
 
+import ShenWenSuoVoucherContainer from './components/containers/shen-wen-suo-voucher-container';
+
 export default (
     <Router history={hashHistory}>
         <Route path={routeBase} component={MainLayout} >
@@ -121,6 +123,8 @@ export default (
 
             <Route breadcrumbName="信息资产列表" path={routeBase + 'info_asset_allot_list'} component={InfoAssetAllotListContainer} />
             <Route breadcrumbName="已获得信息资产列表" path={routeBase + 'gain_info_asset_allot_list'} component={GainInfoAssetAllotListContainer} />
+
+            <Route breadcrumbName="深文所入金送体验券列表" path={routeBase + 'shen_wen_suo_voucher_list'} component={ShenWenSuoVoucherContainer} />
 
              <Route breadcrumbName="下载中心" path={routeBase + 'download_center_list'} component={DownloadContainer} />
 

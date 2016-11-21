@@ -101,4 +101,7 @@ export const getUserFirstClassConnectedUrl = '/api/index.php/Customs/get_1childr
 // 获取下载中心数据
 export const getDownloadDataUrl = '/api/index.php/Download/index';
 
+//获取深文所入金送券列表
+export const getShenWenSuoVoucherListDataUrl =  '/api/index.php/Awards/coupon_list_shenw';
+
 

@@ -27,6 +27,7 @@ import boardMarketBrokerageUserDetailReducer from './board-market-brokerage-user
 import microBoardBrokerageUserDetailReducer from './micro-board-brokerage-user-reducer-reducer';
 import postCardBrokerageUserDetailReducer from './post-card-brokerage-user-reducer-reducer';
 import downloadListReducer from './download-list-reducer';
+import shenWenSuoVoucherListReducer from './shen-wen-suo-voucher-list-reducer';
 
 
 
@@ -53,7 +54,8 @@ const reducers = combineReducers({
     boardMarketBrokerageUserDetailState : boardMarketBrokerageUserDetailReducer,
     microBoardBrokerageUserDetailState : microBoardBrokerageUserDetailReducer,
     postCardBrokerageUserDetailState : postCardBrokerageUserDetailReducer,
-    downloadListDetailStater:downloadListReducer
+    downloadListDetailStater:downloadListReducer,
+    shenWenSuoVoucherListStater:shenWenSuoVoucherListReducer
 });
 
 export default reducers;

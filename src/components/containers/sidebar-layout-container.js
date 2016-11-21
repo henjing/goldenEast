@@ -159,11 +159,11 @@ const SidebarLayoutContainer = React.createClass({
                                 </Link>
                             </Menu.Item>
 
-                            <Menu.Item key={routeBase + 'post_card_brokerage'}>
+                     {/*       <Menu.Item key={routeBase + 'post_card_brokerage'}>
                                 <Link to={routeBase + 'post_card_brokerage'}>
                                     邮币卡佣金列表
                                 </Link>
-                            </Menu.Item>
+                            </Menu.Item>*/}
                         </SubMenu>
 
                         <SubMenu key="sub5" title={<span><Icon type="pie-chart" /><span className={styles.navText}>大盘、邮币卡开户进度</span></span>}>
@@ -186,11 +186,16 @@ const SidebarLayoutContainer = React.createClass({
                                 </Link>
                             </Menu.Item>
                         </SubMenu>
-                         <Menu.Item key={routeBase + 'download_center_list'}>
-                                <Link to={routeBase + 'download_center_list'}>
-                                    下载中心
-                                </Link>
-                            </Menu.Item>
+                        <Menu.Item key={routeBase + 'shen_wen_suo_voucher_list'}>
+                            <Link to={routeBase + 'shen_wen_suo_voucher_list'}>
+                                深文所入金送体验券列表
+                            </Link>
+                        </Menu.Item>
+                        <Menu.Item key={routeBase + 'download_center_list'}>
+                            <Link to={routeBase + 'download_center_list'}>
+                                下载中心
+                            </Link>
+                        </Menu.Item>
                     </Menu>
                     <div className={styles.antAsideAction} onClick={this.onCollapseChange}>
                         {collapse ? <Icon type="right" /> : <Icon type="left" />}

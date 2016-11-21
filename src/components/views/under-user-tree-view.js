@@ -83,13 +83,12 @@ const UnderUserTreeView = React.createClass({
     const treeNodes = loop(this.state.treeData);
     return (
     	<Spin spinning={this.state.loading} size="large">
-    		{(this.treeData || this.treeData) ? (<div className={styles.noDataDefault}>
+    		{(this.state.treeData.length == 0) ? (<div className={styles.noDataDefault}>
 					<Icon type="frown-o" style={{fontSize: '16px',marginRight: '5px'}} />
 					<span>暂无名下用户!</span>
 				</div>) : (<Tree loadData={this.onLoadData} className={styles.underTree}>
 	        {treeNodes}
 	      </Tree>)}
-	      
       </Spin>
     );
   },

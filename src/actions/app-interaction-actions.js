@@ -232,3 +232,20 @@ export function updateUnderUserSearch(info){
 		info
 	}
 }
+
+//更新用户名下用户树结构数据
+export function updateUnderUserTreeData(info){
+	return {
+		type: types.UPDATE_UNDER_USER_TREE_DATA,
+		info
+	}
+}
+
+//更新用户名下用户树结构搜索数据
+export function updateUnderUserTreeSearch(info){
+	return {
+		type: types.UPDATE_UNDER_USER_TREE_SEARCH,
+		info
+	}
+}
+

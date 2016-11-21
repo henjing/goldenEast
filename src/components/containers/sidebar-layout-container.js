@@ -152,11 +152,11 @@ const SidebarLayoutContainer = React.createClass({
 
                       </SubMenu>
                       <SubMenu key="sub7" title={<span><Icon type="team" /><span className={styles.navText}>人脉查询</span></span>}>
-		                  {/*<Menu.Item key={routeBase + 'under_user_tree'}>
+		                  <Menu.Item key={routeBase + 'under_user_tree'}>
 		                      <Link to={routeBase + 'under_user_tree'}>
 		                          名下用户信息
 		                      </Link>
-		                  </Menu.Item>*/}
+		                  </Menu.Item>
 	                      <Menu.Item key={routeBase + 'under_user'}>
 		                      <Link to={routeBase + 'under_user'}>
 		                          一度人脉列表

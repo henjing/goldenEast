@@ -1,122 +1,96 @@
 import React from 'react';
-import { Tree, Button } from 'antd';
+import { Tree, Button, Spin, Icon } from 'antd';
+import { Link } from 'react-router';
 import styles from '../containers/under-user-tree.less';
+import weiGuDong from '../../appConstants/assets/images/微股东.png';
+import normalCard from '../../appConstants/assets/images/普卡.png';
+import silverCard from '../../appConstants/assets/images/银卡.png';
+import goldenCard from '../../appConstants/assets/images/金卡.png';
+import superGoldenCard from '../../appConstants/assets/images/白金卡.png';
+import { getUnderUserTreeOpenData } from '../../api/app-interaction-api';
+import { getUnderUserTreeDataTree } from '../../api/app-interaction-api';
 const TreeNode = Tree.TreeNode;
 
-function generateTreeNodes(treeNode) {
-  const arr = [];
-  const key = treeNode.props.eventKey;
-  for (let i = 0; i < 3; i++) {
-    arr.push({ name: `leaf ${key}-${i}`, key: `${key}-${i}` });
-  }
-  return arr;
-}
-
-function setLeaf(treeData, curKey, level) {
-  const loopLeaf = (data, lev) => {
-    const l = lev - 1;
-    data.forEach((item) => {
-      if ((item.key.length > curKey.length) ? item.key.indexOf(curKey) !== 0 :
-        curKey.indexOf(item.key) !== 0) {
-        return;
-      }
-      if (item.children) {
-        loopLeaf(item.children, l);
-      } else if (l < 1) {
-        item.isLeaf = true;
-      }
-    });
-  };
-  loopLeaf(treeData, level + 1);
-}
+const jinLevels = ['注册用户', weiGuDong, normalCard, silverCard, goldenCard, superGoldenCard];
 
 function getNewTreeData(treeData, curKey, child, level) {
   const loop = (data) => {
-    if (level < 1 || curKey.length - 3 > level * 2) return;
     data.forEach((item) => {
-      if (curKey.indexOf(item.key) === 0) {
-        if (item.children) {
-          loop(item.children);
-        } else {
-          item.children = child;
-        }
-      }
-    });
+			if (item.children) {
+	      loop(item.children);
+	    } else {
+	    	if(item.user_sn == curKey)
+	      item.children = child;
+	    }
+	    });
   };
   loop(treeData);
-  setLeaf(treeData, curKey, level);
 }
 
 const UnderUserTreeView = React.createClass({
   getInitialState() {
     return {
       treeData: [],
+      loading: true
     };
   },
-  componentDidMount() {
-    setTimeout(() => {
-      this.setState({
-        treeData: [
-          { 
-          	name: '马步王子', 
-          	key: '0',
-          	level: 1,
-          	phone: 15878193546,
-          	img: 'http://wx.qlogo.cn/mmopen/Q3auHgzwzM5pziaib7lz8r4a1OV5Ip1owCQoRZdea57fWXuLAtM646pgrpp16tXm5XkR0blFc7esy1iaReicq6yEvtlw9HQ56tUz1icvTRMQ2pRU/0'
-         },{ 
-          	name: '诸神', 
-          	key: '1',
-          	level: 2,
-          	phone: 15878193546,
-          	img: 'http://wx.qlogo.cn/mmopen/Q3auHgzwzM5pziaib7lz8r4a1OV5Ip1owCQoRZdea57fWXuLAtM646pgrpp16tXm5XkR0blFc7esy1iaReicq6yEvtlw9HQ56tUz1icvTRMQ2pRU/0'
-         },{ 
-          	name: '绝地反击', 
-          	key: '2',
-          	level: 3,
-          	phone: 135487813546,
-          	img: 'http://wx.qlogo.cn/mmopen/Q3auHgzwzM5pziaib7lz8r4a1OV5Ip1owCQoRZdea57fWXuLAtM646pgrpp16tXm5XkR0blFc7esy1iaReicq6yEvtlw9HQ56tUz1icvTRMQ2pRU/0'
-         },
-          
-        ],
-      });
-    }, 100);
+  getUserList(inputValue){
+  	const _this = this;
+		getUnderUserTreeDataTree(inputValue,function(info){
+			_this.setState({ treeData : info.data.list});
+			_this.setState({ loading : false})
+		},function(info){
+			_this.setState({ loading : false})
+		});
   },
-  onSelect(info) {
-    console.log('selected', info);
-  },
-  onLoadData(treeNode) {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        const treeData = [...this.state.treeData];
-        getNewTreeData(treeData, treeNode.props.eventKey, generateTreeNodes(treeNode), 2);
-        this.setState({ treeData });
-        resolve();
-      }, 1000);
-    });
-  },
+	componentDidMount(){
+		this.getUserList({});
+	},
+
+	onLoadData(treeNode) {
+		var _this = this;
+		const user_sn = treeNode.props.eventKey;
+		return getUnderUserTreeOpenData({sn : user_sn},function(info){
+			var treeData = [..._this.state.treeData];
+			getNewTreeData(treeData, user_sn, info.data.list);
+			_this.setState({ treeData })
+		},function(info){
+//				失败
+		});
+	},
   render() {
     const loop = data => data.map((item) => {
     	const titleNode = function(data){
     		return (
-    		<div className={styles.titleNode}>
-    			<span className="avatar" style={{backgroundImage: 'url('+ data.img +')'}}></span>
-    			<span className="text">{data.name}</span>
-    			<span className="text">{data.level}</span>
-    			<span className="text">{data.phone}</span>
-    			<Button size="small" type="primary" style={{marginLeft: '10px'}}>个人详情</Button>
-    		</div>
-    	)
+	    		<div className={styles.titleNode}>
+	    			<span className="avatar" style={{backgroundImage: 'url('+ data.wechat_avatar +')'}}></span>
+	    			<span className="text">{data.user_name}</span>
+	    			{data.level == 0 ? <span className="text">{jinLevels[data.level]}</span> : 
+	    			<img src={jinLevels[data.level]} style={{verticalAlign: 'middle'}}/>}
+	    			<span className="text">{data.cellphone}</span>
+	    			<Link to={`/under_user_tree/user_detail/${data.user_sn}`} style={{verticalAlign: 'middle'}}>
+	    				<Button size="small" type="primary" style={{marginLeft: '10px'}}>个人详情</Button>
+	    			</Link>
+	    		</div>
+	    	)
     	}
       if (item.children) {
-        return <TreeNode title={titleNode(item)} key={item.key}>{loop(item.children)}</TreeNode>;
+        return <TreeNode title={titleNode(item)} key={item.user_sn} isLeaf={!item.has_children}>{loop(item.children)}</TreeNode>;
       }
-      return <TreeNode title={titleNode(item)} key={item.key} isLeaf={item.isLeaf} disabled={item.key === '0-0-0'} />;
+      return <TreeNode title={titleNode(item)} key={item.user_sn} isLeaf={!item.has_children} />;
     });
+
     const treeNodes = loop(this.state.treeData);
     return (
-      <Tree onSelect={this.onSelect} loadData={this.onLoadData} className={styles.underTree}>
-        {treeNodes}
-      </Tree>
+    	<Spin spinning={this.state.loading} size="large">
+    		{(this.treeData || this.treeData) ? (<div className={styles.noDataDefault}>
+					<Icon type="frown-o" style={{fontSize: '16px',marginRight: '5px'}} />
+					<span>暂无名下用户!</span>
+				</div>) : (<Tree loadData={this.onLoadData} className={styles.underTree}>
+	        {treeNodes}
+	      </Tree>)}
+	      
+      </Spin>
     );
   },
 });

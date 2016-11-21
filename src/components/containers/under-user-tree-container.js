@@ -1,6 +1,6 @@
 import React from 'react';
-import { Table, Icon } from 'antd';
-import SearchInput from '../views/SearchInput';
+import { Table, Spin, Input, Button } from 'antd';
+import { connect } from 'react-redux';
 import weiGuDong from '../../appConstants/assets/images/微股东.png';
 import normalCard from '../../appConstants/assets/images/普卡.png';
 import silverCard from '../../appConstants/assets/images/银卡.png';
@@ -8,79 +8,64 @@ import goldenCard from '../../appConstants/assets/images/金卡.png';
 import superGoldenCard from '../../appConstants/assets/images/白金卡.png';
 import styles from './under-user-tree.less';
 import UnderUserTreeView from '../views/under-user-tree-view.js';
-
-const data = [{
-  key: '1',
-  name: '马步王子',
-  level: 3,
-  cellphone: '15878193546',
-  inviter: 'seven',
-  inv_cellphone: '18577191364',
-  register_date: '2016-12-30 11:52:30',
-}];
-const dataTree = {
-		
-		"list": [
-            {
-                "inviting": {
-                    "cellphone": "13878103554",
-                    "user_name": "Mio-艺"
-                },
-                "cellphone": "18298765432",
-                "inviting_people": 8889,
-                "level": 0,
-                "register_date": "2016-08-10 18:23:58",
-                "user_id": 430069,
-                "user_name": "保险测3",
-                "user_sn": "1dcb22a203c1266d64a9bbcdff893015"
-            },
-            {
-                "inviting": {
-                    "cellphone": "13878103554",
-                    "user_name": "Mio-艺"
-                },
-                "cellphone": "18096734515",
-                "inviting_people": 8889,
-                "level": 0,
-                "register_date": "2016-05-30 10:04:40",
-                "user_id": 334964,
-                "user_name": "保险测2",
-                "user_sn": "2566ca293786bd34eb534b229f8bfaab"
-            },
-            {
-                "inviting": {
-                    "cellphone": "13878103554",
-                    "user_name": "Mio-艺"
-                },
-                "cellphone": "14700001111",
-                "inviting_people": 8889,
-                "level": 0,
-                "register_date": "2015-12-23 18:16:01",
-                "user_id": 134107,
-                "user_name": "保险测1",
-                "user_sn": "a913e311da4a26d215df04b68b538e83"
-            },
-        ],
-        "this_page": 1,
-        "total": 21
-    }
+import { getUnderUserTreeData } from '../../api/app-interaction-api';
+import { updateUnderUserTreeSearch } from '../../actions/app-interaction-actions';
+import store from '../../store';
 
 const UnderUserTreeContainer = React.createClass({
+	getInitialState(){
+		return {
+			loading: true
+		}
+	},
+	componentDidMount(){
+		const _this = this;
+		getUnderUserTreeData({},function(){
+			_this.setState({ loading : false });
+		},function(){
+			_this.setState({ loading : false });
+		});
+	},
 	jinLevels() {
-        return ['注册用户', weiGuDong, normalCard, silverCard, goldenCard, superGoldenCard];
-  	},
+    return ['注册用户', weiGuDong, normalCard, silverCard, goldenCard, superGoldenCard];
+	},
 	submitSearch(){
-		
+		const _this = this;
+		getUnderUserTreeData(this.props.searchState,function(){
+			_this.setState({ loading : false });
+		},function(){
+			_this.setState({ loading : false });
+		});
+		this.refs.userTree.getUserList(this.props.searchState)
 	},
-	onChange(){
-		
+	onChange(e){
+		store.dispatch(updateUnderUserTreeSearch({ 
+		 	'search[find]' : e.target.value,
+		 	'page' : 1 ,
+		 	'sn' : '',
+		}));
 	},
+
 	getColumns(){
 		var level = this.jinLevels();
 		const columns = [{
 		  title: '姓名',
-		  dataIndex: 'name',
-		  key: 'name',
+		  dataIndex: 'user_name',
+		  key: 'user_name',
+		  render(text, row, index) {
+		  	  var firstName = !row.wechat_avatar ? text.slice(0,1) : '';
+		      return (
+		      	<div className="user-avatar-bar">
+			      	<span className="user-avatar" style={{backgroundImage:'url('+row.wechat_avatar+')'}}>
+			      		{firstName}
+			      	</span>
+			      	<div className="user-avatar-bar-text">
+			      		<p className="name">{text}</p>
+			      	</div>
+			      	
+		      	</div>
+		      );
+		  },
 		}, {
 		  title: '级别',
 		  dataIndex: 'level',
@@ -98,8 +83,8 @@ const UnderUserTreeContainer = React.createClass({
 		  key: 'cellphone',
 		}, {
 		  title: '邀请人',
-		  dataIndex: 'inviter',
-		  key: 'inviter',
+		  dataIndex: 'inv_user_name',
+		  key: 'inv_user_name',
 		
 		}, {
 		  title: '邀请人号码',
@@ -116,23 +101,44 @@ const UnderUserTreeContainer = React.createClass({
 		return columns;
 	},
 	render(){
+		const { user, list} = this.props.dataState.data;
 		const columns = this.getColumns();
-		const tableTitle = () => (<div style={{textAlign: 'center',color: '#333',fontSize: '14px'}}>马步王子基本信息</div>);
-		return (
+		const tableTitle = (cont) => {
+			try{
+				return (<div style={{textAlign: 'center',color: '#333',fontSize: '14px'}}>{cont[0].user_name}基本信息</div>);
+			}catch(e){}
+		} 
+		return this.props.children || (
+			<Spin spinning={this.state.loading} size="large">
 			<div>
 				<div className="userListHeader">
-					<SearchInput search={this.submitSearch} onChange={this.onChange}/>
+					<div className="searchBar">
+						<label style={{fontSize: '14px',marginRight: '10px'}}>搜索名下用户：</label>
+		                <Input
+		                    style={{ width: '200px' }}
+		                    onChange={this.onChange}
+		                    onPressEnter={this.submitSearch}
+		                    placeholder="输入姓名或手机号"
+		                  />
+		                <Button onClick={this.submitSearch} type="primary" style={{marginLeft:'20px'}}>搜索</Button>
+		            </div>
 				</div>
-				<Table columns={columns} dataSource={data} bordered title={tableTitle} pagination={false}/>
+				<Table columns={columns} dataSource={user} bordered title={tableTitle} pagination={false} size="middle"/>
 				<div className={styles.underTitle}>名下用户</div>
-				{/*<div className={styles.noDataDefault}>
-					<Icon type="frown-o" style={{fontSize: '16px',marginRight: '5px'}} />
-					<span>暂无名下用户!</span>
-				</div>*/}
-				<UnderUserTreeView data={dataTree}/>
+				<UnderUserTreeView ref="userTree" />
+				
 			</div>
+			</Spin>
 		)
 	},
 });
 
-export default UnderUserTreeContainer;
+const mapStateToProps = function (store) {
+    return {
+        dataState : store.underUserTreeState.dataState,
+        searchState : store.underUserTreeState.searchState
+    }
+};
+
+export default connect(mapStateToProps)(UnderUserTreeContainer);
+

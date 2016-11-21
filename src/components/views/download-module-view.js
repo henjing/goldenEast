@@ -6,7 +6,7 @@ const DownloadModule = React.createClass({
         const data = this.props.data;
         const keyid =this.props.keyid;
         return(
-            <div className="download-module-list border-tb">
+            <div className="download-module-list">
                 <ul className="">
                     <li className="download-module-cover">
                         <span style={{backgroundImage:'url('+data[keyid].src+')'}}> </span>

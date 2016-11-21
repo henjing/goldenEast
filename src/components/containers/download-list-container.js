@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pagination, AutoComplete, DatePicker, message, Tag } from 'antd';
+import { Pagination, AutoComplete, DatePicker, message, Tag, Radio, Spin   } from 'antd';
 import './user-list-container.css';
 import DownloadModule from '../views/download-module-view';
 import SearchUserInput from '../views/SearchUserInput.js';
@@ -8,7 +8,14 @@ import { connect } from 'react-redux';
 import { updateDownloadDataSearch } from '../../actions/app-interaction-actions';
 import { getDownloadData } from '../../api/app-interaction-api';
 
-var DownloadContainer = React.createClass({
+const RadioGroup = Radio.Group;
+const DownloadContainer = React.createClass({
+     getInitialState() {
+         return {
+             type_count: 1000,
+             loading: false
+         };
+     },
 	onChange(value){
 		store.dispatch(updateDownloadDataSearch({
     		'search[find]' : value,
@@ -34,12 +41,20 @@ var DownloadContainer = React.createClass({
     		'search[find]' : '',
             'search[d_begin]' : '',
             'search[d_end]' : '',
-            'page' : 1
+            'page' : 1,
+            'search[type]':''
         }));
     },
-     handleChange() {
-         console.log('You are interested in: ');
-     },
+    onTagChange(e) {
+        console.log(`radio checked:${e.target.value}`);
+        this.setState({
+            type_count: e.target.value,
+        });
+        store.dispatch(updateDownloadDataSearch({
+    		'search[type]':e.target.value,
+    	}));
+    	this.submitSearch();
+    },
 	render(){
         const data = this.props.dataState.data;
         const  dataList = data.list;
@@ -51,22 +66,33 @@ var DownloadContainer = React.createClass({
                 <DownloadModule data={dataArray} keyid ={key} />
             )
         };
+
          for(var key in data.types_count){
             dataTagKeys.push(
-               <Tag className="margin-l-15" >{data.types_count[key].type_name} {data.types_count[key].type_count}</Tag>
+                <RadioGroup onChange={this.onTagChange} value={this.state.type_count}>
+                    <Radio  className="margin-l-15"  value={data.types_count[key].file_type}>{data.types_count[key].type_name} {data.types_count[key].type_count}</Radio>
+                </RadioGroup>
             )
         };
 		return this.props.children || (
 			<div>
 				<div className="userListHeader">
 					<SearchUserInput onPageChange={this.onPageChange}  search={this.submitSearch} onChange={this.onChange}/>
+                    {!this.state.whenSearchHide ? (<div className="number-info">
+						<span>{data.total}</span>
+						<p>总数量</p>
+					</div>) : ''}
 				</div>
                 <div className="download-tag"><strong>分类: </strong>{dataTagKeys}</div>
-                <div className="download-module">  {dataKeys}</div>
-                <div>
-                    <Pagination   onChange={this.onPageChange}  defaultCurrent={data.this_page} total={data.total} />
-                </div>
-			</div>
+                <Spin spinning={this.state.loading}>
+                    <div className="download-module">
+                        {dataKeys}
+                    </div>
+                    <div className="margin-b-20">
+                        <Pagination  onChange={this.onPageChange}  defaultCurrent={data.this_page} total={data.total} />
+                    </div>
+                </Spin>
+            </div>
 		)
 	}
 });

@@ -177,7 +177,7 @@
 	-webkit-box-align:center;
     width: 100%;
     padding: 20px 10px;
-    border: 1px #e9e9e9 solid;
+    border: 1px #ddd solid;
 }
 .download-module{
     width: 100%;
@@ -188,12 +188,13 @@
     width: 250px;
     margin: 20px 15px;
     float: left;
+    border: 1px #ddd solid;
 }
 
 .download-module-list .download-module-cover>span{
     display: block;
     width: 100%;
-    padding-top: 60%;
+    padding-top: 70%;
     background-size: cover;
     background-position: center;
 }

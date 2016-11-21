@@ -7,15 +7,18 @@ const initialState = {
             list : [],
             this_page : 1,
             total : 0,
+            types_count : [],
         },
         info : '',
         status : 1 //TODO TBD
     },
     searchState : {
+        type_count : 0,
         page : 1,
         'search[d_begin]' : '',
         'search[d_end]' : '',
-        'search[find]' : ''
+        'search[find]' : '',
+        'search[type]': '',
     },
     addState : {},
     editState : {}

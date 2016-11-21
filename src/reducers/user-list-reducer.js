@@ -15,7 +15,7 @@ const initialState = {
         page : 1,
         'search[d_begin]' : '',
         'search[d_end]' : '',
-        'search[find]' : ''
+        'search[find]' : 0
     },
     addState : {},
     editState : {}

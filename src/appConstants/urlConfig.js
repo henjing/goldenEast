@@ -25,6 +25,7 @@ export const getShenWenSuoMicroBoardListUrl = '/api/index.php/Transaction/transa
 
 // 获取吉商邮币卡交易列表
 export const getJiShangYBKListUrl = '/api/index.php/Transaction/transaction_stamp_jis';
+export const getJiShangMicroBoardListUrl = '/api/index.php/Transaction/transaction_micro_jis';
 
 // 获取粤国际微盘交易列表
 export const getYueGuoJiMicroBoardListUrl = '/api/index.php/Transaction/transaction_micro_yuegj';
@@ -103,10 +104,12 @@ export const registerActiveUrl = '/api/index.php/Overview/subordinate_jujianshan
 // 获取某用户的所有一度人脉用户
 export const getUserFirstClassConnectedUrl = '/api/index.php/Customs/get_1children_list';
 
+
 // 获取下载中心数据
 export const getDownloadDataUrl = '/api/index.php/Download/index';
 
 //获取深文所入金送券列表
 export const getShenWenSuoVoucherListDataUrl =  '/api/index.php/Awards/coupon_list_shenw';
+
 
 

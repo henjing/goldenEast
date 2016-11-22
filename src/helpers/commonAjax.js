@@ -46,7 +46,8 @@ export function commonGetAjax(url, config, sucCallback, failCallback) {
 }
 
 function errHandler(err) {
-    message.error('服务器错误! ' + err);
+    message.error('服务器错误! ' + err,5);
+    console.log(err)
 }
 
 function formData(config) {

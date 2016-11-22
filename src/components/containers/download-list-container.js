@@ -13,7 +13,7 @@ const DownloadContainer = React.createClass({
      getInitialState() {
          return {
              type_count: 1000,
-             loading: false
+             loading: true
          };
      },
 	onChange(value){
@@ -23,7 +23,13 @@ const DownloadContainer = React.createClass({
         }));
 	},
 	submitSearch() {
-        getDownloadData(this.props.searchState);
+        const _this = this;
+		_this.setState({loading: true});
+        getDownloadData(this.props.searchState,function(info){
+			_this.setState({loading: false});
+		},function(info){
+			_this.setState({loading: false});
+		});
     },
     onPageChange(page){
     	store.dispatch(updateDownloadDataSearch({
@@ -33,7 +39,12 @@ const DownloadContainer = React.createClass({
     	this.submitSearch();
     },
 	componentDidMount(){
-		getDownloadData();
+        const _this = this;
+		getDownloadData({},function(info){
+			_this.setState({loading: false});
+		},function(info){
+			_this.setState({loading: false});
+		});
 	},
 	componentWillUnmount(){
     	//清理搜索条件
@@ -77,7 +88,8 @@ const DownloadContainer = React.createClass({
 		return this.props.children || (
 			<div>
 				<div className="userListHeader">
-					<SearchUserInput onPageChange={this.onPageChange}  search={this.submitSearch} onChange={this.onChange}/>
+					<SearchUserInput  placeholder="输入物资名搜索"
+ onPageChange={this.onPageChange}  search={this.submitSearch} onChange={this.onChange}/>
                     {!this.state.whenSearchHide ? (<div className="number-info">
 						<span>{data.total}</span>
 						<p>总数量</p>

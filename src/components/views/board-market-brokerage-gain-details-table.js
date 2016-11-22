@@ -95,7 +95,7 @@ const UserListTable = React.createClass({
             current : parseInt(this.props.currentPage)
         };
 		return(
-			<Table pagination={pagination} columns={columns} dataSource={dataSource} bordered />
+			<Table pagination={pagination} size="middle"columns={columns} dataSource={dataSource} bordered />
 		)
 	}
 });

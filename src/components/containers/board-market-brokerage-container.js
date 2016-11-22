@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, AutoComplete ,DatePicker } from 'antd';
+import { Button, AutoComplete ,DatePicker, Spin} from 'antd';
 import './user-list-container.css';
 import UserListTable from '../views/board-market-brokerage-table';
 import { connect } from 'react-redux';
@@ -11,9 +11,18 @@ import { getBoardMarketBrokerageData } from '../../api/app-interaction-api';
 const RangePicker = DatePicker.RangePicker;
 
 var BoardMarketBrokerageContainer = React.createClass({
-    
+    getInitialState(){
+		return {
+			loading: true,
+		}
+	},
     componentDidMount() {
-        getBoardMarketBrokerageData({});
+        const _this = this;
+        getBoardMarketBrokerageData({},function(info){
+			_this.setState({loading: false});
+		},function(info){
+			_this.setState({loading: false});
+		});
     },
     componentWillUnmount(){
     	//清理搜索条件
@@ -28,9 +37,15 @@ var BoardMarketBrokerageContainer = React.createClass({
     onChange(value) {
         store.dispatch(updateBoardMarketBrokerageSearch({ 'search[find]' : value,'page' : 1 }));
     },
-    
+
     submitSearch() {
-        getBoardMarketBrokerageData(this.props.searchState);
+        const _this = this;
+        _this.setState({loading: true});
+        getBoardMarketBrokerageData(this.props.searchState,function(info){
+            _this.setState({loading: false});
+        },function(info){
+            _this.setState({loading: false});
+        });
     },
 
     onDateChange(dates, dateStrings) {
@@ -72,7 +87,9 @@ var BoardMarketBrokerageContainer = React.createClass({
 					<label>交易日期:</label>
 					<RangePicker style={{ width: '200px' }} onChange={this.onDateChange} />
 				</div>
-				<UserListTable defaultPageSize={12} total={data.total} currentPage={data.this_page} dataSource={data} onPageChange={this.onPageChange} />
+                <Spin spinning={this.state.loading} size="large">
+                    <UserListTable defaultPageSize={12} total={data.total} currentPage={data.this_page} dataSource={data} onPageChange={this.onPageChange} />
+                </Spin>
 			</div>
 		)
 	}

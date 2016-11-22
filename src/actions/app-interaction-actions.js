@@ -340,6 +340,13 @@ export function updateUnderUserData(info){
 	}
 }
 
+//更新下载中心显示数据
+export function updateDownloadData(info){
+	return {
+		type: types.UPDATE_DOWNLOAD_DATA,
+		info
+	}
+}
 //更新下载中心搜索数据
 export function updateDownloadDataSearch(info){
 	return {
@@ -367,6 +374,22 @@ export function updateShenWenSuoVoucherListDataListDataSearch(info){
 export function updateUnderUserSearch(info){
 	return {
 		type: types.UPDATE_UNDER_USER_SEARCH,
+		info
+	}
+}
+
+//更新用户名下用户树结构数据
+export function updateUnderUserTreeData(info){
+	return {
+		type: types.UPDATE_UNDER_USER_TREE_DATA,
+		info
+	}
+}
+
+//更新用户名下用户树结构搜索数据
+export function updateUnderUserTreeSearch(info){
+	return {
+		type: types.UPDATE_UNDER_USER_TREE_SEARCH,
 		info
 	}
 }

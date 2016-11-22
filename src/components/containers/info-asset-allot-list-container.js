@@ -67,6 +67,7 @@ onChange(value){
                     <SearchUserInput
                         search={this.submitSearch}
                         onChange={this.onChange}
+                        placeholder="输入姓名或手机号"
                     />
                 </div>
                 <div>{userList}</div>
@@ -157,6 +158,7 @@ const UserList = React.createClass({
                     bordered
                      dataSource={dataList}
                     pagination={false}
+                    size="middle"
                     className={'column-txt margin-b-20'}
                 />
                 <InfoAssetAllotList  data={data.list} />

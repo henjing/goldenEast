@@ -85,7 +85,7 @@ export const UnderUserTable = React.createClass({
 	        current : parseInt(this.props.currentPage)
 	    };
 		return (
-			<Table columns={columns} dataSource={data} bordered pagination={pagination} size="middle"/>
+			<Table columns={columns} dataSource={data} bordered pagination={pagination} size="middle" loading={this.props.loading}/>
 		)
 	},
 });

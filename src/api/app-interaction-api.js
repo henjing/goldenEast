@@ -332,8 +332,15 @@ export function getUnderUserTreeData(config, sucCallback, failCallback) {
     }, function (info) {
         if (failCallback) failCallback(info);
     })
-}
 
+}//获得名下用户数据树结构树
+export function getUnderUserTreeDataTree(config, sucCallback, failCallback) {
+    return commonGetAjax(underUsertreeUrl, config, function (info) {
+        if (sucCallback) sucCallback(info);
+    }, function (info) {
+        if (failCallback) failCallback(info);
+    })
+}
 //获得一度人脉数据
 export function getUnderUserData(config, sucCallback, failCallback) {
     return commonGetAjax(underUserUrl, config, function (info) {

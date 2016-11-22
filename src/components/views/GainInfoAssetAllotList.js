@@ -44,6 +44,7 @@ const GainInfoAssetAllotList = React.createClass({
                   bordered
                   dataSource={data}
                   className={'column-txt'}
+                  size="middle"
               />
           </div>
         )

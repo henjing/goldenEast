@@ -32,6 +32,7 @@ const InfoAssetAllotList = React.createClass({
                   bordered
                   dataSource={this.props.data}
                   className={'column-txt'}
+                  size="middle"
               />
           </div>
         )

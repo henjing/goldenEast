@@ -80,7 +80,7 @@ const HongBaoListTable = React.createClass({
         current : parseInt(this.props.currentPage)
     };
 		return(
-			<Table pagination={pagination} columns={columns} dataSource={this.props.data} bordered />
+			<Table pagination={pagination} columns={columns} size="middle" dataSource={this.props.data} bordered />
 		)
 	}
 });

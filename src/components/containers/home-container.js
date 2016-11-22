@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col, Badge,Table,Button,Tabs  } from 'antd';
+import { Row, Col, Badge,Table,Button,Tabs, Spin  } from 'antd';
 import styles from './home-container.less';
 import { getAgentOverviewData } from '../../api/app-interaction-api';
 import { connect } from 'react-redux';
@@ -10,10 +10,16 @@ var HomeContainer = React.createClass({
 	getInitialState(){
 		return {
 			month: '',
+			loading: true,
 		}
 	},
 	componentDidMount(){
-		getAgentOverviewData({});
+		const _this = this;
+		getAgentOverviewData({},function(info){
+			_this.setState({ loading: false});
+		},function(info){
+			_this.setState({ loading: false});
+		});
 	},
 	onChangeTabs(key){
 		this.setState({
@@ -24,7 +30,7 @@ var HomeContainer = React.createClass({
 		const data = this.props.agentData.data;
 
 		return (
-			<div>
+			<Spin spinning={this.state.loading} size="large">
 				<Row className={styles.borderBottom}>
 			      <Col span={8} className={styles.borderRight}>
 			      	<div className={styles.numberUpdataStatus}>
@@ -86,7 +92,7 @@ var HomeContainer = React.createClass({
 				    </TabPane>
 				 </Tabs>
 			    
-			</div>
+			</Spin>
 		)
 	}
 });

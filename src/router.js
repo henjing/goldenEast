@@ -76,18 +76,21 @@ export default (
         <Route path={routeBase} component={MainLayout} >
 
             <IndexRedirect to={routeBase + 'home'} />
-            {/*<IndexRoute component={HomeContainer}/>*/}
             <Route breadcrumbName="数据总览" path={routeBase + 'home'} component={HomeContainer} />
 
             <Route name="user_list" breadcrumbName="用户列表" path={routeBase + 'user_list'} component={UserListContainer} >
                 <Route breadcrumbName="个人详情" path="user_detail/:userId" component={UserDetailContainer} />
             </Route>
 
-
             <Route name="hongbao_list" breadcrumbName="红包列表" path={routeBase + 'hongbao_list'} component={HongBaoListContainer} >
             </Route>
 
             <Route breadcrumbName="名下用户信息" path={routeBase + 'under_user_tree'} component={UnderUserTreeContainer} />
+
+            <Route breadcrumbName="名下用户信息" path={routeBase + 'under_user_tree'} component={UnderUserTreeContainer} >
+            	 <Route breadcrumbName="个人详情" path="user_detail/:userId" component={UserDetailContainer} />
+            </Route>
+
             <Route breadcrumbName="一度人脉列表" path={routeBase + 'under_user'} component={UnderUserContainer} />
 
             <Route breadcrumbName="旗下代理商数据" path={routeBase + 'register_active'} component={RegisterActiveContainer} />

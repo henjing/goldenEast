@@ -16,7 +16,7 @@
   "license": "MIT",
   "homepage": "https://github.com/HuangXingbin/goldenEast#readme",
   "dependencies": {
-    "antd": "2.2.1",
+    "antd": "2.4.2",
     "axios": "^0.14.0",
     "bootstrap": "3.3.7",
     "classnames": "^2.2.5",

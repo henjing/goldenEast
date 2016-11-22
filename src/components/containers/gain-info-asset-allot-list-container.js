@@ -63,6 +63,7 @@ const GainInfoAssetAllotListContainer = React.createClass({
                     <SearchUserInput
                         search={this.submitSearch}
                         onChange={this.onChange}
+                        placeholder="输入姓名或手机号"
                     />
                 </div>
                 <div>{userList}</div>

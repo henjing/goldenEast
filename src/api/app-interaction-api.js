@@ -325,6 +325,7 @@ export function getRegisterActiveData(config, sucCallback, failCallback) {
     })
 }
 
+/***************start underUser*******************/
 //获得名下用户数据树结构
 export function getUnderUserTreeData(config, sucCallback, failCallback) {
     return commonGetAjax(underUsertreeUrl, config, function (info) {
@@ -334,8 +335,8 @@ export function getUnderUserTreeData(config, sucCallback, failCallback) {
     	store.dispatch(updateUnderUserTreeData(info));
         if (failCallback) failCallback(info);
     })
+}
 
-}//获得名下用户数据树结构树
 export function getUnderUserTreeDataTree(config, sucCallback, failCallback) {
     return commonGetAjax(underUsertreeUrl, config, function (info) {
         if (sucCallback) sucCallback(info);
@@ -343,6 +344,15 @@ export function getUnderUserTreeDataTree(config, sucCallback, failCallback) {
         if (failCallback) failCallback(info);
     })
 }
+
+export function getUnderUserTreeOpenData(config, sucCallback, failCallback) {
+    return commonGetAjax(underUsertreeUrl, config, function (info) {
+        if (sucCallback) sucCallback(info);
+    }, function (info) {
+        if (failCallback) failCallback(info);
+    })
+}
+
 //获得一度人脉数据
 export function getUnderUserData(config, sucCallback, failCallback) {
     return commonGetAjax(underUserUrl, config, function (info) {
@@ -353,6 +363,7 @@ export function getUnderUserData(config, sucCallback, failCallback) {
         if (failCallback) failCallback(info);
     })
 }
+/***************end underUser*******************/
 // 获取某用户的所有一度人脉用户
 export function getUserFirstClassConnected(config, sucCallback, failCallback){
 	return commonGetAjax(getUserFirstClassConnectedUrl, config, function (info) {

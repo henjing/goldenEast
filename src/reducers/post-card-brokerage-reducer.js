@@ -7,6 +7,8 @@ const initialState = {
             list : [],
             this_page : 1,
             total : 0,
+            total_fees_sum : 0,
+            total_users_sum : 0
         },
         info : '',
         status : 1 //TODO TBD
@@ -15,20 +17,20 @@ const initialState = {
         page : 1,
         'search[d_begin]' : '',
         'search[d_end]' : '',
-        'search[find]' : 0
+        'search[find]' : ''
     },
     addState : {},
     editState : {}
 };
 
-const userListReducer = function (state = initialState, action) {
+const postCardBrokerageReducer = function (state = initialState, action) {
     
     switch (action.type) {
         
-        case types.UPDATE_USERLIST_DATA :
+        case types.UPDATE_POST_CARD_BROKERAGE :
             return Object.assign({}, state, { dataState : {...action.info }});
         
-        case types.UPDATE_USERLIST_DATA_SEARCH:
+        case types.UPDATE_POST_CARD_BROKERAGE_SEARCH :
             var template = { searchState : state.searchState};
             var merged = mergeDeep(template, { searchState : {...action.info}});
             return Object.assign({}, state, merged);
@@ -37,4 +39,4 @@ const userListReducer = function (state = initialState, action) {
     return state;
 };
 
-export default userListReducer;
+export default postCardBrokerageReducer;

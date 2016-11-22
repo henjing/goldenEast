@@ -25,10 +25,10 @@ const userListReducer = function (state = initialState, action) {
     
     switch (action.type) {
         
-        case types.UPDATE_USERLIST_DATA :
+        case types.UPDATE_SHENWENSUO_VOUCHER_LIST_DATA :
             return Object.assign({}, state, { dataState : {...action.info }});
         
-        case types.UPDATE_USERLIST_DATA_SEARCH:
+        case types.UPDATE__SHENWENSUO_VOUCHER_DATA_SEARCH:
             var template = { searchState : state.searchState};
             var merged = mergeDeep(template, { searchState : {...action.info}});
             return Object.assign({}, state, merged);

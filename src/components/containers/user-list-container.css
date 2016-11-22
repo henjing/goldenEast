@@ -1,3 +1,8 @@
+.font14 {font-size: 14px !important;}
+.font16 {font-size: 16px !important;}
+.font18 {font-size: 18px !important;}
+.font20 {font-size: 20px !important;}
+.font22 {font-size: 22px !important;}
 .userListHeader {
     height: 80px;
     padding: 0 20px;
@@ -60,6 +65,12 @@
 	-webkit-box-align:center;
 	-webkit-box-pack: center;
 }
+.box-justify-flex {
+	width: 100%;
+	display: -webkit-box;
+    -webkit-box-pack: justify;
+    -webkit-box-align: center;
+}
 /**********以盒子的形式显示*************/
 .k-box-center {
 	position: relative;
@@ -111,8 +122,12 @@
 	border-top: 1px solid #e9e9e9;
 	border-bottom: 1px solid #e9e9e9;;
 }
+.margin-t-5 {margin-top :5px;}
+.margin-b-5 {margin-bottom: 5px;}
 .margin-b-20 {margin-bottom: 20px;}
+.margin-r-10 {margin-right: 10px;}
 .margin-r-15 {margin-right: 15px;}
+.margin-l-15 {margin-left: 15px;}
 .margin-l-40 {margin-left: 40px;}
 /*权限分配*/
 .btn-orange{
@@ -123,7 +138,72 @@
     background-color: #fe7949;
     border-color: #fe7949;
 }
+.q-padding-lr-15{
+    padding-left: 15px;
+	padding-right: 15px;
+}
 .q-padding-tb-15{
 	padding-bottom: 15px;
 	padding-top: 15px;
+}
+.q-brokerage-user{
+    position: relative;
+    display: -webkit-box;
+    -webkit-box-align:center;
+}
+.q-brokerage-avatar{
+    width: 60px;
+    height: 60px;
+    -webkit-border-radius: 200px;
+    overflow: hidden;
+}
+.q-brokerage-avatar>span{
+    width: 100%;
+    height: 100%;
+    display: block;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-color: #becfe0;
+    -webkit-background-size: cover;
+    -webkit-border-radius: 200px;
+    color: #fff;
+    line-height: 60px;
+    text-align: center;
+    font-size: 28px;
+}
+/*下载中心*/
+.download-tag{
+    display:-webkit-box !important;
+	-webkit-box-align:center;
+    width: 100%;
+    padding: 20px 10px;
+    border: 1px #ddd solid;
+}
+.download-module{
+    width: 100%;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+.download-module .download-module-list{
+    width: 250px;
+    margin: 20px 15px;
+    float: left;
+    border: 1px #ddd solid;
+}
+
+.download-module-list .download-module-cover>span{
+    display: block;
+    width: 100%;
+    padding-top: 70%;
+    background-size: cover;
+    background-position: center;
+}
+.download-describe{
+    padding: 10px;
+}
+.download-describe>div{
+    line-height: 28px;
+}
+.download-btn{
+    padding: 10px 10px ;
 }

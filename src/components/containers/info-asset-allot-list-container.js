@@ -67,6 +67,7 @@ onChange(value){
                     <SearchUserInput
                         search={this.submitSearch}
                         onChange={this.onChange}
+                        placeholder="输入姓名或手机号"
                     />
                 </div>
                 <div>{userList}</div>
@@ -87,11 +88,10 @@ const UserList = React.createClass({
             className: 'column-txt',
             dataIndex: 'user_name',
             render(text, row, index) {
-                const firstName = text.slice(0,1);
-                const avatar = row.wechat_avatar;
+                var firstName = !row.wechat_avatar ? text.slice(0,1) : '';
                 return (
                     <div className="box-align">
-			      	<span className="user-avatar" style={{backgroundImage:"url('')"}}>
+			      	<span className="user-avatar" style={{backgroundImage:'url('+ row.wechat_avatar +')'}}>
 								{firstName}
 			      	</span>
                         <div className="user-avatar-bar-text">
@@ -158,6 +158,7 @@ const UserList = React.createClass({
                     bordered
                      dataSource={dataList}
                     pagination={false}
+                    size="middle"
                     className={'column-txt margin-b-20'}
                 />
                 <InfoAssetAllotList  data={data.list} />

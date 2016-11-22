@@ -30,11 +30,32 @@ export const getJiShangMicroBoardListUrl = '/api/index.php/Transaction/transacti
 // 获取粤国际微盘交易列表
 export const getYueGuoJiMicroBoardListUrl = '/api/index.php/Transaction/transaction_micro_yuegj';
 
+// 获取大盘佣金列表
+export const getBoardMarketBrokerageListUrl = '/api/index.php/Transaction/bonus_list_spot';
+
+// 获取微盘佣金列表
+export const getMicroBoardBrokerageListUrl = '/api/index.php/Transaction/bonus_list_mico';
+
+// 获取邮币卡佣金列表
+export const getYBKBrokerageListUrl = '/api/index.php/Transaction/bonus_list_stamp';
+
+// 获取大盘某用户个人佣金详情列表
+export const getBoardMarketUserDetailUrl = '/api/index.php/Transaction/bonus_detail_spot';
+
+// 获取微盘某用户个人佣金详情列表
+export const getMicroBoardUserDetailUrl = '/api/index.php/Transaction/bonus_detail_spot';
+
+// 获取邮币卡某用户个人佣金详情列表
+export const getPostCardUserDetailUrl = '/api/index.php/Transaction/bonus_detail_spot';
+
 // 代理商本月总数据请求
 export const getAgentOverviewDataUrl = '/api/index.php/overview/transaction';
 
 //获取旗下代理商用户列表
 export const getUserListDataUrl =  '/api/index.php/Customs/index';
+
+//获取红包用户列表
+export const getHongBaoListDataUrl =  '/api/index.php/Awards/red_pack';
 
 // 获取"信息资产分配列表 (小金列表)
 export const getPeopleWhoHaveInfoAssetUrl = ' /api/index.php/Asset/asset_out_detail';
@@ -82,6 +103,13 @@ export const registerActiveUrl = '/api/index.php/Overview/subordinate_jujianshan
 
 // 获取某用户的所有一度人脉用户
 export const getUserFirstClassConnectedUrl = '/api/index.php/Customs/get_1children_list';
+
+
+// 获取下载中心数据
+export const getDownloadDataUrl = '/api/index.php/Download/index';
+
+//获取深文所入金送券列表
+export const getShenWenSuoVoucherListDataUrl =  '/api/index.php/Awards/coupon_list_shenw';
 
 
 

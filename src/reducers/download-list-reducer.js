@@ -7,28 +7,31 @@ const initialState = {
             list : [],
             this_page : 1,
             total : 0,
+            types_count : [],
         },
         info : '',
         status : 1 //TODO TBD
     },
     searchState : {
+        type_count : 0,
         page : 1,
         'search[d_begin]' : '',
         'search[d_end]' : '',
-        'search[find]' : 0
+        'search[find]' : '',
+        'search[type]': '',
     },
     addState : {},
     editState : {}
 };
 
-const userListReducer = function (state = initialState, action) {
+const downloadListReducer = function (state = initialState, action) {
     
     switch (action.type) {
         
-        case types.UPDATE_USERLIST_DATA :
+        case types.UPDATE_DOWNLOAD_DATA :
             return Object.assign({}, state, { dataState : {...action.info }});
         
-        case types.UPDATE_USERLIST_DATA_SEARCH:
+        case types.UPDATE_DOWNLOAD_DATA_SEARCH:
             var template = { searchState : state.searchState};
             var merged = mergeDeep(template, { searchState : {...action.info}});
             return Object.assign({}, state, merged);
@@ -37,4 +40,4 @@ const userListReducer = function (state = initialState, action) {
     return state;
 };
 
-export default userListReducer;
+export default downloadListReducer;

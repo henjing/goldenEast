@@ -58,7 +58,7 @@ var UserListContainer = React.createClass({
 		return this.props.children || (
 			<div>
 				<div className="userListHeader border-b">
-					<SearchUserInput search={this.submitSearch} onChange={this.onChange} />
+					<SearchUserInput placeholder="输入姓名或手机号"  search={this.submitSearch} onChange={this.onChange} />
 				</div>
                 <div className="column-txt">
                    {userList}

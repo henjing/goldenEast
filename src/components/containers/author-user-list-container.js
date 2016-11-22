@@ -64,7 +64,7 @@ var UserListContainer = React.createClass({
 		return this.props.children || (
 			<div>
 				<div className="userListHeader">
-					<SearchUserInput search={this.submitSearch} onChange={this.onChange}/>
+					<SearchUserInput placeholder="输入姓名或手机号" search={this.submitSearch} onChange={this.onChange}/>
 				</div>
 			{/*	<div className="data-picker-bar">
 					<label>注册时间:</label>

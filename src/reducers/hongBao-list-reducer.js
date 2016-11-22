@@ -15,20 +15,20 @@ const initialState = {
         page : 1,
         'search[d_begin]' : '',
         'search[d_end]' : '',
-        'search[find]' : 0
+        'search[find]' : ''
     },
     addState : {},
     editState : {}
 };
 
-const userListReducer = function (state = initialState, action) {
+const hongBaoListReducer = function (state = initialState, action) {
     
     switch (action.type) {
         
-        case types.UPDATE_USERLIST_DATA :
+        case types.UPDATE_HONGBAOLIST_DATA :
             return Object.assign({}, state, { dataState : {...action.info }});
         
-        case types.UPDATE_USERLIST_DATA_SEARCH:
+        case types.UPDATE_HONGBAOLIST_DATA_SEARCH:
             var template = { searchState : state.searchState};
             var merged = mergeDeep(template, { searchState : {...action.info}});
             return Object.assign({}, state, merged);
@@ -37,4 +37,4 @@ const userListReducer = function (state = initialState, action) {
     return state;
 };
 
-export default userListReducer;
+export default hongBaoListReducer;

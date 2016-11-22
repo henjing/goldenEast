@@ -142,6 +142,104 @@ export function updateYueGuoJiMicroBoardSearch(info) {
     }
 }
 
+// 佣金数据
+// 更新大盘佣金显示数据
+export function updateBoardMarketBrokerageData(info) {
+
+    return {
+        type : types.UPDATE_BOARD_MARKET_BROKERAGE,
+        info
+    }
+}
+// 更新大盘佣金搜索状态
+export function updateBoardMarketBrokerageSearch(info) {
+
+    return {
+        type : types.UPDATE_BOARD_MARKET_BROKERAGE_SEARCH,
+        info
+    }
+}
+// 更新微盘佣金显示数据
+export function updateMicroBoardBrokerageData(info) {
+
+    return {
+        type : types.UPDATE_MICRO_BOARD_BROKERAGE,
+        info
+    }
+}
+// 更新微盘佣金搜索状态
+export function updateMicroBoardBrokerageSearch(info) {
+
+    return {
+        type : types.UPDATE_MICRO_BOARD_BROKERAGE_SEARCH,
+        info
+    }
+}
+// 更新邮币卡佣金显示数据
+export function updatePostCardBrokerageData(info) {
+
+    return {
+        type : types.UPDATE_POST_CARD_BROKERAGE,
+        info
+    }
+}
+// 更新邮币卡佣金搜索数据
+export function updatePostCardBrokerageSearch(info) {
+
+    return {
+        type : types.UPDATE_POST_CARD_BROKERAGE_SEARCH,
+        info
+    }
+}
+// 更新大盘某用户个人详情佣金显示数据
+export function updateBoardMarketBrokerageUserDetailData(info) {
+
+    return {
+        type : types.UPDATE_BOARD_MARKET_BROKERAGE_USER_DETAIL_DATA,
+        info
+    }
+}
+// 更新微盘某用户个人详情佣金显示数据
+export function updateMicroBoardBrokerageUserDetailData(info) {
+
+    return {
+        type : types.UPDATE_MICRO_BOARD_BROKERAGE_USER_DETAIL_DATA,
+        info
+    }
+}
+// 更新邮币卡某用户个人详情佣金显示数据
+export function updatePostCardBrokerageUserDetailData(info) {
+
+    return {
+        type : types.UPDATE_POST_CARD_BROKERAGE_USER_DETAIL_DATA,
+        info
+    }
+}
+// 更新大盘某用户个人详情佣金搜索状态
+export function updateBoardMarketBrokerageUserDetailSearch(info) {
+
+    return {
+        type : types.UPDATE_BOARD_MARKET_BROKERAGE_USER_DETAIL_SEARCH,
+        info
+    }
+}
+// 更新微盘某用户个人详情佣金搜索状态
+export function updateMicroBoardBrokerageUserDetailSearch(info) {
+
+    return {
+        type : types.UPDATE_MICRO_BOARD_BROKERAGE_USER_DETAIL_SEARCH,
+        info
+    }
+}
+// 更新邮币卡某用户个人详情佣金搜索状态
+export function updatePostCardBrokerageUserDetailSearch(info) {
+
+    return {
+        type : types.UPDATE_POST_CARD_BROKERAGE_USER_DETAIL_SEARCH,
+        info
+    }
+}
+
 //更新代理商旗下用户列表数据
 export function updateUserListData(info){
 	return {
@@ -153,6 +251,22 @@ export function updateUserListData(info){
 export function updateUserListDataSearch(info){
 	return {
 		type: types.UPDATE_USERLIST_DATA_SEARCH,
+		info
+	}
+}
+
+//更新红包用户列表数据
+export function updateHongBaoListData(info){
+	return {
+		type: types.UPDATE_HONGBAOLIST_DATA,
+		info
+	}
+}
+
+//更新红包用户列表搜索数据
+export function updateHongBaoListDataSearch(info){
+	return {
+		type: types.UPDATE_HONGBAOLIST_DATA_SEARCH,
 		info
 	}
 }
@@ -217,6 +331,7 @@ export function updateAuthorUserListDataSearch(info){
 	}
 }
 
+
 //更新用户一度人脉数据
 export function updateUnderUserData(info){
 	return {
@@ -225,6 +340,36 @@ export function updateUnderUserData(info){
 	}
 }
 
+//更新下载中心显示数据
+export function updateDownloadData(info){
+	return {
+		type: types.UPDATE_DOWNLOAD_DATA,
+		info
+	}
+}
+//更新下载中心搜索数据
+export function updateDownloadDataSearch(info){
+	return {
+		type: types.UPDATE_DOWNLOAD_DATA_SEARCH,
+		info
+	}
+}
+
+//更新深文所入金送券列表数据
+export function updateShenWenSuoVoucherListData(info){
+	return {
+		type: types.UPDATE_SHENWENSUO_VOUCHER_LIST_DATA,
+		info
+	}
+}
+
+//更新深文所入金送券搜索数据
+export function updateShenWenSuoVoucherListDataListDataSearch(info){
+	return {
+		type: types.UPDATE__SHENWENSUO_VOUCHER_DATA_SEARCH,
+		info
+	}
+}
 //更新用户一度人脉搜索数据
 export function updateUnderUserSearch(info){
 	return {

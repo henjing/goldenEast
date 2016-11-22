@@ -2,7 +2,7 @@ import { getUserInfoUrl, modifyPasswordUrl, getChuanShangBoardMarketListUrl, get
 import commonAjax, { commonGetAjax, commonAjaxWithBrackets} from '../helpers/commonAjax';
 import store from '../store';
 
-import { updateAdmin, updateChuanShangBoardMarket, updateAgentOverviewData, updateShenWenSuoBoardMarket, updateChuanShangPostCard, updateJiShangPostCard, updateShenWenSuoMicroBoardData, updateJiShangMicroBoardData, updateYueGuoJiMicroBoardData, updateUserListData, updateHongBaoListData, updatePeopleListWhoHaveInfoAssetData, updatePeopleListWhoHaveInfoAssetAllotData, updateAuthorUserListData , updateNoAuthorUserListData, updateGainPeopleListWhoHaveInfoAssetData, updateUnderUserData, updateMicroBoardBrokerageData, updateBoardMarketBrokerageData, updatePostCardBrokerageData, updateBoardMarketBrokerageUserDetailData, updateMicroBoardBrokerageUserDetailData, updatePostCardBrokerageUserDetailData, updateDownloadData, updateShenWenSuoVoucherListData} from '../actions/app-interaction-actions';
+import { updateAdmin, updateChuanShangBoardMarket, updateAgentOverviewData, updateShenWenSuoBoardMarket, updateChuanShangPostCard, updateJiShangPostCard, updateShenWenSuoMicroBoardData, updateJiShangMicroBoardData, updateYueGuoJiMicroBoardData, updateUserListData, updateHongBaoListData, updatePeopleListWhoHaveInfoAssetData, updatePeopleListWhoHaveInfoAssetAllotData, updateAuthorUserListData , updateNoAuthorUserListData, updateGainPeopleListWhoHaveInfoAssetData, updateUnderUserData, updateMicroBoardBrokerageData, updateBoardMarketBrokerageData, updatePostCardBrokerageData, updateBoardMarketBrokerageUserDetailData, updateMicroBoardBrokerageUserDetailData, updatePostCardBrokerageUserDetailData, updateDownloadData, updateShenWenSuoVoucherListData, updateUnderUserTreeData} from '../actions/app-interaction-actions';
 
 
 // 获取登录用户的信息
@@ -328,8 +328,10 @@ export function getRegisterActiveData(config, sucCallback, failCallback) {
 //获得名下用户数据树结构
 export function getUnderUserTreeData(config, sucCallback, failCallback) {
     return commonGetAjax(underUsertreeUrl, config, function (info) {
+    	store.dispatch(updateUnderUserTreeData(info));
         if (sucCallback) sucCallback(info);
     }, function (info) {
+    	store.dispatch(updateUnderUserTreeData(info));
         if (failCallback) failCallback(info);
     })
 

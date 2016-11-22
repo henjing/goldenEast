@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table, Icon, Button, AutoComplete, Input  } from 'antd';
+import { Table, Icon, Button, AutoComplete, Input } from 'antd';
 import { connect } from 'react-redux';
 import styles from './under-user-tree.less';
 import { getUnderUserData } from '../../api/app-interaction-api';
@@ -11,10 +11,16 @@ const UnderUserContainer = React.createClass({
 	getInitialState(){
 		return {
 			inputValue: '',
+			loading: true,
 		}
 	},
 	componentDidMount(){
-		getUnderUserData({});
+		const _this = this;
+		getUnderUserData({},function(info){
+			_this.setState({loading: false});
+		},function(info){
+			_this.setState({loading: false});
+		});
 	},
 	componentWillUnmount(){
     	//清理搜索条件
@@ -36,7 +42,13 @@ const UnderUserContainer = React.createClass({
 	},
 	
 	submitSearch(){
-		getUnderUserData(this.props.searchState);
+		const _this = this;
+		_this.setState({loading: true});
+		getUnderUserData(this.props.searchState,function(info){
+			_this.setState({loading: false});
+		},function(info){
+			_this.setState({loading: false});
+		});
 	},
 	onPageChange(page){
 		store.dispatch(updateUnderUserSearch({ 
@@ -101,7 +113,8 @@ const UnderUserContainer = React.createClass({
 					currentPage={data.this_page} 
 					total={data.total} 
 					underClick={this.underClick}
-					onPageChange={this.onPageChange}/>
+					onPageChange={this.onPageChange}
+					loading={this.state.loading}/>
 			</div>
 		)
 	},

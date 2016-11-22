@@ -113,11 +113,11 @@ const SidebarLayoutContainer = React.createClass({
                                 深文所微盘
                             </Link>
                         </Menu.Item>
-                          {/*<Menu.Item key={routeBase + 'jishang_wp'}>
+                          <Menu.Item key={routeBase + 'jishang_wp'}>
                             <Link to={routeBase + 'jishang_wp'}>
                                 吉商微盘
                             </Link>
-                        </Menu.Item>*/}
+                        </Menu.Item>
                         <Menu.Item key={routeBase + 'yueguoji_wp'}>
                             <Link to={routeBase + 'yueguoji_wp'}>
                                 粤国际微盘

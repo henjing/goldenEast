@@ -42,7 +42,9 @@ body, .wrapper, .wrapperCollapse {
     z-index: 2;
     float: right;
     margin-top: 64px;
-    height: calc(100vh - 64px);
+    height: -webkit-calc(~'100vh - 64px');
+    height: -moz-calc(~'100vh - 64px');
+    height: calc(~'100vh - 64px');
     transition: all 0.3s ease;
     overflow: auto;
 }

@@ -25,6 +25,7 @@ export const getShenWenSuoMicroBoardListUrl = '/api/index.php/Transaction/transa
 
 // 获取吉商邮币卡交易列表
 export const getJiShangYBKListUrl = '/api/index.php/Transaction/transaction_stamp_jis';
+export const getJiShangMicroBoardListUrl = '/api/index.php/Transaction/transaction_micro_jis';
 
 // 获取粤国际微盘交易列表
 export const getYueGuoJiMicroBoardListUrl = '/api/index.php/Transaction/transaction_micro_yuegj';

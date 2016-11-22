@@ -1,8 +1,9 @@
-import { getUserInfoUrl, modifyPasswordUrl, getChuanShangBoardMarketListUrl, getChuanShangYBKListUrl, getShenWenSuoBoardMarketListUrl, getAgentOverviewDataUrl, getShenWenSuoMicroBoardListUrl, getJiShangYBKListUrl, getYueGuoJiMicroBoardListUrl, getJiShangMicroBoardListUrl, getUserListDataUrl,  getHongBaoListDataUrl, getPeopleWhoHaveInfoAssetUrl, getUserAuthorizationListUrl, getAllAuthorizationListUrl, setFollowerAuthorizationUrl, getPeopleWhoHaveInfoAssetAllotUrl, getAuthorizedUserListUrl, getSomeUserDetailUrl, postSomeUserAuthorDetailUrl, setSomeUserAuthorDetailUrl, getUserDetailUrl, deleteSomeUserAuthorUrl,getNoAuthorizedUserListUrl, getUserFirstClassConnectedUrl, registerActiveUrl,  getGainPeopleWhoHaveInfoAssetUrl, getMicroBoardBrokerageListUrl, getBoardMarketBrokerageListUrl, getYBKBrokerageListUrl, getBoardMarketUserDetailUrl, getMicroBoardUserDetailUrl, getPostCardUserDetailUrl, getDownloadDataUrl, getShenWenSuoVoucherListDataUrl} from '../appConstants/urlConfig';
+import { getUserInfoUrl, modifyPasswordUrl, getChuanShangBoardMarketListUrl, getChuanShangYBKListUrl, getShenWenSuoBoardMarketListUrl, getAgentOverviewDataUrl, getShenWenSuoMicroBoardListUrl, getJiShangYBKListUrl, getYueGuoJiMicroBoardListUrl, getJiShangMicroBoardListUrl, getUserListDataUrl,  getHongBaoListDataUrl, getPeopleWhoHaveInfoAssetUrl, getUserAuthorizationListUrl, getAllAuthorizationListUrl, setFollowerAuthorizationUrl, getPeopleWhoHaveInfoAssetAllotUrl, getAuthorizedUserListUrl, getSomeUserDetailUrl, postSomeUserAuthorDetailUrl, setSomeUserAuthorDetailUrl, getUserDetailUrl, deleteSomeUserAuthorUrl,getNoAuthorizedUserListUrl, getUserFirstClassConnectedUrl, registerActiveUrl,  getGainPeopleWhoHaveInfoAssetUrl, underUsertreeUrl, underUserUrl , getMicroBoardBrokerageListUrl, getBoardMarketBrokerageListUrl, getYBKBrokerageListUrl, getBoardMarketUserDetailUrl, getMicroBoardUserDetailUrl, getPostCardUserDetailUrl, getDownloadDataUrl, getShenWenSuoVoucherListDataUrl} from '../appConstants/urlConfig';
 import commonAjax, { commonGetAjax, commonAjaxWithBrackets} from '../helpers/commonAjax';
 import store from '../store';
 
-import { updateAdmin, updateChuanShangBoardMarket, updateAgentOverviewData, updateShenWenSuoBoardMarket, updateChuanShangPostCard, updateJiShangPostCard, updateShenWenSuoMicroBoardData, updateJiShangMicroBoardData, updateYueGuoJiMicroBoardData, updateUserListData, updateHongBaoListData, updatePeopleListWhoHaveInfoAssetData, updatePeopleListWhoHaveInfoAssetAllotData, updateAuthorUserListData , updateNoAuthorUserListData, updateGainPeopleListWhoHaveInfoAssetData, updateMicroBoardBrokerageData, updateBoardMarketBrokerageData, updatePostCardBrokerageData, updateBoardMarketBrokerageUserDetailData, updateMicroBoardBrokerageUserDetailData, updatePostCardBrokerageUserDetailData, updateDownloadData, updateShenWenSuoVoucherListData} from '../actions/app-interaction-actions';
+import { updateAdmin, updateChuanShangBoardMarket, updateAgentOverviewData, updateShenWenSuoBoardMarket, updateChuanShangPostCard, updateJiShangPostCard, updateShenWenSuoMicroBoardData, updateJiShangMicroBoardData, updateYueGuoJiMicroBoardData, updateUserListData, updateHongBaoListData, updatePeopleListWhoHaveInfoAssetData, updatePeopleListWhoHaveInfoAssetAllotData, updateAuthorUserListData , updateNoAuthorUserListData, updateGainPeopleListWhoHaveInfoAssetData, updateUnderUserData, updateMicroBoardBrokerageData, updateBoardMarketBrokerageData, updatePostCardBrokerageData, updateBoardMarketBrokerageUserDetailData, updateMicroBoardBrokerageUserDetailData, updatePostCardBrokerageUserDetailData, updateDownloadData, updateShenWenSuoVoucherListData} from '../actions/app-interaction-actions';
+
 
 // 获取登录用户的信息
 export function getAdmin(config, sucCallback, failCallback) {
@@ -323,6 +324,26 @@ export function getRegisterActiveData(config, sucCallback, failCallback) {
         if (failCallback) failCallback(info);
     })
 }
+
+//获得名下用户数据树结构
+export function getUnderUserTreeData(config, sucCallback, failCallback) {
+    return commonGetAjax(underUsertreeUrl, config, function (info) {
+        if (sucCallback) sucCallback(info);
+    }, function (info) {
+        if (failCallback) failCallback(info);
+    })
+}
+
+//获得一度人脉数据
+export function getUnderUserData(config, sucCallback, failCallback) {
+    return commonGetAjax(underUserUrl, config, function (info) {
+    	store.dispatch(updateUnderUserData(info));
+        if (sucCallback) sucCallback(info);
+    }, function (info) {
+    	store.dispatch(updateUnderUserData(info));
+        if (failCallback) failCallback(info);
+    })
+}
 // 获取某用户的所有一度人脉用户
 export function getUserFirstClassConnected(config, sucCallback, failCallback){
 	return commonGetAjax(getUserFirstClassConnectedUrl, config, function (info) {
@@ -351,4 +372,5 @@ export function getShenWenSuoVoucherListData(config, sucCallback, failCallback){
         store.dispatch(updateShenWenSuoVoucherListData(info));
         if (failCallback) failCallback(info);
     });
+
 }

@@ -19,6 +19,7 @@ import allotUserListReducer from './allot-user-list-reducer';
 
 import infoAssetAllotListReducer from './info-asset-allot-list-reducer';
 import gainInfoAssetAllotListReducer from './gain-info-asset-allot-list-reducer';
+import underUserReducer from './under-user-reducer';
 
 import boardMarketBrokerageReducer from './board-market-brokerage-reducer';
 import microBoardBrokerageReducer from './micro-board-brokerage-reducer';
@@ -55,6 +56,7 @@ const reducers = combineReducers({
     microBoardBrokerageUserDetailState : microBoardBrokerageUserDetailReducer,
     postCardBrokerageUserDetailState : postCardBrokerageUserDetailReducer,
     downloadListDetailStater:downloadListReducer,
+    underUserState : underUserReducer,
     shenWenSuoVoucherListStater:shenWenSuoVoucherListReducer
 });
 

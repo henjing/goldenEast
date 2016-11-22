@@ -60,10 +60,16 @@ import AllotUserListContainer from './components/containers/allot-user-list-cont
 //当月注册量与激活量
 import RegisterActiveContainer from './components/containers/register-active-container';
 
+
 //下载中心
 import DownloadContainer from './components/containers/download-list-container';
 
 import ShenWenSuoVoucherContainer from './components/containers/shen-wen-suo-voucher-container';
+
+//名下用户信息
+import UnderUserTreeContainer from './components/containers/under-user-tree-container';
+import UnderUserContainer from './components/containers/under-user-container';
+
 
 export default (
     <Router history={hashHistory}>
@@ -77,14 +83,19 @@ export default (
                 <Route breadcrumbName="个人详情" path="user_detail/:userId" component={UserDetailContainer} />
             </Route>
 
+
             <Route name="hongbao_list" breadcrumbName="红包列表" path={routeBase + 'hongbao_list'} component={HongBaoListContainer} >
             </Route>
+
+            <Route breadcrumbName="名下用户信息" path={routeBase + 'under_user_tree'} component={UnderUserTreeContainer} />
+            <Route breadcrumbName="一度人脉列表" path={routeBase + 'under_user'} component={UnderUserContainer} />
 
             <Route breadcrumbName="旗下代理商数据" path={routeBase + 'register_active'} component={RegisterActiveContainer} />
            
             <Route name="allot_user_list" breadcrumbName="分配用户权限" path={routeBase + 'allot_user_list'} component={AllotUserListContainer} >
                 <Route breadcrumbName="权限设置" path="set_authorization/:userSn" component={setAuthorizationView} />
             </Route>
+            
             <Route name="author_user_list" breadcrumbName="已授权用户列表" path={routeBase + 'author_user_list'} component={AuthorUserListContainer} >
                 <Route breadcrumbName="个人详情" path="author_user_detail/:userSn" component={UserDetailContainer} />               
                 <Route breadcrumbName="权限设置" path="set_authorization/:userSn" component={setAuthorizationView} />

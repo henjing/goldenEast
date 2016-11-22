@@ -331,10 +331,11 @@ export function updateAuthorUserListDataSearch(info){
 	}
 }
 
-//更新下载中心显示数据
-export function updateDownloadData(info){
+
+//更新用户一度人脉数据
+export function updateUnderUserData(info){
 	return {
-		type: types.UPDATE_DOWNLOAD_DATA,
+		type: types.UPDATE_UNDER_USER_DATA,
 		info
 	}
 }
@@ -362,3 +363,11 @@ export function updateShenWenSuoVoucherListDataListDataSearch(info){
 		info
 	}
 }
+//更新用户一度人脉搜索数据
+export function updateUnderUserSearch(info){
+	return {
+		type: types.UPDATE_UNDER_USER_SEARCH,
+		info
+	}
+}
+

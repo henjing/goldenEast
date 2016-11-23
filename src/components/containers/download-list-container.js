@@ -32,10 +32,11 @@ const DownloadContainer = React.createClass({
 		});
     },
     onPageChange(page){
+        const type_count = this.state.type_count;
     	store.dispatch(updateDownloadDataSearch({
-    		page:page
+    		page:page,
+            'search[type]':type_count,
     	}));
-        console.log('page',page)
     	this.submitSearch();
     },
 	componentDidMount(){
@@ -60,6 +61,7 @@ const DownloadContainer = React.createClass({
             type_count: e.target.value,
         });
         store.dispatch(updateDownloadDataSearch({
+            'page' : 1,
     		'search[type]':e.target.value,
     	}));
     	this.submitSearch();

@@ -13,10 +13,8 @@ const initialState = {
         status : 1 //TODO TBD
     },
     searchState : {
-        type_count : 0,
+        type_count : "",
         page : 1,
-        'search[d_begin]' : '',
-        'search[d_end]' : '',
         'search[find]' : '',
         'search[type]': '',
     },

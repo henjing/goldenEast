@@ -50,8 +50,6 @@ const DownloadContainer = React.createClass({
     	//清理搜索条件
     	store.dispatch(updateDownloadDataSearch({
     		'search[find]' : '',
-            'search[d_begin]' : '',
-            'search[d_end]' : '',
             'page' : 1,
             'search[type]':''
         }));

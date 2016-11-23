@@ -199,16 +199,18 @@ const SidebarLayoutContainer = React.createClass({
                             </Link>
                         </Menu.Item>
                     </SubMenu>
-                          <Menu.Item key={routeBase + 'shen_wen_suo_voucher_list'}>
-                        <Link to={routeBase + 'shen_wen_suo_voucher_list'}>
-                            深文所入金送体验券列表
-                        </Link>
-                    </Menu.Item>
-                    <Menu.Item key={routeBase + 'download_center_list'}>
-                        <Link to={routeBase + 'download_center_list'}>
-                            下载中心
-                        </Link>
-                    </Menu.Item>
+                    <SubMenu key="sub8" title={<span><Icon type="select" /><span className={styles.navText}>其他</span></span>}>
+                        <Menu.Item key={routeBase + 'shen_wen_suo_voucher_list'}>
+                         <Link to={routeBase + 'shen_wen_suo_voucher_list'}>
+                         				深文所入金送体验券列表
+                         </Link>
+                         </Menu.Item>
+                        <Menu.Item key={routeBase + 'download_center_list'}>
+                            <Link to={routeBase + 'download_center_list'}>
+                                下载中心
+                            </Link>
+                        </Menu.Item>
+                    </SubMenu>
                 </Menu>
                 <div className={styles.antAsideAction} onClick={this.onCollapseChange}>
                     {collapse ? <Icon type="right" /> : <Icon type="left" />}

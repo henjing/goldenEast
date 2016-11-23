@@ -125,7 +125,7 @@ const UnderUserTreeContainer = React.createClass({
 				</div>
 				<Table columns={columns} dataSource={user} bordered title={tableTitle} pagination={false} size="middle"/>
 				<div className={styles.underTitle}>名下用户</div>
-				<UnderUserTreeView ref="userTree" />
+				<UnderUserTreeView ref="userTree"/>
 				
 			</div>
 			</Spin>

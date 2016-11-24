@@ -166,14 +166,6 @@ const SidebarLayoutContainer = React.createClass({
                          </Menu.Item>*/}
                     </SubMenu>
 
-                    {/*       <SubMenu key="sub5" title={<span><Icon type="pie-chart" /><span className={styles.navText}>大盘、邮币卡开户进度</span></span>}>
-                     <Menu.Item key={routeBase + 'board_market_post_card_dredge_schedule'}>
-                     <Link to={routeBase + 'board_market_post_card_dredge_schedule'}>
-                     大盘、邮币卡开户进度
-                     </Link>
-                     </Menu.Item>
-                     </SubMenu>*/}
-
                     <SubMenu key="sub6" title={<span><Icon type="solution" /><span className={styles.navText}>信息资产分配</span></span>}>
                         <Menu.Item key={routeBase + 'info_asset_allot_list'}>
                             <Link to={routeBase + 'info_asset_allot_list'}>

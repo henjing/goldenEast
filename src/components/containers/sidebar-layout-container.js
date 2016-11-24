@@ -26,7 +26,7 @@ const SidebarLayoutContainer = React.createClass({
             'sub4' : ['/board_market_brokerage', '/wp_brokerage','/post_card_brokerage','/post_card_brokerage'],
             'sub5' : ['/board_market_post_card_dredge_schedule'],
             'sub6' : ['/info_asset_allot_list', '/gain_info_asset_allot_list'],
-             'sub7' : ['under_user','under_user_tree'],
+            'sub7' : ['under_user','under_user_tree'],
         };
         let matchSubMenu = '';
         let defaultSelectedKey = '';

@@ -1,4 +1,4 @@
-import { getUserInfoUrl, modifyPasswordUrl, getChuanShangBoardMarketListUrl, getChuanShangYBKListUrl, getShenWenSuoBoardMarketListUrl, getAgentOverviewDataUrl, getShenWenSuoMicroBoardListUrl, getJiShangYBKListUrl, getYueGuoJiMicroBoardListUrl, getJiShangMicroBoardListUrl, getUserListDataUrl,  getHongBaoListDataUrl, getPeopleWhoHaveInfoAssetUrl, getUserAuthorizationListUrl, getAllAuthorizationListUrl, setFollowerAuthorizationUrl, getPeopleWhoHaveInfoAssetAllotUrl, getAuthorizedUserListUrl, getSomeUserDetailUrl, postSomeUserAuthorDetailUrl, setSomeUserAuthorDetailUrl, getUserDetailUrl, deleteSomeUserAuthorUrl,getNoAuthorizedUserListUrl, getUserFirstClassConnectedUrl, registerActiveUrl,  getGainPeopleWhoHaveInfoAssetUrl, underUsertreeUrl, underUserUrl , getMicroBoardBrokerageListUrl, getBoardMarketBrokerageListUrl, getYBKBrokerageListUrl, getBoardMarketUserDetailUrl, getMicroBoardUserDetailUrl, getPostCardUserDetailUrl, getDownloadDataUrl, getShenWenSuoVoucherListDataUrl} from '../appConstants/urlConfig';
+import { getUserInfoUrl, modifyPasswordUrl, getChuanShangBoardMarketListUrl, getChuanShangYBKListUrl, getShenWenSuoBoardMarketListUrl, getAgentOverviewDataUrl, getShenWenSuoMicroBoardListUrl, getJiShangYBKListUrl, getYueGuoJiMicroBoardListUrl, getJiShangMicroBoardListUrl, getUserListDataUrl,  getHongBaoListDataUrl, getPeopleWhoHaveInfoAssetUrl, getUserAuthorizationListUrl, getAllAuthorizationListUrl, setFollowerAuthorizationUrl, getPeopleWhoHaveInfoAssetAllotUrl, getAuthorizedUserListUrl, getSomeUserDetailUrl, postSomeUserAuthorDetailUrl, setSomeUserAuthorDetailUrl, getUserDetailUrl, deleteSomeUserAuthorUrl,getNoAuthorizedUserListUrl, getUserFirstClassConnectedUrl, registerActiveUrl,  getGainPeopleWhoHaveInfoAssetUrl, underUsertreeUrl, underUserUrl , getMicroBoardBrokerageListUrl, getBoardMarketBrokerageListUrl, getYBKBrokerageListUrl, getBoardMarketUserDetailUrl, getMicroBoardUserDetailUrl, getPostCardUserDetailUrl, getDownloadDataUrl, getShenWenSuoVoucherListDataUrl, getJjsCurrentMonthPoundageUrl, getJjsLastMonthPoundageUrl } from '../appConstants/urlConfig';
 import commonAjax, { commonGetAjax, commonAjaxWithBrackets} from '../helpers/commonAjax';
 import store from '../store';
 
@@ -390,6 +390,25 @@ export function getShenWenSuoVoucherListData(config, sucCallback, failCallback){
         if (sucCallback) sucCallback(info);
     }, function (info) {
         store.dispatch(updateShenWenSuoVoucherListData(info));
+        if (failCallback) failCallback(info);
+    });
+
+}
+
+//获得当前代理商旗下的某个代理商本月的手续费详情列表
+export function getJjsCurrentMonthPoundageData(config, sucCallback, failCallback){
+	return commonGetAjax(getJjsCurrentMonthPoundageUrl, config, function (info) {
+        if (sucCallback) sucCallback(info);
+    }, function (info) {
+        if (failCallback) failCallback(info);
+    });
+
+}
+//获得当前代理商旗下的某个代理商上月的手续费详情列表
+export function getJjsLastMonthPoundageData(config, sucCallback, failCallback){
+	return commonGetAjax(getJjsLastMonthPoundageUrl, config, function (info) {
+        if (sucCallback) sucCallback(info);
+    }, function (info) {
         if (failCallback) failCallback(info);
     });
 

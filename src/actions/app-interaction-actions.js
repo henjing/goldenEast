@@ -394,3 +394,17 @@ export function updateUnderUserTreeSearch(info){
 	}
 }
 
+//更新已提交资料未开户的用户列表
+export function updateNotToOpenAccountData(info){
+	return {
+		type: types.UPDATE_NOT_TO_OPEN_ACCOUNT_DATA,
+		info
+	}
+}
+//更新已开户的用户列表
+export function updateHaveToOpenAccountData(info){
+	return {
+		type: types.UPDATE_HAVE_TO_OPEN_ACCOUNT_DATA,
+		info
+	}
+}

@@ -116,3 +116,10 @@ export const getJjsCurrentMonthPoundageUrl = '/api/index.php/Overview/jujianshan
 //获得当前代理商旗下的某个代理商上月的手续费详情列表
 export const getJjsLastMonthPoundageUrl = '/api/index.php/Overview/jujianshang_last_month';
 
+//获取已提交资料未开户的用户列表
+export const getNotToOpenAccountUrl = '/api/index.php/Steps/no_account_list';
+//获取已开户的用户列表
+export const getHaveToOpenAccountUrl = '/api/index.php/Steps/have_account_list';
+
+
+

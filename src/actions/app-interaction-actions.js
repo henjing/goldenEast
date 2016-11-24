@@ -408,3 +408,11 @@ export function updateHaveToOpenAccountData(info){
 		info
 	}
 }
+
+//更新开户进度的用户列表搜索
+export function updateOpenAccountProgressSearch(info){
+	return {
+		type: types.UPDATE_OPEN_ACCOUNT_PROGRESS_SEARCH,
+		info
+	}
+}

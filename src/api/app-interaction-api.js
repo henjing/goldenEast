@@ -416,7 +416,7 @@ export function getJjsLastMonthPoundageData(config, sucCallback, failCallback){
 
 
 //获取已提交资料未开户的用户列表
-export function getShenWenSuoVoucherListData(config, sucCallback, failCallback){
+export function getNotToOpenAccountData(config, sucCallback, failCallback){
 	return commonGetAjax(getNotToOpenAccountUrl, config, function (info) {
         store.dispatch(updateNotToOpenAccountData(info));
         if (sucCallback) sucCallback(info);
@@ -427,7 +427,7 @@ export function getShenWenSuoVoucherListData(config, sucCallback, failCallback){
 }
 
 //获取已开户的用户列表
-export function getShenWenSuoVoucherListData(config, sucCallback, failCallback){
+export function getHaveToOpenAccountData(config, sucCallback, failCallback){
 	return commonGetAjax(getHaveToOpenAccountUrl, config, function (info) {
         store.dispatch(updateHaveToOpenAccountData(info));
         if (sucCallback) sucCallback(info);

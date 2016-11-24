@@ -73,6 +73,9 @@ import JjsCurrentPoundageContainer from './components/containers/jjs-current-pou
 //获得当前代理商旗下的某个代理商上月的手续费详情列表
 import JjsLastPoundageContainer from './components/containers/jjs-last-poundage-detail';
 
+//
+import OpenAccountProgressContainer from './components/containers/open-account-progress-container';
+
 
 export default (
     <Router history={hashHistory}>
@@ -139,7 +142,7 @@ export default (
 
             <Route path={routeBase + 'set_authorization'} component={setAuthorizationView} />
 
-            <Route breadcrumbName="大盘、邮币卡开户进度" path={routeBase + 'board_market_post_card_dredge_schedule'} component={GainInfoAssetAllotListContainer} />
+            <Route breadcrumbName="大盘、邮币卡开户进度" path={routeBase + 'open_account_progress'} component={OpenAccountProgressContainer} />
 
             <Route breadcrumbName="信息资产列表" path={routeBase + 'info_asset_allot_list'} component={InfoAssetAllotListContainer} />
             <Route breadcrumbName="已获得信息资产列表" path={routeBase + 'gain_info_asset_allot_list'} component={GainInfoAssetAllotListContainer} />

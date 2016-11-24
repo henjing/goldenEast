@@ -30,6 +30,8 @@ import microBoardBrokerageUserDetailReducer from './micro-board-brokerage-user-r
 import postCardBrokerageUserDetailReducer from './post-card-brokerage-user-reducer-reducer';
 import downloadListReducer from './download-list-reducer';
 import shenWenSuoVoucherListReducer from './shen-wen-suo-voucher-list-reducer';
+import openAccountProgressReducer from './open-account-progress-reducer';
+
 
 
 
@@ -60,6 +62,7 @@ const reducers = combineReducers({
     underUserState : underUserReducer,
     shenWenSuoVoucherListStater:shenWenSuoVoucherListReducer,
     underUserTreeState : underUserTreeReducer,
+   	openAccountProgressState : openAccountProgressReducer,
 });
 
 export default reducers;

@@ -1,8 +1,8 @@
-import { getUserInfoUrl, modifyPasswordUrl, getChuanShangBoardMarketListUrl, getChuanShangYBKListUrl, getShenWenSuoBoardMarketListUrl, getAgentOverviewDataUrl, getShenWenSuoMicroBoardListUrl, getJiShangYBKListUrl, getYueGuoJiMicroBoardListUrl, getJiShangMicroBoardListUrl, getUserListDataUrl,  getHongBaoListDataUrl, getPeopleWhoHaveInfoAssetUrl, getUserAuthorizationListUrl, getAllAuthorizationListUrl, setFollowerAuthorizationUrl, getPeopleWhoHaveInfoAssetAllotUrl, getAuthorizedUserListUrl, getSomeUserDetailUrl, postSomeUserAuthorDetailUrl, setSomeUserAuthorDetailUrl, getUserDetailUrl, deleteSomeUserAuthorUrl,getNoAuthorizedUserListUrl, getUserFirstClassConnectedUrl, registerActiveUrl,  getGainPeopleWhoHaveInfoAssetUrl, underUsertreeUrl, underUserUrl , getMicroBoardBrokerageListUrl, getBoardMarketBrokerageListUrl, getYBKBrokerageListUrl, getBoardMarketUserDetailUrl, getMicroBoardUserDetailUrl, getPostCardUserDetailUrl, getDownloadDataUrl, getShenWenSuoVoucherListDataUrl} from '../appConstants/urlConfig';
+import { getUserInfoUrl, modifyPasswordUrl, getChuanShangBoardMarketListUrl, getChuanShangYBKListUrl, getShenWenSuoBoardMarketListUrl, getAgentOverviewDataUrl, getShenWenSuoMicroBoardListUrl, getJiShangYBKListUrl, getYueGuoJiMicroBoardListUrl, getJiShangMicroBoardListUrl, getUserListDataUrl,  getHongBaoListDataUrl, getPeopleWhoHaveInfoAssetUrl, getUserAuthorizationListUrl, getAllAuthorizationListUrl, setFollowerAuthorizationUrl, getPeopleWhoHaveInfoAssetAllotUrl, getAuthorizedUserListUrl, getSomeUserDetailUrl, postSomeUserAuthorDetailUrl, setSomeUserAuthorDetailUrl, getUserDetailUrl, deleteSomeUserAuthorUrl,getNoAuthorizedUserListUrl, getUserFirstClassConnectedUrl, registerActiveUrl,  getGainPeopleWhoHaveInfoAssetUrl, underUsertreeUrl, underUserUrl , getMicroBoardBrokerageListUrl, getBoardMarketBrokerageListUrl, getYBKBrokerageListUrl, getBoardMarketUserDetailUrl, getMicroBoardUserDetailUrl, getPostCardUserDetailUrl, getDownloadDataUrl, getShenWenSuoVoucherListDataUrl, getShenWenSuoBoardMarketDetailsListUrl, getChuanShangBoardMarketDetailsListUrl} from '../appConstants/urlConfig';
 import commonAjax, { commonGetAjax, commonAjaxWithBrackets} from '../helpers/commonAjax';
 import store from '../store';
 
-import { updateAdmin, updateChuanShangBoardMarket, updateAgentOverviewData, updateShenWenSuoBoardMarket, updateChuanShangPostCard, updateJiShangPostCard, updateShenWenSuoMicroBoardData, updateJiShangMicroBoardData, updateYueGuoJiMicroBoardData, updateUserListData, updateHongBaoListData, updatePeopleListWhoHaveInfoAssetData, updatePeopleListWhoHaveInfoAssetAllotData, updateAuthorUserListData , updateNoAuthorUserListData, updateGainPeopleListWhoHaveInfoAssetData, updateUnderUserData, updateMicroBoardBrokerageData, updateBoardMarketBrokerageData, updatePostCardBrokerageData, updateBoardMarketBrokerageUserDetailData, updateMicroBoardBrokerageUserDetailData, updatePostCardBrokerageUserDetailData, updateDownloadData, updateShenWenSuoVoucherListData, updateUnderUserTreeData} from '../actions/app-interaction-actions';
+import { updateAdmin, updateChuanShangBoardMarket, updateAgentOverviewData, updateShenWenSuoBoardMarket, updateChuanShangPostCard, updateJiShangPostCard, updateShenWenSuoMicroBoardData, updateJiShangMicroBoardData, updateYueGuoJiMicroBoardData, updateUserListData, updateHongBaoListData, updatePeopleListWhoHaveInfoAssetData, updatePeopleListWhoHaveInfoAssetAllotData, updateAuthorUserListData , updateNoAuthorUserListData, updateGainPeopleListWhoHaveInfoAssetData, updateUnderUserData, updateMicroBoardBrokerageData, updateBoardMarketBrokerageData, updatePostCardBrokerageData, updateBoardMarketBrokerageUserDetailData, updateMicroBoardBrokerageUserDetailData, updatePostCardBrokerageUserDetailData, updateDownloadData, updateShenWenSuoVoucherListData, updateUnderUserTreeData, updateShenWenSuoBoardMarketDetails, updateChuanShangBoardMarketDetails} from '../actions/app-interaction-actions';
 
 
 // 获取登录用户的信息
@@ -35,6 +35,16 @@ export function getChuanShangBoardMarketData(config, sucCallback, failCallback) 
         if (failCallback) failCallback(info);
     });
 }
+// 拿到川商大盘个人交易详情数据
+export function getChuanShangBoardMarketDetailsData(config, sucCallback, failCallback) {
+    return commonGetAjax(getChuanShangBoardMarketDetailsListUrl, config, function (info) {
+        store.dispatch(updateChuanShangBoardMarketDetails(info));
+        if (sucCallback) sucCallback(info);
+    }, function (info) {
+        store.dispatch(updateChuanShangBoardMarketDetails(info));
+        if (failCallback) failCallback(info);
+    });
+}
 // 拿到代理商本月数据
 export function getAgentOverviewData(config, sucCallback, failCallback) {
     return commonGetAjax(getAgentOverviewDataUrl, config, function (info) {
@@ -52,6 +62,16 @@ export function getShenWenSuoBoardMarketData(config, sucCallback, failCallback) 
         if (sucCallback) sucCallback(info);
     }, function (info) {
         store.dispatch(updateShenWenSuoBoardMarket(info));
+        if (failCallback) failCallback(info);
+    });
+}
+// 拿到深文所大盘个人交易详情数据
+export function getShenWenSuoBoardMarketDetailsData(config, sucCallback, failCallback) {
+    return commonGetAjax(getShenWenSuoBoardMarketDetailsListUrl, config, function (info) {
+        store.dispatch(updateShenWenSuoBoardMarketDetails(info));
+        if (sucCallback) sucCallback(info);
+    }, function (info) {
+        store.dispatch(updateShenWenSuoBoardMarketDetails(info));
         if (failCallback) failCallback(info);
     });
 }

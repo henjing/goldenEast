@@ -16,10 +16,18 @@ export const routeBase = process.env.NODE_ENV !== 'production' ? '/' : '/';
 
 // 获取川商大盘交易列表
 export const getChuanShangBoardMarketListUrl = '/api/index.php/Transaction/transaction_spot_chuans';
+// 获取川商大盘个人交易详情列表
+export const getChuanShangBoardMarketDetailsListUrl = '/api/index.php/Transaction/transaction_spot_chuans_detail';
+
 // 获取川商邮币卡交易列表
 export const getChuanShangYBKListUrl = '/api/index.php/Transaction/transaction_stamp_chuans';
+// 获取川商邮币卡个人交易详情列表
+export const getChuanShangYBKDetailsListUrl = '/api/index.php/Transaction/transaction_stamp_chuans_detail';
+
 // 获取深文所大盘交易列表
 export const getShenWenSuoBoardMarketListUrl = '/api/index.php/Transaction/transaction_spot_shenw';
+// 获取深文所大盘交易详情列表
+export const getShenWenSuoBoardMarketDetailsListUrl = '/api/index.php/Transaction/transaction_spot_shenw_detail';
 // 获取深文所微盘交易列表
 export const getShenWenSuoMicroBoardListUrl = '/api/index.php/Transaction/transaction_micro_shenw';
 

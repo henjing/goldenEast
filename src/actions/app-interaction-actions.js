@@ -37,6 +37,22 @@ export function updateChuanShangBoardMarketSearch(info) {
         info
     }
 }
+// 更新川商大盘个人详情显示数据
+export function updateChuanShangBoardMarketDetails(info) {
+
+    return {
+        type : types.UPDATE_CHUANSHANG_BOARD_MARKET_DETAILS,
+        info
+    }
+}
+// 更新川商大盘个人详情搜索数据
+export function updateChuanShangBoardMarketDetailsSearch(info) {
+
+    return {
+        type : types.UPDATE_CHUANSHANG_BOARD_MARKET_DETAILS_SEARCH,
+        info
+    }
+}
 // 更新深文所大盘显示数据
 export function updateShenWenSuoBoardMarket(info) {
     
@@ -50,6 +66,22 @@ export function updateShenWenSuoBoardMarketSearch(info) {
     
     return {
         type : types.UPDATE_SHENWENSUO_BOARD_MARKET_SEARCH,
+        info
+    }
+}
+// 更新深文所大盘个人详情显示数据
+export function updateShenWenSuoBoardMarketDetails(info) {
+
+    return {
+        type : types.UPDATE_SHENWENSUO_BOARD_MARKET_DETAILS,
+        info
+    }
+}
+// 更新深文所大盘个人详情搜索状态
+export function updateShenWenSuoBoardMarketDetailsSearch(info) {
+
+    return {
+        type : types.UPDATE_SHENWENSUO_BOARD_MARKET_DETAILS_SEARCH,
         info
     }
 }
@@ -71,7 +103,7 @@ export function updateJiShangPostCard(info) {
 }
 // 更新川商邮币卡搜索数据
 export function updateChuanShangPostCardSearch(info) {
-    
+
     return {
         type : types.UPDATE_CHUANSHANG_POST_CARD_SEARCH,
         info

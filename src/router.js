@@ -16,7 +16,7 @@ import { routeBase } from './appConstants/urlConfig';
 import ChuanShangBoardMarketContainer from './components/containers/chuan-shang-board-market-container';
 // 深文所大盘
 import ShenWenSuoBoardMarketContainer from './components/containers/shen-wen-suo-board-market-container';
-import TradingParticularsContainer from './components/containers/shen-wen-suo-trading-particulars-container';
+import TradingParticularsContainer from './components/containers/trading-particulars-container';
 
 // 深文所微盘
 import ShenWenSuoMicroBoardContainer from './components/containers/shen-wen-suo-micro-board-container';
@@ -107,9 +107,9 @@ export default (
 {/*交易列表*/}
             <Route breadcrumbName="川商大盘交易列表" path={routeBase + 'chuan_shang_board_market'} component={ChuanShangBoardMarketContainer} />
 
-            <Route breadcrumbName="深文所大盘交易列表" path={routeBase + 'shen_wen_suo_board_market'} component={ShenWenSuoBoardMarketContainer} >
-                 <Route breadcrumbName="个人交易详情" path="shen_wen_trading_particulars/:userSn" component={TradingParticularsContainer} />
-            </Route>
+            <Route breadcrumbName="深文所大盘交易列表" path={routeBase + 'shen_wen_suo_board_market'} component={ShenWenSuoBoardMarketContainer} />
+
+            <Route breadcrumbName="个人交易详情" path="trading_particulars/:userSn/:marketName" component={TradingParticularsContainer} />
 
             <Route breadcrumbName="深文所微盘交易列表" path={routeBase + 'shenwensuo_wp'} component={ShenWenSuoMicroBoardContainer} />
 

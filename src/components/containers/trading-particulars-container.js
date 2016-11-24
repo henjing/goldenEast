@@ -4,68 +4,79 @@ import './user-list-container.css';
 import UserListTable from '../views/trading-particulars-list';
 import { connect } from 'react-redux';
 import store from '../../store';
-import { updateChuanShangBoardMarketSearch } from '../../actions/app-interaction-actions';
-import { getChuanShangBoardMarketData } from '../../api/app-interaction-api';
+import { updateShenWenSuoBoardMarketDetailsSearch } from '../../actions/app-interaction-actions';
+import { updateChuanShangBoardMarketDetailsSearch } from '../../actions/app-interaction-actions';
+
+
+import { getShenWenSuoBoardMarketDetailsData } from '../../api/app-interaction-api';
+import { getChuanShangBoardMarketDetailsData } from '../../api/app-interaction-api';
+
+
 
 const RangePicker = DatePicker.RangePicker;
 
 var ChuanShangBoardMarketContainer = React.createClass({
     getInitialState() {
-        let updateMarketSearch;
-        let name= 2;
-        switch (name)
+        let importUpdateMarketSearch;
+        let importUpdateMarketData;
+        let marketName= this.props.params.marketName;
+        switch (marketName)
         {
-            case 1:
-                updateMarketSearch=updateChuanShangBoardMarketSearch;
+            case 'chuanshang_dapan':
+                importUpdateMarketSearch=updateChuanShangBoardMarketDetailsSearch;
+                importUpdateMarketData=getChuanShangBoardMarketDetailsData;
+                console.log(11111);
                 break;
-            case 2:
-                updateMarketSearch=updateChuanShangBoardMarketSearch;
+            case 'shenwen_dapan':
+                importUpdateMarketSearch=updateShenWenSuoBoardMarketDetailsSearch;
+                importUpdateMarketData=getShenWenSuoBoardMarketDetailsData;
+                  console.log(22222);
                 break;
-            default:
-                updateMarketSearch=updateChuanShangBoardMarketSearch;
         };
         return {
-            updateMarketSearch2:updateMarketSearch,
+            updateMarketSearch:importUpdateMarketSearch,
+            updateMarketData:importUpdateMarketData,
+            user_sn: ""
         }
     },
     componentWillMount(){
     	const user_sn = this.props.params.userSn;
-                console.log('user_sn', user_sn)
         this.setState({
         	user_sn: user_sn
         })
     },
     componentDidMount() {
         const user_sn = this.state.user_sn;
-        getChuanShangBoardMarketData({sn:user_sn});
+        this.state.updateMarketData({sn:user_sn});
     },
     componentWillUnmount(){
     	//清理搜索条件
-    	store.dispatch(updateChuanShangBoardMarketSearch({
-    		'search[find]' : '',
+    	store.dispatch(this.state.updateMarketSearch({
             'search[d_begin]' : '',
             'search[d_end]' : '',
-            'page' : 1
+            'page' : 1,
         }));
     },
 
     submitSearch() {
-        getChuanShangBoardMarketData(this.props.searchState);
+        this.state.updateMarketData(this.props.searchState);
     },
 
     onDateChange(dates, dateStrings) {
-        store.dispatch(this.state.updateMarketSearch2({
+        store.dispatch(this.state.updateMarketSearch({
             'search[d_begin]' : dateStrings[0],
             'search[d_end]' : dateStrings[1],
-            'page' : 1
+            'page' : 1,
+            sn: this.state.user_sn
         }));
         // 启动搜索
         this.submitSearch();
     },
 
     onPageChange(page) {
-        store.dispatch(updateChuanShangBoardMarketSearch({
-            page : page
+        store.dispatch(this.state.updateMarketSearch({
+            page : page,
+             sn: this.state.user_sn
         }));
         // 启动搜索
         this.submitSearch();
@@ -88,8 +99,8 @@ var ChuanShangBoardMarketContainer = React.createClass({
 
 const mapStateToProps = function (store) {
     return {
-        dataState : store.chuanShangBoardMarketState.dataState,
-        searchState : store.chuanShangBoardMarketState.searchState
+        dataState : store. boardBoardUserDetailsState.dataState,
+        searchState : store. boardBoardUserDetailsState.searchState
     }
 };
 

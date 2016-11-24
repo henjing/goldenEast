@@ -11,7 +11,6 @@ import { Link } from 'react-router';
 // by setting it's colSpan to be 0
 
 const UserListTable = React.createClass({
-
     jinLevels() {
         return ['注册用户(0%)', weiGuDong, normalCard, silverCard, goldenCard, superGoldenCard];
     },
@@ -20,7 +19,8 @@ const UserListTable = React.createClass({
 
         const jinLevels = this.jinLevels();
 
-		const columns = [{
+		const columns = [
+		    {
 		  title: '姓名',
 		  dataIndex: 'user_name',
           key : 'user_name',
@@ -66,16 +66,7 @@ const UserListTable = React.createClass({
 		  title: '交易时间',
 		  dataIndex: 'transaction_date',
 		  key : 'transaction_date'
-		}, {
-		  title: '操作',
-		  render(text, record, index){
-		  	return (
-                <Link style={{color : 'white'}} to={`/shen_wen_suo_board_market/shen_wen_trading_particulars/${record.user_sn}`}>
-                    <Button type="primary" size="small"  icon="search">交易详情</Button>
-                </Link>
-		  	)
-		  }
-		}];
+		}, ];
 		
 		return columns;
 	},
@@ -85,16 +76,28 @@ const UserListTable = React.createClass({
     },
 
 	render(){
-		const columns = this.getColumns();
-        const dataSource = this.props.dataSource.list;
+		let columns = this.getColumns();
+        const dataSource = this.props.dataSource;
         const pagination = {
             defaultPageSize : this.props.defaultPageSize,
             onChange : this.onChange,
             total : this.props.total,
             current : parseInt(this.props.currentPage)
         };
+        columns.push(
+            {
+                title: '操作',
+                render(text, record, index){
+                    return (
+                        <Link style={{color : 'white'}} to={`/trading_particulars/${record.user_sn}/${dataSource.exchange_type}`}>
+                            <Button type="primary" size="small"  icon="search">交易详情</Button>
+                        </Link>
+                    )
+                }
+            }
+        );
 		return(
-			<Table pagination={pagination} size="middle" columns={columns} dataSource={dataSource} bordered />
+			<Table pagination={pagination} size="middle" columns={columns} dataSource={dataSource.list} bordered />
 		)
 	}
 });

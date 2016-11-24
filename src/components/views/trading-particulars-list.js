@@ -17,14 +17,14 @@ const UserListTable = React.createClass({
         const columns = [{
             title: '手续费(元)',
             className: 'column-txt',
-            dataIndex: 'cellphone',
-            key : 'cellphone'
+            dataIndex: 'fees',
+            key : 'fees'
         }, {
 
             title:  this.state.liked ? '总盈亏(元)' : '持仓枚数',
             className: 'column-txt',
-            dataIndex: 'amount',
-            key : 'amount'
+            dataIndex: 'profit_and_loss',
+            key : 'profit_and_loss'
         },{
             title: '交易日期',
             className: 'column-txt',
@@ -40,7 +40,7 @@ const UserListTable = React.createClass({
 
     render(){
         const columns = this.getColumns();
-        const dataSource = this.props.dataSource.list;
+        const dataSource = this.props.dataSource;
         const pagination = {
             defaultPageSize : this.props.defaultPageSize,
             onChange : this.onChange,
@@ -51,10 +51,10 @@ const UserListTable = React.createClass({
             <div>
                 <Table
                     pagination={pagination}
-                    title={() => 'www的交易详情'}
+                    title={() => dataSource.user_name+'的交易详情'}
                      className={'column-txt margin-b-20'}
                     columns={columns}  size="middle"
-                    dataSource={dataSource}
+                    dataSource={dataSource.list}
                     bordered />
             </div>
 

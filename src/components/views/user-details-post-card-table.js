@@ -5,6 +5,7 @@ import normalCard from '../../appConstants/assets/images/普卡.png';
 import silverCard from '../../appConstants/assets/images/银卡.png';
 import goldenCard from '../../appConstants/assets/images/金卡.png';
 import superGoldenCard from '../../appConstants/assets/images/白金卡.png';
+import { Link } from 'react-router';
 
 // In the fifth row, other columns are merged into first column
 // by setting it's colSpan to be 0
@@ -65,14 +66,7 @@ const UserListTable = React.createClass({
 		  title: '交易时间',
 		  dataIndex: 'transaction_date',
 		  key : 'transaction_date'
-		}, {
-		  title: '操作',
-		  render(text, record, index){
-		  	return (
-		  		<Button type="primary" size="small" disabled icon="search">个人详情</Button>
-		  	)
-		  }
-		}];
+		}, ];
 		
 		return columns;
 	},
@@ -81,19 +75,31 @@ const UserListTable = React.createClass({
         this.props.onPageChange(page);
     },
 
-	render(){
-		const columns = this.getColumns();
-        const dataSource = this.props.dataSource.list;
+    render(){
+        const columns = this.getColumns();
+        const dataSource = this.props.dataSource;
         const pagination = {
             defaultPageSize : this.props.defaultPageSize,
             onChange : this.onChange,
             total : this.props.total,
             current : parseInt(this.props.currentPage)
         };
-		return(
-			<Table pagination={pagination} size="middle" columns={columns} dataSource={dataSource} bordered />
-		)
-	}
+        columns.push(
+            {
+                title: '操作',
+                render(text, record, index){
+                    return (
+                        <Link style={{color : 'white'}} to={`/trading_particulars/${record.user_sn}/${dataSource.exchange_type}`}>
+                            <Button type="primary" size="small"  icon="search">交易详情</Button>
+                        </Link>
+                    )
+                }
+            }
+        );
+        return(
+            <Table pagination={pagination} size="middle" columns={columns} dataSource={dataSource.list} bordered />
+        )
+    }
 });
 
 export default UserListTable;

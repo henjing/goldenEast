@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, AutoComplete ,DatePicker } from 'antd';
 import './user-list-container.css';
-import UserListTable from '../views/chuan-shang-post-card-table';
+import UserListTable from '../views/user-details-post-card-table';
 import { connect } from 'react-redux';
 import SearchInput from '../views/SearchInput';
 import store from '../../store';

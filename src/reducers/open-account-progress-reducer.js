@@ -26,7 +26,10 @@ const initialState = {
 const openAccountProgressReducer = function (state = initialState, action) {
     switch (action.type) {
         
-        case types.UPDATE_NOT_TO_OPEN_ACCOUNT_DATA || types.UPDATE_HAVE_TO_OPEN_ACCOUNT_DATA :
+        case types.UPDATE_NOT_TO_OPEN_ACCOUNT_DATA :
+            return Object.assign({}, state, { dataState : {...action.info }});
+            
+        case types.UPDATE_HAVE_TO_OPEN_ACCOUNT_DATA :
             return Object.assign({}, state, { dataState : {...action.info }});
         
         case types.UPDATE_OPEN_ACCOUNT_PROGRESS_SEARCH :

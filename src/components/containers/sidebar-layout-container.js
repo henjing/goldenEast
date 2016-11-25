@@ -87,19 +87,6 @@ const SidebarLayoutContainer = React.createClass({
                         </Menu.Item>
                     </SubMenu>
 
-                    <SubMenu key="sub2" title={<span><Icon type="share-alt" /><span className={styles.navText}>权限分配列表</span></span>}>
-                        <Menu.Item key={routeBase + 'allot_user_list'}>
-                            <Link to={routeBase + 'allot_user_list'}>
-                                分配用户权限
-                            </Link>
-                        </Menu.Item>
-                        <Menu.Item key={routeBase + 'author_user_list'}>
-                            <Link to={routeBase + 'author_user_list'}>
-                                已授权用户
-                            </Link>
-                        </Menu.Item>
-                    </SubMenu>
-
                     <SubMenu key="sub3" title={<span><Icon type="pay-circle-o" /><span className={styles.navText}>交易列表</span></span>}>
                         <SubMenu key="sub3_1" title={<span><Icon type="bar-chart" /><span className={styles.navText}>大盘交易列表</span></span>}>
                             <Menu.Item key={routeBase + 'shen_wen_suo_board_market'}>
@@ -199,6 +186,20 @@ const SidebarLayoutContainer = React.createClass({
                             </Link>
                         </Menu.Item>
                     </SubMenu>
+                    
+                    <SubMenu key="sub2" title={<span><Icon type="share-alt" /><span className={styles.navText}>权限分配列表</span></span>}>
+	                    <Menu.Item key={routeBase + 'allot_user_list'}>
+	                        <Link to={routeBase + 'allot_user_list'}>
+	                            分配用户权限
+	                        </Link>
+	                    </Menu.Item>
+	                    <Menu.Item key={routeBase + 'author_user_list'}>
+	                        <Link to={routeBase + 'author_user_list'}>
+	                            已授权用户
+	                        </Link>
+	                    </Menu.Item>
+	                </SubMenu>
+	                
                     <SubMenu key="sub8" title={<span><Icon type="select" /><span className={styles.navText}>其他</span></span>}>
                         <Menu.Item key={routeBase + 'shen_wen_suo_voucher_list'}>
                          <Link to={routeBase + 'shen_wen_suo_voucher_list'}>

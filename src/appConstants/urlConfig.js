@@ -60,7 +60,7 @@ export const getYBKBrokerageListUrl = '/api/index.php/Transaction/bonus_list_sta
 export const getBoardMarketUserDetailUrl = '/api/index.php/Transaction/bonus_detail_spot';
 
 // 获取微盘某用户个人佣金详情列表
-export const getMicroBoardUserDetailUrl = '/api/index.php/Transaction/bonus_detail_spot';
+export const getMicroBoardUserDetailUrl = '/api/index.php/Transaction/bonus_detail_mico';
 
 // 获取邮币卡某用户个人佣金详情列表
 export const getPostCardUserDetailUrl = '/api/index.php/Transaction/bonus_detail_spot';

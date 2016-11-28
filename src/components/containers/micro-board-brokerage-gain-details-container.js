@@ -51,12 +51,20 @@ var BoardMarketBrokerageGainDetailsContainer = React.createClass({
         store.dispatch(updateMicroBoardBrokerageUserDetailSearch({
             'search[d_begin]' : dateStrings[0],
             'search[d_end]' : dateStrings[1],
-            'page' : 1
+            'page' : 1,
+            sn: this.state.user_sn,
         }));
         // 启动搜索
         this.submitSearch();
     },
-    
+    onPageChange(page) {
+        store.dispatch(updateMicroBoardBrokerageUserDetailSearch({
+            page : page,
+            sn: this.state.user_sn,
+        }));
+        // 启动搜索
+        this.submitSearch();
+    },
 	render(){
          const jinLevels = this.jinLevels();
         const { data } = this.props.dataState;
@@ -84,7 +92,7 @@ var BoardMarketBrokerageGainDetailsContainer = React.createClass({
 					<label>交易日期:</label>
 					<RangePicker style={{ width: '200px' }} onChange={this.onDateChange} />
 				</div>
-				<UserListTable defaultPageSize={12} total={data.total} currentPage={data.this_page} dataSource={data}  />
+				<UserListTable defaultPageSize={12} total={data.total} currentPage={data.this_page} dataSource={data}  onPageChange={this.onPageChange}  />
 			</div>
 		)
 	}

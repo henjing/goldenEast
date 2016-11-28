@@ -73,7 +73,8 @@ const RegisterActiveContainer = React.createClass({
 	},
 	render(){
 		const { list, sum, this_page, total } = this.state.data;
-		return (
+		console.log(this.props.children)
+		return this.props.children || (
 			<div>
 				<div className="userListHeader">
 					<div className="searchBar">

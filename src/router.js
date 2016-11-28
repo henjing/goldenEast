@@ -43,8 +43,6 @@ import MicroBoardBrokerageGainDetailsContainer from './components/containers/mic
 // 邮币卡佣金佣金详情列表
 import PostCardBrokerageGainDetailsContainer from './components/containers/board-market-brokerage-gain-details-container';
 
-
-
 // 信息资产列表
 import InfoAssetAllotListContainer from './components/containers/info-asset-allot-list-container';
 // 已获信息资产列表
@@ -71,6 +69,14 @@ import ShenWenSuoVoucherContainer from './components/containers/shen-wen-suo-vou
 import UnderUserTreeContainer from './components/containers/under-user-tree-container';
 import UnderUserContainer from './components/containers/under-user-container';
 
+//获得当前代理商旗下的某个代理商本月的手续费详情列表
+import JjsCurrentPoundageContainer from './components/containers/jjs-current-poundage-detail';
+//获得当前代理商旗下的某个代理商上月的手续费详情列表
+import JjsLastPoundageContainer from './components/containers/jjs-last-poundage-detail';
+
+//
+import OpenAccountProgressContainer from './components/containers/open-account-progress-container';
+
 
 export default (
     <Router history={hashHistory}>
@@ -94,7 +100,10 @@ export default (
 
             <Route breadcrumbName="一度人脉列表" path={routeBase + 'under_user'} component={UnderUserContainer} />
 
-            <Route breadcrumbName="旗下代理商数据" path={routeBase + 'register_active'} component={RegisterActiveContainer} />
+            <Route breadcrumbName="旗下代理商数据" path={routeBase + 'register_active'} component={RegisterActiveContainer}>
+            	<Route breadcrumbName="当月手续费详情" path='current_poundage/:jjsid' component={JjsCurrentPoundageContainer}/>
+            	<Route breadcrumbName="上月手续费详情" path='last_poundage/:jjsid' component={JjsLastPoundageContainer}/>
+            </Route>
            
             <Route name="allot_user_list" breadcrumbName="分配用户权限" path={routeBase + 'allot_user_list'} component={AllotUserListContainer} >
                 <Route breadcrumbName="权限设置" path="set_authorization/:userSn" component={setAuthorizationView} />
@@ -147,6 +156,8 @@ export default (
             </Route>
 
             <Route path={routeBase + 'set_authorization'} component={setAuthorizationView} />
+
+            <Route breadcrumbName="大盘、邮币卡开户进度" path={routeBase + 'open_account_progress'} component={OpenAccountProgressContainer} />
 
             <Route breadcrumbName="信息资产列表" path={routeBase + 'info_asset_allot_list'} component={InfoAssetAllotListContainer} />
             <Route breadcrumbName="已获得信息资产列表" path={routeBase + 'gain_info_asset_allot_list'} component={GainInfoAssetAllotListContainer} />

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Table } from 'antd';
+import { Link } from 'react-router';
 
 // In the fifth row, other columns are merged into first column
 // by setting it's colSpan to be 0
@@ -17,11 +18,17 @@ const RegisterActiveTable = React.createClass({
 		}, {
 		  title: '当月手续费',
 		  dataIndex: 'this_month_fees_total',
-          key : 'this_month_fees_total'
+          key : 'this_month_fees_total',
+          render(text,row,index){
+          	return <Link to={`/register_active/current_poundage/${row.jujianshang_id}`}>{text}</Link>
+          }
 		}, {
 		  title: '上月手续费',
 		  dataIndex: 'last_month_fees_total',
-          key : 'last_month_fees_total'
+          key : 'last_month_fees_total',
+          render(text,row,index){
+          	return <Link to={`/register_active/last_poundage/${row.jujianshang_id}`}>{text}</Link>
+          }
 		}, {
 		  title: '当月注册量',
 		  dataIndex: 'this_month_registered_total',

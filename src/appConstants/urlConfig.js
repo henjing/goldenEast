@@ -128,5 +128,15 @@ export const getDownloadDataUrl = '/api/index.php/Download/index';
 //获取深文所入金送券列表
 export const getShenWenSuoVoucherListDataUrl =  '/api/index.php/Awards/coupon_list_shenw';
 
+//获得当前代理商旗下的某个代理商本月的手续费详情列表
+export const getJjsCurrentMonthPoundageUrl = '/api/index.php/Overview/jujianshang_this_month';
+//获得当前代理商旗下的某个代理商上月的手续费详情列表
+export const getJjsLastMonthPoundageUrl = '/api/index.php/Overview/jujianshang_last_month';
+
+//获取已提交资料未开户的用户列表
+export const getNotToOpenAccountUrl = '/api/index.php/Steps/no_account_list';
+//获取已开户的用户列表
+export const getHaveToOpenAccountUrl = '/api/index.php/Steps/have_account_list';
+
 
 

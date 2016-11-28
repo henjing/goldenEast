@@ -26,7 +26,7 @@ const SidebarLayoutContainer = React.createClass({
             'sub4' : ['/board_market_brokerage', '/wp_brokerage','/post_card_brokerage','/post_card_brokerage'],
             'sub5' : ['/board_market_post_card_dredge_schedule'],
             'sub6' : ['/info_asset_allot_list', '/gain_info_asset_allot_list'],
-             'sub7' : ['under_user','under_user_tree'],
+            'sub7' : ['under_user','under_user_tree'],
         };
         let matchSubMenu = '';
         let defaultSelectedKey = '';
@@ -83,19 +83,6 @@ const SidebarLayoutContainer = React.createClass({
                         <Menu.Item key={routeBase + 'register_active'}>
                             <Link to={routeBase + 'register_active'}>
                                 旗下代理商数据
-                            </Link>
-                        </Menu.Item>
-                    </SubMenu>
-
-                    <SubMenu key="sub2" title={<span><Icon type="share-alt" /><span className={styles.navText}>权限分配列表</span></span>}>
-                        <Menu.Item key={routeBase + 'allot_user_list'}>
-                            <Link to={routeBase + 'allot_user_list'}>
-                                分配用户权限
-                            </Link>
-                        </Menu.Item>
-                        <Menu.Item key={routeBase + 'author_user_list'}>
-                            <Link to={routeBase + 'author_user_list'}>
-                                已授权用户
                             </Link>
                         </Menu.Item>
                     </SubMenu>
@@ -166,6 +153,14 @@ const SidebarLayoutContainer = React.createClass({
                          </Menu.Item>*/}
                     </SubMenu>
 
+                    <SubMenu key="sub5" title={<span><Icon type="pie-chart" /><span className={styles.navText}>大盘、邮币卡开户进度</span></span>}>
+	                     <Menu.Item key={routeBase + 'open_account_progress'}>
+		                     <Link to={routeBase + 'open_account_progress'}>
+		                     大盘、邮币卡开户进度
+		                     </Link>
+	                     </Menu.Item>
+                     </SubMenu>
+
                     <SubMenu key="sub6" title={<span><Icon type="solution" /><span className={styles.navText}>信息资产分配</span></span>}>
                         <Menu.Item key={routeBase + 'info_asset_allot_list'}>
                             <Link to={routeBase + 'info_asset_allot_list'}>
@@ -191,6 +186,20 @@ const SidebarLayoutContainer = React.createClass({
                             </Link>
                         </Menu.Item>
                     </SubMenu>
+                    
+                    <SubMenu key="sub2" title={<span><Icon type="share-alt" /><span className={styles.navText}>权限分配列表</span></span>}>
+	                    <Menu.Item key={routeBase + 'allot_user_list'}>
+	                        <Link to={routeBase + 'allot_user_list'}>
+	                            分配用户权限
+	                        </Link>
+	                    </Menu.Item>
+	                    <Menu.Item key={routeBase + 'author_user_list'}>
+	                        <Link to={routeBase + 'author_user_list'}>
+	                            已授权用户
+	                        </Link>
+	                    </Menu.Item>
+	                </SubMenu>
+	                
                     <SubMenu key="sub8" title={<span><Icon type="select" /><span className={styles.navText}>其他</span></span>}>
                         <Menu.Item key={routeBase + 'shen_wen_suo_voucher_list'}>
                          <Link to={routeBase + 'shen_wen_suo_voucher_list'}>

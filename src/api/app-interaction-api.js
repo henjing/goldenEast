@@ -1,8 +1,10 @@
-import { getUserInfoUrl, modifyPasswordUrl, getChuanShangBoardMarketListUrl, getChuanShangYBKListUrl, getShenWenSuoBoardMarketListUrl, getAgentOverviewDataUrl, getShenWenSuoMicroBoardListUrl, getJiShangYBKListUrl, getYueGuoJiMicroBoardListUrl, getJiShangMicroBoardListUrl, getUserListDataUrl,  getHongBaoListDataUrl, getPeopleWhoHaveInfoAssetUrl, getUserAuthorizationListUrl, getAllAuthorizationListUrl, setFollowerAuthorizationUrl, getPeopleWhoHaveInfoAssetAllotUrl, getAuthorizedUserListUrl, getSomeUserDetailUrl, postSomeUserAuthorDetailUrl, setSomeUserAuthorDetailUrl, getUserDetailUrl, deleteSomeUserAuthorUrl,getNoAuthorizedUserListUrl, getUserFirstClassConnectedUrl, registerActiveUrl,  getGainPeopleWhoHaveInfoAssetUrl, underUsertreeUrl, underUserUrl , getMicroBoardBrokerageListUrl, getBoardMarketBrokerageListUrl, getYBKBrokerageListUrl, getBoardMarketUserDetailUrl, getMicroBoardUserDetailUrl, getPostCardUserDetailUrl, getDownloadDataUrl, getShenWenSuoVoucherListDataUrl, getShenWenSuoBoardMarketDetailsListUrl, getChuanShangBoardMarketDetailsListUrl, getShenWenSuoMicroBoardDetailsListUrl, getJiShangMicroBoardDetailsListUrl, getYueGuoJiMicroBoardDetailsListUrl, getChuanShangYBKDetailsListUrl, getJiShangYBKDetailsListUrl} from '../appConstants/urlConfig';
+import { getUserInfoUrl, modifyPasswordUrl, getChuanShangBoardMarketListUrl, getChuanShangYBKListUrl, getShenWenSuoBoardMarketListUrl, getAgentOverviewDataUrl, getShenWenSuoMicroBoardListUrl, getJiShangYBKListUrl, getYueGuoJiMicroBoardListUrl, getJiShangMicroBoardListUrl, getUserListDataUrl,  getHongBaoListDataUrl, getPeopleWhoHaveInfoAssetUrl, getUserAuthorizationListUrl, getAllAuthorizationListUrl, setFollowerAuthorizationUrl, getPeopleWhoHaveInfoAssetAllotUrl, getAuthorizedUserListUrl, getSomeUserDetailUrl, postSomeUserAuthorDetailUrl, setSomeUserAuthorDetailUrl, getUserDetailUrl, deleteSomeUserAuthorUrl,getNoAuthorizedUserListUrl, getUserFirstClassConnectedUrl, registerActiveUrl,  getGainPeopleWhoHaveInfoAssetUrl, underUsertreeUrl, underUserUrl , getMicroBoardBrokerageListUrl, getBoardMarketBrokerageListUrl, getYBKBrokerageListUrl, getBoardMarketUserDetailUrl, getMicroBoardUserDetailUrl, getPostCardUserDetailUrl, getDownloadDataUrl, getShenWenSuoVoucherListDataUrl, getJjsCurrentMonthPoundageUrl, getJjsLastMonthPoundageUrl, getNotToOpenAccountUrl, getHaveToOpenAccountUrl, getShenWenSuoBoardMarketDetailsListUrl, getChuanShangBoardMarketDetailsListUrl, getShenWenSuoMicroBoardDetailsListUrl, getJiShangMicroBoardDetailsListUrl, getYueGuoJiMicroBoardDetailsListUrl, getChuanShangYBKDetailsListUrl, getJiShangYBKDetailsListUrl } from '../appConstants/urlConfig';
 import commonAjax, { commonGetAjax, commonAjaxWithBrackets} from '../helpers/commonAjax';
 import store from '../store';
 
-import { updateAdmin, updateChuanShangBoardMarket, updateAgentOverviewData, updateShenWenSuoBoardMarket, updateChuanShangPostCard, updateJiShangPostCard, updateShenWenSuoMicroBoardData, updateJiShangMicroBoardData, updateYueGuoJiMicroBoardData, updateUserListData, updateHongBaoListData, updatePeopleListWhoHaveInfoAssetData, updatePeopleListWhoHaveInfoAssetAllotData, updateAuthorUserListData , updateNoAuthorUserListData, updateGainPeopleListWhoHaveInfoAssetData, updateUnderUserData, updateMicroBoardBrokerageData, updateBoardMarketBrokerageData, updatePostCardBrokerageData, updateBoardMarketBrokerageUserDetailData, updateMicroBoardBrokerageUserDetailData, updatePostCardBrokerageUserDetailData, updateDownloadData, updateShenWenSuoVoucherListData, updateUnderUserTreeData, updateShenWenSuoBoardMarketDetails, updateChuanShangBoardMarketDetails, updateShenWenSuoMicroBoardDetails, updateJiShangMicroBoardDetails, updateYueGuoJiMicroBoardDetails, updateChuanShangPostCardDetails, updateJiShangPostCardDetails} from '../actions/app-interaction-actions';
+import { updateAdmin, updateChuanShangBoardMarket, updateAgentOverviewData, updateShenWenSuoBoardMarket, updateChuanShangPostCard, updateJiShangPostCard, updateShenWenSuoMicroBoardData, updateJiShangMicroBoardData, updateYueGuoJiMicroBoardData, updateUserListData, updateHongBaoListData, updatePeopleListWhoHaveInfoAssetData, updatePeopleListWhoHaveInfoAssetAllotData, updateAuthorUserListData , updateNoAuthorUserListData, updateGainPeopleListWhoHaveInfoAssetData, updateUnderUserData, updateMicroBoardBrokerageData, updateBoardMarketBrokerageData, updatePostCardBrokerageData, updateBoardMarketBrokerageUserDetailData, updateMicroBoardBrokerageUserDetailData, updatePostCardBrokerageUserDetailData, updateDownloadData, updateShenWenSuoVoucherListData, updateUnderUserTreeData, updateNotToOpenAccountData, updateHaveToOpenAccountData, updateShenWenSuoBoardMarketDetails, updateChuanShangBoardMarketDetails, updateShenWenSuoMicroBoardDetails, updateJiShangMicroBoardDetails, updateYueGuoJiMicroBoardDetails, updateChuanShangPostCardDetails, updateJiShangPostCardDetails} from '../actions/app-interaction-actions';
+
+
 
 
 // 获取登录用户的信息
@@ -466,3 +468,47 @@ export function getShenWenSuoVoucherListData(config, sucCallback, failCallback){
     });
 
 }
+
+//获得当前代理商旗下的某个代理商本月的手续费详情列表
+export function getJjsCurrentMonthPoundageData(config, sucCallback, failCallback){
+	return commonGetAjax(getJjsCurrentMonthPoundageUrl, config, function (info) {
+        if (sucCallback) sucCallback(info);
+    }, function (info) {
+        if (failCallback) failCallback(info);
+    });
+
+}
+//获得当前代理商旗下的某个代理商上月的手续费详情列表
+export function getJjsLastMonthPoundageData(config, sucCallback, failCallback){
+	return commonGetAjax(getJjsLastMonthPoundageUrl, config, function (info) {
+        if (sucCallback) sucCallback(info);
+    }, function (info) {
+        if (failCallback) failCallback(info);
+    });
+
+}
+
+
+//获取已提交资料未开户的用户列表
+export function getNotToOpenAccountData(config, sucCallback, failCallback){
+	return commonGetAjax(getNotToOpenAccountUrl, config, function (info) {
+        store.dispatch(updateNotToOpenAccountData(info));
+        if (sucCallback) sucCallback(info);
+    }, function (info) {
+        store.dispatch(updateNotToOpenAccountData(info));
+        if (failCallback) failCallback(info);
+    });
+}
+
+//获取已开户的用户列表
+export function getHaveToOpenAccountData(config, sucCallback, failCallback){
+	return commonGetAjax(getHaveToOpenAccountUrl, config, function (info) {
+        store.dispatch(updateHaveToOpenAccountData(info));
+        if (sucCallback) sucCallback(info);
+    }, function (info) {
+        store.dispatch(updateHaveToOpenAccountData(info));
+        if (failCallback) failCallback(info);
+    });
+}
+
+

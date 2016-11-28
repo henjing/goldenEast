@@ -1,17 +1,25 @@
 import React from 'react';
-import { Button, AutoComplete ,DatePicker } from 'antd';
+import { DatePicker } from 'antd';
 import './user-list-container.css';
 import UserListTable from '../views/trading-particulars-list';
 import { connect } from 'react-redux';
 import store from '../../store';
 import { updateShenWenSuoBoardMarketDetailsSearch } from '../../actions/app-interaction-actions';
 import { updateChuanShangBoardMarketDetailsSearch } from '../../actions/app-interaction-actions';
-
-
 import { getShenWenSuoBoardMarketDetailsData } from '../../api/app-interaction-api';
 import { getChuanShangBoardMarketDetailsData } from '../../api/app-interaction-api';
-
-
+// 微盘
+import { updateShenWenSuoMicroBoardDetailsSearch } from '../../actions/app-interaction-actions';
+import { updateJiShangMicroBoardDetailsSearch } from '../../actions/app-interaction-actions';
+import { updateYueGuoJiMicroBoardDetailsSearch } from '../../actions/app-interaction-actions';
+import { getShenWenSuoMicroBoardDetails } from '../../api/app-interaction-api';
+import { getJiShangMicroBoardDetails } from '../../api/app-interaction-api';
+import { getYueGuoJiMicroBoardDetails } from '../../api/app-interaction-api';
+// 邮币卡
+import { updateChuanShangPostCardDetailsSearch } from '../../actions/app-interaction-actions';
+import { updateJiShangPostCardDetailsSearch } from '../../actions/app-interaction-actions';
+import { getChuanShangPostCardDetails } from '../../api/app-interaction-api';
+import { getJiShangPostCardDetails } from '../../api/app-interaction-api';
 
 const RangePicker = DatePicker.RangePicker;
 
@@ -25,18 +33,39 @@ var ChuanShangBoardMarketContainer = React.createClass({
             case 'chuanshang_dapan':
                 importUpdateMarketSearch=updateChuanShangBoardMarketDetailsSearch;
                 importUpdateMarketData=getChuanShangBoardMarketDetailsData;
-                console.log(11111);
                 break;
             case 'shenwen_dapan':
                 importUpdateMarketSearch=updateShenWenSuoBoardMarketDetailsSearch;
                 importUpdateMarketData=getShenWenSuoBoardMarketDetailsData;
-                  console.log(22222);
+                break;
+            // 微盘
+            case 'shenwen_weipan':
+                importUpdateMarketSearch=updateShenWenSuoMicroBoardDetailsSearch;
+                importUpdateMarketData=getShenWenSuoMicroBoardDetails;
+                break;
+            case 'jishang_weipan':
+                importUpdateMarketSearch=updateJiShangMicroBoardDetailsSearch;
+                importUpdateMarketData=getJiShangMicroBoardDetails;
+                break;
+            case 'yueguoji_weipan':
+                importUpdateMarketSearch=updateYueGuoJiMicroBoardDetailsSearch;
+                importUpdateMarketData=getYueGuoJiMicroBoardDetails;
+                break;
+            // 邮币卡
+            case 'chuanshang_youbika':
+                importUpdateMarketSearch=updateChuanShangPostCardDetailsSearch;
+                importUpdateMarketData=getChuanShangPostCardDetails;
+                break;
+            case 'jishang_youbika':
+                importUpdateMarketSearch=updateJiShangPostCardDetailsSearch;
+                importUpdateMarketData=getJiShangPostCardDetails;
                 break;
         };
         return {
             updateMarketSearch:importUpdateMarketSearch,
             updateMarketData:importUpdateMarketData,
-            user_sn: ""
+            user_sn: "",
+            exchange_type:marketName,
         }
     },
     componentWillMount(){
@@ -84,14 +113,13 @@ var ChuanShangBoardMarketContainer = React.createClass({
 
 	render(){
         const { data } = this.props.dataState;
-        console.log('dataSource', data);
 		return (
 			<div>
 				<div className="data-picker-bar">
 					<label>交易时间:</label>
 					<RangePicker style={{ width: '200px' }} onChange={this.onDateChange} />
 				</div>
-				<UserListTable defaultPageSize={12} total={data.total} currentPage={data.this_page} dataSource={data} onPageChange={this.onPageChange} />
+				<UserListTable defaultPageSize={12} total={data.total} currentPage={data.this_page} exchange_type={this.state.exchange_type} dataSource={data} onPageChange={this.onPageChange} />
 			</div>
 		)
 	}

@@ -6,19 +6,19 @@ import { connect } from 'react-redux';
 import SearchInput from '../views/SearchInput';
 import store from '../../store';
 import { updateChuanShangPostCardSearch } from '../../actions/app-interaction-actions';
-import { getChuanShangPostCardData } from '../../api/app-interaction-api'; 
+import { getChuanShangPostCardData } from '../../api/app-interaction-api';
 
 const RangePicker = DatePicker.RangePicker;
 
 var ChuanShangPostCardContainer = React.createClass({
-    
+
     componentDidMount() {
         getChuanShangPostCardData({});
     },
     componentWillUnmount(){
-    	//清理搜索条件
-    	store.dispatch(updateChuanShangPostCardSearch({
-    		'search[find]' : '',
+        //清理搜索条件
+        store.dispatch(updateChuanShangPostCardSearch({
+            'search[find]' : '',
             'search[d_begin]' : '',
             'search[d_end]' : '',
             'page' : 1
@@ -28,7 +28,7 @@ var ChuanShangPostCardContainer = React.createClass({
     onChange(value) {
         store.dispatch(updateChuanShangPostCardSearch({ 'search[find]' : value,'page' : 1 }));
     },
-    
+
     submitSearch() {
         getChuanShangPostCardData(this.props.searchState);
     },
@@ -51,31 +51,31 @@ var ChuanShangPostCardContainer = React.createClass({
         this.submitSearch();
     },
 
-	render(){
+    render(){
         const { data } = this.props.dataState;
         console.log('dataSource', data);
-		return (
-			<div>
-				<div className="userListHeader">
-					<SearchInput onChange={this.onChange} search={this.submitSearch} />
-					<div className="number-info">
-						<span>{data.total_fees_sum}</span>
-						<p>总手续费</p>
-					</div>
+        return  this.props.children ||  (
+            <div>
+                <div className="userListHeader">
+                    <SearchInput onChange={this.onChange} search={this.submitSearch} />
+                    <div className="number-info">
+                        <span>{data.total_fees_sum}</span>
+                        <p>总手续费</p>
+                    </div>
                     &nbsp;
                     <div className="number-info">
-						<span>{data.total_users_sum}</span>
-						<p>总人数</p>
-					</div>
-				</div>
-				<div className="data-picker-bar">
-					<label>交易时间:</label>
-					<RangePicker style={{ width: '200px' }} onChange={this.onDateChange} />
-				</div>
-				<UserListTable defaultPageSize={12} total={data.total} currentPage={data.this_page} dataSource={data} onPageChange={this.onPageChange} />
-			</div>
-		)
-	}
+                        <span>{data.total_users_sum}</span>
+                        <p>总人数</p>
+                    </div>
+                </div>
+                <div className="data-picker-bar">
+                    <label>交易时间:</label>
+                    <RangePicker style={{ width: '200px' }} onChange={this.onDateChange} />
+                </div>
+                <UserListTable defaultPageSize={12} total={data.total} currentPage={data.this_page} dataSource={data} onPageChange={this.onPageChange} />
+            </div>
+        )
+    }
 });
 
 const mapStateToProps = function (store) {

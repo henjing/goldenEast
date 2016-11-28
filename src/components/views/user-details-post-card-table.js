@@ -11,65 +11,68 @@ import { Link } from 'react-router';
 // by setting it's colSpan to be 0
 
 const UserListTable = React.createClass({
-
     jinLevels() {
         return ['注册用户(0%)', weiGuDong, normalCard, silverCard, goldenCard, superGoldenCard];
     },
-
-	getColumns(){
+    getColumns(){
 
         const jinLevels = this.jinLevels();
 
-		const columns = [{
-		  title: '姓名',
-		  dataIndex: 'user_name',
-          key : 'user_name',
-		  render(text, record, index) {
-		      return (
-		      	<div className="user-avatar-bar">
+        const columns = [{
+            title: '姓名',
+            dataIndex: 'user_name',
+            key : 'user_name',
+            render(text, record, index) {
+                return (
+                    <div className="user-avatar-bar">
 			      	<span className="user-avatar" style={{backgroundImage:'url()'}}>
                         {text.slice(0, 1)}
 			      	</span>
-			      	<div className="user-avatar-bar-text">
-			      		<p className="name">{text}</p>
-			      	</div>
-			      	
-		      	</div>
-		      );
-		  },
-		}, {
-		  title: '级别',
-		  dataIndex: 'level',
-          key : 'level',
-          render(text, record, index) {
-              // console.log('text', text, 'index', index);
-              if (text == '0') {
-                  return <span>{jinLevels[text]}</span>
-              }
-              return (
-                  <img src={jinLevels[text]} alt="jinLevel"/>
-              )
-          }
-		}, {
-		  title: '邮币卡账号',
-		  dataIndex: 'account',
-          key : 'account'
-		}, {
-		  title: '总手续费',
-		  dataIndex: 'fees',
-          key : 'fees'
-		}, {
-		  title: '总盈亏',
-		  dataIndex: 'profit_and_loss',
-		  key : 'profit_and_loss'
-		}, {
-		  title: '交易时间',
-		  dataIndex: 'transaction_date',
-		  key : 'transaction_date'
-		}, ];
-		
-		return columns;
-	},
+                        <div className="user-avatar-bar-text">
+                            <p className="name">{text}</p>
+                        </div>
+
+                    </div>
+                );
+            },
+        }, {
+            title: '级别',
+            className: 'column-txt',
+            dataIndex: 'level',
+            key : 'level',
+            render(text, record, index) {
+                // console.log('text', text, 'index', index);
+                if (text == '0') {
+                    return <span>{jinLevels[text]}</span>
+                }
+                return (
+                    <img src={jinLevels[text]} alt="jinLevel"/>
+                )
+            }
+        }, {
+            title: '邮币卡账号',
+            className: 'column-txt',
+            dataIndex: 'account',
+            key : 'account'
+        }, {
+            title: '总手续费',
+            className: 'column-txt',
+            dataIndex: 'fees',
+            key : 'fees'
+        }, {
+            title: '持仓数量',
+            className: 'column-txt',
+            dataIndex: 'number',
+            key : 'number'
+        }, {
+            title: '交易时间',
+            className: 'column-txt',
+            dataIndex: 'transaction_date',
+            key : 'transaction_date'
+        }, ];
+
+        return columns;
+    },
 
     onChange(page) {
         this.props.onPageChange(page);
@@ -77,6 +80,7 @@ const UserListTable = React.createClass({
 
     render(){
         const columns = this.getColumns();
+        let  DetailsRoute;
         const dataSource = this.props.dataSource;
         const pagination = {
             defaultPageSize : this.props.defaultPageSize,
@@ -84,12 +88,18 @@ const UserListTable = React.createClass({
             total : this.props.total,
             current : parseInt(this.props.currentPage)
         };
+        if (dataSource.exchange_type == 'chuanshang_youbika'){
+              DetailsRoute = 'chuan_shang_post_card';
+        }else {
+             DetailsRoute = 'ji_shang_post_card';
+        };
         columns.push(
             {
                 title: '操作',
+                className: 'column-txt',
                 render(text, record, index){
                     return (
-                        <Link style={{color : 'white'}} to={`/trading_particulars/${record.user_sn}/${dataSource.exchange_type}`}>
+                        <Link style={{color : 'white'}} to={`/${DetailsRoute}/trading_particulars/${dataSource.exchange_type}/${record.user_sn}`}>
                             <Button type="primary" size="small"  icon="search">交易详情</Button>
                         </Link>
                     )

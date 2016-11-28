@@ -6,8 +6,9 @@ const UserListTable = React.createClass({
         return {liked: true};
     },
     componentWillMount(){
-        const dataSource = this.props.dataSource.exchange_type;
-        if (dataSource == "chuanshang_dapan" ){
+        const exchange_type = this.props.exchange_type;
+        console.log('exchange_type', this.props.exchange_type)
+        if (exchange_type == "chuanshang_youbika" || exchange_type == "jishang_youbika" ){
             this.setState({
                 liked: false,
             })
@@ -20,11 +21,10 @@ const UserListTable = React.createClass({
             dataIndex: 'fees',
             key : 'fees'
         }, {
-
-            title:  this.state.liked ? '总盈亏(元)' : '持仓枚数',
+            title:  this.state.liked ? '总盈亏(元)' : '持仓数量',
             className: 'column-txt',
-            dataIndex: 'profit_and_loss',
-            key : 'profit_and_loss'
+            dataIndex:  this.state.liked ? 'profit_and_loss' : 'number',
+            key : this.state.liked ? 'profit_and_loss' : 'number',
         },{
             title: '交易日期',
             className: 'column-txt',
@@ -40,7 +40,7 @@ const UserListTable = React.createClass({
 
     render(){
         const columns = this.getColumns();
-        const dataSource = this.props.dataSource;
+        const data = this.props.dataSource;
         const pagination = {
             defaultPageSize : this.props.defaultPageSize,
             onChange : this.onChange,
@@ -51,10 +51,10 @@ const UserListTable = React.createClass({
             <div>
                 <Table
                     pagination={pagination}
-                    title={() => dataSource.user_name+'的交易详情'}
+                    title={() => data.user_name+'的交易详情'}
                      className={'column-txt margin-b-20'}
                     columns={columns}  size="middle"
-                    dataSource={dataSource.list}
+                    dataSource={data.list}
                     bordered />
             </div>
 

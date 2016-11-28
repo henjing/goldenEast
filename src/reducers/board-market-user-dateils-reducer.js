@@ -4,6 +4,7 @@ import { mergeDeep} from '../helpers/helpers';
 const initialState = {
     dataState : {
         data : {
+            exchange_type:'',
             list : [],
             this_page : 1,
             total : 0,
@@ -26,22 +27,63 @@ const initialState = {
 const boardMarketUserDetailsReducer = function (state = initialState, action) {
     
     switch (action.type) {
-        
+
         case types.UPDATE_SHENWENSUO_BOARD_MARKET_DETAILS :
             return Object.assign({}, state, { dataState : {...action.info }});
-        
+
         case types.UPDATE_SHENWENSUO_BOARD_MARKET_DETAILS_SEARCH :
             var template = { searchState : state.searchState};
             var merged = mergeDeep(template, { searchState : {...action.info}});
             return Object.assign({}, state, merged);
 
-          case types.UPDATE_CHUANSHANG_BOARD_MARKET_DETAILS :
+        case types.UPDATE_CHUANSHANG_BOARD_MARKET_DETAILS :
             return Object.assign({}, state, { dataState : {...action.info }});
 
         case types.UPDATE_CHUANSHANG_BOARD_MARKET_DETAILS_SEARCH :
             var template = { searchState : state.searchState};
             var merged = mergeDeep(template, { searchState : {...action.info}});
             return Object.assign({}, state, merged);
+        // 微盘
+        case types.UPDATE_SHENWENSUO_MICRO_BOARD_DETAILS :
+            return Object.assign({}, state, { dataState : {...action.info }});
+
+        case types.UPDATE_SHENWENSUO_MICRO_BOARD_DETAILS_SEARCH :
+            var template = { searchState : state.searchState};
+            var merged = mergeDeep(template, { searchState : {...action.info}});
+            return Object.assign({}, state, merged);
+
+        case types.UPDATE_JISHANG_MICRO_BOARD_DETAILS :
+            return Object.assign({}, state, { dataState : {...action.info }});
+
+        case types.UPDATE_JISHANG_MICRO_BOARD_DETAILS_SEARCH :
+            var template = { searchState : state.searchState};
+            var merged = mergeDeep(template, { searchState : {...action.info}});
+            return Object.assign({}, state, merged);
+
+        case types.UPDATE_YUEGUOJI_MICRO_BOARD_DETAILS :
+            return Object.assign({}, state, { dataState : {...action.info }});
+
+        case types.UPDATE_YUEGUOJI_MICRO_BOARD_DETAILS_SEARCH :
+            var template = { searchState : state.searchState};
+            var merged = mergeDeep(template, { searchState : {...action.info}});
+            return Object.assign({}, state, merged);
+        // 邮币卡
+        case types.UPDATE_JISHANG_POST_CARD_DETAILS :
+            return Object.assign({}, state, { dataState : {...action.info }});
+
+        case types.UPDATE_JISHANG_POST_CARD_DETAILS_SEARCH :
+            var template = { searchState : state.searchState};
+            var merged = mergeDeep(template, { searchState : {...action.info}});
+            return Object.assign({}, state, merged);
+
+        case types.UPDATE_CHUANSHANG_POST_CARD_DETAILS :
+            return Object.assign({}, state, { dataState : {...action.info }});
+
+        case types.UPDATE_CHUANSHANG_POST_CARD_DETAILS_SEARCH :
+            var template = { searchState : state.searchState};
+            var merged = mergeDeep(template, { searchState : {...action.info}});
+            return Object.assign({}, state, merged);
+
     }
     
     return state;

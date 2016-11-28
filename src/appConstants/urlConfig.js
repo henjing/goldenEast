@@ -26,17 +26,26 @@ export const getChuanShangYBKDetailsListUrl = '/api/index.php/Transaction/transa
 
 // 获取深文所大盘交易列表
 export const getShenWenSuoBoardMarketListUrl = '/api/index.php/Transaction/transaction_spot_shenw';
-// 获取深文所大盘交易详情列表
+// 获取深文所大盘个人交易详情列表
 export const getShenWenSuoBoardMarketDetailsListUrl = '/api/index.php/Transaction/transaction_spot_shenw_detail';
 // 获取深文所微盘交易列表
 export const getShenWenSuoMicroBoardListUrl = '/api/index.php/Transaction/transaction_micro_shenw';
+// 获取深文所微盘个人交易详情列表
+export const getShenWenSuoMicroBoardDetailsListUrl = '/api/index.php/Transaction/transaction_micro_shenw_detail';
 
 // 获取吉商邮币卡交易列表
 export const getJiShangYBKListUrl = '/api/index.php/Transaction/transaction_stamp_jis';
+// 获取吉商邮币卡个人交易详情列表
+export const getJiShangYBKDetailsListUrl = '/api/index.php/Transaction/transaction_stamp_jis_detail';
+// 获取吉商微盘交易列表
 export const getJiShangMicroBoardListUrl = '/api/index.php/Transaction/transaction_micro_jis';
+// 获取吉商微盘个人交易详情列表
+export const getJiShangMicroBoardDetailsListUrl = '/api/index.php/Transaction/transaction_micro_jis_detail';
 
 // 获取粤国际微盘交易列表
 export const getYueGuoJiMicroBoardListUrl = '/api/index.php/Transaction/transaction_micro_yuegj';
+// 获取粤国际微盘个人交易详情列表
+export const getYueGuoJiMicroBoardDetailsListUrl = '/api/index.php/Transaction/transaction_micro_yuegj_detail';
 
 // 获取大盘佣金列表
 export const getBoardMarketBrokerageListUrl = '/api/index.php/Transaction/bonus_list_spot';

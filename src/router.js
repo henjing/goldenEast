@@ -74,8 +74,11 @@ import JjsCurrentPoundageContainer from './components/containers/jjs-current-pou
 //获得当前代理商旗下的某个代理商上月的手续费详情列表
 import JjsLastPoundageContainer from './components/containers/jjs-last-poundage-detail';
 
-//
+//开户进度
 import OpenAccountProgressContainer from './components/containers/open-account-progress-container';
+
+//太平洋保险
+import TaiPingYangInsuranceContainer from './components/containers/insurance/taipingyang-insurance-container';
 
 
 export default (
@@ -141,6 +144,11 @@ export default (
             <Route breadcrumbName="吉商邮币卡交易列表" path={routeBase + 'ji_shang_post_card'} component={JiShangPostCardContainer} >
                   <Route breadcrumbName="个人交易详情" path="trading_particulars/:marketName/:userSn" component={TradingParticularsContainer} />
             </Route>
+            
+            <Route breadcrumbName="太平洋保险交易列表" 
+            	path={routeBase + 'taipingyang_insurance'} 
+            	component={TaiPingYangInsuranceContainer} 
+            />
 
             {/*佣金列表*/}
             <Route name="board_market_brokerage" breadcrumbName="大盘佣金列表" path={routeBase + 'board_market_brokerage'} component={BoardMarketBrokerageContainer} >

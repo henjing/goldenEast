@@ -11,9 +11,19 @@ import { getChuanShangBoardMarketData } from '../../api/app-interaction-api';
 const RangePicker = DatePicker.RangePicker;
 
 var ChuanShangBoardMarketContainer = React.createClass({
-    
+    getInitialState(){
+		return {
+			loading: false
+		}
+	},
     componentDidMount() {
-        getChuanShangBoardMarketData({});
+    	const _this = this;
+		_this.setState({ loading: true })
+        getChuanShangBoardMarketData({},function(info){
+			_this.setState({ loading: false })
+		},function(info){
+			_this.setState({ loading: false })
+		});
     },
     componentWillUnmount(){
     	//清理搜索条件
@@ -30,7 +40,13 @@ var ChuanShangBoardMarketContainer = React.createClass({
     },
     
     submitSearch() {
-        getChuanShangBoardMarketData(this.props.searchState);
+    	const _this = this;
+		_this.setState({ loading: true })
+        getChuanShangBoardMarketData(this.props.searchState,function(info){
+			_this.setState({ loading: false })
+		},function(info){
+			_this.setState({ loading: false })
+		});
     },
 
     onDateChange(dates, dateStrings) {
@@ -72,7 +88,14 @@ var ChuanShangBoardMarketContainer = React.createClass({
 					<label>交易时间:</label>
 					<RangePicker style={{ width: '200px' }} onChange={this.onDateChange} />
 				</div>
-				<UserListTable defaultPageSize={12} total={data.total} currentPage={data.this_page} dataSource={data} onPageChange={this.onPageChange} />
+				<UserListTable 
+					defaultPageSize={12} 
+					total={data.total} 
+					currentPage={data.this_page} 
+					dataSource={data} 
+					onPageChange={this.onPageChange}
+					loading={this.state.loading}
+				/>
 			</div>
 		)
 	}

@@ -14,7 +14,8 @@ const RangePicker = DatePicker.RangePicker;
 var HongBaoListContainer = React.createClass({
 	getInitialState(){
 		return {
-			whenSearchHide: false
+			whenSearchHide: false,
+			loading: false
 		}
 	},
 	onChange(value){
@@ -32,7 +33,13 @@ var HongBaoListContainer = React.createClass({
         this.submitSearch();
 	},
 	submitSearch() {
-        getHongBaoListData(this.props.searchState);
+		const _this = this;
+		_this.setState({ loading: true })
+        getHongBaoListData(this.props.searchState,function(info){
+			_this.setState({ loading: false })
+		},function(info){
+			_this.setState({ loading: false })
+		});
         //当搜索的时候隐藏右上角的总注册量
         this.setState({ whenSearchHide: true })
         if(!this.props.searchState['search[find]'] && !this.props.searchState['search[d_begin]'] ){
@@ -46,7 +53,13 @@ var HongBaoListContainer = React.createClass({
     	this.submitSearch();
     },
 	componentDidMount(){
-		getHongBaoListData();
+		const _this = this;
+		_this.setState({ loading: true })
+		getHongBaoListData({},function(info){
+			_this.setState({ loading: false })
+		},function(info){
+			_this.setState({ loading: false })
+		});
 	},
 	componentWillUnmount(){
     	//清理搜索条件
@@ -73,7 +86,13 @@ var HongBaoListContainer = React.createClass({
 					<label>交易日期:</label>
 					<RangePicker style={{ width: 200 }} onChange={this.onDateChange} />
 				</div>
-				<HongBaoListTable data={data.list} total={data.total} currentPage={data.this_page} onPageChange={this.onPageChange}/>
+				<HongBaoListTable 
+					data={data.list} 
+					total={data.total} 
+					currentPage={data.this_page} 
+					onPageChange={this.onPageChange}
+					loading={this.state.loading}
+				/>
 			</div>
 		)
 	}

@@ -138,5 +138,8 @@ export const getNotToOpenAccountUrl = '/api/index.php/Steps/no_account_list';
 //获取已开户的用户列表
 export const getHaveToOpenAccountUrl = '/api/index.php/Steps/have_account_list';
 
+// start 保险交易列表 
+export const getTaiPingYangInsuranceUrl = '/api/index.php/Insurance/index';
+// end 保险交易列表 
 
 

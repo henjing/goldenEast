@@ -11,9 +11,19 @@ import { getShenWenSuoMicroBoardData } from '../../api/app-interaction-api';
 const RangePicker = DatePicker.RangePicker;
 
 var UserListContainer = React.createClass({
-
+	getInitialState(){
+		return {
+			loading: false
+		}
+	},
     componentDidMount() {
-        getShenWenSuoMicroBoardData({});
+    	const _this = this;
+		_this.setState({ loading: true })
+        getShenWenSuoMicroBoardData({},function(info){
+			_this.setState({ loading: false })
+		},function(info){
+			_this.setState({ loading: false })
+		});
     },
     componentWillUnmount(){
     	//清理搜索条件
@@ -30,7 +40,13 @@ var UserListContainer = React.createClass({
     },
 
     submitSearch() {
-        getShenWenSuoMicroBoardData(this.props.searchState);
+    	const _this = this;
+		_this.setState({ loading: true })
+        getShenWenSuoMicroBoardData(this.props.searchState,function(info){
+			_this.setState({ loading: false })
+		},function(info){
+			_this.setState({ loading: false })
+		});
         // console.log('test', this.props.searchState);
     },
 
@@ -73,7 +89,14 @@ var UserListContainer = React.createClass({
 					<label>交易时间:</label>
 					<RangePicker style={{ width: '200px' }} onChange={this.onDateChange} />
 				</div>
-				<UserListTable defaultPageSize={12} total={data.total} currentPage={data.this_page} dataSource={data} onPageChange={this.onPageChange} />
+				<UserListTable 
+					defaultPageSize={12}
+					total={data.total} 
+					currentPage={data.this_page}
+					dataSource={data} 
+					onPageChange={this.onPageChange}
+					loading={this.state.loading}
+				/>
 			</div>
 		)
 	}

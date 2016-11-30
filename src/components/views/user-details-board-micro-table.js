@@ -111,7 +111,13 @@ const UserListTable = React.createClass({
             }
         );
         return(
-            <Table pagination={pagination} size="middle" columns={columns} dataSource={dataSource.list} bordered />
+            <Table 
+	            pagination={pagination} 
+	            size="middle" 
+	            columns={columns} 
+	            dataSource={dataSource.list} 
+	            bordered loading={this.props.loading}
+            />
         )
     }
 });

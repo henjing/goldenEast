@@ -11,9 +11,19 @@ import { getJiShangPostCardData } from '../../api/app-interaction-api';
 const RangePicker = DatePicker.RangePicker;
 
 var JiShangPostCardContainer = React.createClass({
-    
+    getInitialState(){
+		return {
+			loading: false
+		}
+	},
     componentDidMount() {
-        getJiShangPostCardData({});
+    	const _this = this;
+		_this.setState({ loading: true })
+        getJiShangPostCardData({},function(info){
+			_this.setState({ loading: false })
+		},function(info){
+			_this.setState({ loading: false })
+		});
     },
     componentWillUnmount(){
     	//清理搜索条件
@@ -30,7 +40,13 @@ var JiShangPostCardContainer = React.createClass({
     },
     
     submitSearch() {
-        getJiShangPostCardData(this.props.searchState);
+    	const _this = this;
+		_this.setState({ loading: true })
+        getJiShangPostCardData(this.props.searchState,function(info){
+			_this.setState({ loading: false })
+		},function(info){
+			_this.setState({ loading: false })
+		});
     },
 
     onDateChange(dates, dateStrings) {
@@ -72,7 +88,14 @@ var JiShangPostCardContainer = React.createClass({
 					<label>交易时间:</label>
 					<RangePicker style={{ width: '200px' }} onChange={this.onDateChange} />
 				</div>
-				<UserListTable defaultPageSize={12} total={data.total} currentPage={data.this_page} dataSource={data} onPageChange={this.onPageChange} />
+				<UserListTable 
+					defaultPageSize={12} 
+					total={data.total} 
+					currentPage={data.this_page} 
+					dataSource={data} 
+					onPageChange={this.onPageChange}
+					loading={this.state.loading}
+				/>
 			</div>
 		)
 	}

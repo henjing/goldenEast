@@ -1,12 +1,97 @@
-import { getUserInfoUrl, modifyPasswordUrl, getChuanShangBoardMarketListUrl, getChuanShangYBKListUrl, getShenWenSuoBoardMarketListUrl, getAgentOverviewDataUrl, getShenWenSuoMicroBoardListUrl, getJiShangYBKListUrl, getYueGuoJiMicroBoardListUrl, getJiShangMicroBoardListUrl, getUserListDataUrl,  getHongBaoListDataUrl, getPeopleWhoHaveInfoAssetUrl, getUserAuthorizationListUrl, getAllAuthorizationListUrl, setFollowerAuthorizationUrl, getPeopleWhoHaveInfoAssetAllotUrl, getAuthorizedUserListUrl, getSomeUserDetailUrl, postSomeUserAuthorDetailUrl, setSomeUserAuthorDetailUrl, getUserDetailUrl, deleteSomeUserAuthorUrl,getNoAuthorizedUserListUrl, getUserFirstClassConnectedUrl, registerActiveUrl,  getGainPeopleWhoHaveInfoAssetUrl, underUsertreeUrl, underUserUrl , getMicroBoardBrokerageListUrl, getBoardMarketBrokerageListUrl, getYBKBrokerageListUrl, getBoardMarketUserDetailUrl, getMicroBoardUserDetailUrl, getPostCardUserDetailUrl, getDownloadDataUrl, getShenWenSuoVoucherListDataUrl, getJjsCurrentMonthPoundageUrl, getJjsLastMonthPoundageUrl, getNotToOpenAccountUrl, getHaveToOpenAccountUrl, getShenWenSuoBoardMarketDetailsListUrl, getChuanShangBoardMarketDetailsListUrl, getShenWenSuoMicroBoardDetailsListUrl, getJiShangMicroBoardDetailsListUrl, getYueGuoJiMicroBoardDetailsListUrl, getChuanShangYBKDetailsListUrl, getJiShangYBKDetailsListUrl, getTaiPingYangInsuranceUrl } from '../appConstants/urlConfig';
+
+import { 
+	getUserInfoUrl, 
+	modifyPasswordUrl, 
+	getChuanShangBoardMarketListUrl,
+	getChuanShangYBKListUrl,
+	getShenWenSuoBoardMarketListUrl,
+	getAgentOverviewDataUrl,
+	getShenWenSuoMicroBoardListUrl,
+	getJiShangYBKListUrl,
+	getYueGuoJiMicroBoardListUrl,
+	getJiShangMicroBoardListUrl,
+	getUserListDataUrl,
+	getHongBaoListDataUrl,
+	getPeopleWhoHaveInfoAssetUrl,
+	getUserAuthorizationListUrl,
+	getAllAuthorizationListUrl,
+	setFollowerAuthorizationUrl,
+	getPeopleWhoHaveInfoAssetAllotUrl,
+	getAuthorizedUserListUrl,
+	getSomeUserDetailUrl,
+	postSomeUserAuthorDetailUrl,
+	setSomeUserAuthorDetailUrl,
+	getUserDetailUrl,
+	deleteSomeUserAuthorUrl,
+	getNoAuthorizedUserListUrl,
+	getUserFirstClassConnectedUrl,
+	registerActiveUrl,
+	getGainPeopleWhoHaveInfoAssetUrl,
+	underUsertreeUrl,
+	underUserUrl,
+	getMicroBoardBrokerageListUrl,
+	getBoardMarketBrokerageListUrl,
+	getYBKBrokerageListUrl,
+	getBoardMarketUserDetailUrl,
+	getMicroBoardUserDetailUrl,
+	getPostCardUserDetailUrl,
+	getDownloadDataUrl,
+	getShenWenSuoVoucherListDataUrl,
+	getJjsCurrentMonthPoundageUrl,
+	getJjsLastMonthPoundageUrl,
+	getNotToOpenAccountUrl,
+	getHaveToOpenAccountUrl,
+	getShenWenSuoBoardMarketDetailsListUrl,
+	getChuanShangBoardMarketDetailsListUrl,
+	getShenWenSuoMicroBoardDetailsListUrl,
+	getJiShangMicroBoardDetailsListUrl,
+	getYueGuoJiMicroBoardDetailsListUrl,
+	getChuanShangYBKDetailsListUrl,
+	getJiShangYBKDetailsListUrl,
+	getTaiPingYangInsuranceUrl
+} from '../appConstants/urlConfig';
+
+import { 
+	updateAdmin, 
+	updateChuanShangBoardMarket, 
+	updateAgentOverviewData, 
+	updateShenWenSuoBoardMarket, 
+	updateChuanShangPostCard, 
+	updateJiShangPostCard, 
+	updateShenWenSuoMicroBoardData, 
+	updateJiShangMicroBoardData, 
+	updateYueGuoJiMicroBoardData, 
+	updateUserListData, 
+	updateHongBaoListData, 
+	updatePeopleListWhoHaveInfoAssetData, 
+	updatePeopleListWhoHaveInfoAssetAllotData, 
+	updateAuthorUserListData , 
+	updateNoAuthorUserListData, 
+	updateGainPeopleListWhoHaveInfoAssetData, 
+	updateUnderUserData, 
+	updateMicroBoardBrokerageData, 
+	updateBoardMarketBrokerageData, 
+	updatePostCardBrokerageData, 
+	updateBoardMarketBrokerageUserDetailData, 
+	updateMicroBoardBrokerageUserDetailData, 
+	updatePostCardBrokerageUserDetailData, 
+	updateDownloadData, 
+	updateShenWenSuoVoucherListData, 
+	updateUnderUserTreeData, 
+	updateNotToOpenAccountData, 
+	updateHaveToOpenAccountData, 
+	updateShenWenSuoBoardMarketDetails, 
+	updateChuanShangBoardMarketDetails, 
+	updateShenWenSuoMicroBoardDetails, 
+	updateJiShangMicroBoardDetails, 
+	updateYueGuoJiMicroBoardDetails, 
+	updateChuanShangPostCardDetails, 
+	updateJiShangPostCardDetails, 
+	updataTaiPingYangInsuranceData
+} from '../actions/app-interaction-actions';
 
 import commonAjax, { commonGetAjax, commonAjaxWithBrackets} from '../helpers/commonAjax';
 import store from '../store';
-
-import { updateAdmin, updateChuanShangBoardMarket, updateAgentOverviewData, updateShenWenSuoBoardMarket, updateChuanShangPostCard, updateJiShangPostCard, updateShenWenSuoMicroBoardData, updateJiShangMicroBoardData, updateYueGuoJiMicroBoardData, updateUserListData, updateHongBaoListData, updatePeopleListWhoHaveInfoAssetData, updatePeopleListWhoHaveInfoAssetAllotData, updateAuthorUserListData , updateNoAuthorUserListData, updateGainPeopleListWhoHaveInfoAssetData, updateUnderUserData, updateMicroBoardBrokerageData, updateBoardMarketBrokerageData, updatePostCardBrokerageData, updateBoardMarketBrokerageUserDetailData, updateMicroBoardBrokerageUserDetailData, updatePostCardBrokerageUserDetailData, updateDownloadData, updateShenWenSuoVoucherListData, updateUnderUserTreeData, updateNotToOpenAccountData, updateHaveToOpenAccountData, updateShenWenSuoBoardMarketDetails, updateChuanShangBoardMarketDetails, updateShenWenSuoMicroBoardDetails, updateJiShangMicroBoardDetails, updateYueGuoJiMicroBoardDetails, updateChuanShangPostCardDetails, updateJiShangPostCardDetails, updataTaiPingYangInsuranceData } from '../actions/app-interaction-actions';
-
-
-
 
 // 获取登录用户的信息
 export function getAdmin(config, sucCallback, failCallback) {

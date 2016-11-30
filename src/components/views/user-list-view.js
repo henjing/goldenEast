@@ -81,7 +81,12 @@ const UserListTable = React.createClass({
         current : parseInt(this.props.currentPage)
     };
 		return(
-			<Table pagination={pagination} size="middle" columns={columns} dataSource={this.props.data} bordered />
+			<Table 
+				pagination={pagination} 
+				size="middle" loading={this.props.loading}
+				columns={columns} 
+				dataSource={this.props.data} bordered 
+			/>
 		)
 	}
 });

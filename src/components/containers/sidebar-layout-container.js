@@ -118,7 +118,7 @@ const SidebarLayoutContainer = React.createClass({
                                 </Link>
                             </Menu.Item>
                         </SubMenu>
-
+                        
                         <SubMenu key="sub3_3" title={<span><Icon type="dot-chart" /><span className={styles.navText}>邮币卡交易列表</span></span>}>
                             <Menu.Item key={routeBase + 'chuan_shang_post_card'}>
                                 <Link to={routeBase + 'chuan_shang_post_card'}>
@@ -131,6 +131,14 @@ const SidebarLayoutContainer = React.createClass({
                                 </Link>
                             </Menu.Item>
                         </SubMenu>
+                        
+                        <SubMenu key="sub3_4" title={<span><Icon type="bar-chart" /><span className={styles.navText}>保险交易列表</span></span>}>
+	                        <Menu.Item key={routeBase + 'taipingyang_insurance'}>
+	                            <Link to={routeBase + 'taipingyang_insurance'}>
+	                                太平洋保险
+	                            </Link>
+	                        </Menu.Item>
+	                    </SubMenu>
 
                     </SubMenu>
 

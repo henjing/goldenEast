@@ -32,7 +32,7 @@ import postCardBrokerageUserDetailReducer from './post-card-brokerage-user-reduc
 import downloadListReducer from './download-list-reducer';
 import shenWenSuoVoucherListReducer from './shen-wen-suo-voucher-list-reducer';
 import openAccountProgressReducer from './open-account-progress-reducer';
-
+import taiPingYangInsuranceReducer from './insurance/taipingyang-insurance-reducer';
 
 
 
@@ -65,6 +65,7 @@ const reducers = combineReducers({
     shenWenSuoVoucherListStater:shenWenSuoVoucherListReducer,
     underUserTreeState : underUserTreeReducer,
    	openAccountProgressState : openAccountProgressReducer,
+   	taiPingYangInsuranceState : taiPingYangInsuranceReducer,
 });
 
 export default reducers;

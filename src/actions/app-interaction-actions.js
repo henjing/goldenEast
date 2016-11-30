@@ -529,3 +529,19 @@ export function updateOpenAccountProgressSearch(info){
 		info
 	}
 }
+
+// 更新太平洋保险交易列表
+export function updataTaiPingYangInsuranceData(info){
+	return {
+		type: types.UPDATA_TAIPINGYANG_INSURANCE_DATA,
+		info
+	}
+}
+
+// 更新太平洋保险交易列表搜索
+export function updataTaiPingYangInsuranceSearch(info){
+	return {
+		type: types.UPDATA_TAIPINGYANG_INSURANCE_SEARCH,
+		info
+	}
+}

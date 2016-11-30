@@ -13,7 +13,8 @@ const RangePicker = DatePicker.RangePicker;
 var UserListContainer = React.createClass({
 	getInitialState(){
 		return {
-			whenSearchHide: false
+			whenSearchHide: false,
+			loading: false
 		}
 	},
 	onChange(value){
@@ -31,7 +32,13 @@ var UserListContainer = React.createClass({
         this.submitSearch();
 	},
 	submitSearch() {
-        getShenWenSuoVoucherListData(this.props.searchState);
+		const _this = this;
+		_this.setState({ loading: true })
+        getShenWenSuoVoucherListData(this.props.searchState,function(info){
+			_this.setState({ loading: false })
+		},function(info){
+			_this.setState({ loading: false })
+		});
         //当搜索的时候隐藏右上角的总注册量
         this.setState({ whenSearchHide: true })
         if(!this.props.searchState['search[find]'] && !this.props.searchState['search[d_begin]'] ){
@@ -46,7 +53,13 @@ var UserListContainer = React.createClass({
     	this.submitSearch();
     },
 	componentDidMount(){
-		getShenWenSuoVoucherListData();
+		const _this = this;
+		_this.setState({ loading: true })
+		getShenWenSuoVoucherListData({},function(info){
+			_this.setState({ loading: false })
+		},function(info){
+			_this.setState({ loading: false })
+		});
 	},
 	componentWillUnmount(){
     	//清理搜索条件
@@ -78,7 +91,13 @@ var UserListContainer = React.createClass({
 					<label>入金时间:</label>
 					<RangePicker style={{ width: 200 }} onChange={this.onDateChange} />
 				</div>
-				<ShenWenVoucherListTable data={data.list} total={data.total} currentPage={data.this_page} onPageChange={this.onPageChange}/>
+				<ShenWenVoucherListTable 
+					data={data.list} 
+					total={data.total} 
+					currentPage={data.this_page} 
+					onPageChange={this.onPageChange}
+					loading={this.state.loading}
+				/>
 			</div>
 		)
 	}

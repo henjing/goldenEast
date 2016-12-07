@@ -91,9 +91,9 @@ var HomeContainer = React.createClass({
 					    </Row>
 				    </TabPane>
 				 </Tabs>
-			    <a href={`http://caiwu.dfxjin.com/Billdown/billAgents.html?sn=${data.jujianshang_sn}`}>
+			    {/*<a href={`http://caiwu.dfxjin.com/Billdown/billAgents.html?sn=${data.jujianshang_sn}`}>
 			    	<Button style={{marginLeft: '20px'}} type="primary">下载对账单</Button>
-			    </a>
+			    </a>*/}
 			</Spin>
 		)
 	}

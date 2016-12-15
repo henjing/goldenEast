@@ -20,9 +20,9 @@ const MainLayout  = React.createClass({
                     <div style={{height : '30px', lineHeight : '30px', paddingLeft : '20px',background: '#f4f4f5'}}>
                         <Breadcrumb {...this.props} />
                     </div>
-
-                    {this.props.children}
-
+					<div className={styles.mainContent}>
+						{this.props.children}
+					</div>
                 </div>
             </div>
         )

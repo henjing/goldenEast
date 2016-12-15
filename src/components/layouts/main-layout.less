@@ -41,12 +41,8 @@ body, .wrapper, .wrapperCollapse {
     position: relative;
     z-index: 2;
     float: right;
-    margin-top: 64px;
-    height: -webkit-calc(~'100vh - 64px');
-    height: -moz-calc(~'100vh - 64px');
-    height: calc(~'100vh - 64px');
+    height:100%;
     transition: all 0.3s ease;
-    overflow: auto;
 }
 
 .wrapper .main {
@@ -57,3 +53,9 @@ body, .wrapper, .wrapperCollapse {
   width: calc(~'100% - 64px');
 }
 
+.mainContent {
+    height: -webkit-calc(~'100vh - 94px');
+    height: -moz-calc(~'100vh - 94px');
+    height: calc(~'100% - 94px');
+    overflow: auto;
+}

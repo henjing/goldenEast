@@ -73,7 +73,7 @@ const UserListTable = React.createClass({
             render(text, record, index){
                 return (
                     <div>
-                        <Link style={{color : 'white'}} to={`/board_market_brokerage/board_market_brokerage_gain_details/${record.user_sn}`}>
+                        <Link style={{color : 'white'}} to={`/board_market_brokerage/board_market_brokerage_gain_details/${record.user_sn}/${record.transaction_month_date_b}/${record.transaction_month_date_e}`}>
                             <Button type="primary" size="small"  icon="search">佣金获得详情</Button>
                         </Link>
                     </div>

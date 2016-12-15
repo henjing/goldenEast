@@ -152,11 +152,11 @@ export default (
 
             {/*佣金列表*/}
             <Route name="board_market_brokerage" breadcrumbName="大盘佣金列表" path={routeBase + 'board_market_brokerage'} component={BoardMarketBrokerageContainer} >
-                 <Route breadcrumbName="佣金获得详情" path="board_market_brokerage_gain_details/:details" component={BoardMarketBrokerageGainDetailsContainer} />
+                 <Route breadcrumbName="佣金获得详情" path="board_market_brokerage_gain_details/:details/:transactionStart/:transactionEnd" component={BoardMarketBrokerageGainDetailsContainer} />
             </Route>
 
             <Route  name="wp_brokerage" breadcrumbName="微盘佣金列表" path={routeBase + 'wp_brokerage'} component={MicroBoardBrokerageContainer} >
-                 <Route breadcrumbName="佣金获得详情" path="wp_brokerage_gain_details/:details2" component={MicroBoardBrokerageGainDetailsContainer} />
+                 <Route breadcrumbName="佣金获得详情" path="wp_brokerage_gain_details/:details2/:transactionStart2/:transactionEnd2" component={MicroBoardBrokerageGainDetailsContainer} />
             </Route>
 
             <Route breadcrumbName="邮币卡佣金列表" path={routeBase + 'post_card_brokerage'} component={PostCardBrokerageContainer} >

@@ -11,6 +11,7 @@ import normalCard from '../../appConstants/assets/images/普卡.png';
 import silverCard from '../../appConstants/assets/images/银卡.png';
 import goldenCard from '../../appConstants/assets/images/金卡.png';
 import superGoldenCard from '../../appConstants/assets/images/白金卡.png';
+import moment from 'moment';
 
 const RangePicker = DatePicker.RangePicker;
 
@@ -19,6 +20,8 @@ var BoardMarketBrokerageGainDetailsContainer = React.createClass({
         return {
             user_sn: '',
             userInfo: '',
+            transactionStart:'',
+            transactionEnd:'',
             accounts: []
         }
     },
@@ -27,14 +30,23 @@ var BoardMarketBrokerageGainDetailsContainer = React.createClass({
     },
     componentWillMount(){
         const user_sn = this.props.params.details2;
+        const transactionStart = this.props.params.transactionStart2;
+        const transactionEnd = this.props.params.transactionEnd2;
         this.setState({
-            user_sn: user_sn
+            user_sn: user_sn,
+            transactionStart:transactionStart,
+            transactionEnd:transactionEnd,
         })
     },
     componentDidMount() {
         var _this = this;
-    	const user_sn = this.state.user_sn;
-        getMicroBoardUserDetailData({sn:user_sn},function(info){
+        const user_sn = this.state.user_sn;
+        const transactionStart = this.props.params.transactionStart2;
+        const transactionEnd = this.props.params.transactionEnd2;
+        getMicroBoardUserDetailData({sn:user_sn,
+            'search[d_begin]' : transactionStart,
+            'search[d_end]' : transactionEnd,
+        },function(info){
     		console.log(info)
     		_this.setState({
     			userInfo: info.data,
@@ -69,6 +81,12 @@ var BoardMarketBrokerageGainDetailsContainer = React.createClass({
          const jinLevels = this.jinLevels();
         const { data } = this.props.dataState;
         let avatar,avatarYes,user_name,level;
+        let dateFormat = this.state.transactionStart;
+        let dateFormat2 =  this.state.transactionEnd;
+        dateFormat = dateFormat.match(/\d{4}.\d{1,2}.\d{1,2}/mg).toString();
+        dateFormat = dateFormat.replace(/[^0-9]/mg, '/');
+        dateFormat2 = dateFormat2.match(/\d{4}.\d{1,2}.\d{1,2}/mg).toString();
+        dateFormat2 = dateFormat2.replace(/[^0-9]/mg, '/');
         try {
             user_name= data.user.user_name;
             avatar = !data.user.wechat_avatar ? data.user.user_name.slice(0,1): '';
@@ -90,7 +108,9 @@ var BoardMarketBrokerageGainDetailsContainer = React.createClass({
 				</div>
 				<div className="data-picker-bar">
 					<label>交易日期:</label>
-					<RangePicker style={{ width: '200px' }} onChange={this.onDateChange} />
+					<RangePicker style={{ width: '200px' }} onChange={this.onDateChange}
+                    defaultValue={[moment(dateFormat), moment(dateFormat2)]}
+                    />
 				</div>
 				<UserListTable defaultPageSize={12} total={data.total} currentPage={data.this_page} dataSource={data}  onPageChange={this.onPageChange}  />
 			</div>

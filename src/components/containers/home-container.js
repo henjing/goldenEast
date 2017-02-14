@@ -113,10 +113,13 @@ var HomeContainer = React.createClass({
 			    {data.is_excellent == 1 ? '' : (
 			    <div>
 			    <a href={`http://caiwu.dfxjin.com/Billdown/billAgents.html?sn=${data.jujianshang_sn}&m=11`}>
-			    	<Button style={{marginLeft: '20px'}} type="primary">下载11月对账单</Button>
+			    	<Button style={{marginLeft: '20px'}} type="primary">下载2016年11月对账单</Button>
 			    </a>
 			    <a href={`http://caiwu.dfxjin.com/Billdown/billAgents.html?sn=${data.jujianshang_sn}&m=12`}>
-			    	<Button style={{marginLeft: '20px'}} type="primary">下载12月对账单</Button>
+			    	<Button style={{marginLeft: '20px'}} type="primary">下载2016年12月对账单</Button>
+			    </a>
+			    <a href={`http://caiwu.dfxjin.com/Billdown/billAgents.html?sn=${data.jujianshang_sn}&m=1`}>
+			    	<Button style={{marginLeft: '20px'}} type="primary">下载2017年1月对账单</Button>
 			    </a>
 			    </div>)}
 			</Spin>

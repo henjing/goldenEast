@@ -124,6 +124,9 @@ var HomeContainer = React.createClass({
 			    <a href={`http://caiwu.dfxjin.com/Billdown/billAgents.html?sn=${data.jujianshang_sn}&m=huamao`}>
 			    	<Button style={{marginLeft: '20px'}} type="primary">下载2017年1月华茂通对账单</Button>
 			    </a>
+			    <a href={`http://caiwu.dfxjin.com/Billdown/billAgents.html?sn=${data.jujianshang_sn}&m=2`}>
+			    	<Button style={{marginLeft: '20px'}} type="primary">下载2017年2月对账单</Button>
+			    </a>
 			    </div>)}
 			</Spin>
 		)
